@@ -1,0 +1,53 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="header-row">
+        <div class="header-content">
+            {% for i in '02468'|make_list %}
+                <button id="hero-pick-{{i|add:1}}" data-hero-type="radiant" aria-expanded="false" aria-controls="list-{{i|add:1}}">
+                    <img id="hero-icon-{{i|add:1}}" src="{% static 'main/images/radiant.png' %}" alt="Герой">
+                </button>
+                <ul class="menu-{{i|add:1}}" id="list-{{i|add:1}}">
+                    {% for hero in heroes %}
+                        <li class="menu__item-{{i|add:1}}" data-hero-name="{{ hero.name }}">
+                            <a href="#" class="menu__link" tabindex="-1">
+                                <img src="{{ hero.icon.url }}" alt="{{ hero.name }}" width="60" height="33">
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <button id="hero-pick-{{i|add:2}}"  data-hero-type="dire" aria-expanded="false" aria-controls="list-{{i|add:2}}">
+                    <img id="hero-icon-{{i|add:2}}" src="{% static 'main/images/dire.png' %}" alt="Герой">
+                </button>
+                <ul class="menu-{{i|add:2}}" id="list-{{i|add:2}}">
+                    {% for hero in heroes %}
+                        <li class="menu__item-{{i|add:2}}" data-hero-name="{{ hero.name }}">
+                            <a href="#" class="menu__link" tabindex="-1">
+                                <img src="{{ hero.icon.url }}" alt="{{ hero.name }}" width="60" height="33">
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            {% endfor %}
+            <div class="sendbutton">
+                <button id="send-heroes-button">Рассчитать</button>
+                <div id="calculation-popup" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Результаты Расчета</h2>
+                        <p id="calculation-result"></p>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+
+
+        </div>
+
+<script src="{% static 'main/js/script_hero_select.js' %}"></script>
+{% endblock %}
+
