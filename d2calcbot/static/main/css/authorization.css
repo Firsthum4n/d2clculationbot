@@ -1,0 +1,90 @@
+.header-row-authorization {
+    height: 800px;
+	max-width: 1920PX;
+    max-height: 1024px;
+	margin: 0 auto;
+	display: flex;
+	background-color: #1a1b20;
+
+
+}
+
+.header-content-authorization {
+    margin-top: 7%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 800px;
+    grid-template-rows: 85px 320px;
+    justify-content: center;
+
+}
+
+.header-box-login{
+    width: 800px;
+    height: 320px;
+    padding: 20px;
+    background: rgb(48, 59, 67);
+    border-radius: 3px;
+}
+
+
+.text {
+    max-height: 80px;
+    font-family: "Arial Black", serif;
+    font-size: 25px;
+	color: white;
+
+
+}
+
+
+
+.header-box-login input[type="text"],
+.header-box-login input[type="password"] {
+    display: grid;
+    grid-template-columns: 50px;
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    color: white;
+    background-color: #1a1b20;
+    transition: background-color 0.3s ease;
+    cursor: text;
+}
+
+.form-label {
+    display: inline-block;
+    min-width: 150px;
+    vertical-align: top;
+    color: #2979fd;
+    padding: 5px;
+}
+
+#login-btn {
+    min-width: 270px;
+	min-height: 47px;
+    border-radius: 3px;
+    margin-top: 5%;
+    color: white;
+    justify-content: center;
+    background-color:  #2979fd;
+    cursor: pointer;
+}
+
+#login-btn:hover {
+    background-color: #09bafd;
+    cursor: pointer;
+
+}
+
+.form-error ul {
+    list-style: none;
+    padding: 0;
+    color: #CC0000;
+}
+
+.form-button {
+    min-width: 200px;
+    font-size: 16px;
+}

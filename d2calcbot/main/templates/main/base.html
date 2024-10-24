@@ -6,8 +6,9 @@
     <meta charset="UTF-8">
     <title>{{ title }}</title>
     <link type="text/css" href="{% static 'main/css/main.css' %}" rel="stylesheet"/>
-    <link type="text/css" href="{% static 'main/css/hero_pick.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'main/css/heroes.css' %}" rel="stylesheet"/>
     <link type="text/css" href="{% static 'main/css/media.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'main/css/authorization.css' %}" rel="stylesheet"/>
     <link rel="shortcut icon" href="{% static 'main/images/dire.png' %}" type="image/x-icon"/>
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
 </head>
@@ -61,6 +62,7 @@
 
 {% block content %}
 {% endblock content%}
+
 <header class="bottom-header"></header>
 <script src="{% static 'main/js/mobile_nav.js' %}"></script>
 <script src="{% static 'main/js/mobilebottomheader.js' %}"></script>

@@ -1,18 +1,24 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% block content %}
-<h1>{{title}}</h1>
 
-<form method="post">
-    {% csrf_token %}
 
-<div class="form-error">{{ form.non_field_errors }}</div>
-{% for i_elem in form %}
-    <p><label class="form-label" for="{{ i_elem.id_for_label }}">{{i_elem.label}}: </label>{{ i_elem }}</p>
-    <div class="form-error">{{ i_elem.errors }}</div>
-    {% endfor %}
-
-    <button type="submit">Войти</button>
-</form>
-
+<div class="header-row-authorization">
+    <div class="header-content-authorization">
+        <div class="text">Вход</div>
+        <div class="header-box-login">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-error">{{ form.non_field_errors }}</div>
+                    {% for i_elem in form %}
+                        <p><label class="form-label" for="{{ i_elem.id_for_label }}">{{i_elem.label}}: </label>{{ i_elem }}</p>
+                        <div class="form-error">{{ i_elem.errors }}</div>
+                    {% endfor %}
+                    <button id="login-btn" type="submit">Войти</button>
+<!--                    <img src="{% static 'users/images/dire.png' %}">-->
+            </form>
+        </div>
+    </div>
+</div>
+<link type="text/css" href="{% static 'main/css/authorization.css' %}" rel="stylesheet"/>
 {% endblock content%}
