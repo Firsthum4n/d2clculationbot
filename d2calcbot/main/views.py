@@ -93,20 +93,3 @@ class RegisterUser(DataMixin, CreateView):
         login(self.request, user)
         return redirect('profile')
 
-
-class LoginUser(DataMixin, LoginView):
-    form_class = LoginUserForm
-    template_name = 'users/login.html'
-
-    def get_context_data(self, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Авторизация')
-        return dict(list(context.items()) + list(c_def.items()))
-
-    def get_success_url(self):
-        return reverse_lazy('profile')
-
-
-def logout_user(request):
-    logout(request)
-    return redirect('login')

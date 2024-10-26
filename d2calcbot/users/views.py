@@ -1,21 +1,18 @@
-from django.http import  HttpResponse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.template.defaultfilters import title
+from django.urls import reverse_lazy, reverse
 
 from users.forms import LoginUserForm
 
+class Loginuser(LoginView):
+    form_class = AuthenticationForm
+    template_name = 'users/login.html'
 
-def login_user(request):
-    form = LoginUserForm
-    return render(request, 'users/login.html', {'form': form})
-
-# def get_success_url(self):
-#     return reverse_lazy('profile')
-#
-#
-# def logout_user(request):
-#     logout(request)
-#     return redirect('login')
 
 def logout_user(request):
-    return HttpResponse("logout")
+    logout(request)
+    return HttpResponseRedirect(reverse('users:login'))
