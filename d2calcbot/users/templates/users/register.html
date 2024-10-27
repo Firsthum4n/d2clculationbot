@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="header-row-authorization">
+    <div class="header-content-authorization">
+        <div class="text">СОЗДАНИЕ АККАУНТА</div>
+            <div class="header-box-register">
+                <form method="post">
+                    {% csrf_token %}
+                {% for i_elem in form %}
+                    <p><label class="form-label" for="{{ i_elem.id_for_label }}">{{i_elem.label}} </label>{{ i_elem }}</p>
+                    <div class="form-error">{{ i_elem.errors }}</div>
+                    {% endfor %}
+                    <button id="login-btn" type="submit">Регистрация</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

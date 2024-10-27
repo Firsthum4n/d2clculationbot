@@ -25,19 +25,6 @@
     background: rgb(48, 59, 67);
     border-radius: 3px;
 }
-
-
-.text {
-    max-height: 80px;
-    font-family: "Arial Black", serif;
-    font-size: 25px;
-	color: white;
-
-
-}
-
-
-
 .header-box-login input[type="text"],
 .header-box-login input[type="password"] {
     display: grid;
@@ -51,6 +38,43 @@
     transition: background-color 0.3s ease;
     cursor: text;
 }
+
+
+.header-box-register{
+    width: 800px;
+    height: 400px;
+    padding: 20px;
+    background: rgb(48, 59, 67);
+    border-radius: 3px;
+}
+.header-box-register input[type="text"],
+.header-box-register input[type="password"] {
+    display: grid;
+    grid-template-columns: 50px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    color: white;
+    background-color: #1a1b20;
+    transition: background-color 0.3s ease;
+    cursor: text;
+}
+
+
+
+.text {
+    max-height: 80px;
+    font-family: "Arial Black", serif;
+    font-size: 25px;
+	color: white;
+
+
+}
+
+
+
+
 
 .form-label {
     display: inline-block;

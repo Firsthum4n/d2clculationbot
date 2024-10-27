@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.views.generic import ListView, View, CreateView, TemplateView
 
@@ -20,7 +22,7 @@ from .heroes import hero_mod, del_all_heroes_and_ids
 
 
 
-class MainHomeView(DataMixin, ListView):
+class MainHomeView(LoginRequiredMixin,DataMixin, ListView):
     """
     Класс представления страницы выбоар героеев
 
@@ -29,6 +31,7 @@ class MainHomeView(DataMixin, ListView):
     model = Heroes
     template_name = 'main/index.html'
     context_object_name = 'heroes'
+
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -63,13 +66,7 @@ class Heroes_pick(View):
 
 
 
-
-
-
-
-
-
-class Profile(DataMixin, TemplateView):
+class Profile(LoginRequiredMixin,DataMixin, TemplateView):
     template_name = 'main/profile.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -78,18 +75,4 @@ class Profile(DataMixin, TemplateView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
-class RegisterUser(DataMixin, CreateView):
-    form_class = RegisterUserForm
-    template_name = 'users/register.html'
-    success_url = reverse_lazy('login')
-
-    def get_context_data(self, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='регистрация')
-        return dict(list(context.items()) + list(c_def.items()))
-
-    def form_valid(self, form):
-        user = form.save()
-        login(self.request, user)
-        return redirect('profile')
 

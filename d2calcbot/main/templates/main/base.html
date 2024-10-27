@@ -48,7 +48,7 @@
                             {% if request.user.is_authenticated %}
                                 <li class="last"><a>{{ user.username }} <a href="{% url 'users:logout' %}">выйти</a></li>
                             {% else %}
-                                <li class="last"> <a href="{% url 'register' %}">регистрация</a><a href="{% url 'users:login' %}">войти</a></li>
+                                <li class="last"> <a href="{% url 'users:register' %}">регистрация</a><a href="{% url 'users:login' %}">войти</a></li>
                             {% endif %}
                     </ul>
                 </div>
