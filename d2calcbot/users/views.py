@@ -1,13 +1,14 @@
 from django.contrib.auth import login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.http import  HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView
+from django.views.generic import CreateView, TemplateView
 
-from main.forms import RegisterUserForm
+from users.forms import RegisterUserForm, LoginUserForm
 from main.utils import DataMixin
-from users.forms import LoginUserForm
+
 
 class LoginUser(LoginView):
     form_class = LoginUserForm
@@ -34,4 +35,13 @@ class RegisterUser(DataMixin, CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('profile')
+        return redirect('users:profile')
+
+
+class Profile(LoginRequiredMixin,DataMixin, TemplateView):
+    template_name = 'users/profile.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title='Мой профиль')
+        return dict(list(context.items()) + list(c_def.items()))

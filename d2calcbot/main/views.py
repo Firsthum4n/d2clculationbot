@@ -1,24 +1,12 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, View
 from django.http import JsonResponse
-from django.views.generic import ListView, View, CreateView, TemplateView
-
-from django.contrib.auth import logout, login
-from django.contrib.auth.views import LoginView
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
-from django.http import JsonResponse
-from .forms import *
 
 import json
 from .utils import *
 from .calculation import  low_calculation
 
 from .heroes import hero_mod, del_all_heroes_and_ids
-
-
-
-
 
 
 
@@ -58,21 +46,3 @@ class Heroes_pick(View):
             {'result': result,
              'radiant_heroes': radiant_heroes,}
         )
-
-
-
-
-
-
-
-
-class Profile(LoginRequiredMixin,DataMixin, TemplateView):
-    template_name = 'main/profile.html'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Мой профиль')
-        return dict(list(context.items()) + list(c_def.items()))
-
-
-
