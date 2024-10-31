@@ -1,36 +1,31 @@
-from django.contrib.auth.base_user import BaseUserManager
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
+from django.contrib.auth.models import AbstractUser, PermissionsMixin
 from django.db import models
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, telegram_id, username, *extra_fields):
+    def create_user(self,telegram_username, telegram_id, *extra_fields):
         """
-        Создает и сохраняет нового пользователя с заданным email и паролем.
+        Создает и сохраняет нового пользователя с заданным telegram_id и username.
         """
         if not telegram_id:
-            raise ValueError('The Email field must be set')
-        user = self.model(telegram_id, username, *extra_fields)
+            raise ValueError('The telegram_id field must be set')
+        if not telegram_username:
+            raise ValueError('The username field must be set')
+        user = self.model(telegram_id=telegram_id, telegram_username=telegram_username, *extra_fields)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password=None, *extra_fields):
-        """
-        Создает и сохраняет нового суперпользователя с заданным email и паролем.
-        """
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
+    def check_password(self, user, raw_password):
+        return True
 
-        if extra_fields.get('is_staff') is not True:
-            raise ValueError('Superuser must have is_staff=True.')
-        if extra_fields.get('is_superuser') is not True:
-            raise ValueError('Superuser must have is_superuser=True.')
+    def set_password(self, raw_password):
+        pass
 
-        return self.create_user(email, password, *extra_fields)
-
-
-class Custom_User(AbstractUser):
-    telegram_id = models.CharField(max_length=255, unique=True, blank=True, null=True)
+class Custom_User(AbstractBaseUser, PermissionsMixin):
     telegram_username = models.CharField(max_length=255, blank=True, null=True)
+    telegram_id = models.CharField(max_length=255, unique=True, blank=True, null=True)
+    is_active = models.BooleanField(default=True)
+
 
     groups = models.ManyToManyField(
         'auth.Group',
@@ -44,3 +39,8 @@ class Custom_User(AbstractUser):
         related_name='custom_user_set', # Изменяем имя обратной ссылки
         blank=True,
     )
+
+    objects = CustomUserManager()
+
+    USERNAME_FIELD = 'telegram_id'
+    REQUIRED_FIELDS = ['telegram_username']
