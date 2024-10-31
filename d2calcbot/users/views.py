@@ -73,11 +73,11 @@ class RegisterUser(FormView):
 
             return super().form_valid(form)
 
-class Profile(TemplateView):
+class Profile(LoginRequiredMixin,DataMixin, TemplateView):
     template_name = 'users/profile.html'
 
-    def get(self, request, *args, **kwargs):
-        print(
-            f"Authenticated user: {request.user}, is_active: {request.user.is_active}, is_authenticated: {request.user.is_authenticated}")
-        return super().get(request, *args, **kwargs)
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title='Мой профиль')
+        return dict(list(context.items()) + list(c_def.items()))
 

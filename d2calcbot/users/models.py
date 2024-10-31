@@ -15,6 +15,18 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+    def create_superuser(self, telegram_username, telegram_id, password=None,is_superuser=True):
+        """
+        Создает и сохраняет нового суперпользователя с заданным username и email.
+        """
+
+
+
+        user = self.model(telegram_username=telegram_username, telegram_id=telegram_id)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
     def check_password(self, user, raw_password):
         return True
 

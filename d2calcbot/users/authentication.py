@@ -14,3 +14,17 @@ class TelegramIdAuth(BaseBackend):
                 return None
 
         return None
+
+    def get_user(self, user_id):
+        try:
+            return Custom_User.objects.get(pk=user_id)
+        except Custom_User.DoesNotExist:
+            return None
+
+    def has_perm(self, user_obj, perm, obj=None):
+        """
+        Проверяет, имеет ли пользователь разрешение.
+        """
+        if user_obj.is_active and user_obj.has_perm(perm, obj=obj):
+            return True
+        return False
