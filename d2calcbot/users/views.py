@@ -22,13 +22,11 @@ class LoginUser(FormView):
 
 
     def form_valid(self, form):
-        # Получите значения из формы
         telegram_id = form.cleaned_data['telegram_id']
         telegram_username = form.cleaned_data['telegram_username']
 
 
 
-        # Проверьте, существует ли пользователь с такими данными
         user = authenticate(telegram_id=telegram_id, telegram_username=telegram_username)
 
         if user and user.is_active:
@@ -37,7 +35,6 @@ class LoginUser(FormView):
 
 
         else:
-            # Отобразите сообщение об ошибке
             form.add_error(None, 'Неправильный telegram-id или username')
             return super().form_invalid(form)
 
