@@ -45,8 +45,8 @@
                     </nav>
                     <ul class="log-on-list">
                             <!--Логин и регистрация-->
-                            {% if request.user.is_authenticated %}
-                                <li class="last"><a>{{ user.username }} <a href="{% url 'users:logout' %}">выйти</a></li>
+                            {% if user.is_authenticated %}
+                                <li class="last"><a>{{ user.telegram_username }} <a href="{% url 'users:logout' %}">выйти</a></li>
                             {% else %}
                                 <li class="last"> <a href="{% url 'users:register' %}">регистрация</a><a href="{% url 'users:login' %}">войти</a></li>
                             {% endif %}

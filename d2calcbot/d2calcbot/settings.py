@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 from pathlib import Path
-from django.contrib.auth.backends import BaseBackend
+
 
 from django.conf.global_settings import LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL, LOGIN_URL, AUTHENTICATION_BACKENDS
 
@@ -136,10 +136,17 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'users:profile'
+LOGOUT_REDIRECT_URL = 'users:login'
 LOGIN_URL = 'users:login'
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend'
+    'users.authentication.TelegramIdAuth',
+    'django.contrib.auth.backends.ModelBackend',
 ]
+
+AUTH_USER_MODEL = 'users.Custom_User'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+
