@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'users.apps.UsersConfig',
+    'api',
 
 ]
 
@@ -148,5 +149,7 @@ AUTHENTICATION_BACKENDS = [
 AUTH_USER_MODEL = 'users.Custom_User'
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+JWT_SECRET_KEY='uhgxtj6TqGQ2uerMVsvAuEqEpUg4UmmQBO2h9HQPKq0'
 
 

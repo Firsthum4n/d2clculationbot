@@ -6,7 +6,6 @@
 	display: flex;
 	background-color: #1a1b20;
 
-
 }
 
 .header-content-authorization {
@@ -26,6 +25,42 @@
     background: rgb(48, 59, 67);
     border-radius: 3px;
 }
+.header-box-login input[type="text"],
+.header-box-login input[type="password"] {
+    display: grid;
+    grid-template-columns: 50px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    color: white;
+    background-color: #1a1b20;
+    transition: background-color 0.3s ease;
+    cursor: text;
+}
+
+
+.header-box-register{
+    width: 800px;
+    height: 400px;
+    padding: 20px;
+    background: rgb(48, 59, 67);
+    border-radius: 3px;
+}
+.header-box-register input[type="text"],
+.header-box-register input[type="password"] {
+    display: grid;
+    grid-template-columns: 50px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    color: white;
+    background-color: #1a1b20;
+    transition: background-color 0.3s ease;
+    cursor: text;
+}
+
 
 
 .text {
@@ -39,19 +74,7 @@
 
 
 
-.header-box-login input[type="text"],
-.header-box-login input[type="password"] {
-    display: grid;
-    grid-template-columns: 50px;
-    width: 60%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 3px;
-    color: white;
-    background-color: #1a1b20;
-    transition: background-color 0.3s ease;
-    cursor: text;
-}
+
 
 .form-label {
     display: inline-block;
@@ -66,6 +89,7 @@
 	min-height: 47px;
     border-radius: 3px;
     margin-top: 5%;
+    margin-left: 32%;
     color: white;
     justify-content: center;
     background-color:  #2979fd;
