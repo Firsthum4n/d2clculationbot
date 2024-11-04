@@ -10,6 +10,7 @@ from .heroes import hero_mod, del_all_heroes_and_ids
 
 
 
+
 class MainHomeView(LoginRequiredMixin,DataMixin, ListView):
     """
     Класс представления страницы выбоар героеев
