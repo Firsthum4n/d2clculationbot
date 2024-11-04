@@ -55,9 +55,7 @@ def login_user(request):
                 JWT_SECRET_KEY,
                 algorithm="HS256"
             )
-
-            redirect_url = f"http://your-api-server.com/users/login_from_telegram/?telegram_id={telegram_id}&amp;token={token.decode('utf-8')}"
-            return redirect(redirect_url)
+            return Response({'token': token.decode('utf-8')}, status=status.HTTP_200_OK)
 
         return Response({'error': 'Пользователь не найден'}, status=status.HTTP_404_NOT_FOUND)
 

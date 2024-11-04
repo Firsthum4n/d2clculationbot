@@ -63,7 +63,7 @@ sendHeroesButton.addEventListener('click', () => {
         radiant_heroes: radiantPick,
         dire_heroes: direPick
     };
-    sendSelectedHeroes(data, 'api/heroes/');
+    sendSelectedHeroes(data, 'pick/heroes/');
 });
 
 function sendSelectedHeroes(data, endpoint) {
