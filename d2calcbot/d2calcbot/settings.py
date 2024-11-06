@@ -28,6 +28,7 @@ SECRET_KEY = 'django-insecure-+)g(0g+=!#i%*coegez9^-*u6n5=o+fv7qd3#_iws#lql$=2sn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = ['localhost', 'trusight.ru', '127.0.0.1', 'trusight.online']
 
 
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'users.apps.UsersConfig',
     'api',
+    'rest_framework'
 
 ]
 

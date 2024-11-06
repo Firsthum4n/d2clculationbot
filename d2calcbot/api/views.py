@@ -17,24 +17,25 @@ import secrets
 
 JWT_SECRET_KEY = 'uhgxtj6TqGQ2uerMVsvAuEqEpUg4UmmQBO2h9HQPKq0'
 
-@api_view(['POST'])
+@api_view(['GET'])
 def register_user(request):
-    if request.method == 'POST':
-        data = request.data
-        telegram_id = data.get('telegram_id')
-        telegram_username = data.get('telegram_username')
+    if request.method == 'GET':
+        telegram_id = request.GET.get('telegram_id')
+        telegram_username = request.GET.get('telegram_username')
 
         if Custom_User.objects.filter(telegram_id=telegram_id).exists():
             return Response({'error': 'Пользователь с таким Telegram ID уже существует'}, status=status.HTTP_400_BAD_REQUEST)
 
         user = Custom_User.objects.create_user(
-            username=telegram_username,
             telegram_id=telegram_id,
+            telegram_username=telegram_username,
         )
 
         user.save()
+        login(request, user, backend='users.authentication.TelegramIdAuth')
 
-        return Response({'message': 'Пользователь успешно зарегистрирован'}, status=status.HTTP_201_CREATED)
+        redirect_url = f"http://127.0.0.1:8000/users/profile"
+        return redirect(redirect_url)
     else:
         return Response({'error': 'Неверный запрос'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -50,13 +51,10 @@ def login_user(request):
 
         user = Custom_User.objects.filter(telegram_id=telegram_id, telegram_username=telegram_username).first()
         if user:
-            token = jwt.encode(
-                {'user_id': user.id, 'exp': datetime.utcnow() + timedelta(minutes=30)},
-                JWT_SECRET_KEY,
-                algorithm="HS256"
-            )
+            login(request, user, backend='users.authentication.TelegramIdAuth')
 
-            redirect_url = f"http://your-api-server.com/users/login_from_telegram/?telegram_id={telegram_id}&amp;token={token.decode('utf-8')}"
+
+            redirect_url = f"http://127.0.0.1:8000/users/profile"
             return redirect(redirect_url)
 
         return Response({'error': 'Пользователь не найден'}, status=status.HTTP_404_NOT_FOUND)
