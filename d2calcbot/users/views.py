@@ -6,7 +6,9 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, TemplateView
-
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
 from users.forms import RegisterUserForm, LoginUserForm
 from main.utils import DataMixin
 from django.views.generic.edit import FormView
@@ -21,12 +23,9 @@ class LoginUser(FormView):
     form_class = LoginUserForm
     success_url = reverse_lazy('users:profile')
 
-
     def form_valid(self, form):
         telegram_id = form.cleaned_data['telegram_id']
         telegram_username = form.cleaned_data['telegram_username']
-
-
 
         user = authenticate(telegram_id=telegram_id, telegram_username=telegram_username)
 
@@ -80,28 +79,46 @@ class Profile(LoginRequiredMixin,DataMixin, TemplateView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
-def login_from_telegram(request):
-    telegram_id = request.GET.get('telegram_id')
-    token = request.GET.get('token')
-    if telegram_id and token:
-        try:
-            payload = jwt.decode(token, 'your_jwt_secret_key', algorithms=['HS256'])
-            user_id = payload['user_id']
 
-            # Проверка соответствия user_id и telegram_id
-            if user_id == int(telegram_id):
-                user = Custom_User.objects.get(pk=user_id)
-                if user:
-                    login(request, user)
-                    return redirect('users:profile')  # Перенаправление на страницу профиля
-                else:
-                    return HttpResponse('Пользователь не найден', status=404)
-            else:
-                return HttpResponse('Неверный токен', status=400)
-        except jwt.ExpiredSignatureError:
-            return HttpResponse('Токен истек', status=401)
-        except jwt.InvalidTokenError:
-            return HttpResponse('Неверный токен', status=400)
 
+@api_view(['GET'])
+def register_user_tg(request):
+    if request.method == 'GET':
+        telegram_id = request.GET.get('telegram_id')
+        telegram_username = request.GET.get('telegram_username')
+
+        if Custom_User.objects.filter(telegram_id=telegram_id).exists():
+            return Response({'error': 'Пользователь с таким Telegram ID уже существует'}, status=status.HTTP_400_BAD_REQUEST)
+
+        user = Custom_User.objects.create_user(
+            telegram_id=telegram_id,
+            telegram_username=telegram_username,
+        )
+
+        user.save()
+        login(request, user, backend='users.authentication.TelegramIdAuth')
+
+        redirect_url = f"http://127.0.0.1:8000/users/profile"
+        return redirect(redirect_url)
     else:
-        return HttpResponse('Неверный запрос', status=400)
+        return Response({'error': 'Неверный запрос'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def login_user_tg(request):
+    if request.method == 'GET':
+        telegram_id = request.GET.get('telegram_id')
+        telegram_username = request.GET.get('telegram_username')
+
+        if not telegram_id or not telegram_username:
+            return Response({'error': 'Отсутствует Telegram ID или username'}, status=status.HTTP_400_BAD_REQUEST)
+
+        user = Custom_User.objects.filter(telegram_id=telegram_id, telegram_username=telegram_username).first()
+        if user:
+            login(request, user, backend='users.authentication.TelegramIdAuth')
+            redirect_url = f"http://127.0.0.1:8000/users/profile"
+            return redirect(redirect_url)
+
+        return Response({'error': 'Пользователь не найден'}, status=status.HTTP_404_NOT_FOUND)
+    else:
+        return Response({'error': 'Неверный запрос'}, status=status.HTTP_400_BAD_REQUEST)
