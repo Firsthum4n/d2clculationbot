@@ -6,8 +6,14 @@ class TelegramIdAuth(BaseBackend):
         user_model = Custom_User
         if telegram_id and telegram_username:
             try:
-                user = user_model.objects.get(telegram_id=telegram_id, telegram_username=telegram_username)
-                print(f"User authenticated: {user}")
+                user, created = user_model.objects.get_or_create(
+                    telegram_id=telegram_id,
+                    telegram_username=telegram_username
+                )
+                if created:
+                    print(f"New user created: {user}")
+                else:
+                    print(f"User authenticated: {user}")
                 return user
             except user_model.DoesNotExist:
                 print("User does not exist")

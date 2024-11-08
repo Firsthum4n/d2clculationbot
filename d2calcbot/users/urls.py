@@ -6,7 +6,6 @@ app_name = 'users'
 
 urlpatterns = [
     path('profile/', views.Profile.as_view(), name='profile'),
-    path('api/register/', views.register_user_tg, name='register_tg'),
-    path('api/login/', views.login_user_tg, name='login_tg'),
+    path('api/auth/', views.auth_user_tg, name='auth'),
     path('notin/', views.LogoutView.as_view(), name='notin'),
 ]

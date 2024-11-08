@@ -454,8 +454,6 @@
 }
 
 @media (max-width: 600px) {
-
-
     .nav-button {
         position: absolute;
         z-index: 9;
@@ -494,11 +492,7 @@
         left: 25px;
         top: 0;
         height: 90%;
-
-
     }
-
-
 
 }
 
@@ -509,15 +503,19 @@
     }
     .nav-button {
         display: block;
+        position: absolute;
+        z-index: 9;
+        top: 18px;
+        left: 18px;
     }
     .nav.open .nav-list{
-        position: fixed;
+        position: absolute;
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: rgb(48, 59, 67);
-        z-index: 1;
+        background: #000000;
+        z-index: 50;
         padding: 46px 30px;
         display: flex;
         flex-direction: column;
@@ -525,16 +523,6 @@
         font-size: 34px;
         font-weight: 600;
 
-    }
-    .nav.open .logo {
-        display: none;
-    }
-
-    .nav-button {
-        position: absolute;
-        z-index: 9;
-        top: 18px;
-        left: 18px;
     }
 
     .header {
@@ -606,7 +594,7 @@
         overflow: auto;
     }
     .bottom-header {
-        background: rgb(48, 59, 67);
+        background: #000000;
         width: 100%;
         padding: 10px;
         z-index: 5;

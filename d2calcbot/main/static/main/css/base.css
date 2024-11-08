@@ -1,0 +1,50 @@
+@import "reset.css";
+@import url('https://fonts.googleapis.com/css?family=Poppins:900i');
+
+body {
+    font-family: sans-serif;
+	width: 100%;
+	height: 100%;
+ 	background-color: #ffffff;
+}
+
+
+.header {
+	padding-top: 0;
+	background: #000000;
+	height: 60px;
+	margin: 0 auto;
+	max-height: 1024px;
+}
+
+.container-header{
+	max-width: 1140px;
+	margin: 0 auto;
+
+}
+
+.user-info-list{
+	display: flex;
+	float: right;
+	color: white;
+	margin: 20px;
+
+}
+
+
+
+
+
+ul.nav-list li a.nav-item {
+    margin-top: 21px;
+	margin-right: 28px;
+	text-align: center;
+	display: block;
+}
+
+
+
+
+
+
+
