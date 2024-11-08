@@ -139,8 +139,7 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'users:profile'
-LOGOUT_REDIRECT_URL = 'users:login'
-LOGIN_URL = 'users:login'
+LOGIN_URL = 'users:notin'
 
 AUTHENTICATION_BACKENDS = [
     'users.authentication.TelegramIdAuth',

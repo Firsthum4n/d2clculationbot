@@ -8,8 +8,12 @@
     <link type="text/css" href="{% static 'main/css/main.css' %}" rel="stylesheet"/>
     <link type="text/css" href="{% static 'main/css/heroes.css' %}" rel="stylesheet"/>
     <link type="text/css" href="{% static 'main/css/media.css' %}" rel="stylesheet"/>
-    <link type="text/css" href="{% static 'main/css/authorization.css' %}" rel="stylesheet"/>
     <link rel="shortcut icon" href="{% static 'main/images/dire.png' %}" type="image/x-icon"/>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        const tg = Telegram.WebApp;
+        tg.setHeaderColor("#000000");
+    </script>
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
 </head>
 <body>
@@ -46,9 +50,7 @@
                     <ul class="log-on-list">
                             <!--Логин и регистрация-->
                             {% if user.is_authenticated %}
-                                <li class="last"><a>{{ user.telegram_username }} <a href="{% url 'users:logout' %}">выйти</a></li>
-                            {% else %}
-                                <li class="last"> <a href="{% url 'users:register' %}">регистрация</a><a href="{% url 'users:login' %}">войти</a></li>
+                                <li class="last"><a>{{ user.telegram_username }}</a></li>
                             {% endif %}
                     </ul>
                 </div>
