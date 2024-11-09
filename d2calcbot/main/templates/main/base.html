@@ -44,18 +44,17 @@
 {% block menu %}
         <header class="bottom-header">
             <div class="container-bottom-header">
-                <ul>
                 {% for i in menu %}
                     {% if i.url_name %}
                         {% if i.url_name == request.resolver_match.url_name %}
                             <li class="active"><a href="{% url i.url_name %}">{{ i.title}}</a></li>
                         {% else %}
-                            <li><a class="nav-item" href="{% url i.url_name %}">{{ i.title}}</a></li>
+                            <li class="nav-item"><a  href="{% url i.url_name %}">{{ i.title}}</a></li>
                         {% endif %}
                     {% endif %}
                 {% endfor %}
-                        <img s src="{% static 'main/images/nav/NAV-OPEN.svg' %}">
-                </ul>
+                <img src="{% static 'main/images/nav/NAV-OPEN.svg' %}">
+
 
 
 

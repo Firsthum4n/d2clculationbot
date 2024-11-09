@@ -67,9 +67,13 @@ body {
 	height: 60px;
 	margin: 0 auto;
 	list-style: none;
+	display: grid;
+	grid-template-columns: 180px 180px 180px;
+	justify-content: space-between;
 }
 
 .container-bottom-header li a {
+	justify-content: center;
 
 }
 
