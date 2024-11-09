@@ -14,14 +14,14 @@ def auth_user_tg(request):
     if request.method == 'GET':
         telegram_id = request.GET.get('telegram_id')
         telegram_username = request.GET.get('telegram_username')
-        redirect_url = f"https://trusight.ru/users/profile"
+        redirect_url = f"https://trusight.ru"
 
         if not telegram_id or not telegram_username:
             return Response({'error': 'Отсутствует Telegram ID или username'}, status=status.HTTP_400_BAD_REQUEST)
 
         user, created = Custom_User.objects.get_or_create(
             telegram_id=telegram_id,
-            telegram_username=telegram_username
+            defaults={'telegram_username': telegram_username}
         )
 
         if created:

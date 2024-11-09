@@ -13,7 +13,7 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         const tg = Telegram.WebApp;
-        tg.setHeaderColor("#000000");
+        tg.setHeaderColor("#121212");
     </script>
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
 </head>
@@ -21,17 +21,20 @@
 {% block userinfo %}
         <header class="header">
             <div class="container-header">
-                <ul class="user-info-list">
-                    {% if user.is_authenticated %}
-                        <li class="user-info">
-                            <img src="{{ user.avatar.url }}" width="29" height="29">
-                            <a>{{ user.telegram_username }}</a>
-                        </li>
-                    {% endif %}
-                </ul>
+                <div class="profile-info">
+                    <ul class="user-info-list">
+                        {% if user.is_authenticated %}
+                            <li class="user-info">
+                                <img src="{{ user.avatar.url }}" width="29" height="29" alt="user">
+                                <a>{{ user.telegram_username }}</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-        </div>
         </header>
+
+
 {% endblock userinfo %}
 
 
@@ -39,10 +42,29 @@
 {% endblock content%}
 
 {% block menu %}
+        <header class="bottom-header">
+            <div class="container-bottom-header">
+                <ul>
+                {% for i in menu %}
+                    {% if i.url_name %}
+                        {% if i.url_name == request.resolver_match.url_name %}
+                            <li class="active"><a href="{% url i.url_name %}">{{ i.title}}</a></li>
+                        {% else %}
+                            <li><a class="nav-item" href="{% url i.url_name %}">{{ i.title}}</a></li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                        <img s src="{% static 'main/images/nav/NAV-OPEN.svg' %}">
+                </ul>
+
+
+
+            </div>
+        </header>
 {% endblock menu%}
 
 
-<header class="bottom-header"></header>
+
 <script src="{% static 'main/js/mobile_nav.js' %}"></script>
 <script src="{% static 'main/js/mobilebottomheader.js' %}"></script>
 </body>

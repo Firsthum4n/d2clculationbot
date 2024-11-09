@@ -138,7 +138,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'users:profile'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'users:notin'
 
 AUTHENTICATION_BACKENDS = [
@@ -150,6 +150,6 @@ AUTH_USER_MODEL = 'users.Custom_User'
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
-JWT_SECRET_KEY='uhgxtj6TqGQ2uerMVsvAuEqEpUg4UmmQBO2h9HQPKq0'
+
 
 

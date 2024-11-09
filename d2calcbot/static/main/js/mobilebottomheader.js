@@ -1,6 +1,6 @@
 window.addEventListener('resize', function() {
   const headerRow = document.querySelector('.header-row');
-  const bottomHeader = document.querySelector('.bottom-header');
+  const bottomHeader = document.querySelector('.bottom-header-bottom');
   const windowHeight = window.innerHeight;
 
   if (headerRow) { // Проверяем, что headerRow существует

@@ -102,7 +102,7 @@
 
 
     }
-    .bottom-header {
+    .bottom-header-bottom {
         background: rgb(48, 59, 67);
         width: 100%;
         padding: 10px;
@@ -593,7 +593,7 @@
         height: 100%;
         overflow: auto;
     }
-    .bottom-header {
+    .bottom-header-bottom {
         background: #000000;
         width: 100%;
         padding: 10px;
