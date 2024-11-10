@@ -2,6 +2,16 @@
 {% load static %}
 {% block content %}
     <div class="header-row">
+        <div class="sendbutton">
+                <button id="send-heroes-button">CALC</button>
+                <div id="calculation-popup" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Результаты Расчета</h2>
+                        <p id="calculation-result"></p>
+                    </div>
+                </div>
+            </div>
         <div class="header-content">
             {% for i in '02468'|make_list %}
                 <button id="hero-pick-{{i|add:1}}" data-hero-type="radiant" aria-expanded="false" aria-controls="list-{{i|add:1}}">
@@ -31,16 +41,7 @@
                 </ul>
 
             {% endfor %}
-            <div class="sendbutton">
-                <button id="send-heroes-button">CALC</button>
-                <div id="calculation-popup" class="modal">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <h2>Результаты Расчета</h2>
-                        <p id="calculation-result"></p>
-                    </div>
-                </div>
-            </div>
+
             </div>
 
 

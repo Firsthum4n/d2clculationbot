@@ -45,14 +45,20 @@
         <header class="bottom-header">
             <div class="container-bottom-header">
                 {% for i in menu %}
-                    {% if i.url_name %}
-                        {% if i.url_name == request.resolver_match.url_name %}
-                            <li class="active"> <img src="{{ i.image }}" alt=""> <a href="{% url i.url_name %}">{{ i.title}}</a></li>
-                        {% else %}
-                            <li class="nav-item"> <img src="{{ i.image }}" alt=""> <a href="{% url i.url_name %}">{{ i.title}}</a></li>
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
+                   {% if i.url_name %}
+                       {% if i.url_name == request.resolver_match.url_name %}
+                           <li class="active">
+                               <img src="{{ i.image | cut:'.svg' | add:'-active.svg'}}" alt="">
+                               <a href="{% url i.url_name %}">{{ i.title}}</a>
+                           </li>
+                       {% else %}
+                           <li class="nav-item">
+                               <img src="{{ i.image }}" alt="">
+                               <a href="{% url i.url_name %}">{{ i.title}}</a>
+                           </li>
+                       {% endif %}
+                   {% endif %}
+               {% endfor %}
             </div>
         </header>
 {% endblock menu%}
