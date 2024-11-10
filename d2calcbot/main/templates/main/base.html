@@ -7,7 +7,7 @@
     <title>{{ title }}</title>
     <link type="text/css" href="{% static 'main/css/base.css' %}" rel="stylesheet"/>
     <link type="text/css" href="{% static 'main/css/index.css' %}" rel="stylesheet"/>
-    <link type="text/css" href="{% static 'main/css/heroes.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'main/css/select.css' %}" rel="stylesheet"/>
     <link type="text/css" href="{% static 'main/css/media.css' %}" rel="stylesheet"/>
     <link rel="shortcut icon" href="{% static 'main/images/dire.png' %}" type="image/x-icon"/>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -47,24 +47,16 @@
                 {% for i in menu %}
                     {% if i.url_name %}
                         {% if i.url_name == request.resolver_match.url_name %}
-                            <li class="active"><a href="{% url i.url_name %}">{{ i.title}}</a></li>
+                            <li class="active"> <img src="{{ i.image }}" alt=""> <a href="{% url i.url_name %}">{{ i.title}}</a></li>
                         {% else %}
-                            <li class="nav-item"><a  href="{% url i.url_name %}">{{ i.title}}</a></li>
+                            <li class="nav-item"> <img src="{{ i.image }}" alt=""> <a href="{% url i.url_name %}">{{ i.title}}</a></li>
                         {% endif %}
                     {% endif %}
                 {% endfor %}
-                <img src="{% static 'main/images/nav/NAV-OPEN.svg' %}">
-
-
-
-
             </div>
         </header>
 {% endblock menu%}
 
 
-
-<script src="{% static 'main/js/mobile_nav.js' %}"></script>
-<script src="{% static 'main/js/mobilebottomheader.js' %}"></script>
 </body>
 </html>

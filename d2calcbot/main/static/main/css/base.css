@@ -68,11 +68,20 @@ body {
 	margin: 0 auto;
 	list-style: none;
 	display: grid;
-	grid-template-columns: 180px 180px 180px;
+	grid-template-columns: 70px 70px 70px 70px;
 	justify-content: space-between;
+
 }
 
-.container-bottom-header li a {
+.container-bottom-header li img{
+	display: grid;
+	margin: auto;
+	justify-content: center;
+}
+
+.container-bottom-header li a{
+	display: grid;
+	color: white;
 	justify-content: center;
 
 }

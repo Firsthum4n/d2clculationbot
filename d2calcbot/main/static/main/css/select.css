@@ -12,14 +12,14 @@
 #hero-pick-9,
 #hero-pick-10 {
     cursor: pointer;
-    margin-right: auto;
-    position: relative;
-    background-color: transparent;
-    width: 180px;
-    height: 174px;
+    width: 90px;
+    height: 90px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    position: relative;
+    margin-top: 25%;
+
+
 }
 
 /*рамка выбранного героя*/
@@ -176,7 +176,7 @@
     justify-content: space-between;
     color: transparent;
     font-size: 14px;
-    background-color: #ffffff;
+    background-color: #121212;
     z-index: 20;
 
 }
@@ -202,7 +202,7 @@
     justify-content: space-between;
     color: transparent;
     font-size: 14px;
-    background-color: #ffffff;
+    background-color: #121212;
     z-index: 20;
 
 }
