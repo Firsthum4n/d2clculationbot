@@ -1,0 +1,229 @@
+@import "reset.css";
+@import url("https://fonts.googleapis.com/css?family=Raleway:400");
+
+#hero-pick-1,
+#hero-pick-2,
+#hero-pick-3,
+#hero-pick-4,
+#hero-pick-5,
+#hero-pick-6,
+#hero-pick-7,
+#hero-pick-8,
+#hero-pick-9,
+#hero-pick-10 {
+    cursor: pointer;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 25%;
+
+
+}
+
+/*рамка выбранного героя*/
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 90deg;
+  inherits: true;
+}
+
+@property --gradX {
+  syntax: '<percentage>';
+  initial-value: 50%;
+  inherits: true;
+}
+
+@property --gradY {
+  syntax: '<percentage>';
+  initial-value: 0%;
+  inherits: true;
+}
+:root {
+  --d: 2500ms;
+  --angle: 90deg;
+  --gradX: 100%;
+  --gradY: 50%;
+  --c1: rgba(168, 239, 255, 1);
+  --c2: rgba(168, 239, 255, 0.1);
+  --c3: rgb(253, 77, 43);
+}
+
+@keyframes borderRotate {
+  100% {
+    --angle: 420deg;
+  }
+}
+
+@keyframes borderRadial {
+  20% {
+    --gradX: 100%;
+    --gradY: 50%;
+  }
+  40% {
+    --gradX: 100%;
+    --gradY: 100%;
+  }
+  60% {
+    --gradX: 50%;
+    --gradY: 100%;
+  }
+  80% {
+    --gradX: 0%;
+    --gradY: 50%;
+  }
+  100% {
+    --gradX: 50%;
+    --gradY: 0%;
+  }
+}
+
+#hero-pick-1.active_pick #hero-icon-1,
+#hero-pick-3.active_pick #hero-icon-3,
+#hero-pick-5.active_pick #hero-icon-5,
+#hero-pick-7.active_pick #hero-icon-7,
+#hero-pick-9.active_pick #hero-icon-9{
+    border-radius: 2px;
+    clip-path: inset(2px);
+    border: 0.35rem solid;
+    border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+    /*animation: borderRadial var(--d) linear infinite forwards;*/
+}
+
+#hero-pick-1.active_pick #hero-icon-1:nth-child(2),
+#hero-pick-3.active_pick #hero-icon-3:nth-child(2),
+#hero-pick-5.active_pick #hero-icon-5:nth-child(2),
+#hero-pick-7.active_pick #hero-icon-7:nth-child(2),
+#hero-pick-9.active_pick #hero-icon-9:nth-child(2){
+    border-image: radial-gradient(ellipse at var(--gradX) var(--gradY), var(--c1), var(--c1) 10%, var(--c2) 40%) 30;
+    /*animation: borderRadial var(--d) linear infinite forwards;*/
+    border-radius: 50%;
+}
+
+#hero-pick-2.active_pick #hero-icon-2,
+#hero-pick-4.active_pick #hero-icon-4,
+#hero-pick-6.active_pick #hero-icon-6,
+#hero-pick-8.active_pick #hero-icon-8,
+#hero-pick-10.active_pick #hero-icon-10{
+    border-radius: 2px;
+    clip-path: inset(2px);
+    border: 0.35rem solid;
+    border-image: conic-gradient(from var(--angle), var(--c2), var(--c3) 0.1turn, var(--c3) 0.15turn, var(--c2) 0.25turn) 30;
+}
+
+#hero-pick-2.active_pick #hero-icon-1:nth-child(2),
+#hero-pick-3.active_pick #hero-icon-3:nth-child(2),
+#hero-pick-5.active_pick #hero-icon-5:nth-child(2),
+#hero-pick-7.active_pick #hero-icon-7:nth-child(2),
+#hero-pick-9.active_pick #hero-icon-9:nth-child(2){
+    border-image: radial-gradient(ellipse at var(--gradX) var(--gradY), var(--c3), var(--c3) 10%, var(--c2) 40%) 30;
+    border-radius: 50%;
+}
+
+
+
+
+#hero-icon-1,
+#hero-icon-2,
+#hero-icon-3,
+#hero-icon-4,
+#hero-icon-5,
+#hero-icon-6,
+#hero-icon-7,
+#hero-icon-8,
+#hero-icon-9,
+#hero-icon-10 {
+    position: absolute;
+    object-fit: cover;
+}
+
+
+
+.menu-1,
+.menu-2,
+.menu-3,
+.menu-4,
+.menu-5,
+.menu-6,
+.menu-7,
+.menu-8,
+.menu-9,
+.menu-10{
+    display: none;
+}
+
+
+.menu-1.active,
+.menu-3.active,
+.menu-5.active,
+.menu-7.active,
+.menu-9.active{
+    border-radius: 2px;
+    clip-path: inset(2px);
+    border: 0.35rem solid;
+    border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+    height: 650px;
+    width: 570px;
+    margin-left: 228px;
+    max-width: 570px;
+    position: absolute;
+    overflow: hidden;
+    transition: line-height .5s, color .5s;
+    display: grid;
+    grid-template-columns: 81px 81px 81px 81px 81px 81px 81px;
+    line-height: 1.2;
+    justify-content: space-between;
+    color: transparent;
+    font-size: 14px;
+    background-color: #121212;
+    z-index: 20;
+
+}
+.menu-2.active,
+.menu-4.active,
+.menu-6.active,
+.menu-8.active,
+.menu-10.active{
+    border-radius: 2px;
+    clip-path: inset(2px);
+    border: 0.35rem solid;
+    border-image: conic-gradient(from var(--angle), var(--c2), var(--c3) 0.1turn, var(--c3) 0.15turn, var(--c2) 0.25turn) 30;
+    height: 650px;
+    width: 570px;
+    margin-left: 228px;
+    max-width: 570px;
+    position: absolute;
+    overflow: hidden;
+    transition: line-height .5s, color .5s;
+    display: grid;
+    grid-template-columns: 81px 81px 81px 81px 81px 81px 81px;
+    line-height: 1.2;
+    justify-content: space-between;
+    color: transparent;
+    font-size: 14px;
+    background-color: #121212;
+    z-index: 20;
+
+}
+
+
+.menu__item-1,
+.menu__item-2,
+.menu__item-3,
+.menu__item-4,
+.menu__item-5,
+.menu__item-6,
+.menu__item-7,
+.menu__item-8,
+.menu__item-9,
+.menu__item-10{
+    overflow: hidden;
+}
+
+.menu__link{
+    text-align: center;
+    display: block;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
