@@ -81,17 +81,17 @@
 .menu-9.active{
     border-radius: 10px;
     border: 1px solid grey;
-    height: 550px;
+    height: 650px;
     width: 650px;
     margin-left: 128px;
     position: absolute;
     overflow: hidden;
     transition: line-height .5s, color .5s;
     display: grid;
-    grid-template-columns: 81px 81px 81px 81px 81px 81px 81px 81px;
+    grid-template-columns: 81px 81px 81px 81px 81px 81px 81px;
     grid-template-rows: 50px;
     line-height: 1.2;
-    justify-content: space-between;
+    justify-content: space-around;
     color: transparent;
     font-size: 14px;
     background-color: #121212;
@@ -105,17 +105,17 @@
 .menu-10.active{
     border-radius: 10px;
     border: 1px solid grey;
-    height: 550px;
+    height: 650px;
     width: 650px;
     margin-left: 128px;
     position: absolute;
     overflow: hidden;
     transition: line-height .5s, color .5s;
     display: grid;
-    grid-template-columns: 81px 81px 81px 81px 81px 81px 81px  81px;
-    grid-template-rows: 50px;
+    grid-template-columns: 81px 81px 81px 81px 81px 81px 81px;
+    grid-template-rows: 50px ;
     line-height: 1.2;
-    justify-content: space-between;
+    justify-content: space-around;
     color: transparent;
     font-size: 14px;
     background-color: #121212;
@@ -147,7 +147,7 @@
 
 ul input {
     margin: 10px 10px 10px 10px;
-    grid-column: 1/ span 8;
+    grid-column: 1/ span 7;
     color: white;
     border-radius: 5px;
     border: 1px solid grey;

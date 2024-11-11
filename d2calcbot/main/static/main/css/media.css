@@ -23,7 +23,7 @@
     .menu-8.active,
     .menu-9.active,
     .menu-10.active{
-        grid-template-columns: 45px 45px 45px 45px 45px 45px 45px 45px;
+        grid-template-columns: 45px 45px 45px 45px 45px 45px 45px;
         margin: 15% auto;
         top: 0;
         width: 90%;
