@@ -51,8 +51,17 @@ class Profile(LoginRequiredMixin,DataMixin, TemplateView):
         c_def = self.get_user_context(title='Мой профиль')
         return dict(list(context.items()) + list(c_def.items()))
 
-class LogoutView(TemplateView):
+
+class History(TemplateView, DataMixin,):
+    template_name = "users/history.html"
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title='История')
+        return dict(list(context.items()) + list(c_def.items()))
+
+class LogoutView(TemplateView, DataMixin,):
     template_name = "users/logout.html"
+
 
 
 

@@ -80,8 +80,8 @@
 .menu-7.active,
 .menu-9.active{
     border-radius: 10px;
-    border: 1px solid #A8EFFFFF;
-    height: 500px;
+    border: 1px solid grey;
+    height: 550px;
     width: 650px;
     margin-left: 128px;
     position: absolute;
@@ -89,6 +89,7 @@
     transition: line-height .5s, color .5s;
     display: grid;
     grid-template-columns: 81px 81px 81px 81px 81px 81px 81px 81px;
+    grid-template-rows: 50px;
     line-height: 1.2;
     justify-content: space-between;
     color: transparent;
@@ -103,15 +104,16 @@
 .menu-8.active,
 .menu-10.active{
     border-radius: 10px;
-    border: 1px solid #FD4D2BFF;
-    height: 500px;
+    border: 1px solid grey;
+    height: 550px;
     width: 650px;
     margin-left: 128px;
     position: absolute;
     overflow: hidden;
     transition: line-height .5s, color .5s;
     display: grid;
-    grid-template-columns: 81px 81px 81px 81px 81px 81px 81px 81px;
+    grid-template-columns: 81px 81px 81px 81px 81px 81px 81px  81px;
+    grid-template-rows: 50px;
     line-height: 1.2;
     justify-content: space-between;
     color: transparent;
@@ -140,4 +142,13 @@
     display: block;
     color: rgb(0, 0, 0);
     text-decoration: none;
+}
+
+
+ul input {
+    margin: 10px 10px 10px 10px;
+    grid-column: 1/ span 8;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid grey;
 }

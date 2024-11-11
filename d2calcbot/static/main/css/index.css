@@ -15,7 +15,7 @@
 	display: grid;
 	grid-template-columns: 90px 90px;
 	justify-content: space-between;
-	margin: 12% auto 0 auto;
+	margin: 7% auto 0 auto;
 
 }
 
@@ -125,6 +125,7 @@
     width: 50%;
 	z-index: 10;
 }
+
 
 
 
