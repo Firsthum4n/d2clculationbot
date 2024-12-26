@@ -16,7 +16,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         hero_request = requests.get("https://api.opendota.com/api/heroStats")
         hero_data = hero_request.json()
-        with open('hero_data_stats.json', 'w+') as js_file:
+        with open('main/jsf/hero_data_stats.json', 'w+') as js_file:
             json.dump(hero_data, js_file, indent=4)
 
 

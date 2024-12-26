@@ -5,3 +5,5 @@ from .models import *
 
 
 admin.site.register(Heroes)
+admin.site.register(Teams)
+admin.site.register(Players)

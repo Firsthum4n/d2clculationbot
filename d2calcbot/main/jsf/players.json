@@ -1,0 +1,177 @@
+[
+    {
+        "account_id": 317880638,
+        "name": "Save-",
+        "games_played": 466,
+        "wins": 277,
+        "is_current_team_member": true
+    },
+    {
+        "account_id": 480412663,
+        "name": "gpk~",
+        "games_played": 391,
+        "wins": 229,
+        "is_current_team_member": true
+    },
+    {
+        "account_id": 124801257,
+        "name": "Nightfall",
+        "games_played": 381,
+        "wins": 221,
+        "is_current_team_member": false
+    },
+    {
+        "account_id": 431770905,
+        "name": "TORONTOTOKYO",
+        "games_played": 381,
+        "wins": 221,
+        "is_current_team_member": true
+    },
+    {
+        "account_id": 331855530,
+        "name": "Pure",
+        "games_played": 292,
+        "wins": 189,
+        "is_current_team_member": true
+    },
+    {
+        "account_id": 90423751,
+        "name": null,
+        "games_played": 240,
+        "wins": 108,
+        "is_current_team_member": null
+    },
+    {
+        "account_id": 91460772,
+        "name": "Slayer",
+        "games_played": 240,
+        "wins": 108,
+        "is_current_team_member": false
+    },
+    {
+        "account_id": 165564598,
+        "name": "MieRo ",
+        "games_played": 238,
+        "wins": 135,
+        "is_current_team_member": true
+    },
+    {
+        "account_id": 5150808,
+        "name": null,
+        "games_played": 178,
+        "wins": 84,
+        "is_current_team_member": null
+    },
+    {
+        "account_id": 363871826,
+        "name": null,
+        "games_played": 140,
+        "wins": 68,
+        "is_current_team_member": null
+    },
+    {
+        "account_id": 858106446,
+        "name": "kiyotaka",
+        "games_played": 89,
+        "wins": 57,
+        "is_current_team_member": true
+    },
+    {
+        "account_id": 92847434,
+        "name": null,
+        "games_played": 87,
+        "wins": 33,
+        "is_current_team_member": null
+    },
+    {
+        "account_id": 116881520,
+        "name": null,
+        "games_played": 87,
+        "wins": 33,
+        "is_current_team_member": null
+    },
+    {
+        "account_id": 196878136,
+        "name": "Kataomi`",
+        "games_played": 85,
+        "wins": 56,
+        "is_current_team_member": true
+    },
+    {
+        "account_id": 167976729,
+        "name": "yuragi",
+        "games_played": 84,
+        "wins": 43,
+        "is_current_team_member": false
+    },
+    {
+        "account_id": 196482746,
+        "name": "Ainkrad",
+        "games_played": 42,
+        "wins": 16,
+        "is_current_team_member": false
+    },
+    {
+        "account_id": 165390194,
+        "name": null,
+        "games_played": 42,
+        "wins": 16,
+        "is_current_team_member": null
+    },
+    {
+        "account_id": 293731272,
+        "name": null,
+        "games_played": 41,
+        "wins": 25,
+        "is_current_team_member": null
+    },
+    {
+        "account_id": 86725175,
+        "name": "Resolut1on",
+        "games_played": 21,
+        "wins": 9,
+        "is_current_team_member": false
+    },
+    {
+        "account_id": 237238721,
+        "name": null,
+        "games_played": 20,
+        "wins": 8,
+        "is_current_team_member": null
+    },
+    {
+        "account_id": 198035908,
+        "name": null,
+        "games_played": 14,
+        "wins": 9,
+        "is_current_team_member": null
+    },
+    {
+        "account_id": 79809603,
+        "name": null,
+        "games_played": 14,
+        "wins": 9,
+        "is_current_team_member": null
+    },
+    {
+        "account_id": 836056780,
+        "name": null,
+        "games_played": 14,
+        "wins": 9,
+        "is_current_team_member": null
+    },
+    {
+        "account_id": 93526520,
+        "name": null,
+        "games_played": 7,
+        "wins": 3,
+        "is_current_team_member": null
+    },
+    {
+        "account_id": 168126336,
+        "name": "Cloud",
+        "games_played": 6,
+        "wins": 4,
+        "is_current_team_member": false
+    }
+]
