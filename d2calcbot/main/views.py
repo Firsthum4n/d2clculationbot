@@ -6,8 +6,9 @@ import json
 from .utils import *
 from .calculation import  low_calculation
 
-from .heroes import hero_mod, del_all_heroes_and_ids, del_ids, del_all_and_ids
+from .heroes import hero_mod, del_all_heroes_and_ids
 from .teams import update_teams_info
+
 
 
 class MainHomeView(LoginRequiredMixin,DataMixin, ListView):
