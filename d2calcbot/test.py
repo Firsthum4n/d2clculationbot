@@ -1,5 +1,7 @@
 import requests
 import json
+
+
 # hero_request = requests.get("https://api.opendota.com/api/heroStats")
 # hero_data = hero_request.json()
 # with open('jsf/hero_data_stats.json', 'w+') as hero_file:
