@@ -1,3 +1,5 @@
+from enum import unique
+
 from django.db import models
 
 
@@ -31,11 +33,11 @@ class Heroes(models.Model):
     day_vision = models.IntegerField(default=0)
     night_vision = models.IntegerField(default=0)
 
-
-
-
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = "Heroes"
 
 
 class Teams(models.Model):
@@ -52,16 +54,22 @@ class Teams(models.Model):
     def get_players(self):
         return self.players.all()
 
+    class Meta:
+        verbose_name_plural = "Teams"
+
 
 class Players(models.Model):
-    name = models.CharField(max_length=100)
-    team = models.ForeignKey(Teams, on_delete=models.CASCADE, related_name='players')  # Связь один-ко-многим
+    name = models.CharField(max_length=100, unique=True)
+    team = models.ForeignKey(Teams, on_delete=models.CASCADE, related_name='players', blank=True, null=True, default=None) # Связь один-ко-многим
     games_played = models.IntegerField(default=0)
     wins = models.IntegerField(default=0)
 
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = "Players"
 
 
 

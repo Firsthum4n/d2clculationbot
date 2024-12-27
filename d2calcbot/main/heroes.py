@@ -45,6 +45,19 @@ def del_all_heroes_and_ids():
         cursor.execute("UPDATE sqlite_sequence SET seq = 0 WHERE name = 'main_heroes'")
 
 
+def del_ids():
+    with connection.cursor() as cursor:
+        cursor.execute("DELETE FROM main_teams")
+        cursor.execute("UPDATE sqlite_sequence SET seq = 0 WHERE name = 'main_teams'")
+
+def del_all_and_ids():
+    with connection.cursor() as cursor:
+        cursor.execute("DELETE FROM main_players")
+        cursor.execute("UPDATE sqlite_sequence SET seq = 0 WHERE name = 'main_players'")
+
+
+
+
 def id_import():
     all_heroes = Heroes.objects.all()
     for i in range(len(hero_data)):
