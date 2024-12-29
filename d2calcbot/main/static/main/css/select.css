@@ -1,6 +1,14 @@
 @import "reset.css";
 @import url("https://fonts.googleapis.com/css?family=Raleway:400");
 
+@font-face {
+  font-family: 'Facon';
+  src: url('main/fonts/facon.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 #hero-pick-1,
 #hero-pick-2,
 #hero-pick-3,
@@ -18,8 +26,6 @@
     justify-content: center;
     position: relative;
     margin-top: 25%;
-
-
 }
 
 
@@ -151,4 +157,61 @@ ul input {
     color: white;
     border-radius: 5px;
     border: 1px solid grey;
+}
+
+.team-menu {
+    display: none;
+}
+
+.team-menu.active {
+	width: 90px;
+	display: block;
+	position: absolute;
+    background-color: #121212;
+    border-radius: 10px;
+	color: white;
+    border: 1px solid grey;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+	z-index: 200;
+}
+
+
+.team-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.team-menu li:hover {
+    background-color: #f0f0f0;
+}
+
+
+.team-button-1 {
+	width: 90px;
+	height: 50px;
+    padding: 8px 12px;
+	border-radius: 5px;
+ 	border: 1px solid  #1a9efd;
+	background: #1a9efd;
+	background: linear-gradient(90deg, rgb(26, 158, 253) 0%, rgba(79,209,197,1) 100%);
+	box-shadow: 0 0 60px rgb(26, 158, 253);
+	cursor: pointer;
+	align-items: center;
+    color: white;
+}
+
+.team-button-2 {
+	width: 90px;
+	height: 50px;
+    padding: 8px 12px;
+	border-radius: 5px;
+ 	border: 1px solid #ff6f00;
+	background: #ff6f00;
+	background: linear-gradient(90deg, rgb(255, 111, 0) 0%, rgb(255, 0, 0) 100%);
+	box-shadow: 0 0 60px rgb(255, 111, 0);
+	cursor: pointer;
+	align-items: center;
+    color: white;
 }

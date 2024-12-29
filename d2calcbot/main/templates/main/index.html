@@ -15,8 +15,7 @@
         <div class="header-content">
 
                 <div class="team-selector">
-                    <h1>RADIANT</h1>
-                    <button id="team-select-button-1" class="team-button-1">Выбери команду</button> <!-- Кнопка -->
+                    <button id="team-select-button-1" class="team-button-1">RADIANT TEAM</button> <!-- Кнопка -->
                     <ul id="team-select-menu-1" class="team-menu"> <!-- Выпадающее меню -->
                         {% for team in teams %}
                             <li data-team-id="{{ team.id }}" data-team-name="{{ team.name }}" data-team-logo="{{ team.logo.url }}">
@@ -27,8 +26,7 @@
                 </div>
 
                 <div class="team-selector">
-                    <h1>DIRE</h1>
-                    <button id="team-select-button-2" class="team-button-2">Выбери команду</button> <!-- Кнопка -->
+                    <button id="team-select-button-2" class="team-button-2">DIRE TEAM</button> <!-- Кнопка -->
                     <ul id="team-select-menu-2" class="team-menu"> <!-- Выпадающее меню -->
                         {% for team in teams %}
                             <li data-team-id="{{ team.id }}" data-team-name="{{ team.name }}" data-team-logo="{{ team.logo.url }}">

@@ -1,6 +1,3 @@
-let radiantPick = ["", "", "", "", ""];
-let direPick = ["", "", "", "", ""];
-
 //функция показа выпадающего меню
 function showMenu(heroButton, menu) {
     heroButton.addEventListener('click', () => {
