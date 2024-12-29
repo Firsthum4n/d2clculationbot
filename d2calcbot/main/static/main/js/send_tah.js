@@ -70,17 +70,18 @@ function heroesInfo(heroButton, menu, menuItems) {
 }
 
 
-
+//отправляет оба словаря на сервер
 const sendHeroesButton = document.getElementById('send-heroes-button');
 sendHeroesButton.addEventListener('click', () => {
     const data = {
         radiant_heroes: radiant,
         dire_heroes: dire
     };
-    sendSelectedHeroes(data, 'pick/heroes/');
+    sendSelectedTeamsAndHeroes(data, 'pick/heroes/');
 });
 
-function sendSelectedHeroes(data, endpoint) {
+//функция отправки словарей
+function sendSelectedTeamsAndHeroes(data, endpoint) {
     fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -105,12 +106,12 @@ function sendSelectedHeroes(data, endpoint) {
         });
 }
 
-
+//Получает значение CSRF-токена из скрытого поля формы
 function getCsrfToken() {
     return document.querySelector('[name=csrfmiddlewaretoken]').value;
 }
 
-
+//модальное окно
 const modal = document.getElementById("calculation-popup");
 const btn = document.getElementById("send-heroes-button");
 const span = document.getElementsByClassName("close")[0];
