@@ -63,4 +63,7 @@ class Custom_User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'telegram_id'
     REQUIRED_FIELDS = ['telegram_username']
 
+    class Meta:
+        verbose_name_plural = "Users"
+
 

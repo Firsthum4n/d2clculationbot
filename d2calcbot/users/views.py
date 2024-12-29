@@ -26,7 +26,7 @@ def auth_user_tg(request):
 
         if created:
             print(f"New user created: {user}")
-            user.avatar = 'avatars/hand_of_midas.png'  # Устанавливаем стандартный аватар
+            user.avatar = 'avatars/hand_of_midas.png'
             user.save()
         else:
             print(f"User authenticated: {user}")

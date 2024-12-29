@@ -1,28 +1,40 @@
-let radiantPick = ["", "", "", "", ""];
-let direPick = ["", "", "", "", ""];
+const radiant = {
+  team: "",
+  heroes: ["", "", "", "", ""]
+};
 
-function hero_pick_f(hero_pick, menu, menuItems, heroIcon) {
-    hero_pick.addEventListener('click', () => {
-        const allMenus = document.querySelectorAll('.menu-1, .menu-2, .menu-3, .menu-4, .menu-5, .menu-6, .menu-7, .menu-8, .menu-9, .menu-10');
-        allMenus.forEach(m => {
-            if (m !== menu) {
-                m.classList.remove('active');
-            }
-        });
+const dire = {
+  team: "",
+  heroes: ["", "", "", "", ""]
+};
 
-        hero_pick.classList.toggle('active');
-        menu.classList.toggle('active');
-        hero_pick.setAttribute('aria-expanded', hero_pick.classList.contains('active') ? 'true' : 'false');
+//функция записи в словари команд
+function teamsInfo(menu, teamButton) {
+    menu.addEventListener('click', (event) => {
+        const teamName = event.target.closest('li').dataset.teamName;
+        const teamButtonId = Number(teamButton.id[19])
+        if (teamButtonId === 1) {
+            radiant["team"] = teamName
+            console.log(radiant)
+            console.log(dire)
+        }else if (teamButtonId === 2) {
+            dire["team"] = teamName
+            console.log(radiant)
+            console.log(dire)
+        }
     });
+}
 
-    menuItems.forEach(item => {
+//функция записи в словари героев
+function heroesInfo(heroButton, menu, menuItems) {
+        menuItems.forEach(item => {
         item.addEventListener('click', () => {
             const heroName = item.dataset.heroName;
-            const heroType = hero_pick.dataset.heroType
+            const heroType = heroButton.dataset.heroType
             let index = 0
 
-            if (hero_pick.id.length === 11) {
-                const pickNumber = Number(hero_pick.id[10])
+            if (heroButton.id.length === 11) {
+                const pickNumber = Number(heroButton.id[10])
 
                 if (pickNumber === 1 || pickNumber === 2){
                     index = 0
@@ -36,32 +48,34 @@ function hero_pick_f(hero_pick, menu, menuItems, heroIcon) {
                     index = 4
                 }
                 if (heroType === 'radiant' ) {
-                    radiantPick[index] = heroName;
-                } else if (heroType === 'dire') {
-                    direPick[index] = heroName;
-                }
-            } else if (hero_pick.id.length === 12) {
-                index = 4
-                direPick[index] = heroName;
-            }
+                    radiant["heroes"][index] = heroName;
+                    console.log(radiant)
+                    console.log(dire)
 
-            const heroImage = item.querySelector('img');
-            heroIcon.src = heroImage.src;
-            menu.classList.remove('active');
-            hero_pick.classList.add('active_pick');
-            hero_pick.classList.remove('active');
-            hero_pick.setAttribute('aria-expanded', 'false');
+                } else if (heroType === 'dire') {
+                    dire["heroes"][index] = heroName;
+                    console.log(radiant)
+                    console.log(dire)
+
+                }
+            } else if (heroButton.id.length === 12) {
+                index = 4
+                dire["heroes"][index] = heroName;
+                console.log(radiant)
+                console.log(dire)
+            }
 
         });
     });
 }
 
 
+
 const sendHeroesButton = document.getElementById('send-heroes-button');
 sendHeroesButton.addEventListener('click', () => {
     const data = {
-        radiant_heroes: radiantPick,
-        dire_heroes: direPick
+        radiant_heroes: radiant,
+        dire_heroes: dire
     };
     sendSelectedHeroes(data, 'pick/heroes/');
 });
@@ -115,16 +129,36 @@ window.onclick = function(event) {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+for (let i = 1; i <=2; i++) {
+    const teamSelectButtonSelector = `#team-select-button-${i}`;
+    const teamSelectMenuSelector =`#team-select-menu-${i}`;
+
+    const teamSelectButton = document.querySelector(teamSelectButtonSelector)
+    const teamSelectMenu = document.querySelector(teamSelectMenuSelector)
+
+    teamsInfo(teamSelectMenu, teamSelectButton)
+}
+
 for (let i = 1; i <= 10; i++) {
     const heroPickSelector = `#hero-pick-${i}`;
     const menuSelector = `.menu-${i}`;
     const menuItemsSelector = `.menu__item-${i}`;
-    const heroIconSelector = `#hero-icon-${i}`;
 
     const heroPick = document.querySelector(heroPickSelector);
     const menu = document.querySelector(menuSelector);
     const menuItems = document.querySelectorAll(menuItemsSelector);
-    const heroIcon = document.querySelector(heroIconSelector);
 
-    hero_pick_f(heroPick, menu, menuItems, heroIcon);
+    heroesInfo(heroPick, menu, menuItems)
 }

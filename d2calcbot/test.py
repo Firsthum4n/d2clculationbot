@@ -8,7 +8,7 @@ import json
 #     json.dump(hero_data, hero_file, indent=4)
 
 
-players_request = requests.get(f"https://api.opendota.com/api/teams/8255888/players")
+players_request = requests.get(f"https://api.opendota.com/api/teams/9303383/players")
 players_data = players_request.json()
 
 with open('BB.json', 'w+') as players_file:

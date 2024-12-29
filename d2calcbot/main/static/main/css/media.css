@@ -1,4 +1,4 @@
-@media (max-width: 500px ) and (max-height: 755px){
+b@media (max-width: 500px ) and (max-height: 755px){
 
     .header-row {
         height: 100%;
@@ -8,6 +8,7 @@
     .header-content {
         margin: 18% auto 0 auto;
     }
+
 
     #send-heroes-button{
         margin-top: 50px;

@@ -13,6 +13,32 @@
                 </div>
             </div>
         <div class="header-content">
+
+                <div class="team-selector">
+                    <h1>RADIANT</h1>
+                    <button id="team-select-button-1" class="team-button">Выбери команду</button> <!-- Кнопка -->
+                    <ul id="team-select-menu-1" class="team-menu"> <!-- Выпадающее меню -->
+                        {% for team in teams %}
+                            <li data-team-id="{{ team.id }}" data-team-name="{{ team.name }}" data-team-logo="{{ team.logo.url }}">
+                                <img src="{{ team.logo.url }}" alt="{{ team.name }}" width="30" height="30"> {{ team.name }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="team-selector">
+                    <h1>DIRE</h1>
+                    <button id="team-select-button-2" class="team-button">Выбери команду</button> <!-- Кнопка -->
+                    <ul id="team-select-menu-2" class="team-menu"> <!-- Выпадающее меню -->
+                        {% for team in teams %}
+                            <li data-team-id="{{ team.id }}" data-team-name="{{ team.name }}" data-team-logo="{{ team.logo.url }}">
+                                <img src="{{ team.logo.url }}" alt="{{ team.name }}" width="30" height="30"> {{ team.name }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+
             {% for i in '02468'|make_list %}
                 <button id="hero-pick-{{i|add:1}}" data-hero-type="radiant" aria-expanded="false" aria-controls="list-{{i|add:1}}">
                     <img id="hero-icon-{{i|add:1}}" src="{% static 'main/images/radiant.png' %}" alt="Герой">
@@ -51,7 +77,10 @@
 
         </div>
 
-<script src="{% static 'main/js/script_hero_select.js' %}"></script>
+<script src="{% static 'main/js/heroes_select.js' %}"></script>
+<script src="{% static 'main/js/teams_select.js' %}"></script>
+<script src="{% static 'main/js/send_tah.js' %}"></script>
 <script src="{% static 'main/js/search.js' %}"></script>
+
 {% endblock %}
 
