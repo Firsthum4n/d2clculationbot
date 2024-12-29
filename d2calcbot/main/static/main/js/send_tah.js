@@ -74,8 +74,8 @@ function heroesInfo(heroButton, menu, menuItems) {
 const sendHeroesButton = document.getElementById('send-heroes-button');
 sendHeroesButton.addEventListener('click', () => {
     const data = {
-        radiant_heroes: radiant,
-        dire_heroes: dire
+        radiantPick: radiant,
+        direPick: dire
     };
     sendSelectedTeamsAndHeroes(data, 'pick/heroes/');
 });
@@ -129,15 +129,6 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-
-
-
-
-
-
-
-
-
 
 
 

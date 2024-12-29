@@ -7,9 +7,9 @@ function showMenu(teamButton, menu) {
 
 
 // Закрытие меню при клике вне него
-function closeMenu(menu) {
+function closeMenu(menu, teamButton) {
     document.addEventListener('click', (event) => {
-    if (!event.target.closest('.team-selector')) {
+    if (!event.target.closest(teamButton)) {
       menu.classList.remove('active');
     }
   });
@@ -38,7 +38,7 @@ for (let i = 1; i <=2; i++) {
   const teamSelectMenu = document.querySelector(teamSelectMenuSelector)
 
   showMenu(teamSelectButton, teamSelectMenu)
-  closeMenu(teamSelectMenu)
+  closeMenu(teamSelectMenu, teamSelectButtonSelector)
   changeIcon(teamSelectButton, teamSelectMenu)
 
 
