@@ -3,7 +3,7 @@ from django.contrib.auth.models import PermissionsMixin, Group
 from django.db import models
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self,telegram_username, telegram_id, *extra_fields, is_staff=False, is_superuser=False, **kwargs):
+    def create_user(self, telegram_username, telegram_id, *extra_fields, is_staff=False, is_superuser=False, **kwargs):
         """
         Создает и сохраняет нового пользователя с заданным telegram_id и username.
         """
@@ -11,7 +11,13 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('The telegram_id field must be set')
         if not telegram_username:
             raise ValueError('The username field must be set')
-        user = self.model(telegram_id=telegram_id, telegram_username=telegram_username, is_staff=False, is_superuser=False, *extra_fields)
+        user = self.model(
+            telegram_id=telegram_id,
+            telegram_username=telegram_username,
+            avatar='avatars/hand_of_midas.png',
+            is_staff=False,
+            is_superuser=False,
+            *extra_fields)
         user.save(using=self._db)
         return user
 
@@ -19,8 +25,6 @@ class CustomUserManager(BaseUserManager):
         """
         Создает и сохраняет нового суперпользователя с заданным username и email.
         """
-
-
 
         user = self.model(telegram_username=telegram_username, telegram_id=telegram_id, is_staff=True, is_superuser=True)
         user.set_password(password)
@@ -34,6 +38,7 @@ class CustomUserManager(BaseUserManager):
         pass
 
 class Custom_User(AbstractBaseUser, PermissionsMixin):
+    avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
     telegram_username = models.CharField(max_length=255, blank=True, null=True)
     telegram_id = models.CharField(max_length=255, unique=True, blank=True, null=True)
     is_active = models.BooleanField(default=True)
@@ -58,7 +63,7 @@ class Custom_User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'telegram_id'
     REQUIRED_FIELDS = ['telegram_username']
 
+    class Meta:
+        verbose_name_plural = "Users"
 
-class UserGroup(models.Model):
-   user = models.ForeignKey(Custom_User, on_delete=models.CASCADE)
-   group = models.ForeignKey(Group, on_delete=models.CASCADE)
+

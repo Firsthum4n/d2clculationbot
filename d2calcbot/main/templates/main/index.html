@@ -2,12 +2,49 @@
 {% load static %}
 {% block content %}
     <div class="header-row">
+        <div class="sendbutton">
+                <button id="send-heroes-button">CALC</button>
+                <div id="calculation-popup" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Результаты Расчета</h2>
+                        <p id="calculation-result"></p>
+                    </div>
+                </div>
+            </div>
         <div class="header-content">
+
+                <div class="team-selector">
+                    <h1>RADIANT</h1>
+                    <button id="team-select-button-1" class="team-button-1">Выбери команду</button> <!-- Кнопка -->
+                    <ul id="team-select-menu-1" class="team-menu"> <!-- Выпадающее меню -->
+                        {% for team in teams %}
+                            <li data-team-id="{{ team.id }}" data-team-name="{{ team.name }}" data-team-logo="{{ team.logo.url }}">
+                                <img src="{{ team.logo.url }}" alt="{{ team.name }}" width="30" height="30"> {{ team.name }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="team-selector">
+                    <h1>DIRE</h1>
+                    <button id="team-select-button-2" class="team-button-2">Выбери команду</button> <!-- Кнопка -->
+                    <ul id="team-select-menu-2" class="team-menu"> <!-- Выпадающее меню -->
+                        {% for team in teams %}
+                            <li data-team-id="{{ team.id }}" data-team-name="{{ team.name }}" data-team-logo="{{ team.logo.url }}">
+                                <img src="{{ team.logo.url }}" alt="{{ team.name }}" width="30" height="30"> {{ team.name }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+
             {% for i in '02468'|make_list %}
                 <button id="hero-pick-{{i|add:1}}" data-hero-type="radiant" aria-expanded="false" aria-controls="list-{{i|add:1}}">
                     <img id="hero-icon-{{i|add:1}}" src="{% static 'main/images/radiant.png' %}" alt="Герой">
                 </button>
                 <ul class="menu-{{i|add:1}}" id="list-{{i|add:1}}">
+                    <input type="text" id="hero-search-{{i|add:1}}" placeholder="Поиск героя...">
                     {% for hero in heroes %}
                         <li class="menu__item-{{i|add:1}}" data-hero-name="{{ hero.name }}">
                             <a href="#" class="menu__link" tabindex="-1">
@@ -21,6 +58,7 @@
                     <img id="hero-icon-{{i|add:2}}" src="{% static 'main/images/dire.png' %}" alt="Герой">
                 </button>
                 <ul class="menu-{{i|add:2}}" id="list-{{i|add:2}}">
+                    <input type="text" id="hero-search-{{i|add:2}}" placeholder="Поиск героя...">
                     {% for hero in heroes %}
                         <li class="menu__item-{{i|add:2}}" data-hero-name="{{ hero.name }}">
                             <a href="#" class="menu__link" tabindex="-1">
@@ -29,25 +67,15 @@
                         </li>
                     {% endfor %}
                 </ul>
-
             {% endfor %}
-            <div class="sendbutton">
-                <button id="send-heroes-button">Рассчитать</button>
-                <div id="calculation-popup" class="modal">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <h2>Результаты Расчета</h2>
-                        <p id="calculation-result"></p>
-                    </div>
-                </div>
-            </div>
-            </div>
-
-
-
 
         </div>
+    </div>
 
-<script src="{% static 'main/js/script_hero_select.js' %}"></script>
+<script src="{% static 'main/js/heroes_select.js' %}"></script>
+<script src="{% static 'main/js/teams_select.js' %}"></script>
+<script src="{% static 'main/js/send_tah.js' %}"></script>
+<script src="{% static 'main/js/search.js' %}"></script>
+
 {% endblock %}
 

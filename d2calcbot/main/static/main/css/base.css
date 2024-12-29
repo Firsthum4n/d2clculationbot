@@ -1,0 +1,99 @@
+@import "reset.css";
+@import url('https://fonts.googleapis.com/css?family=Poppins:900i');
+
+body {
+    font-family: sans-serif;
+	width: 100%;
+	height: 100%;
+ 	background-color: #000000;
+}
+
+/*верхнее меню*/
+.header {
+	top: 0;
+	position: fixed;
+	z-index: 90;
+	background: #121212;
+	height: 60px;
+	width: 100%;
+	margin: 0 auto;
+	justify-content: center;
+}
+
+.container-header{
+	max-width: 1000px;
+	height: 60px;
+	margin: 0 auto;
+	list-style: none;
+
+}
+.profile-info{
+	float: right;
+	display: flex;
+	height: 45px;
+	width: 130px;
+	background-color: #121212;
+	margin:7px;
+	justify-content: center;
+	border-radius: 5px;
+	border: 1px solid grey;
+}
+
+.user-info-list{
+	display: flex;
+	color: white;
+	margin: 13px;
+	text-overflow: ellipsis;
+  	white-space: nowrap;
+  	overflow: hidden;
+}
+
+/*нижнее меню*/
+
+.bottom-header {
+	position: fixed;
+	bottom: 0;
+	z-index: 90;
+	padding-top: 0;
+	background: #121212;
+	height: 60px;
+	width: 100%;
+	justify-content: center;
+}
+
+
+.container-bottom-header{
+	max-width: 1000px;
+	height: 60px;
+	margin: 0 auto;
+	list-style: none;
+	display: grid;
+	grid-template-columns: 70px 70px 70px 70px;
+	justify-content: space-between;
+
+}
+
+.container-bottom-header li img{
+	display: grid;
+	margin: auto;
+	justify-content: center;
+}
+
+.container-bottom-header li a{
+	display: grid;
+	color: white;
+	justify-content: center;
+
+}
+
+.container-bottom-header li:hover {
+	height: 100%;
+	width: 100%;
+
+}
+
+
+.container-bottom-header li.active a{
+	color: #1a9efd;
+}
+

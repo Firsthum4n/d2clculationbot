@@ -1,20 +1,22 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, View
+from django.views.generic import ListView, View, TemplateView
 from django.http import JsonResponse
-
+from .models import *
 import json
 from .utils import *
 from .calculation import  low_calculation
+from .db_update.heroes import create_or_update_heroes, del_all_heroes_and_ids
+from .db_update.teams import create_or_update_teams
 
-from .heroes import hero_mod, del_all_heroes_and_ids
 
+# create_or_update_teams()
+# create_or_update_heroes()
 
 
 
 class MainHomeView(LoginRequiredMixin,DataMixin, ListView):
     """
     Класс представления страницы выбоар героеев
-
     """
 
     model = Heroes
@@ -25,25 +27,35 @@ class MainHomeView(LoginRequiredMixin,DataMixin, ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title='Главная страница')
-        return dict(list(context.items()) + list(c_def.items()))
+        context.update(c_def)
+        context['teams'] = Teams.objects.all()
+        return context
 
 
 
 
-class Heroes_pick(View):
-
+class All_pick(View):
     def post(self, request):
         data = json.loads(request.body)
-        radiant_heroes = data.get('radiant_heroes', [])
-        request.session['radiant_heroes'] = radiant_heroes
+        radiant_pick = data.get('radiantPick', [])
+        request.session['radiantPick'] = radiant_pick
+        print(radiant_pick)
 
-        dire_heroes = data.get('dire_heroes', [])
-        request.session['dire_heroes'] = dire_heroes
+        dire_pick = data.get('direPick', [])
+        request.session['direPick'] = dire_pick
+        print(dire_pick)
 
-        result = low_calculation(radiant_heroes, dire_heroes)
+        result = low_calculation(radiant_pick, dire_pick)
 
 
         return JsonResponse(
-            {'result': result,
-             'radiant_heroes': radiant_heroes,}
+            {'result': result}
         )
+
+
+class Matches(TemplateView, DataMixin,):
+    template_name = "main/matches.html"
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title='Матчи')
+        return dict(list(context.items()) + list(c_def.items()))

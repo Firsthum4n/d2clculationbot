@@ -28,6 +28,7 @@ SECRET_KEY = 'django-insecure-+)g(0g+=!#i%*coegez9^-*u6n5=o+fv7qd3#_iws#lql$=2sn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = ['localhost', 'trusight.ru', '127.0.0.1', 'trusight.online']
 
 
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'users.apps.UsersConfig',
+    'rest_framework'
 
 ]
 
@@ -136,9 +138,8 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'users:profile'
-LOGOUT_REDIRECT_URL = 'users:login'
-LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'users:notin'
 
 AUTHENTICATION_BACKENDS = [
     'users.authentication.TelegramIdAuth',
@@ -148,5 +149,7 @@ AUTHENTICATION_BACKENDS = [
 AUTH_USER_MODEL = 'users.Custom_User'
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+
 
 

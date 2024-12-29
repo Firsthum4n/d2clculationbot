@@ -1,0 +1,154 @@
+@import "reset.css";
+@import url("https://fonts.googleapis.com/css?family=Raleway:400");
+
+#hero-pick-1,
+#hero-pick-2,
+#hero-pick-3,
+#hero-pick-4,
+#hero-pick-5,
+#hero-pick-6,
+#hero-pick-7,
+#hero-pick-8,
+#hero-pick-9,
+#hero-pick-10 {
+    cursor: pointer;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 25%;
+
+
+}
+
+
+#hero-pick-1.active_pick #hero-icon-1,
+#hero-pick-3.active_pick #hero-icon-3,
+#hero-pick-5.active_pick #hero-icon-5,
+#hero-pick-7.active_pick #hero-icon-7,
+#hero-pick-9.active_pick #hero-icon-9{
+    border-radius: 10px;
+    border: 1px solid #A8EFFFFF;
+}
+
+
+#hero-pick-2.active_pick #hero-icon-2,
+#hero-pick-4.active_pick #hero-icon-4,
+#hero-pick-6.active_pick #hero-icon-6,
+#hero-pick-8.active_pick #hero-icon-8,
+#hero-pick-10.active_pick #hero-icon-10{
+    border-radius: 10px;
+    border: 1px solid #FD4D2BFF;
+}
+
+
+
+#hero-icon-1,
+#hero-icon-2,
+#hero-icon-3,
+#hero-icon-4,
+#hero-icon-5,
+#hero-icon-6,
+#hero-icon-7,
+#hero-icon-8,
+#hero-icon-9,
+#hero-icon-10 {
+    position: absolute;
+    object-fit: cover;
+}
+
+
+
+.menu-1,
+.menu-2,
+.menu-3,
+.menu-4,
+.menu-5,
+.menu-6,
+.menu-7,
+.menu-8,
+.menu-9,
+.menu-10{
+    display: none;
+}
+
+
+.menu-1.active,
+.menu-3.active,
+.menu-5.active,
+.menu-7.active,
+.menu-9.active{
+    border-radius: 10px;
+    border: 1px solid grey;
+    height: 650px;
+    width: 650px;
+    margin-left: 128px;
+    position: absolute;
+    overflow: hidden;
+    transition: line-height .5s, color .5s;
+    display: grid;
+    grid-template-columns: 81px 81px 81px 81px 81px 81px 81px;
+    grid-template-rows: 50px;
+    line-height: 1.2;
+    justify-content: space-around;
+    color: transparent;
+    font-size: 14px;
+    background-color: #121212;
+    z-index: 100;
+
+}
+.menu-2.active,
+.menu-4.active,
+.menu-6.active,
+.menu-8.active,
+.menu-10.active{
+    border-radius: 10px;
+    border: 1px solid grey;
+    height: 650px;
+    width: 650px;
+    margin-left: 128px;
+    position: absolute;
+    overflow: hidden;
+    transition: line-height .5s, color .5s;
+    display: grid;
+    grid-template-columns: 81px 81px 81px 81px 81px 81px 81px;
+    grid-template-rows: 50px ;
+    line-height: 1.2;
+    justify-content: space-around;
+    color: transparent;
+    font-size: 14px;
+    background-color: #121212;
+    z-index: 100;
+
+}
+
+
+.menu__item-1,
+.menu__item-2,
+.menu__item-3,
+.menu__item-4,
+.menu__item-5,
+.menu__item-6,
+.menu__item-7,
+.menu__item-8,
+.menu__item-9,
+.menu__item-10{
+    overflow: hidden;
+}
+
+.menu__link{
+    text-align: center;
+    display: block;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+
+ul input {
+    margin: 10px 10px 10px 10px;
+    grid-column: 1/ span 7;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid grey;
+}

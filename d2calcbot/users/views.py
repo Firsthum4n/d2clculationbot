@@ -1,74 +1,47 @@
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView
-from django.http import  HttpResponseRedirect
 from django.shortcuts import redirect
-from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, TemplateView
-
-from users.forms import RegisterUserForm, LoginUserForm
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
 from main.utils import DataMixin
-from django.views.generic.edit import FormView
+
 from .models import *
 
+@api_view(['GET'])
+def auth_user_tg(request):
+    if request.method == 'GET':
+        telegram_id = request.GET.get('telegram_id')
+        telegram_username = request.GET.get('telegram_username')
+        redirect_url = f"https://trusight.ru"
 
+        if not telegram_id or not telegram_username:
+            return Response({'error': 'Отсутствует Telegram ID или username'}, status=status.HTTP_400_BAD_REQUEST)
 
-from django.views.generic.edit import FormView
+        user, created = Custom_User.objects.get_or_create(
+            telegram_id=telegram_id,
+            defaults={'telegram_username': telegram_username}
+        )
 
-class LoginUser(FormView):
-    template_name = 'users/login.html'
-    form_class = LoginUserForm
-    success_url = reverse_lazy('users:profile')
-
-
-    def form_valid(self, form):
-        telegram_id = form.cleaned_data['telegram_id']
-        telegram_username = form.cleaned_data['telegram_username']
-
-
-
-        user = authenticate(telegram_id=telegram_id, telegram_username=telegram_username)
-
-        if user and user.is_active:
-            login(self.request, user, backend='users.authentication.TelegramIdAuth')
-            return super().form_valid(form)
-
-
+        if created:
+            print(f"New user created: {user}")
+            user.avatar = 'avatars/hand_of_midas.png'
+            user.save()
         else:
-            form.add_error(None, 'Неправильный telegram-id или username')
-            return super().form_invalid(form)
+            print(f"User authenticated: {user}")
+
+        login(request, user, backend='users.authentication.TelegramIdAuth')
+        return redirect(redirect_url)
+    else:
+        return Response({'error': 'Неверный запрос'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 
-def logout_user(request):
-    logout(request)
-    return HttpResponseRedirect(reverse('users:login'))
 
 
-class RegisterUser(FormView):
-    template_name = 'users/register.html'
-    form_class = RegisterUserForm
-    success_url = reverse_lazy('users:profile')
-
-    def form_valid(self, form):
-        # Получите значения из формы
-        telegram_id = form.cleaned_data['telegram_id']
-        telegram_username = form.cleaned_data['telegram_username']
 
 
-        existing_user = Custom_User.objects.filter(telegram_id=telegram_id).first()
-
-        if existing_user:
-            form.add_error(None, 'Пользователь с таким telegram-id уже существует.')
-            return super().form_invalid(form)
-        else:
-            user = Custom_User.objects.create_user(
-                telegram_id=telegram_id,
-                telegram_username=telegram_username,
-            )
-
-
-            return super().form_valid(form)
 
 class Profile(LoginRequiredMixin,DataMixin, TemplateView):
     template_name = 'users/profile.html'
@@ -77,4 +50,18 @@ class Profile(LoginRequiredMixin,DataMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title='Мой профиль')
         return dict(list(context.items()) + list(c_def.items()))
+
+
+class History(TemplateView, DataMixin,):
+    template_name = "users/history.html"
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title='История')
+        return dict(list(context.items()) + list(c_def.items()))
+
+class LogoutView(TemplateView, DataMixin,):
+    template_name = "users/logout.html"
+
+
+
 

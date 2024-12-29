@@ -5,66 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>{{ title }}</title>
-    <link type="text/css" href="{% static 'main/css/main.css' %}" rel="stylesheet"/>
-    <link type="text/css" href="{% static 'main/css/heroes.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'main/css/base.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'main/css/index.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'main/css/select.css' %}" rel="stylesheet"/>
     <link type="text/css" href="{% static 'main/css/media.css' %}" rel="stylesheet"/>
-    <link type="text/css" href="{% static 'main/css/authorization.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'main/css/matches.css' %}" rel="stylesheet"/>
     <link rel="shortcut icon" href="{% static 'main/images/dire.png' %}" type="image/x-icon"/>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        const tg = Telegram.WebApp;
+        tg.setHeaderColor("#121212");
+    </script>
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
 </head>
 <body>
-{% block mainmenu %}
+{% block userinfo %}
         <header class="header">
-            <div class="container">
-             <!-- Header nav -->
-                <div class="header-nav">
-                    <nav id="nav" class="nav">
-                        <ul id="menu" class="nav-list">
-                        <!-- LOGO -->
-                            {% if request.path == '/' %}
-                                <li class="logo active">
-                                    <a href="{% url 'index' %}"><div class="logo"></div></a>
-                                </li>
-                            {% else %}
-                                <li class="logo">
-                                    <a href="{% url 'index' %}"><div class="logo"></div></a>
-                                </li>
-                            {% endif %}
-                            <!--Элементы меню из словаря menu-->
-                            {% for i_elem in menu %}
-                                {% if i_elem.url_name == request.resolver_match.url_name %}
-                                    <li class="active"><a href="{% url i_elem.url_name %}">{{ i_elem.title}} </a></li>
-                                {% else %}
-                                    <li><a class="nav-item" href="{% url i_elem.url_name %}">{{ i_elem.title}} </a></li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                        <button id="nav-btn" class="nav-button">
-                            <img id="nav-btn-img" src="{% static 'main/images/nav/NAV-OPEN.svg' %}">
-                        </button>
-                    </nav>
-                    <ul class="log-on-list">
-                            <!--Логин и регистрация-->
-                            {% if user.is_authenticated %}
-                                <li class="last"><a>{{ user.telegram_username }} <a href="{% url 'users:logout' %}">выйти</a></li>
-                            {% else %}
-                                <li class="last"> <a href="{% url 'users:register' %}">регистрация</a><a href="{% url 'users:login' %}">войти</a></li>
-                            {% endif %}
+            <div class="container-header">
+                <div class="profile-info">
+                    <ul class="user-info-list">
+                        {% if user.is_authenticated %}
+                            <li class="user-info">
+                                <img src="{{ user.avatar.url }}" width="29" height="29" alt="user">
+                                <a>{{ user.telegram_username }}</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
-                    <div class="clear"></div>
         </header>
-{% endblock mainmenu %}
-{% block  scroll %}
-    
-{% endblock scroll %}
+{% endblock userinfo %}
+
 
 {% block content %}
 {% endblock content%}
 
-<header class="bottom-header"></header>
-<script src="{% static 'main/js/mobile_nav.js' %}"></script>
-<script src="{% static 'main/js/mobilebottomheader.js' %}"></script>
+{% block menu %}
+        <header class="bottom-header">
+            <div class="container-bottom-header">
+                {% for i in menu %}
+                   {% if i.url_name %}
+                        {% if i.url_name == request.resolver_match.url_name or  i.url == request.path %}
+                           <li class="active">
+                               <img src="{% static i.image|slice:':-4' %}-active.svg" alt="">
+                               <a href="{% url i.url_name %}">{{ i.title}}</a>
+                           </li>
+                        {% else %}
+                           <li class="nav-item">
+                               <img src="{% static i.image %}" alt="">
+                               <a href="{% url i.url_name %}">{{ i.title}}</a>
+                           </li>
+                        {% endif %}
+                   {% endif %}
+               {% endfor %}
+            </div>
+        </header>
+{% endblock menu%}
+
+
 </body>
 </html>

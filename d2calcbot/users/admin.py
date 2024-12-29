@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Custom_User, UserGroup
+from .models import Custom_User
 
 
 class CustomUserAdmin(admin.ModelAdmin):
@@ -10,4 +10,3 @@ class CustomUserAdmin(admin.ModelAdmin):
 
 admin.site.register(Custom_User, CustomUserAdmin)
 
-admin.site.register(UserGroup)

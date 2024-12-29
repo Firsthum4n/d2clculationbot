@@ -2,11 +2,11 @@ from django.contrib.auth.backends import BaseBackend, UserModel
 from users.models import Custom_User
 
 class TelegramIdAuth(BaseBackend):
-    def authenticate(self, request, telegram_id=None, telegram_username=None, **kwargs):
+    def authenticate(self, request, telegram_id=None, telegram_username=None, *kwargs):
         user_model = Custom_User
-        if telegram_id and telegram_username:
+        if telegram_id:
             try:
-                user = user_model.objects.get(telegram_id=telegram_id, telegram_username=telegram_username)
+                user = user_model.objects.get(telegram_id=telegram_id)
                 print(f"User authenticated: {user}")
                 return user
             except user_model.DoesNotExist:

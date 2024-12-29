@@ -1,0 +1,72 @@
+[
+    {
+        "account_id": 352545711,
+        "name": "DarkMago\u2661",
+        "games_played": 98,
+        "wins": 47,
+        "is_current_team_member": false
+    },
+    {
+        "account_id": 155332459,
+        "name": "Matthew",
+        "games_played": 98,
+        "wins": 47,
+        "is_current_team_member": false
+    },
+    {
+        "account_id": 408729743,
+        "name": "Sacred",
+        "games_played": 98,
+        "wins": 47,
+        "is_current_team_member": false
+    },
+    {
+        "account_id": 177953305,
+        "name": "Tiger",
+        "games_played": 91,
+        "wins": 44,
+        "is_current_team_member": false
+    },
+    {
+        "account_id": 425588742,
+        "name": "payk",
+        "games_played": 39,
+        "wins": 17,
+        "is_current_team_member": false
+    },
+    {
+        "account_id": 185202677,
+        "name": "K\u014dtar\u014d.sr4ever",
+        "games_played": 34,
+        "wins": 19,
+        "is_current_team_member": false
+    },
+    {
+        "account_id": 339235645,
+        "name": "Pakazs",
+        "games_played": 11,
+        "wins": 5,
+        "is_current_team_member": false
+    },
+    {
+        "account_id": 117089283,
+        "name": "Panda",
+        "games_played": 7,
+        "wins": 3,
+        "is_current_team_member": false
+    },
+    {
+        "account_id": 191248125,
+        "name": null,
+        "games_played": 7,
+        "wins": 3,
+        "is_current_team_member": null
+    },
+    {
+        "account_id": 363758022,
+        "name": "Wits",
+        "games_played": 7,
+        "wins": 3,
+        "is_current_team_member": false
+    }
+]
