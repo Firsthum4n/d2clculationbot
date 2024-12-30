@@ -7,6 +7,7 @@ from .utils import *
 from .calculation import  low_calculation
 from .db_update.heroes import create_or_update_heroes, del_all_heroes_and_ids
 from .db_update.teams import create_or_update_teams
+from main.calc_bot.bot import encryption
 
 
 # create_or_update_teams()
@@ -45,7 +46,7 @@ class All_pick(View):
         request.session['direPick'] = dire_pick
         print(dire_pick)
 
-        result = low_calculation(radiant_pick, dire_pick)
+        result = encryption(radiant_pick, dire_pick)
 
 
         return JsonResponse(

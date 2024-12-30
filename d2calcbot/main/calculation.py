@@ -1,5 +1,4 @@
 from d2api.src.entities import all_heroes
-
 from .models import *
 
 import json

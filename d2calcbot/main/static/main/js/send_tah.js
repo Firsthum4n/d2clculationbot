@@ -132,7 +132,6 @@ window.onclick = function(event) {
 
 
 
-
 for (let i = 1; i <=2; i++) {
     const teamSelectButtonSelector = `#team-select-button-${i}`;
     const teamSelectMenuSelector =`#team-select-menu-${i}`;

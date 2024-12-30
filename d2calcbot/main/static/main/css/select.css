@@ -1,13 +1,7 @@
 @import "reset.css";
 @import url("https://fonts.googleapis.com/css?family=Raleway:400");
 
-@font-face {
-  font-family: 'Facon';
-  src: url('main/fonts/facon.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+
 
 #hero-pick-1,
 #hero-pick-2,
@@ -26,6 +20,7 @@
     justify-content: center;
     position: relative;
     margin-top: 25%;
+
 }
 
 
@@ -159,12 +154,14 @@ ul input {
     border: 1px solid grey;
 }
 
-.team-menu {
+.team-menu-1,
+.team-menu-2{
     display: none;
 }
 
-.team-menu.active {
-	width: 90px;
+.team-menu-1.active,
+.team-menu-2.active{
+	width: 270px;
 	display: block;
 	position: absolute;
     background-color: #121212;
@@ -175,15 +172,18 @@ ul input {
     padding: 0;
     margin: 0;
 	z-index: 200;
+    text-transform: lowercase;
 }
 
 
-.team-menu li {
+.team-menu-1 li ,
+.team-menu-2 li{
     padding: 8px 12px;
     cursor: pointer;
 }
 
-.team-menu li:hover {
+.team-menu-1 li:hover,
+.team-menu-2 li:hover{
     background-color: #f0f0f0;
 }
 
@@ -200,6 +200,9 @@ ul input {
 	cursor: pointer;
 	align-items: center;
     color: white;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .team-button-2 {
@@ -212,6 +215,8 @@ ul input {
 	background: linear-gradient(90deg, rgb(255, 111, 0) 0%, rgb(255, 0, 0) 100%);
 	box-shadow: 0 0 60px rgb(255, 111, 0);
 	cursor: pointer;
-	align-items: center;
     color: white;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
 }
