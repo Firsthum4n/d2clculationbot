@@ -21,11 +21,50 @@ def encryption(radiant, dire):
     all_heroes = Heroes.objects.all()
     all_teams = Teams.objects.all()
     all_players = Players.objects.all()
+    radiant_all_pick = {
+        'team':[
+            {
+                'name':[],
+                'stats':[]
+            }
+        ],
+        'players':[
+            {
+                'name':[],
+                'stats':[]
+            }
+        ],
+        'heroes':[
+            {
+                'name': [],
+                'stats': []
+            }
+        ]
+   }
+
+    dire_all_pick = {
+        'team':[
+            {
+                'name':[],
+                'stats':[]
+            }
+        ],
+        'players':[
+            {
+                'name':[],
+                'stats':[]
+            }
+        ],
+        'heroes':[
+            {
+                'name': [],
+                'stats': []
+            }
+        ]
+   }
+
+
     for value in radiant.values():
-        for team in all_teams:
-            print(value)
-
-
-
-
-
+        for i in all_teams:
+            if value == i.name:
+                print(value)
