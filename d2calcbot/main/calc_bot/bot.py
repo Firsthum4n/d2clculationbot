@@ -21,12 +21,9 @@ def encryption(radiant, dire):
     all_heroes = Heroes.objects.all()
     all_teams = Teams.objects.all()
     all_players = Players.objects.all()
-    for i in radiant.values():
-        print(i)
-        if i in all_teams:
-            print(i)
-
-
+    for value in radiant.values():
+        for team in all_teams:
+            print(value)
 
 
 
