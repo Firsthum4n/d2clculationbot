@@ -9,9 +9,29 @@ from torch.utils.data import Dataset, DataLoader
 
 
 def encryption(radiant, dire):
-    dataset = DotaDataset(radiant, dire)
-    print(dataset)
 
+    radiant_all_pick = encryption_level_1(radiant)
+    dire_all_pick = encryption_level_1(dire)
+
+    radiant_tensor = dataset(radiant_all_pick)
+    dire_tensor = dataset(dire_all_pick)
+
+    # print('radiant: ', radiant_tensor)
+    num_teams = 2
+    num_players = 10
+    num_heroes = 10
+    embedding_dim = 32
+    team_stats_dim = 3
+    player_stats_dim = 2
+    hero_stats_dim = 25
+
+    model = DotaNetwork(num_teams, num_players, num_heroes, embedding_dim, team_stats_dim, player_stats_dim, hero_stats_dim)
+
+
+
+    with torch.no_grad():
+        output = model(radiant_tensor, dire_tensor)
+        print(f"\nВероятность победы Radiant: {output.item()}")
 
 
 
@@ -127,6 +147,7 @@ def embedding_create(team_pick):
 def create_dict_for_index(team_pick):
     team_names, player_names, hero_names = ad_to_dict(team_pick)
 
+
     team_to_ix = {name: i for i, name in enumerate(team_names)}
     player_to_ix = {name: i for i, name in enumerate(player_names)}
     hero_to_ix = {name: i for i, name in enumerate(hero_names)}
@@ -136,7 +157,6 @@ def create_dict_for_index(team_pick):
 
 """Функция для преобразования данных в тензоры"""
 def transform_data(team_data, player_data, hero_data, team_pick):
-
     team_to_ix, player_to_ix, hero_to_ix = create_dict_for_index(team_pick)
 
     team_index = team_to_ix[team_data[0]['name']]
@@ -148,31 +168,82 @@ def transform_data(team_data, player_data, hero_data, team_pick):
     player_stats = torch.tensor([player['stats'] for player in player_data], dtype=torch.float32)
     hero_stats = torch.tensor([hero['stats'] for hero in hero_data], dtype=torch.float32)
 
+
     return team_index, player_indices, hero_indices, team_stats, player_stats, hero_stats
 
 
-class DotaDataset(Dataset):
-    def __init__(self, radiant, dire):
-        self.data = []
-        radiant_data = encryption_level_1(radiant)
-        dire_data = encryption_level_1(dire)
-        self.data.append(radiant_data)
-        self.data.append(dire_data)
+def dataset(data):
+
+    team_data = data
+    team_index, player_indices, hero_indices, team_stats, player_stats, hero_stats = transform_data(team_data['team'], team_data['players'], team_data['heroes'], team_data)
 
 
-    def __len__(self):
-        return len(self.data)
+    return team_index, player_indices, hero_indices, team_stats, player_stats, hero_stats
 
-    def __getitem__(self, idx):
 
-      radiant_team_data = self.data[0]
-      dire_team_data = self.data[1]
 
-      radiant_team_index, radiant_player_indices, radiant_hero_indices, radiant_team_stats, radiant_player_stats, radiant_hero_stats = transform_data(radiant_team_data['team'], radiant_team_data['players'], radiant_team_data['heroes'], radiant_team_data)
-      dire_team_index, dire_player_indices, dire_hero_indices, dire_team_stats, dire_player_stats, dire_hero_stats = transform_data(dire_team_data['team'], dire_team_data['players'], dire_team_data['heroes'], dire_team_data)
 
-      return (radiant_team_index, radiant_player_indices, radiant_hero_indices, radiant_team_stats, radiant_player_stats, radiant_hero_stats), \
-              (dire_team_index, dire_player_indices, dire_hero_indices, dire_team_stats, dire_player_stats, dire_hero_stats)
+class DotaNetwork(nn.Module):
+    def __init__(self, num_teams, num_players, num_heroes, embedding_dim, team_stats_dim, player_stats_dim, hero_stats_dim): # добавлено player_stats_dim и hero_stats_dim
+        super().__init__()
+        self.team_embedding = nn.Embedding(num_teams, embedding_dim)
+        self.player_embedding = nn.Embedding(num_players, embedding_dim)
+        self.hero_embedding = nn.Embedding(num_heroes, embedding_dim)
+        input_size = embedding_dim + 2 * num_players * embedding_dim + team_stats_dim + num_players * (player_stats_dim + hero_stats_dim)
+        self.fc1 = nn.Linear(input_size, 256)
+        self.fc2 = nn.Linear(256, 128)
+        self.fc3 = nn.Linear(128, 1)
+        self.sigmoid = nn.Sigmoid()
+
+    def forward(self, radiant_data, dire_data):
+        r_team_index, r_player_indices, r_hero_indices, r_team_stats, r_player_stats, r_hero_stats = radiant_data
+        d_team_index, d_player_indices, d_hero_indices, d_team_stats, d_player_stats, d_hero_stats = dire_data
+
+        r_team_index = torch.tensor([[r_team_index]])
+        r_player_indices = torch.tensor([r_player_indices])
+        r_hero_indices = torch.tensor([r_hero_indices])
+
+        d_team_index = torch.tensor([[d_team_index]])
+        d_player_indices = torch.tensor([d_player_indices])
+        d_hero_indices = torch.tensor([d_hero_indices])
+
+
+
+        r_team_emb = self.team_embedding(r_team_index).squeeze(0).flatten()
+        r_player_embs = self.player_embedding(r_player_indices)
+        r_hero_embs = self.hero_embedding(r_hero_indices)
+
+        input_size = sum([r_team_emb.size()[0], r_player_embs.size()[0], r_hero_embs.size()[0], r_team_stats.size()[0],
+                          r_player_stats.size()[0], r_hero_stats.size()[0]])
+
+        print(input_size)
+
+
+
+        r_x = torch.cat([r_team_emb, r_player_embs.flatten(), r_hero_embs.flatten(), r_team_stats.flatten(),
+                         r_player_stats.flatten(), r_hero_stats.flatten()], dim=0)
+
+        r_x = self.fc1(r_x)
+
+        d_team_emb = self.team_embedding(d_team_index).squeeze(0).flatten()
+        d_player_embs = self.player_embedding(d_player_indices)
+        d_hero_embs = self.hero_embedding(d_hero_indices)
+
+
+        d_x = torch.cat([d_team_emb, d_player_embs.flatten(), d_hero_embs.flatten(), d_team_stats.flatten(),
+                         d_player_stats.flatten(), d_hero_stats.flatten()], dim=0)
+
+        d_x = self.fc1(d_x)
+
+        x = torch.cat([r_x, d_x], dim=0)
+        x = self.fc2(x)
+        x = torch.relu(x)
+        x = self.fc3(x)
+        x = self.sigmoid(x)
+        return x
+
+
+
 
 
 

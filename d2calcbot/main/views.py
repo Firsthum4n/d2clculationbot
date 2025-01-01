@@ -49,6 +49,7 @@ class All_pick(View):
         result = encryption(radiant_pick, dire_pick)
 
 
+
         return JsonResponse(
             {'result': result}
         )
