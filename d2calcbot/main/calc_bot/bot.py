@@ -16,25 +16,7 @@ def encryption(radiant, dire):
     radiant_tensor = dataset(radiant_all_pick)
     dire_tensor = dataset(dire_all_pick)
 
-    # print('radiant: ', radiant_tensor)
-    num_teams = 2
-    num_players = 10
-    num_heroes = 10
-    embedding_dim = 32
-    team_stats_dim = 3
-    player_stats_dim = 2
-    hero_stats_dim = 25
-
-    model = DotaNetwork(num_teams, num_players, num_heroes, embedding_dim, team_stats_dim, player_stats_dim, hero_stats_dim)
-
-
-
-    with torch.no_grad():
-        output = model(radiant_tensor, dire_tensor)
-        print(f"\nВероятность победы Radiant: {output.item()}")
-
-
-
+    print('radiant: ', radiant_tensor)
 
 """функция создающий словарь со всеми именами и статами команды, игроков и героев"""
 def encryption_level_1(team_pick):
@@ -173,11 +155,8 @@ def transform_data(team_data, player_data, hero_data, team_pick):
 
 
 def dataset(data):
-
     team_data = data
     team_index, player_indices, hero_indices, team_stats, player_stats, hero_stats = transform_data(team_data['team'], team_data['players'], team_data['heroes'], team_data)
-
-
     return team_index, player_indices, hero_indices, team_stats, player_stats, hero_stats
 
 
@@ -189,8 +168,8 @@ class DotaNetwork(nn.Module):
         self.team_embedding = nn.Embedding(num_teams, embedding_dim)
         self.player_embedding = nn.Embedding(num_players, embedding_dim)
         self.hero_embedding = nn.Embedding(num_heroes, embedding_dim)
-        input_size = embedding_dim + 2 * num_players * embedding_dim + team_stats_dim + num_players * (player_stats_dim + hero_stats_dim)
-        self.fc1 = nn.Linear(input_size, 256)
+        input_size = embedding_dim + (num_players * embedding_dim) * 2 + team_stats_dim + num_players * (player_stats_dim + hero_stats_dim)
+        self.fc1 = nn.Linear(980, 256)
         self.fc2 = nn.Linear(256, 128)
         self.fc3 = nn.Linear(128, 1)
         self.sigmoid = nn.Sigmoid()
@@ -207,31 +186,27 @@ class DotaNetwork(nn.Module):
         d_player_indices = torch.tensor([d_player_indices])
         d_hero_indices = torch.tensor([d_hero_indices])
 
-
-
         r_team_emb = self.team_embedding(r_team_index).squeeze(0).flatten()
-        r_player_embs = self.player_embedding(r_player_indices)
-        r_hero_embs = self.hero_embedding(r_hero_indices)
-
-        input_size = sum([r_team_emb.size()[0], r_player_embs.size()[0], r_hero_embs.size()[0], r_team_stats.size()[0],
-                          r_player_stats.size()[0], r_hero_stats.size()[0]])
-
-        print(input_size)
+        r_player_embs = self.player_embedding(r_player_indices).flatten()
+        r_hero_embs = self.hero_embedding(r_hero_indices).flatten()
+        r_team_stats = r_team_stats.flatten().float()  # Добавлено float()
+        r_player_stats = r_player_stats.flatten().float()  # Добавлено float()
+        r_hero_stats = r_hero_stats.flatten().float()  # Добавлено float()
 
 
-
-        r_x = torch.cat([r_team_emb, r_player_embs.flatten(), r_hero_embs.flatten(), r_team_stats.flatten(),
-                         r_player_stats.flatten(), r_hero_stats.flatten()], dim=0)
-
+        r_x = torch.cat([r_team_emb, r_player_embs, r_hero_embs, r_team_stats, r_player_stats, r_hero_stats], dim=0)
+        r_x = self.fc1(r_x) # Теперь это должно работать
         r_x = self.fc1(r_x)
 
         d_team_emb = self.team_embedding(d_team_index).squeeze(0).flatten()
-        d_player_embs = self.player_embedding(d_player_indices)
-        d_hero_embs = self.hero_embedding(d_hero_indices)
+        d_player_embs = self.player_embedding(d_player_indices).flatten()
+        d_hero_embs = self.hero_embedding(d_hero_indices).flatten()
+        d_team_stats = d_team_stats.flatten().float()
+        d_player_stats = d_player_stats.flatten().float()
+        d_hero_stats = d_hero_stats.flatten().float()
 
 
-        d_x = torch.cat([d_team_emb, d_player_embs.flatten(), d_hero_embs.flatten(), d_team_stats.flatten(),
-                         d_player_stats.flatten(), d_hero_stats.flatten()], dim=0)
+        d_x = torch.cat([d_team_emb, d_player_embs, d_hero_embs, d_team_stats, d_player_stats, d_hero_stats], dim=0)
 
         d_x = self.fc1(d_x)
 
