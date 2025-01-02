@@ -34,7 +34,7 @@ def encryption(radiant, dire):
         output = model(radiant_team_data, dire_team_data,
                        radiant_player_data, dire_player_data,
                        radiant_hero_data, dire_hero_data)
-        print(f"\nВероятность победы Radiant: {output.item()}")
+        print(f"\nВероятность победы Radiant: {output}")
 
     # print('radiant: ', radiant_tensor)
 
@@ -347,7 +347,7 @@ class MainNetwork(nn.Module):
         self.branch_p = BranchPlayers(num_players, embedding_dim)
         self.branch_h = BranchHeroes(num_heroes, embedding_dim)
 
-        self.final_layer = nn.Linear(3, 1)
+        self.final_layer = nn.Linear(1, 1)
 
     def forward(self, radiant_team_data, dire_team_data, radiant_player_data, dire_player_data, radiant_hero_data, dire_hero_data):
 
@@ -355,11 +355,10 @@ class MainNetwork(nn.Module):
         out_players = self.branch_p(radiant_player_data, dire_player_data)
         out_heroes = self.branch_h(radiant_hero_data, dire_hero_data)
 
-        print(out_team.shape)
-        print(out_players.shape)
-        print(out_heroes.shape)
+        out_team = out_team.repeat(2,1,1)
 
         combined = torch.cat((out_team, out_players, out_heroes), dim=1)
+
 
         output = self.final_layer(combined)
 
