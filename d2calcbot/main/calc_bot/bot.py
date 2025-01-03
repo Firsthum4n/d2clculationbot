@@ -1,13 +1,21 @@
 from main.db_update.heroes import create_or_update_heroes
 from main.db_update.teams import create_or_update_teams
+
 from main.models import *
 
 import torch
 import torch.nn as nn
+
 import torch.optim as optim
 import torch.nn.functional as F
-from torch.utils.data import Dataset, DataLoader
 
+from torch.utils.data import Dataset, DataLoader, random_split
+import os
+import matplotlib.pyplot as plt
+
+import json
+from tqdm import tqdm
+from PIL import Image
 
 def encryption(radiant, dire):
     radiant_all_pick = encryption_level_1(radiant)
@@ -28,20 +36,38 @@ def encryption(radiant, dire):
     num_heroes = 10
     embedding_dim = 32
 
-    x_train = torch.FloatTensor([(-1, -1, -1), (-1, -1, 1), (-1, 1, -1), (-1, 1, 1),
-                                 (1, -1, -1), (1, -1, 1), (1, 1, -1), (1, 1, 1)])
-    y_train = torch.FloatTensor([-1, 1, -1, 1, -1, 1, -1, -1])
-    total = len(y_train)
-
 
 
     model = MainNetwork(num_teams, num_players, num_heroes, embedding_dim)
 
-    with torch.no_grad():
-        output = model(radiant_team_data, dire_team_data,
-                       radiant_player_data, dire_player_data,
-                       radiant_hero_data, dire_hero_data)
-        print(f"\nВероятность победы Radiant: {output.item()}")
+    output = model(radiant_team_data, dire_team_data,
+                   radiant_player_data, dire_player_data,
+                   radiant_hero_data, dire_hero_data)
+
+    loss_model = nn.CrossEntropyLoss()
+    opt = torch.optim.Adam(model.parameters(), lr=0.001)
+
+    EPOCHS = 5
+    batch_size = 32
+
+    for epoch in range(EPOCHS):
+        model.train()
+        for i in range(len(train_data)//batch_size):
+            x = x.reshape(-1, 28*28)
+
+
+
+
+
+
+
+
+
+    # with torch.no_grad():
+    #     output = model(radiant_team_data, dire_team_data,
+    #                    radiant_player_data, dire_player_data,
+    #                    radiant_hero_data, dire_hero_data)
+    #     print(f"\nВероятность победы Radiant: {output.item()}")
 
 
 """функция создающий словарь со всеми именами и статами команды, игроков и героев"""
