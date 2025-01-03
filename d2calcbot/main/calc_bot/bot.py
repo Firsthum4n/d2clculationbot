@@ -4,6 +4,7 @@ from main.models import *
 
 import torch
 import torch.nn as nn
+import torch.optim as optim
 import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 
@@ -27,6 +28,12 @@ def encryption(radiant, dire):
     num_heroes = 10
     embedding_dim = 32
 
+    x_train = torch.FloatTensor([(-1, -1, -1), (-1, -1, 1), (-1, 1, -1), (-1, 1, 1),
+                                 (1, -1, -1), (1, -1, 1), (1, 1, -1), (1, 1, 1)])
+    y_train = torch.FloatTensor([-1, 1, -1, 1, -1, 1, -1, -1])
+    total = len(y_train)
+
+
 
     model = MainNetwork(num_teams, num_players, num_heroes, embedding_dim)
 
@@ -34,9 +41,8 @@ def encryption(radiant, dire):
         output = model(radiant_team_data, dire_team_data,
                        radiant_player_data, dire_player_data,
                        radiant_hero_data, dire_hero_data)
-        print(f"\nВероятность победы Radiant: {output}")
+        print(f"\nВероятность победы Radiant: {output.item()}")
 
-    # print('radiant: ', radiant_tensor)
 
 """функция создающий словарь со всеми именами и статами команды, игроков и героев"""
 def encryption_level_1(team_pick):
@@ -222,7 +228,8 @@ class BranchTeam(nn.Module):
 
         self.team_embedding = nn.Embedding(num_teams, embedding_dim)
 
-        self.fc1 = nn.Linear(35, 75)
+        self.fc1 = nn.Linear(35, 150)
+        self.relu1 = nn.ReLU()
         self.fc2 = nn.Linear(150, 75)
         self.fc3 = nn.Linear(75, 1)
 
@@ -234,27 +241,31 @@ class BranchTeam(nn.Module):
         r_team_index, r_team_stats = radiant_team_data
         d_team_index, d_team_stats = dire_team_data
 
-        r_team_index = torch.tensor([[r_team_index]])
-        d_team_index = torch.tensor([[d_team_index]])
+        r_team_index = torch.tensor([r_team_index])
+        d_team_index = torch.tensor([d_team_index])
 
         r_team_emb = self.team_embedding(r_team_index)
         d_team_emb = self.team_embedding(d_team_index)
 
-        r_team_stats = r_team_stats.unsqueeze(0).unsqueeze(1)
-        d_team_stats = d_team_stats.unsqueeze(0).unsqueeze(1)
+        r_team_stats = r_team_stats.unsqueeze(0)
+        d_team_stats = d_team_stats.unsqueeze(0)
 
-        r_team_block = torch.cat((r_team_emb, r_team_stats), dim=2)
-        d_team_block = torch.cat((d_team_emb, d_team_stats), dim=2)
+        r_team_block = torch.cat((r_team_emb, r_team_stats), dim=1)
+        d_team_block = torch.cat((d_team_emb, d_team_stats), dim=1)
 
         r_x = self.fc1(r_team_block)
+        self.relu1 = nn.ReLU(r_x)
         d_x = self.fc1(d_team_block)
+        self.relu1 = nn.ReLU(d_x)
 
-        x = torch.cat([r_x, d_x], dim=2)
+        x = torch.cat([r_x, d_x], dim=0)
 
         x = self.fc2(x)
         x = torch.relu(x)
         x = self.fc3(x)
+
         x = self.sigmoid(x)
+
         return x
 
 
@@ -266,6 +277,7 @@ class BranchPlayers(nn.Module):
         self.player_embedding = nn.Embedding(num_players, embedding_dim)
 
         self.fc1 = nn.Linear(34, 256)
+        self.relu1 = nn.ReLU()
         self.fc2 = nn.Linear(256, 128)
         self.fc3 = nn.Linear(128, 1)
 
@@ -275,27 +287,28 @@ class BranchPlayers(nn.Module):
         r_player_index, r_player_stats = radiant_player_data
         d_player_index, d_player_stats = dire_player_data
 
-        r_player_index = torch.tensor([r_player_index])
-        d_player_index = torch.tensor([d_player_index])
+        r_player_index = torch.tensor(r_player_index)
+        d_player_index = torch.tensor(d_player_index)
 
         r_player_emb = self.player_embedding(r_player_index)
         d_player_emb = self.player_embedding(d_player_index)
 
-        r_player_stats = r_player_stats.unsqueeze(0)
-        d_player_stats = d_player_stats.unsqueeze(0)
 
-
-        r_player_block = torch.cat((r_player_emb, r_player_stats), dim=2)
-        d_player_block = torch.cat((d_player_emb, d_player_stats), dim=2)
+        r_player_block = torch.cat((r_player_emb, r_player_stats), dim=1)
+        d_player_block = torch.cat((d_player_emb, d_player_stats), dim=1)
 
         r_x = self.fc1(r_player_block)
+        self.relu1 = nn.ReLU(r_x)
         d_x = self.fc1(d_player_block)
+        self.relu1 = nn.ReLU(d_x)
 
         x = torch.cat([r_x, d_x], dim=0)
         x = self.fc2(x)
         x = torch.relu(x)
         x = self.fc3(x)
         x = self.sigmoid(x)
+
+
         return x
 
 class BranchHeroes(nn.Module):
@@ -305,6 +318,7 @@ class BranchHeroes(nn.Module):
         self.hero_embedding = nn.Embedding(num_heroes, embedding_dim)
 
         self.fc1 = nn.Linear(57, 256)
+        self.relu1 = nn.ReLU()
         self.fc2 = nn.Linear(256, 128)
         self.fc3 = nn.Linear(128, 1)
 
@@ -314,27 +328,31 @@ class BranchHeroes(nn.Module):
         r_hero_index, r_hero_stats = radiant_hero_data
         d_hero_index, d_hero_stats = dire_hero_data
 
-        r_hero_index = torch.tensor([r_hero_index])
-        d_hero_index = torch.tensor([d_hero_index])
+        r_hero_index = torch.tensor(r_hero_index)
+        d_hero_index = torch.tensor(d_hero_index)
 
         r_hero_emb = self.hero_embedding(r_hero_index)
         d_hero_emb = self.hero_embedding(d_hero_index)
 
-        r_hero_stats = r_hero_stats.unsqueeze(0)
-        d_hero_stats = d_hero_stats.unsqueeze(0)
+        r_hero_stats = r_hero_stats
+        d_hero_stats = d_hero_stats
 
-        r_hero_block = torch.cat((r_hero_emb, r_hero_stats), dim=2)
-        d_hero_block = torch.cat((d_hero_emb, d_hero_stats), dim=2)
+        r_hero_block = torch.cat((r_hero_emb, r_hero_stats), dim=1)
+        d_hero_block = torch.cat((d_hero_emb, d_hero_stats), dim=1)
 
 
         r_x = self.fc1(r_hero_block)
+        self.relu1 = nn.ReLU(r_x)
         d_x = self.fc1(d_hero_block)
+        self.relu1 = nn.ReLU(d_x)
 
         x = torch.cat([r_x, d_x], dim=0)
         x = self.fc2(x)
         x = torch.relu(x)
         x = self.fc3(x)
+
         x = self.sigmoid(x)
+
         return x
 
 
@@ -347,7 +365,9 @@ class MainNetwork(nn.Module):
         self.branch_p = BranchPlayers(num_players, embedding_dim)
         self.branch_h = BranchHeroes(num_heroes, embedding_dim)
 
-        self.final_layer = nn.Linear(1, 1)
+        self.final_layer = nn.Linear(3, 1)
+
+        self.sigmoid = nn.Sigmoid()
 
     def forward(self, radiant_team_data, dire_team_data, radiant_player_data, dire_player_data, radiant_hero_data, dire_hero_data):
 
@@ -355,18 +375,12 @@ class MainNetwork(nn.Module):
         out_players = self.branch_p(radiant_player_data, dire_player_data)
         out_heroes = self.branch_h(radiant_hero_data, dire_hero_data)
 
-        out_team = out_team.repeat(2,1,1)
 
-        combined = torch.cat((out_team, out_players, out_heroes), dim=1)
-
+        combined = torch.cat([out_team.mean(dim=0, keepdim=True),
+                              out_players.mean(dim=0, keepdim=True),
+                              out_heroes.mean(dim=0, keepdim=True)], dim=1)
 
         output = self.final_layer(combined)
+        output = self.sigmoid(output)
 
         return output
-
-
-
-
-
-
-
