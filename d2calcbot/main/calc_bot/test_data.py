@@ -87,6 +87,5 @@ def hero_set(match_id, team):
         for pick in req_match_info['picks_bans']:
             if pick['is_pick'] == True and pick['team'] == team:
                 hero_id = pick['hero_id']
-                team_game_id = pick['team']
 
                 return hero_id
