@@ -6,10 +6,10 @@ from main.models import *
 
 
 TIER_1 = (
-    "PARIVISION", "BetBoom", "Liquid", "FLCN", "Tundra", "C9",
-    "Aurora", "TSpirit", "GG", "Geek", "XG", "TALON", "AVULUS",
-    "Heroic", "YB", "BOOM", "Apex", "SR", "OG", "NGX", "NAVI",
-    "MOUZ", "VP", "L1", "1w", "Waska"
+    "PARIVISION", "BetBoom Team", "Team Liquid", "Team Falcons", "Tundra Esports", "Cloud9",
+    "Aurora.1xBet", "Team Spirit", "Gaimin Gladiators", "AVULUS", "Shopify Rebellion", "Nigma Galaxy",
+    "HEROIC", "Yakult Brothers", "Gaozu", "BOOM Esports", "Natus Vincere", "OG",
+    "MOUZ", "M80", "beastcoast"
     )
 
 def create_or_update_teams():
@@ -23,9 +23,9 @@ def create_or_update_teams():
     try:
         for tm in range(len(teams_data)):
             team_id = teams_data[tm]['team_id']
-            if teams_data[tm]['tag'] in TIER_1:
+            if teams_data[tm]['name'] in TIER_1:
                 try:
-                    team = Teams.objects.get(name=teams_data[tm]['tag'])
+                    team = Teams.objects.get(name=teams_data[tm]['name'])
                     team.rating = teams_data[tm]['rating']
                     team.wins = teams_data[tm]['wins']
                     team.losses = teams_data[tm]['losses']
@@ -33,7 +33,7 @@ def create_or_update_teams():
 
                 except Teams.DoesNotExist:
                     team, created = Teams.objects.get_or_create(
-                        name=teams_data[tm]['tag'],
+                        name=teams_data[tm]['name'],
                         team_id=teams_data[tm]['team_id'],
                         rating=teams_data[tm]['rating'],
                         wins=teams_data[tm]['wins'],
@@ -53,7 +53,7 @@ def create_or_update_teams():
                                     try:
 
                                         is_current_team_member = players_data[plyr]['is_current_team_member']
-                                        team_member = Teams.objects.get(name=teams_data[tm]['tag'])
+                                        team_member = Teams.objects.get(name=teams_data[tm]['name'])
 
                                         player = Players.objects.get(name=players_data[plyr]['name'])
                                         player.games_played = players_data[plyr]['games_played']

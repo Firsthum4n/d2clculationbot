@@ -60,7 +60,7 @@ class Teams(models.Model):
 
 class Players(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    team = models.ForeignKey(Teams, on_delete=models.CASCADE, related_name='players', blank=True, null=True, default=None) # Связь один-ко-многим
+    team = models.ForeignKey(Teams, on_delete=models.CASCADE, related_name='players', blank=True, null=True, default=None)
     games_played = models.IntegerField(default=0)
     wins = models.IntegerField(default=0)
 

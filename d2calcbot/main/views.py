@@ -8,6 +8,9 @@ from .calculation import  low_calculation
 from .db_update.heroes import create_or_update_heroes, del_all_heroes_and_ids
 from .db_update.teams import create_or_update_teams
 from main.calc_bot.bot import encryption
+from main.calc_bot.test_data import matches_test
+
+matches_test()
 
 
 # create_or_update_teams()
