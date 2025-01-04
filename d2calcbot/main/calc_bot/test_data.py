@@ -50,31 +50,58 @@ def matches_test():
 
     for match in esl_req_matches:
 
+        count = 0
+
         match_id = match['match_id']
         radiant_team_id = match['radiant_team_id']
         dire_team_id = match['dire_team_id']
+
+        match_info = requests.get(f'https://api.opendota.com/api/matches/{match_id}')
+        req_match_info = match_info.json()
+        with open('main/jsf/f_match.json', 'w+') as esl_match_file:
+            json.dump(req_match_info, esl_match_file, indent=4)
 
         for team in all_teams:
             if radiant_team_id == team.team_id:
                 radiant_pick['team'] = team.name
 
                 for hero in all_heroes:
-                    hero_id = hero_set(match_id, 0)
-                    if hero_id == hero.hero_id:
-                        radiant_pick['heroes'].append(hero.name)
+                    for pick in req_match_info['picks_bans']:
+                        if pick['is_pick'] == True and pick['team'] == 0:
 
-                        print(radiant_pick)
+                            hero_id = pick['hero_id']
+                            if hero_id == hero.hero_id:
 
 
-            if dire_team_id == team.team_id:
-                dire_pick['team'] = team.name
+                                radiant_pick['heroes'].append(hero.name)
+                                count += 1
 
-                for hero in all_heroes:
-                    hero_id = hero_set(match_id, 1)
-                    if hero_id == hero.hero_id:
-                        dire_pick['heroes'].append(hero.name)
-                        print(dire_pick)
+        if count == 5:
+            test_data_x.append(radiant_pick)
+            radiant_pick = {
+                'team': "",
+                'heroes': []
+    }
+            count = 0
+            print(test_data_x)
 
+
+                    # hero_id = hero_set(match_id, 0)
+                    # if hero_id == hero.hero_id:
+                    #     radiant_pick['heroes'].append(hero.name)
+                    #
+                    #     print(radiant_pick)
+
+
+            # if dire_team_id == team.team_id:
+            #     dire_pick['team'] = team.name
+            #
+            #     for hero in all_heroes:
+            #         hero_id = hero_set(match_id, 1)
+            #         if hero_id == hero.hero_id:
+            #             dire_pick['heroes'].append(hero.name)
+            #             print(dire_pick)
+            #
 
 
 
