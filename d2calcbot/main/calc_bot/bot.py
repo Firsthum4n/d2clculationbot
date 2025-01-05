@@ -1,5 +1,6 @@
 from main.db_update.heroes import create_or_update_heroes
 from main.db_update.teams import create_or_update_teams
+from .test_data import matches_test
 
 from main.models import *
 
@@ -10,12 +11,11 @@ import torch.optim as optim
 import torch.nn.functional as F
 
 from torch.utils.data import Dataset, DataLoader, random_split
+
 import os
-
-
 import json
 
-from PIL import Image
+
 
 def encryption(radiant, dire):
     radiant_all_pick = encryption_level_1(radiant)
@@ -44,16 +44,18 @@ def encryption(radiant, dire):
                    radiant_player_data, dire_player_data,
                    radiant_hero_data, dire_hero_data)
 
-    loss_model = nn.CrossEntropyLoss()
-    opt = torch.optim.Adam(model.parameters(), lr=0.001)
+    criterion = nn.BCELoss()
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
     EPOCHS = 5
     batch_size = 32
 
     for epoch in range(EPOCHS):
         model.train()
+        running_loss = 0.0
         for i in range(len(train_data)//batch_size):
-            x = x.reshape(-1, 28*28)
+            optimizer.zero_grad()
+
 
 
 
@@ -243,6 +245,9 @@ def hero_tensor(data):
                                                         team_data['heroes'],
                                                         team_data)
     return  hero_indices, hero_stats
+
+
+
 
 
 
