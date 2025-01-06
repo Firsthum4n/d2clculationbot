@@ -3,25 +3,34 @@ import json
 
 from main.models import *
 
-test = requests.get('https://api.opendota.com/api/leagues')
-tst = test.json()
+# test = requests.get('https://api.opendota.com/api/leagues')
+# tst = test.json()
+#
+# with open('main/calc_bot/leagues.json', 'w+') as teams_file:
+#     json.dump(tst, teams_file, indent=4)
 
-with open('main/calc_bot/leagues.json', 'w+') as teams_file:
-    json.dump(tst, teams_file, indent=4)
-
-
-ESL = requests.get(f'https://api.opendota.com/api/leagues/{17509}/teams')
-esl_req = ESL.json()
-
-with open('main/calc_bot/esl_2024.json', 'w+') as teams_file:
-    json.dump(esl_req, teams_file, indent=4)
+with open('main/calc_bot/leagues.json', 'r') as f:
+    tst = json.load(f)
 
 
-esl_matches = requests.get(f'https://api.opendota.com/api/leagues/{17509}/matches')
-esl_req_matches = esl_matches.json()
+# ESL = requests.get(f'https://api.opendota.com/api/leagues/{17509}/teams')
+# esl_req = ESL.json()
+#
+# with open('main/calc_bot/esl_2024.json', 'w+') as teams_file:
+#     json.dump(esl_req, teams_file, indent=4)
 
-with open('main/calc_bot/esl_matches.json', 'w+') as esl_file:
-    json.dump(esl_req_matches, esl_file, indent=4)
+with open('main/calc_bot/esl_2024.json', 'r') as f:
+    esl_req = json.load(f)
+
+
+# esl_matches = requests.get(f'https://api.opendota.com/api/leagues/{17509}/matches')
+# esl_req_matches = esl_matches.json()
+#
+# with open('main/calc_bot/esl_matches.json', 'w+') as esl_file:
+#     json.dump(esl_req_matches, esl_file, indent=4)
+
+with open('main/calc_bot/esl_matches.json', 'r') as f:
+    esl_req_matches = json.load(f)
 
 
 
@@ -61,10 +70,14 @@ def matches_test():
             winner = 1
 
 
-        match_info = requests.get(f'https://api.opendota.com/api/matches/{match_id}')
-        req_match_info = match_info.json()
-        with open('main/calc_bot/f_match.json', 'w+') as esl_match_file:
-            json.dump(req_match_info, esl_match_file, indent=4)
+        # match_info = requests.get(f'https://api.opendota.com/api/matches/{match_id}')
+        # req_match_info = match_info.json()
+        # with open('main/calc_bot/f_match.json', 'w+') as esl_match_file:
+        #     json.dump(req_match_info, esl_match_file, indent=4)
+
+        with open('main/calc_bot/f_match.json', 'r') as f:
+            req_match_info = json.load(f)
+
 
 
         for team in all_teams:
@@ -96,7 +109,7 @@ def matches_test():
 
         if count == 5:
             test_data_x.append(
-                {f'game-{count2}' :
+                {'game' :
                     [
                         {'radiant': radiant_pick},
                         {'dire': dire_pick},
@@ -104,7 +117,7 @@ def matches_test():
                     ]
                 }
             )
-
+            test_data_y.append(winner)
 
             test_file = test_data_x
             with open('main/calc_bot/test_data.json', 'w+') as test_data_file:
@@ -123,7 +136,6 @@ def matches_test():
             count2 += 1
 
 
-    return test_data_x
-
+    return test_data_x, test_data_y
 
 
