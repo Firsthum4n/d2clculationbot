@@ -41,12 +41,12 @@ num_heroes = 10
 embedding_dim = 32
 
 model = MainNetwork()
-# output = model(r, d)
+
 
 criterion = nn.BCELoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=0.005)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.008)
 
-EPOCHS = 1500
+EPOCHS = 320
 
 
 for epoch in range(EPOCHS):
@@ -56,12 +56,6 @@ for epoch in range(EPOCHS):
         optimizer.zero_grad()
         output = model(radiant_batch, dire_batch)
         output = output.squeeze(1)
-
-
-        print(output)
-        print(winner)
-        print(output.size())
-        print(winner.size())
         loss = criterion(output, winner)
         loss.backward(retain_graph=True)
         optimizer.step()
