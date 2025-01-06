@@ -28,11 +28,11 @@ dire_team_data = DotaDataset(x_data, 'dire', 1)
 
 r = radiant_team_data[0]
 d = dire_team_data[0]
-
 winner = y_data[0]
 winner = winner.unsqueeze(0)
 
 batch_size = 32
+
 dataloader = DataLoader(list(zip(r, d)), batch_size=batch_size, shuffle=True)
 
 num_teams = 6
