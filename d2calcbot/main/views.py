@@ -44,9 +44,9 @@ model = MainNetwork()
 # output = model(r, d)
 
 criterion = nn.BCELoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.005)
 
-EPOCHS = 5
+EPOCHS = 1500
 
 
 for epoch in range(EPOCHS):
@@ -71,14 +71,6 @@ for epoch in range(EPOCHS):
 
 print("Обучение завершено.")
 
-
-# test = matches_test()
-#
-# print(test[0])
-
-
-# create_or_update_teams()
-# create_or_update_heroes()
 
 
 
