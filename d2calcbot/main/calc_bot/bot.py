@@ -278,10 +278,11 @@ class DotaDataset(Dataset):
 class BranchTeam(nn.Module):
     def __init__(self):
         super().__init__()
-        self.fc1 = nn.Linear(57, 150)
+        self.fc1 = nn.Linear(57, 171)
         self.relu1 = nn.ReLU()
-        self.fc2 = nn.Linear(150, 75)
-        self.fc3 = nn.Linear(75, 1)
+        self.fc2 = nn.Linear(171, 114)
+        self.fc3 = nn.Linear(114,57)
+        self.fc4 = nn.Linear(57, 1)
 
         self.sigmoid = nn.Sigmoid()
 
@@ -296,10 +297,9 @@ class BranchTeam(nn.Module):
         self.relu1 = nn.ReLU(d_x)
 
         x = torch.cat([r_x, d_x], dim=0)
-
         x = self.fc2(x)
-        x = torch.relu(x)
         x = self.fc3(x)
+        x = self.fc4(x)
 
         x = self.sigmoid(x)
 
@@ -310,11 +310,11 @@ class BranchTeam(nn.Module):
 class BranchPlayers(nn.Module):
     def __init__(self):
         super().__init__()
-
-        self.fc1 = nn.Linear(57, 256)
+        self.fc1 = nn.Linear(57, 171)
         self.relu1 = nn.ReLU()
-        self.fc2 = nn.Linear(256, 128)
-        self.fc3 = nn.Linear(128, 1)
+        self.fc2 = nn.Linear(171, 114)
+        self.fc3 = nn.Linear(114,57)
+        self.fc4 = nn.Linear(57, 1)
 
         self.sigmoid = nn.Sigmoid()
 
@@ -329,21 +329,21 @@ class BranchPlayers(nn.Module):
 
         x = torch.cat([r_x, d_x], dim=0)
         x = self.fc2(x)
-        x = torch.relu(x)
         x = self.fc3(x)
-        x = self.sigmoid(x)
+        x = self.fc4(x)
 
+        x = self.sigmoid(x)
 
         return x
 
 class BranchHeroes(nn.Module):
     def __init__(self):
         super().__init__()
-
-        self.fc1 = nn.Linear(57, 256)
+        self.fc1 = nn.Linear(57, 171)
         self.relu1 = nn.ReLU()
-        self.fc2 = nn.Linear(256, 128)
-        self.fc3 = nn.Linear(128, 1)
+        self.fc2 = nn.Linear(171, 114)
+        self.fc3 = nn.Linear(114,57)
+        self.fc4 = nn.Linear(57, 1)
 
         self.sigmoid = nn.Sigmoid()
 
@@ -358,8 +358,8 @@ class BranchHeroes(nn.Module):
 
         x = torch.cat([r_x, d_x], dim=0)
         x = self.fc2(x)
-        x = torch.relu(x)
         x = self.fc3(x)
+        x = self.fc4(x)
 
         x = self.sigmoid(x)
 
@@ -394,5 +394,7 @@ class MainNetwork(nn.Module):
 
         output = self.final_layer(combined)
         output = self.sigmoid(output)
+
+        # output = torch.round(output)
 
         return output
