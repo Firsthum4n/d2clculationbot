@@ -1,11 +1,10 @@
 from main.calc_bot.bot import encryption, DotaDataset, MainNetwork
 from main.calc_bot.test_data import matches_test
-
 import json
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-import matplotlib.pyplot as plt
+
 
 filepath = 'main/calc_bot/data.json'
 data = []
@@ -52,10 +51,11 @@ num_heroes = 10
 embedding_dim = 32
 
 model = MainNetwork()
+model.load_state_dict(torch.load('main/calc_bot/dota_model.pth'))
 
 
 criterion = nn.BCELoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=0.011)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
 EPOCHS = 200
 
@@ -96,11 +96,11 @@ for j in range(len(x_data)):
         print(f'Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}')
     print(f'данные номер: {j+1}')
 print("Обучение завершено.")
-torch.save(model.state_dict(), 'dota_model.pth')
+torch.save(model.state_dict(), 'main/calc_bot/dota_model.pth')
 
 
 model = MainNetwork()
-model.load_state_dict(torch.load('dota_model.pth'))
+model.load_state_dict(torch.load('main/calc_bot/dota_model.pth'))
 for j in range(len(x_valid_data)):
     r = r_valid[j]
     d = d_valid[j]
@@ -121,4 +121,4 @@ for j in range(len(x_valid_data)):
         print(f'Epoch {epoch + 1}, Val Loss: {val_loss / len(x_valid_data):.4f}')
 
 print("Обучение завершено.")
-torch.save(model.state_dict(), 'dota_model.pth')
+torch.save(model.state_dict(), 'main/calc_bot/dota_model.pth')

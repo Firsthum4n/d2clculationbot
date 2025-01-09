@@ -27,11 +27,14 @@ def encryption(radiant, dire):
     model = MainNetwork()
     model.load_state_dict(torch.load('main/calc_bot/dota_model.pth'))
 
-
-
+    model.eval()
     with torch.no_grad():
         output = model(radiant_team_data,dire_team_data)
-        print(f"\nВероятность победы Radiant: {output.item()}")
+        if output.item() < 0.5:
+            print(f'победа radiant {output.item()}')
+        elif output.item() > 0.5:
+            print(f'победа dire {output.item()}')
+
 
 
 """функция создающий словарь со всеми именами и статами команды, игроков и героев"""
@@ -265,20 +268,19 @@ class DotaDataset(Dataset):
 
 
 
+
+
+
+
 class BranchTeam(nn.Module):
     def __init__(self):
         super().__init__()
-        self.fc1 = nn.Linear(57, 570)
-        self.fc2 = nn.Linear(570, 513)
-        self.fc3 = nn.Linear(513, 456)
-        self.fc4 = nn.Linear(456, 399)
-        self.fc5 = nn.Linear(399, 342)
-        self.fc6 = nn.Linear(342, 285)
-        self.fc7 = nn.Linear(285, 228)
-        self.fc8 = nn.Linear(228, 171)
-        self.fc9 = nn.Linear(171, 114)
-        self.fc10 = nn.Linear(114,57)
-        self.fc11 = nn.Linear(57, 1)
+        self.fc1 = nn.Linear(57, 285)
+        self.fc2 = nn.Linear(285, 228)
+        self.fc3 = nn.Linear(228, 171)
+        self.fc4 = nn.Linear(171, 114)
+        self.fc5 = nn.Linear(114,57)
+        self.fc6 = nn.Linear(57, 1)
 
         self.relu1 = nn.ReLU()
 
@@ -300,11 +302,6 @@ class BranchTeam(nn.Module):
         x = self.fc4(x)
         x = self.fc5(x)
         x = self.fc6(x)
-        x = self.fc7(x)
-        x = self.fc8(x)
-        x = self.fc9(x)
-        x = self.fc10(x)
-        x = self.fc11(x)
 
         x = self.sigmoid(x)
 
@@ -315,17 +312,12 @@ class BranchTeam(nn.Module):
 class BranchPlayers(nn.Module):
     def __init__(self):
         super().__init__()
-        self.fc1 = nn.Linear(57, 570)
-        self.fc2 = nn.Linear(570, 513)
-        self.fc3 = nn.Linear(513, 456)
-        self.fc4 = nn.Linear(456, 399)
-        self.fc5 = nn.Linear(399, 342)
-        self.fc6 = nn.Linear(342, 285)
-        self.fc7 = nn.Linear(285, 228)
-        self.fc8 = nn.Linear(228, 171)
-        self.fc9 = nn.Linear(171, 114)
-        self.fc10 = nn.Linear(114,57)
-        self.fc11 = nn.Linear(57, 1)
+        self.fc1 = nn.Linear(57, 285)
+        self.fc2 = nn.Linear(285, 228)
+        self.fc3 = nn.Linear(228, 171)
+        self.fc4 = nn.Linear(171, 114)
+        self.fc5 = nn.Linear(114,57)
+        self.fc6 = nn.Linear(57, 1)
 
         self.relu1 = nn.ReLU()
 
@@ -346,11 +338,6 @@ class BranchPlayers(nn.Module):
         x = self.fc4(x)
         x = self.fc5(x)
         x = self.fc6(x)
-        x = self.fc7(x)
-        x = self.fc8(x)
-        x = self.fc9(x)
-        x = self.fc10(x)
-        x = self.fc11(x)
 
         self.sigmoid = nn.Sigmoid()
 
@@ -360,16 +347,14 @@ class BranchHeroes(nn.Module):
     def __init__(self):
         super().__init__()
         self.fc1 = nn.Linear(57, 570)
-        self.fc2 = nn.Linear(570, 513)
-        self.fc3 = nn.Linear(513, 456)
-        self.fc4 = nn.Linear(456, 399)
-        self.fc5 = nn.Linear(399, 342)
-        self.fc6 = nn.Linear(342, 285)
-        self.fc7 = nn.Linear(285, 228)
-        self.fc8 = nn.Linear(228, 171)
-        self.fc9 = nn.Linear(171, 114)
-        self.fc10 = nn.Linear(114,57)
-        self.fc11 = nn.Linear(57, 1)
+        self.fc2 = nn.Linear(570, 456)
+        self.fc3 = nn.Linear(456, 342)
+        self.fc4 = nn.Linear(342, 285)
+        self.fc5 = nn.Linear(285, 228)
+        self.fc6 = nn.Linear(228, 171)
+        self.fc7 = nn.Linear(171, 114)
+        self.fc8 = nn.Linear(114,57)
+        self.fc9 = nn.Linear(57, 1)
 
         self.relu1 = nn.ReLU()
 
@@ -393,8 +378,6 @@ class BranchHeroes(nn.Module):
         x = self.fc7(x)
         x = self.fc8(x)
         x = self.fc9(x)
-        x = self.fc10(x)
-        x = self.fc11(x)
 
         x = self.sigmoid(x)
 
@@ -410,7 +393,13 @@ class MainNetwork(nn.Module):
         self.branch_p = BranchPlayers()
         self.branch_h = BranchHeroes()
 
-        self.final_layer = nn.Linear(3, 1)
+        self.final_layer1 = nn.Linear(3, 25)
+        self.final_layer2 = nn.Linear(60, 60)
+        self.final_layer3= nn.Linear(60, 60)
+        self.final_layer4 = nn.Linear(60, 30)
+        self.final_layer5 = nn.Linear(30, 10)
+        self.final_layer6 = nn.Linear(10, 4)
+        self.final_layer7 = nn.Linear(4, 1)
 
         self.sigmoid = nn.Sigmoid()
 
@@ -427,9 +416,15 @@ class MainNetwork(nn.Module):
 
 
 
-        output = self.final_layer(combined)
+        output = self.final_layer1(combined)
+        output = self.final_layer2(output)
+        output = self.final_layer3(output)
+        output = self.final_layer4(output)
+        output = self.final_layer5(output)
+        output = self.final_layer6(output)
+        output = self.final_layer7(output)
+
         output = self.sigmoid(output)
 
-        # output = torch.round(output)
 
         return output
