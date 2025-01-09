@@ -20,59 +20,18 @@ import json
 
 
 def encryption(radiant, dire):
-    radiant_all_pick = encryption_level_1(radiant)
-    dire_all_pick = encryption_level_1(dire)
-
-
-    # radiant_team_data = dataset(radiant_all_pick)
-    # dire_team_data = dataset(dire_all_pick)
-
-    new_data = matches_test()
-
-    radiant_team_data = DotaDataset(new_data, 'radiant', 0)
-    dire_team_data = DotaDataset(new_data, 'dire', 1)
-
-    r = radiant_team_data[0]
-    d = dire_team_data[0]
-
-
-    num_teams = 6
-    num_players = 10
-    num_heroes = 10
-    embedding_dim = 32
-
+    radiant_team_data = dataset(radiant)
+    dire_team_data = dataset(dire)
 
 
     model = MainNetwork()
-
-    output = model(radiant_team_data, dire_team_data)
-
-    criterion = nn.BCELoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-
-    EPOCHS = 5
-    batch_size = 32
-
-    for epoch in range(EPOCHS):
-        model.train()
-        running_loss = 0.0
-        for i in range(len(x_data)//batch_size):
-            optimizer.zero_grad()
+    model.load_state_dict(torch.load('main/calc_bot/dota_model.pth'))
 
 
 
-
-
-
-
-
-
-
-    # with torch.no_grad():
-    #     output = model(radiant_team_data, dire_team_data,
-    #                    radiant_player_data, dire_player_data,
-    #                    radiant_hero_data, dire_hero_data)
-    #     print(f"\nВероятность победы Radiant: {output.item()}")
+    with torch.no_grad():
+        output = model(radiant_team_data,dire_team_data)
+        print(f"\nВероятность победы Radiant: {output.item()}")
 
 
 """функция создающий словарь со всеми именами и статами команды, игроков и героев"""
@@ -157,6 +116,7 @@ def ad_to_dict(team_pick):
     for team in team_pick['team']:
         team_names.add(team['name'])
 
+
     for player in team_pick['players']:
         for name in player['name']:
             player_names.add(name)
@@ -174,7 +134,7 @@ def ad_to_dict(team_pick):
 def embedding_create(team_pick):
     team_names, player_names, hero_names = ad_to_dict(team_pick)
 
-    embedding_dim = 32  # Размерность векторов Embedding
+    embedding_dim = 32
     team_embedding = nn.Embedding(len(team_names), embedding_dim)
     player_embedding = nn.Embedding(len(player_names), embedding_dim)
     hero_embedding = nn.Embedding(len(hero_names), embedding_dim)
@@ -213,13 +173,41 @@ def transform_data(team_data, player_data, hero_data, team_pick):
 
 
 def dataset(data):
-    team_data = data
+    num_teams = 6
+    num_players = 10
+    num_heroes = 10
+    embedding_dim = 32
+
+    team_embedding = nn.Embedding(num_teams, embedding_dim)
+    player_embedding = nn.Embedding(num_players, embedding_dim)
+    hero_embedding = nn.Embedding(num_heroes, embedding_dim)
+
+    team_data = encryption_level_1(data)
     (team_index, player_indices, hero_indices,
     team_stats, player_stats, hero_stats) = transform_data(team_data['team'],
                                                             team_data['players'],
                                                             team_data['heroes'],
                                                             team_data)
-    return team_index, player_indices, hero_indices, team_stats, player_stats, hero_stats
+
+    team_index = torch.tensor([team_index])
+    team_emb = team_embedding(team_index)
+    team_stats = team_stats.unsqueeze(0)
+
+    player_indices = torch.tensor(player_indices)
+    player_emb = player_embedding(player_indices)
+
+    hero_indices = torch.tensor(hero_indices)
+    hero_emb = hero_embedding(hero_indices)
+
+    team_block = torch.cat((team_emb, team_stats), dim=1)
+    player_block = torch.cat((player_emb, player_stats), dim=1)
+    hero_block = torch.cat((hero_emb, hero_stats), dim=1)
+
+    team_block = team_block.repeat(5, 1)
+    team_block = F.pad(team_block, (0, 22), mode='constant', value=0)
+    player_block = F.pad(player_block, (0, 23), mode='constant', value=0)
+
+    return team_block, player_block, hero_block
 
 
 class DotaDataset(Dataset):
@@ -243,6 +231,8 @@ class DotaDataset(Dataset):
     def __getitem__(self, idx):
         data_for_encryption = self.data[idx]['game'][self.index][self.team]
         team_data = encryption_level_1(data_for_encryption)
+
+
 
         (team_index, player_indices, hero_indices,
         team_stats, player_stats, hero_stats) = transform_data(team_data['team'],
@@ -278,11 +268,19 @@ class DotaDataset(Dataset):
 class BranchTeam(nn.Module):
     def __init__(self):
         super().__init__()
-        self.fc1 = nn.Linear(57, 171)
+        self.fc1 = nn.Linear(57, 570)
+        self.fc2 = nn.Linear(570, 513)
+        self.fc3 = nn.Linear(513, 456)
+        self.fc4 = nn.Linear(456, 399)
+        self.fc5 = nn.Linear(399, 342)
+        self.fc6 = nn.Linear(342, 285)
+        self.fc7 = nn.Linear(285, 228)
+        self.fc8 = nn.Linear(228, 171)
+        self.fc9 = nn.Linear(171, 114)
+        self.fc10 = nn.Linear(114,57)
+        self.fc11 = nn.Linear(57, 1)
+
         self.relu1 = nn.ReLU()
-        self.fc2 = nn.Linear(171, 114)
-        self.fc3 = nn.Linear(114,57)
-        self.fc4 = nn.Linear(57, 1)
 
         self.sigmoid = nn.Sigmoid()
 
@@ -300,6 +298,13 @@ class BranchTeam(nn.Module):
         x = self.fc2(x)
         x = self.fc3(x)
         x = self.fc4(x)
+        x = self.fc5(x)
+        x = self.fc6(x)
+        x = self.fc7(x)
+        x = self.fc8(x)
+        x = self.fc9(x)
+        x = self.fc10(x)
+        x = self.fc11(x)
 
         x = self.sigmoid(x)
 
@@ -310,11 +315,19 @@ class BranchTeam(nn.Module):
 class BranchPlayers(nn.Module):
     def __init__(self):
         super().__init__()
-        self.fc1 = nn.Linear(57, 171)
+        self.fc1 = nn.Linear(57, 570)
+        self.fc2 = nn.Linear(570, 513)
+        self.fc3 = nn.Linear(513, 456)
+        self.fc4 = nn.Linear(456, 399)
+        self.fc5 = nn.Linear(399, 342)
+        self.fc6 = nn.Linear(342, 285)
+        self.fc7 = nn.Linear(285, 228)
+        self.fc8 = nn.Linear(228, 171)
+        self.fc9 = nn.Linear(171, 114)
+        self.fc10 = nn.Linear(114,57)
+        self.fc11 = nn.Linear(57, 1)
+
         self.relu1 = nn.ReLU()
-        self.fc2 = nn.Linear(171, 114)
-        self.fc3 = nn.Linear(114,57)
-        self.fc4 = nn.Linear(57, 1)
 
         self.sigmoid = nn.Sigmoid()
 
@@ -331,19 +344,34 @@ class BranchPlayers(nn.Module):
         x = self.fc2(x)
         x = self.fc3(x)
         x = self.fc4(x)
+        x = self.fc5(x)
+        x = self.fc6(x)
+        x = self.fc7(x)
+        x = self.fc8(x)
+        x = self.fc9(x)
+        x = self.fc10(x)
+        x = self.fc11(x)
 
-        x = self.sigmoid(x)
+        self.sigmoid = nn.Sigmoid()
 
         return x
 
 class BranchHeroes(nn.Module):
     def __init__(self):
         super().__init__()
-        self.fc1 = nn.Linear(57, 171)
+        self.fc1 = nn.Linear(57, 570)
+        self.fc2 = nn.Linear(570, 513)
+        self.fc3 = nn.Linear(513, 456)
+        self.fc4 = nn.Linear(456, 399)
+        self.fc5 = nn.Linear(399, 342)
+        self.fc6 = nn.Linear(342, 285)
+        self.fc7 = nn.Linear(285, 228)
+        self.fc8 = nn.Linear(228, 171)
+        self.fc9 = nn.Linear(171, 114)
+        self.fc10 = nn.Linear(114,57)
+        self.fc11 = nn.Linear(57, 1)
+
         self.relu1 = nn.ReLU()
-        self.fc2 = nn.Linear(171, 114)
-        self.fc3 = nn.Linear(114,57)
-        self.fc4 = nn.Linear(57, 1)
 
         self.sigmoid = nn.Sigmoid()
 
@@ -360,6 +388,13 @@ class BranchHeroes(nn.Module):
         x = self.fc2(x)
         x = self.fc3(x)
         x = self.fc4(x)
+        x = self.fc5(x)
+        x = self.fc6(x)
+        x = self.fc7(x)
+        x = self.fc8(x)
+        x = self.fc9(x)
+        x = self.fc10(x)
+        x = self.fc11(x)
 
         x = self.sigmoid(x)
 
