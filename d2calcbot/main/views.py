@@ -63,12 +63,15 @@ embedding_dim = 32
 
 model = MainNetwork()
 
+def custom_collate_fn(batch):
+    radiant_d, dire_d = zip(*batch)
 
+    return list(radiant_d), list(dire_d)
 
 criterion = nn.BCELoss()
-optimizer = torch.optim.AdamW(model.parameters(), lr=0.0006, weight_decay=1e-3)
+optimizer = torch.optim.AdamW(model.parameters(), lr=0.00006, weight_decay=1e-3)
 
-EPOCHS = 100
+EPOCHS = 150
 
 
 for j in range(len(x_data)):
@@ -77,7 +80,7 @@ for j in range(len(x_data)):
     winner = y_data[j]
     winner = winner.unsqueeze(0)
 
-    dataloader = DataLoader(list(zip(r, d)), batch_size=batch_size, shuffle=True)
+    dataloader = DataLoader(list(zip(r, d)), batch_size=batch_size, collate_fn=custom_collate_fn)
 
     for epoch in range(EPOCHS):
         model.train()
