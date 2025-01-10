@@ -206,10 +206,6 @@ def dataset(data):
     player_block = torch.cat((player_emb, player_stats), dim=1)
     hero_block = torch.cat((hero_emb, hero_stats), dim=1)
 
-    team_block = team_block.repeat(5, 1)
-    team_block = F.pad(team_block, (0, 22), mode='constant', value=0)
-    player_block = F.pad(player_block, (0, 23), mode='constant', value=0)
-
     return team_block, player_block, hero_block
 
 
@@ -258,9 +254,6 @@ class DotaDataset(Dataset):
         player_block = torch.cat((player_emb, player_stats), dim=1)
         hero_block = torch.cat((hero_emb, hero_stats), dim=1)
 
-        team_block = team_block.repeat(5,1)
-        team_block = F.pad(team_block, (0, 22), mode='constant', value=0)
-        player_block = F.pad(player_block, (0, 23), mode='constant', value=0)
 
         return team_block, player_block, hero_block
 
@@ -275,14 +268,13 @@ class DotaDataset(Dataset):
 class BranchTeam(nn.Module):
     def __init__(self):
         super().__init__()
-        self.fc1 = nn.Linear(57, 285)
-        self.fc2 = nn.Linear(285, 228)
-        self.fc3 = nn.Linear(228, 171)
-        self.fc4 = nn.Linear(171, 114)
-        self.fc5 = nn.Linear(114,64)
+        self.relu = nn.ReLU()
 
-
-        self.relu1 = nn.ReLU()
+        self.fc1 = nn.Linear(35, 70)
+        self.fc2 = nn.Linear(70, 70)
+        self.fc3 = nn.Linear(70, 70)
+        self.fc4 = nn.Linear(70, 35)
+        self.fc5 = nn.Linear(35,35)
 
         self.sigmoid = nn.Sigmoid()
 
@@ -292,9 +284,7 @@ class BranchTeam(nn.Module):
         d_team_block, d_player_block, d_hero_block = dire_team_data
 
         r_x = self.fc1(r_team_block)
-        self.relu1 = nn.ReLU(r_x)
         d_x = self.fc1(d_team_block)
-        self.relu1 = nn.ReLU(d_x)
 
         x = torch.cat([r_x, d_x], dim=0)
         x = self.fc2(x)
@@ -311,14 +301,15 @@ class BranchTeam(nn.Module):
 class BranchPlayers(nn.Module):
     def __init__(self):
         super().__init__()
-        self.fc1 = nn.Linear(57, 285)
-        self.fc2 = nn.Linear(285, 228)
-        self.fc3 = nn.Linear(228, 171)
-        self.fc4 = nn.Linear(171, 114)
-        self.fc5 = nn.Linear(114,64)
+        self.relu = nn.ReLU()
+
+        self.fc1 = nn.Linear(34, 170)
+        self.fc2 = nn.Linear(170, 170)
+        self.fc3 = nn.Linear(170, 85)
+        self.fc4 = nn.Linear(85, 40)
+        self.fc5 = nn.Linear(40,40)
 
 
-        self.relu1 = nn.ReLU()
 
         self.sigmoid = nn.Sigmoid()
 
@@ -327,9 +318,8 @@ class BranchPlayers(nn.Module):
         d_team_block, d_player_block, d_hero_block = dire_team_data
 
         r_x = self.fc1(r_player_block)
-        self.relu1 = nn.ReLU(r_x)
         d_x = self.fc1(d_player_block)
-        self.relu1 = nn.ReLU(d_x)
+
 
         x = torch.cat([r_x, d_x], dim=0)
         x = self.fc2(x)
@@ -345,16 +335,16 @@ class BranchPlayers(nn.Module):
 class BranchHeroes(nn.Module):
     def __init__(self):
         super().__init__()
-        self.fc1 = nn.Linear(57, 570)
-        self.fc2 = nn.Linear(570, 456)
-        self.fc3 = nn.Linear(456, 342)
-        self.fc4 = nn.Linear(342, 285)
-        self.fc5 = nn.Linear(285, 228)
-        self.fc6 = nn.Linear(228, 171)
-        self.fc7 = nn.Linear(171, 114)
-        self.fc8 = nn.Linear(114,64)
+        self.relu = nn.ReLU()
+        self.leaky_relu2 = nn.LeakyReLU(0.2)
 
-        self.relu1 = nn.ReLU()
+        self.fc1 = nn.Linear(57, 285)
+        self.fc2 = nn.Linear(285, 285)
+        self.fc3 = nn.Linear(285, 285)
+        self.fc4 = nn.Linear(285, 228)
+        self.fc5 = nn.Linear(228, 171)
+        self.fc6 = nn.Linear(171, 114)
+        self.fc7 = nn.Linear(114,64)
 
         self.sigmoid = nn.Sigmoid()
 
@@ -363,18 +353,17 @@ class BranchHeroes(nn.Module):
         d_team_block, d_player_block, d_hero_block = dire_team_data
 
         r_x = self.fc1(r_hero_block)
-        self.relu1 = nn.ReLU(r_x)
         d_x = self.fc1(d_hero_block)
-        self.relu1 = nn.ReLU(d_x)
+
 
         x = torch.cat([r_x, d_x], dim=0)
         x = self.fc2(x)
         x = self.fc3(x)
         x = self.fc4(x)
+        x = self.leaky_relu2(x)
         x = self.fc5(x)
         x = self.fc6(x)
         x = self.fc7(x)
-        x = self.fc8(x)
 
         x = self.sigmoid(x)
 
@@ -386,19 +375,22 @@ class MainNetwork(nn.Module):
     def __init__(self):
         super().__init__()
 
+        self.relu = nn.ReLU()
+
         self.branch_t = BranchTeam()
         self.branch_p = BranchPlayers()
         self.branch_h = BranchHeroes()
 
-        self.final_layer1 = nn.Linear(192, 192)
-        self.final_layer2 = nn.Linear(192, 128)
-        self.final_layer3 = nn.Linear(128, 64)
-        self.final_layer4 = nn.Linear(64, 32)
-        self.final_layer5 = nn.Linear(32, 16)
-        self.final_layer6 = nn.Linear(16, 8)
-        self.final_layer7 = nn.Linear(8, 4)
-        self.final_layer8 = nn.Linear(4, 2)
-        self.final_layer9 = nn.Linear(2, 1)
+        self.final_layer1 = nn.Linear(139, 264)
+        self.final_layer2 = nn.Linear(264, 192)
+        self.final_layer3= nn.Linear(192, 128)
+        self.final_layer4 = nn.Linear(128, 64)
+        self.final_layer5 = nn.Linear(64, 32)
+        self.final_layer6 = nn.Linear(32, 16)
+        self.final_layer7 = nn.Linear(16, 8)
+        self.final_layer8 = nn.Linear(8, 4)
+        self.final_layer9 = nn.Linear(4, 2)
+        self.final_layer10 = nn.Linear(2, 1)
 
         self.sigmoid = nn.Sigmoid()
 
@@ -422,9 +414,11 @@ class MainNetwork(nn.Module):
         output = self.final_layer5(output)
         output = self.final_layer6(output)
         output = self.final_layer7(output)
+        output = self.relu(output)
         output = self.final_layer8(output)
         output = self.final_layer9(output)
-
+        output = self.relu(output)
+        output = self.final_layer10(output)
         output = self.sigmoid(output)
 
 
