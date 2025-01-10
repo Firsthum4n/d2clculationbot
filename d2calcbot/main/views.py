@@ -42,15 +42,12 @@ for i in range(22):
     cnt+=1
 
 
-x_data = x_data[:66]
-y_data = y_data[:66]
-
-
+x_data = x_data
+y_data = y_data
 
 
 radiant_team_data = DotaDataset(x_data, 'radiant', 0)
 dire_team_data = DotaDataset(x_data, 'dire', 1)
-
 r_valid = DotaDataset(x_valid_data, 'radiant', 0)
 d_valid = DotaDataset(x_valid_data, 'dire', 1)
 
@@ -64,14 +61,14 @@ num_players = 10
 num_heroes = 10
 embedding_dim = 32
 
-model_2 = MainNetwork()
+model = MainNetwork()
 
 
 
 criterion = nn.BCELoss()
-optimizer = torch.optim.AdamW(model_2.parameters(), lr=0.00035)
+optimizer = torch.optim.AdamW(model.parameters(), lr=0.0006, weight_decay=1e-3)
 
-EPOCHS = 70
+EPOCHS = 100
 
 
 for j in range(len(x_data)):
@@ -83,13 +80,13 @@ for j in range(len(x_data)):
     dataloader = DataLoader(list(zip(r, d)), batch_size=batch_size, shuffle=True)
 
     for epoch in range(EPOCHS):
-        model_2.train()
+        model.train()
         running_loss = 0.0
 
 
         for i, (radiant_batch, dire_batch) in enumerate(dataloader):
             optimizer.zero_grad()
-            output = model_2(radiant_batch, dire_batch)
+            output = model(radiant_batch, dire_batch)
             output = output.squeeze(1)
             loss = criterion(output, winner)
             loss.backward(retain_graph=True)
@@ -110,32 +107,8 @@ for j in range(len(x_data)):
         print(f'Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}')
     print(f'данные номер: {j+1}')
 print("Обучение завершено.")
-torch.save(model_2.state_dict(), 'main/calc_bot/dota_model.pth')
+torch.save(model.state_dict(), 'main/calc_bot/dota_model.pth')
 
-
-model_2 = MainNetwork()
-# model_2.load_state_dict(torch.load('main/calc_bot/dota_model.pth'))
-for j in range(len(x_valid_data)):
-    r = r_valid[j]
-    d = d_valid[j]
-    winner = y_valid_data[j]
-    winner = winner.unsqueeze(0)
-    valid_dataloader = DataLoader(list(zip(r, d)), batch_size=batch_size, shuffle=True)
-
-    for epoch in range(EPOCHS):
-        model_2.eval()
-        val_loss = 0.0
-        with torch.no_grad():
-            for i, (radiant_batch, dire_batch) in enumerate(valid_dataloader):
-                output = model_2(radiant_batch, dire_batch)
-                output = output.squeeze(1)
-                loss = criterion(output,winner)
-                val_loss += loss.item()
-
-        print(f'Epoch {epoch + 1}, Val Loss: {val_loss / len(x_valid_data):.4f}')
-
-print("Обучение завершено.")
-torch.save(model_2.state_dict(), 'main/calc_bot/dota_model.pth')
 
 
 class MainHomeView(LoginRequiredMixin,DataMixin, ListView):
@@ -143,7 +116,7 @@ class MainHomeView(LoginRequiredMixin,DataMixin, ListView):
     Класс представления страницы выбоар героеев
     """
 
-    model_2 = Heroes
+    model = Heroes
     template_name = 'main/index.html'
     context_object_name = 'heroes'
 
@@ -170,7 +143,6 @@ class All_pick(View):
         print(dire_pick)
 
         result = encryption(radiant_pick, dire_pick)
-
 
 
         return JsonResponse(
