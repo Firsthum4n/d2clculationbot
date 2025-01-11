@@ -11,8 +11,8 @@ import json
 # with open('main/calc_bot/leagues.json', 'w+') as teams_file:
 #     json.dump(tst, teams_file, indent=4)
 
-with open('main/calc_bot/leagues.json', 'r') as f:
-    tst = json.load(f)
+# with open('main/calc_bot/leagues.json', 'r') as f:
+#     tst = json.load(f)
 
 import requests
 import json
@@ -40,16 +40,16 @@ all_teams = []
 # with open('main/calc_bot/esl_2024.json', 'r') as f:
 #     esl_req = json.load(f)
 #########################################################
-for league_id in league_ids:
-    esl_matches = requests.get(f'https://api.opendota.com/api/leagues/{league_id}/matches')
-    if esl_matches.status_code == 200:
-        esl_req_matches = esl_matches.json()
-        all_matches.extend(esl_req_matches)
-    else:
-        print(f"Ошибка при запросе к лиге {league_id}: {esl_matches.status_code}")
-
-with open('main/calc_bot/esl_matches.json', 'w+') as esl_file:
-    json.dump(all_matches, esl_file, indent=4)
+# for league_id in league_ids:
+#     esl_matches = requests.get(f'https://api.opendota.com/api/leagues/{league_id}/matches')
+#     if esl_matches.status_code == 200:
+#         esl_req_matches = esl_matches.json()
+#         all_matches.extend(esl_req_matches)
+#     else:
+#         print(f"Ошибка при запросе к лиге {league_id}: {esl_matches.status_code}")
+#
+# with open('main/calc_bot/esl_matches.json', 'w+') as esl_file:
+#     json.dump(all_matches, esl_file, indent=4)
 
 #########################################################
 # with open('main/calc_bot/esl_matches.json', 'r') as f:

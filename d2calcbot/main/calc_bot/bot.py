@@ -29,9 +29,9 @@ def encryption(radiant, dire):
     model.eval()
     with torch.no_grad():
         output = model(radiant_team_data,dire_team_data)
-        if output.item() < 0.095:
+        if output.item() <= 0.5:
             print(f'победа radiant {output.item()}')
-        elif output.item() >= 0.095:
+        elif output.item() > 0.5:
             print(f'победа dire {output.item()}')
 
 
@@ -229,6 +229,7 @@ class DotaDataset(Dataset):
     def __getitem__(self, idx):
         data_for_encryption = self.data[idx]['game'][self.index][self.team]
         team_data = encryption_level_1(data_for_encryption)
+        print(team_data)
 
 
 
@@ -310,7 +311,7 @@ class BranchPlayers(nn.Module):
 
 
         x = torch.cat([r_x, d_x], dim=0)
-        x = torch.mean(x, dim=0, keepdim=True)
+        # x = torch.mean(x, dim=0, keepdim=True)
         x = self.fc2(x)
         x = self.sigmoid(x)
 
@@ -325,12 +326,10 @@ class BranchHeroes(nn.Module):
         self.leaky_relu2 = nn.LeakyReLU(0.2)
 
         self.fc1 = nn.Linear(57, 128)
-        # self.fc2 = nn.Linear(128, 256)
-        # self.fc3 = nn.Linear(256, 256)
-        # self.fc4 = nn.Linear(256, 128)
-        # self.fc5 = nn.Linear(128, 128)
-        # self.fc6 = nn.Linear(128, 128)
-        self.fc2 = nn.Linear(128,64)
+        self.fc2 = nn.Linear(128, 256)
+        self.fc3 = nn.Linear(256, 256)
+        self.fc4 = nn.Linear(256, 128)
+        self.fc5 = nn.Linear(128,64)
 
 
         self.sigmoid = nn.Sigmoid()
@@ -344,14 +343,12 @@ class BranchHeroes(nn.Module):
 
 
         x = torch.cat([r_x, d_x], dim=0)
-        x = torch.mean(x, dim=0, keepdim=True)
+        # x = torch.mean(x, dim=0, keepdim=True)
         x = self.fc2(x)
-        # x = self.fc3(x)
-        # x = self.fc4(x)
-        # x = self.relu(x)
-        # x = self.fc5(x)
-        # x = self.fc6(x)
-        # x = self.fc7(x)
+        x = self.fc3(x)
+        x = self.fc4(x)
+        x = self.fc5(x)
+
 
         x = self.sigmoid(x)
 
@@ -373,11 +370,11 @@ class MainNetwork(nn.Module):
         self.branch_h = BranchHeroes()
 
         self.final_layer1 = nn.Linear(192, 256)
-        # self.final_layer2 = nn.Linear(256, 256)
+        self.final_layer2 = nn.Linear(256, 256)
         # self.final_layer3 = nn.Linear(256, 384)
         # self.final_layer4 = nn.Linear(384, 256)
-        self.final_layer2 = nn.Linear(256, 128)
-        self.final_layer3 = nn.Linear(128, 1)
+        self.final_layer3 = nn.Linear(256, 128)
+        self.final_layer4 = nn.Linear(128, 1)
 
 
         self.sigmoid = nn.Sigmoid()
@@ -398,7 +395,7 @@ class MainNetwork(nn.Module):
         output = self.final_layer1(combined)
         output = self.final_layer2(output)
         output = self.final_layer3(output)
-        # output = self.final_layer4(output)
+        output = self.final_layer4(output)
         # output = self.final_layer5(output)
         # output = self.final_layer6(output)
 
