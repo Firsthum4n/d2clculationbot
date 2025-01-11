@@ -4,6 +4,11 @@ import json
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
+from main.calc_bot.bot import encryption, DotaDataset, MainNetwork
+from main.calc_bot.test_data import matches_test
+import torch
+import torch.nn as nn
+from torch.utils.data import Dataset, DataLoader
 
 
 filepath = 'main/calc_bot/data.json'
@@ -18,7 +23,6 @@ x_data, y_data = matches_test()
 y_data = torch.tensor(y_data, dtype=torch.float32)
 
 
-
 cnt = 66
 x_valid_data = []
 y_valid_data = []
@@ -28,22 +32,19 @@ for i in range(22):
     cnt+=1
 
 
-x_data = x_data[:66]
-y_data = y_data[:66]
-
-
+x_data = x_data
+y_data = y_data
 
 
 radiant_team_data = DotaDataset(x_data, 'radiant', 0)
 dire_team_data = DotaDataset(x_data, 'dire', 1)
-
 r_valid = DotaDataset(x_valid_data, 'radiant', 0)
 d_valid = DotaDataset(x_valid_data, 'dire', 1)
 
 
 
 
-batch_size = 32
+batch_size = 64
 
 num_teams = 6
 num_players = 10
@@ -51,13 +52,16 @@ num_heroes = 10
 embedding_dim = 32
 
 model = MainNetwork()
-model.load_state_dict(torch.load('main/calc_bot/dota_model.pth'))
 
+def custom_collate_fn(batch):
+    radiant_d, dire_d = zip(*batch)
+
+    return list(radiant_d), list(dire_d)
 
 criterion = nn.BCELoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+optimizer = torch.optim.AdamW(model.parameters(), lr=0.000001, weight_decay=1e-1)
 
-EPOCHS = 200
+EPOCHS = 350
 
 
 for j in range(len(x_data)):
@@ -66,7 +70,7 @@ for j in range(len(x_data)):
     winner = y_data[j]
     winner = winner.unsqueeze(0)
 
-    dataloader = DataLoader(list(zip(r, d)), batch_size=batch_size, shuffle=True)
+    dataloader = DataLoader(list(zip(r, d)), batch_size=batch_size, collate_fn=custom_collate_fn)
 
     for epoch in range(EPOCHS):
         model.train()
@@ -85,7 +89,9 @@ for j in range(len(x_data)):
     if epoch + 1 == EPOCHS:
         data_item = {
             "number:": j + 1,
-            "loss": running_loss / len(x_data)
+            "loss": running_loss / len(x_data),
+            "out": output.item(),
+            "winner": winner.item()
 
         }
         data.append(data_item)
@@ -93,7 +99,7 @@ for j in range(len(x_data)):
     with open(filepath, 'w') as f:
         json.dump(data, f, indent=4)
 
-        print(f'Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}')
+        print(f'Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winner.item()}')
     print(f'данные номер: {j+1}')
 print("Обучение завершено.")
 torch.save(model.state_dict(), 'main/calc_bot/dota_model.pth')
