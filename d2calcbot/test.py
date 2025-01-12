@@ -16,7 +16,7 @@ import json
 # with open('main/calc_bot/esl_2024.json', 'w+') as teams_file:
 #     json.dump(esl_req, teams_file, indent=4)
 
-league_ids = [17509, 17414, 17272]
+league_ids = [17119, 17126, 17272, 17414, 17509]
 all_matches = []
 all_teams = []
 
@@ -38,6 +38,7 @@ all_teams = []
 # with open('main/calc_bot/esl_2024.json', 'r') as f:
 #     esl_req = json.load(f)
 #########################################################
+
 # for league_id in league_ids:
 #     esl_matches = requests.get(f'https://api.opendota.com/api/leagues/{league_id}/matches')
 #     if esl_matches.status_code == 200:

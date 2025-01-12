@@ -14,7 +14,7 @@ from .calc_bot.bot import encryption
 
 
 from main.calc_bot.bot import encryption, DotaDataset, MainNetwork
-from main.calc_bot.test_data import matches_result
+from main.calc_bot.test_data import matches_result, matches_test
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
@@ -35,17 +35,17 @@ y_data = torch.tensor(y_data, dtype=torch.float32)
 
 
 
-cnt = 250
+cnt = 460
 x_valid_data = []
 y_valid_data = []
-for i in range(35):
+for i in range(23):
     x_valid_data.append(x_data[cnt])
     y_valid_data.append(y_data[cnt])
     cnt+=1
 
 
-x_data = x_data[:250]
-y_data = y_data[:250]
+x_data = x_data[:460]
+y_data = y_data[:460]
 
 
 radiant_team_data = DotaDataset(x_data, 'radiant', 0)
@@ -69,10 +69,9 @@ def custom_collate_fn(batch):
     radiant_d, dire_d = zip(*batch)
 
     return list(radiant_d), list(dire_d)
-#
-# criterion = nn.BCELoss()
-criterion = nn.BCEWithLogitsLoss()
-optimizer = torch.optim.AdamW(model.parameters(), lr=0.000006, weight_decay=0.001)
+
+criterion = nn.BCELoss()
+optimizer = torch.optim.AdamW(model.parameters(), lr=0.000003, weight_decay=0.0001)
 
 EPOCHS = 150
 

@@ -273,9 +273,8 @@ class BranchTeam(nn.Module):
 
         x = torch.cat([r_x, d_x], dim=0)
         x = self.fc2(x)
-        # x = self.sigmoid(x)
+        x = self.sigmoid(x)
 
-        x = self.silu(x)
 
 
         return x
@@ -292,7 +291,6 @@ class BranchPlayers(nn.Module):
         self.fc2 = nn.Linear(128,64)
 
         self.sigmoid = nn.Sigmoid()
-        self.silu = nn.SiLU()
 
     def forward(self, radiant_team_data, dire_team_data):
         r_team_block, r_player_block, r_hero_block = radiant_team_data
@@ -305,7 +303,7 @@ class BranchPlayers(nn.Module):
         x = torch.cat([r_x, d_x], dim=0)
         # x = torch.mean(x, dim=0, keepdim=True)
         x = self.fc2(x)
-        x = self.silu(x)
+        x = self.sigmoid(x)
 
 
 
@@ -323,7 +321,6 @@ class BranchHeroes(nn.Module):
         self.fc4 = nn.Linear(256, 128)
         self.fc5 = nn.Linear(128,64)
 
-        self.silu = nn.SiLU()
         self.sigmoid = nn.Sigmoid()
 
     def forward(self, radiant_team_data, dire_team_data):
@@ -341,7 +338,7 @@ class BranchHeroes(nn.Module):
         x = self.fc4(x)
         x = self.fc5(x)
 
-        x = self.silu(x)
+        x = self.sigmoid(x)
 
 
 
@@ -367,7 +364,6 @@ class MainNetwork(nn.Module):
 
 
         self.sigmoid = nn.Sigmoid()
-        self.silu = nn.SiLU()
 
     def forward(self, radiant_team_data, dire_team_data):
 
@@ -388,7 +384,7 @@ class MainNetwork(nn.Module):
         output = self.final_layer4(output)
 
 
-        output = self.silu(output)
+        output = self.sigmoid(output)
 
 
         return output
