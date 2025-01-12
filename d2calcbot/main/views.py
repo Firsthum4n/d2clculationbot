@@ -70,10 +70,11 @@ def custom_collate_fn(batch):
 
     return list(radiant_d), list(dire_d)
 
-criterion = nn.BCELoss()
-optimizer = torch.optim.AdamW(model.parameters(), lr=0.000003, weight_decay=0.0001)
 
-EPOCHS = 150
+criterion = nn.BCELoss()
+optimizer = torch.optim.AdamW(model.parameters(), lr=0.00001 , weight_decay=0.00001)
+
+EPOCHS = 500
 
 
 for j in range(len(x_data)):

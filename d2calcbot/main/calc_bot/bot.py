@@ -259,8 +259,8 @@ class BranchTeam(nn.Module):
 
         self.fc1 = nn.Linear(35, 128)
         self.fc2 = nn.Linear(128, 64)
-
-        self.silu = nn.SiLU()
+        self.fc3 = nn.Linear(64, 32)
+        self.fc4 = nn.Linear(32, 1)
         self.sigmoid = nn.Sigmoid()
 
 
@@ -273,10 +273,9 @@ class BranchTeam(nn.Module):
 
         x = torch.cat([r_x, d_x], dim=0)
         x = self.fc2(x)
+        x = self.fc3(x)
+        x = self.fc4(x)
         x = self.sigmoid(x)
-
-
-
         return x
 
 
@@ -287,9 +286,11 @@ class BranchPlayers(nn.Module):
         self.relu = nn.ReLU()
         self.leaky_relu2 = nn.LeakyReLU(0.2)
 
-        self.fc1 = nn.Linear(34, 128)
-        self.fc2 = nn.Linear(128,64)
-
+        self.fc1 = nn.Linear(34, 256)
+        self.fc2 = nn.Linear(256,128)
+        self.fc3 = nn.Linear(128, 64)
+        self.fc4 = nn.Linear(64, 32)
+        self.fc5 = nn.Linear(32, 1)
         self.sigmoid = nn.Sigmoid()
 
     def forward(self, radiant_team_data, dire_team_data):
@@ -303,10 +304,10 @@ class BranchPlayers(nn.Module):
         x = torch.cat([r_x, d_x], dim=0)
         # x = torch.mean(x, dim=0, keepdim=True)
         x = self.fc2(x)
+        x = self.fc3(x)
+        x = self.fc4(x)
+        x = self.fc5(x)
         x = self.sigmoid(x)
-
-
-
         return x
 
 class BranchHeroes(nn.Module):
@@ -315,11 +316,11 @@ class BranchHeroes(nn.Module):
         self.relu = nn.ReLU()
         self.leaky_relu2 = nn.LeakyReLU(0.2)
 
-        self.fc1 = nn.Linear(34, 128)
-        self.fc2 = nn.Linear(128, 256)
-        self.fc3 = nn.Linear(256, 256)
-        self.fc4 = nn.Linear(256, 128)
-        self.fc5 = nn.Linear(128,64)
+        self.fc1 = nn.Linear(34, 256)
+        self.fc2 = nn.Linear(256, 128)
+        self.fc3 = nn.Linear(128, 64)
+        self.fc4 = nn.Linear(64,32)
+        self.fc5 = nn.Linear(32,1)
 
         self.sigmoid = nn.Sigmoid()
 
@@ -337,12 +338,7 @@ class BranchHeroes(nn.Module):
         x = self.fc3(x)
         x = self.fc4(x)
         x = self.fc5(x)
-
         x = self.sigmoid(x)
-
-
-
-
         return x
 
 
@@ -357,10 +353,9 @@ class MainNetwork(nn.Module):
         self.branch_p = BranchPlayers()
         self.branch_h = BranchHeroes()
 
-        self.final_layer1 = nn.Linear(192, 256)
-        self.final_layer2 = nn.Linear(256, 256)
-        self.final_layer3 = nn.Linear(256, 128)
-        self.final_layer4 = nn.Linear(128, 1)
+        self.final_layer1 = nn.Linear(3, 32)
+        self.final_layer2 = nn.Linear(32, 1)
+
 
 
         self.sigmoid = nn.Sigmoid()
@@ -380,11 +375,5 @@ class MainNetwork(nn.Module):
 
         output = self.final_layer1(combined)
         output = self.final_layer2(output)
-        output = self.final_layer3(output)
-        output = self.final_layer4(output)
-
-
         output = self.sigmoid(output)
-
-
         return output
