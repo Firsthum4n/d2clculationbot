@@ -124,7 +124,7 @@ for j in range(len(x_valid_data)):
                 loss = criterion(output,winner)
                 val_loss += loss.item()
 
-        print(f'Epoch {epoch + 1}, Val Loss: {val_loss / len(x_valid_data):.4f}')
+        print(f'Epoch {epoch + 1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winner.item()}')
 
 print("Обучение завершено.")
 torch.save(model.state_dict(), 'main/calc_bot/dota_model.pth')

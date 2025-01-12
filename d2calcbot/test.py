@@ -1,9 +1,6 @@
 import requests
 import json
 
-import requests
-import json
-
 
 # test = requests.get('https://api.opendota.com/api/leagues')
 # tst = test.json()
@@ -13,13 +10,14 @@ import json
 
 # with open('main/calc_bot/leagues.json', 'r') as f:
 #     tst = json.load(f)
+# ESL = requests.get(f'https://api.opendota.com/api/leagues/{17272}/teams')
+# esl_req = ESL.json()
+#
+# with open('main/calc_bot/esl_2024.json', 'w+') as teams_file:
+#     json.dump(esl_req, teams_file, indent=4)
 
-import requests
-import json
-
-league_ids = [17509, 17414]
+league_ids = [17509, 17414, 17272]
 all_matches = []
-
 all_teams = []
 
 # for league_id in league_ids:
@@ -48,9 +46,16 @@ all_teams = []
 #     else:
 #         print(f"Ошибка при запросе к лиге {league_id}: {esl_matches.status_code}")
 #
-# with open('main/calc_bot/esl_matches.json', 'w+') as esl_file:
+# with open('main/calc_bot/matches.json', 'w+') as esl_file:
 #     json.dump(all_matches, esl_file, indent=4)
 
 #########################################################
 # with open('main/calc_bot/esl_matches.json', 'r') as f:
 #     esl_req_matches = json.load(f)
+
+#
+# hero_request = requests.get("https://api.opendota.com/api/heroStats")
+# hero_data = hero_request.json()
+#
+# with open('hero_data_stats.json', 'w+') as hero_file:
+#     json.dump(hero_data, hero_file, indent=4)

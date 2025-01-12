@@ -1,18 +1,13 @@
 from sympy.codegen.ast import float32
-
 from main.db_update.heroes import create_or_update_heroes
 from main.db_update.teams import create_or_update_teams
 from .test_data import matches_result
-
 from main.models import *
 import torch
 import torch.nn as nn
-
 import torch.optim as optim
 import torch.nn.functional as F
-
 from torch.utils.data import Dataset, DataLoader, random_split
-
 import os
 import json
 
@@ -98,12 +93,7 @@ def encryption_level_1(team_pick):
         for hero in all_heroes:
             if h == hero.name:
                 team_all_pick['heroes'][count]['name'] = [hero.name]
-                team_all_pick['heroes'][count]['stats'] = [hero.pro_pick, hero.pro_win, hero.pro_lose, hero.base_health, hero.base_health_regen,
-                                                           hero.base_mana, hero.base_mana_regen, hero.base_armor, hero.base_mr,
-                                                           hero.base_attack_min, hero.base_attack_max, hero.base_str, hero.base_agi,
-                                                           hero.base_int, hero.str_gain, hero.agi_gain, hero.int_gain, hero.attack_range,
-                                                           hero.projectile_speed, hero.attack_rate, hero.base_attack_time, hero.attack_point,
-                                                           hero.move_speed, hero.day_vision, hero.night_vision]
+                team_all_pick['heroes'][count]['stats'] = [hero.pro_pick, hero.pro_win]
                 if count < 4:
                     count += 1
 
@@ -229,7 +219,7 @@ class DotaDataset(Dataset):
     def __getitem__(self, idx):
         data_for_encryption = self.data[idx]['game'][self.index][self.team]
         team_data = encryption_level_1(data_for_encryption)
-        print(team_data)
+        # print(team_data)
 
 
 
@@ -270,6 +260,7 @@ class BranchTeam(nn.Module):
         self.fc1 = nn.Linear(35, 128)
         self.fc2 = nn.Linear(128, 64)
 
+        self.silu = nn.SiLU()
         self.sigmoid = nn.Sigmoid()
 
 
@@ -282,7 +273,9 @@ class BranchTeam(nn.Module):
 
         x = torch.cat([r_x, d_x], dim=0)
         x = self.fc2(x)
-        x = self.sigmoid(x)
+        # x = self.sigmoid(x)
+
+        x = self.silu(x)
 
 
         return x
@@ -298,9 +291,8 @@ class BranchPlayers(nn.Module):
         self.fc1 = nn.Linear(34, 128)
         self.fc2 = nn.Linear(128,64)
 
-
-
         self.sigmoid = nn.Sigmoid()
+        self.silu = nn.SiLU()
 
     def forward(self, radiant_team_data, dire_team_data):
         r_team_block, r_player_block, r_hero_block = radiant_team_data
@@ -313,7 +305,7 @@ class BranchPlayers(nn.Module):
         x = torch.cat([r_x, d_x], dim=0)
         # x = torch.mean(x, dim=0, keepdim=True)
         x = self.fc2(x)
-        x = self.sigmoid(x)
+        x = self.silu(x)
 
 
 
@@ -325,13 +317,13 @@ class BranchHeroes(nn.Module):
         self.relu = nn.ReLU()
         self.leaky_relu2 = nn.LeakyReLU(0.2)
 
-        self.fc1 = nn.Linear(57, 128)
+        self.fc1 = nn.Linear(34, 128)
         self.fc2 = nn.Linear(128, 256)
         self.fc3 = nn.Linear(256, 256)
         self.fc4 = nn.Linear(256, 128)
         self.fc5 = nn.Linear(128,64)
 
-
+        self.silu = nn.SiLU()
         self.sigmoid = nn.Sigmoid()
 
     def forward(self, radiant_team_data, dire_team_data):
@@ -349,8 +341,7 @@ class BranchHeroes(nn.Module):
         x = self.fc4(x)
         x = self.fc5(x)
 
-
-        x = self.sigmoid(x)
+        x = self.silu(x)
 
 
 
@@ -371,13 +362,12 @@ class MainNetwork(nn.Module):
 
         self.final_layer1 = nn.Linear(192, 256)
         self.final_layer2 = nn.Linear(256, 256)
-        # self.final_layer3 = nn.Linear(256, 384)
-        # self.final_layer4 = nn.Linear(384, 256)
         self.final_layer3 = nn.Linear(256, 128)
         self.final_layer4 = nn.Linear(128, 1)
 
 
         self.sigmoid = nn.Sigmoid()
+        self.silu = nn.SiLU()
 
     def forward(self, radiant_team_data, dire_team_data):
 
@@ -396,11 +386,9 @@ class MainNetwork(nn.Module):
         output = self.final_layer2(output)
         output = self.final_layer3(output)
         output = self.final_layer4(output)
-        # output = self.final_layer5(output)
-        # output = self.final_layer6(output)
 
 
-        output = self.sigmoid(output)
+        output = self.silu(output)
 
 
         return output

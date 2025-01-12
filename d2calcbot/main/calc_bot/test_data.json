@@ -2850,5 +2850,5993 @@
                 "winner": 1
             }
         ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Morphling",
+                        "Shadow Shaman",
+                        "Venomancer",
+                        "Enchantress",
+                        "Timbersaw"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Tidehunter",
+                        "Dragon Knight",
+                        "Batrider",
+                        "Magnus",
+                        "Monkey King"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Morphling",
+                        "Lina",
+                        "Brewmaster",
+                        "Magnus",
+                        "Elder Titan"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Zeus",
+                        "Beastmaster",
+                        "Ursa",
+                        "Naga Siren",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Templar Assassin",
+                        "Batrider",
+                        "Doom",
+                        "Ogre Magi",
+                        "Timbersaw"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Sand King",
+                        "Enigma",
+                        "Dragon Knight",
+                        "Enchantress",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Tiny",
+                        "Beastmaster",
+                        "Alchemist",
+                        "Phoenix",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Storm Spirit",
+                        "Doom",
+                        "Monkey King",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Drow Ranger",
+                        "Nature's Prophet",
+                        "Ogre Magi",
+                        "Dawnbreaker",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Queen of Pain",
+                        "Pugna",
+                        "Clockwerk",
+                        "Ursa",
+                        "Terrorblade"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Tiny",
+                        "Pugna",
+                        "Templar Assassin",
+                        "Doom",
+                        "Terrorblade"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Razor",
+                        "Chen",
+                        "Centaur Warrunner",
+                        "Earth Spirit",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Sniper",
+                        "Beastmaster",
+                        "Gyrocopter",
+                        "Alchemist",
+                        "Shadow Demon"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Razor",
+                        "Invoker",
+                        "Ogre Magi",
+                        "Terrorblade",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Razor",
+                        "Lion",
+                        "Magnus",
+                        "Phoenix",
+                        "Mars"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Lina",
+                        "Dragon Knight",
+                        "Shadow Demon",
+                        "Centaur Warrunner",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Morphling",
+                        "Queen of Pain",
+                        "Enchantress",
+                        "Rubick",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Wraith King",
+                        "Pugna",
+                        "Broodmother",
+                        "Magnus",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Magnus",
+                        "Earth Spirit",
+                        "Phoenix",
+                        "Mars",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Tiny",
+                        "Pugna",
+                        "Gyrocopter",
+                        "Techies",
+                        "Terrorblade"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Enchantress",
+                        "Batrider",
+                        "Slark",
+                        "Earth Spirit",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Razor",
+                        "Storm Spirit",
+                        "Pugna",
+                        "Terrorblade",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Drow Ranger",
+                        "Sniper",
+                        "Magnus",
+                        "Earth Spirit",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Lion",
+                        "Dragon Knight",
+                        "Enchantress",
+                        "Huskar",
+                        "Timbersaw"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "OG",
+                    "heroes": [
+                        "Drow Ranger",
+                        "Shadow Demon",
+                        "Tusk",
+                        "Earth Spirit",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Lion",
+                        "Enchantress",
+                        "Alchemist",
+                        "Timbersaw",
+                        "Bristleback"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Sand King",
+                        "Alchemist",
+                        "Bristleback",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "OG",
+                    "heroes": [
+                        "Morphling",
+                        "Tiny",
+                        "Batrider",
+                        "Ogre Magi",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Lion",
+                        "Sniper",
+                        "Batrider",
+                        "Earth Spirit",
+                        "Terrorblade"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Tidehunter",
+                        "Clockwerk",
+                        "Huskar",
+                        "Shadow Demon",
+                        "Magnus"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Tiny",
+                        "Lion",
+                        "Beastmaster",
+                        "Chen",
+                        "Slark"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Morphling",
+                        "Sniper",
+                        "Batrider",
+                        "Tusk",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Pugna",
+                        "Batrider",
+                        "Chaos Knight",
+                        "Magnus",
+                        "Monkey King"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Lina",
+                        "Beastmaster",
+                        "Clockwerk",
+                        "Alchemist",
+                        "Rubick"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Morphling",
+                        "Beastmaster",
+                        "Ogre Magi",
+                        "Monkey King",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Razor",
+                        "Lina",
+                        "Weaver",
+                        "Batrider",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Morphling",
+                        "Chen",
+                        "Tusk",
+                        "Ember Spirit",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Pugna",
+                        "Clockwerk",
+                        "Alchemist",
+                        "Timbersaw"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Lich",
+                        "Queen of Pain",
+                        "Magnus",
+                        "Dark Willow",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Sven",
+                        "Pugna",
+                        "Doom",
+                        "Rubick",
+                        "Timbersaw"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Morphling",
+                        "Doom",
+                        "Undying",
+                        "Earth Spirit",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Lina",
+                        "Wraith King",
+                        "Shadow Demon",
+                        "Magnus",
+                        "Phoenix"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Nature's Prophet",
+                        "Jakiro",
+                        "Tusk",
+                        "Monkey King",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Beastmaster",
+                        "Pugna",
+                        "Viper",
+                        "Alchemist",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Death Prophet",
+                        "Alchemist",
+                        "Keeper of the Light",
+                        "Tusk",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Necrophos",
+                        "Dragon Knight",
+                        "Batrider",
+                        "Chen",
+                        "Invoker"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Tidehunter",
+                        "Sniper",
+                        "Alchemist",
+                        "Shadow Demon",
+                        "Phoenix"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Lina",
+                        "Naga Siren",
+                        "Timbersaw",
+                        "Monkey King",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Clockwerk",
+                        "Terrorblade",
+                        "Phoenix",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Batrider",
+                        "Doom",
+                        "Meepo",
+                        "Ogre Magi"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "OG",
+                    "heroes": [
+                        "Razor",
+                        "Zeus",
+                        "Clockwerk",
+                        "Bristleback",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Drow Ranger",
+                        "Viper",
+                        "Batrider",
+                        "Chen",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Sand King",
+                        "Wraith King",
+                        "Rubick",
+                        "Bristleback",
+                        "Phoenix"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Drow Ranger",
+                        "Lich",
+                        "Magnus",
+                        "Techies",
+                        "Earth Spirit"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Razor",
+                        "Clockwerk",
+                        "Invoker",
+                        "Dawnbreaker",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Beastmaster",
+                        "Gyrocopter",
+                        "Ogre Magi",
+                        "Earth Spirit"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Sniper",
+                        "Lifestealer",
+                        "Elder Titan",
+                        "Mars",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Tiny",
+                        "Pugna",
+                        "Templar Assassin",
+                        "Invoker",
+                        "Ogre Magi"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Puck",
+                        "Batrider",
+                        "Magnus",
+                        "Terrorblade",
+                        "Snapfire"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Morphling",
+                        "Lina",
+                        "Tidehunter",
+                        "Shadow Demon",
+                        "Phoenix"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Drow Ranger",
+                        "Tiny",
+                        "Batrider",
+                        "Magnus",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Earthshaker",
+                        "Doom",
+                        "Gyrocopter",
+                        "Disruptor",
+                        "Ember Spirit"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Slardar",
+                        "Dragon Knight",
+                        "Bounty Hunter",
+                        "Jakiro",
+                        "Invoker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "OG",
+                    "heroes": [
+                        "Puck",
+                        "Enchantress",
+                        "Alchemist",
+                        "Bristleback",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Venomancer",
+                        "Pugna",
+                        "Doom",
+                        "Ursa",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Razor",
+                        "Lina",
+                        "Dragon Knight",
+                        "Clockwerk",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Tiny",
+                        "Doom",
+                        "Gyrocopter",
+                        "Shadow Demon",
+                        "Ogre Magi"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Weaver",
+                        "Batrider",
+                        "Invoker",
+                        "Centaur Warrunner"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Sven",
+                        "Lion",
+                        "Doom",
+                        "Invoker",
+                        "Ogre Magi"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Templar Assassin",
+                        "Shadow Demon",
+                        "Meepo",
+                        "Magnus"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "OG",
+                    "heroes": [
+                        "Beastmaster",
+                        "Techies",
+                        "Earth Spirit",
+                        "Terrorblade",
+                        "Phoenix"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Pugna",
+                        "Dragon Knight",
+                        "Doom",
+                        "Alchemist",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Nature's Prophet",
+                        "Batrider",
+                        "Ogre Magi",
+                        "Timbersaw",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Sand King",
+                        "Alchemist",
+                        "Bristleback",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Pugna",
+                        "Dragon Knight",
+                        "Doom",
+                        "Medusa",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Razor",
+                        "Beastmaster",
+                        "Nature's Prophet",
+                        "Batrider",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Beastmaster",
+                        "Nature's Prophet",
+                        "Batrider",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Venomancer",
+                        "Dragon Knight",
+                        "Gyrocopter",
+                        "Bristleback",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Pugna",
+                        "Alchemist",
+                        "Bristleback",
+                        "Monkey King",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Morphling",
+                        "Storm Spirit",
+                        "Beastmaster",
+                        "Batrider",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Beastmaster",
+                        "Nature's Prophet",
+                        "Tusk",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Earthshaker",
+                        "Viper",
+                        "Dragon Knight",
+                        "Chen",
+                        "Monkey King"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Sand King",
+                        "Lion",
+                        "Enchantress",
+                        "Alchemist",
+                        "Timbersaw"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Bane",
+                        "Dragon Knight",
+                        "Invoker",
+                        "Tusk",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Clockwerk",
+                        "Shadow Demon",
+                        "Magnus",
+                        "Ember Spirit"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Tiny",
+                        "Dragon Knight",
+                        "Tusk",
+                        "Pangolier",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Morphling",
+                        "Shadow Fiend",
+                        "Beastmaster",
+                        "Shadow Demon",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Alchemist",
+                        "Earth Spirit",
+                        "Dark Willow",
+                        "Hoodwink",
+                        "Mars"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Sand King",
+                        "Queen of Pain",
+                        "Pugna",
+                        "Gyrocopter",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Luna",
+                        "Enchantress",
+                        "Batrider",
+                        "Earth Spirit",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Sand King",
+                        "Enigma",
+                        "Pugna",
+                        "Alchemist",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Razor",
+                        "Enchantress",
+                        "Weaver",
+                        "Magnus",
+                        "Earth Spirit"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Viper",
+                        "Enchantress",
+                        "Alchemist",
+                        "Nyx Assassin",
+                        "Magnus"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Razor",
+                        "Enigma",
+                        "Pugna",
+                        "Batrider",
+                        "Invoker"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Puck",
+                        "Broodmother",
+                        "Chen",
+                        "Alchemist",
+                        "Nyx Assassin"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Batrider",
+                        "Doom",
+                        "Medusa",
+                        "Dark Willow",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Puck",
+                        "Dragon Knight",
+                        "Batrider",
+                        "Tusk",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Enchantress",
+                        "Medusa",
+                        "Dark Willow",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Templar Assassin",
+                        "Broodmother",
+                        "Batrider",
+                        "Chen",
+                        "Alchemist"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Doom",
+                        "Gyrocopter",
+                        "Invoker",
+                        "Shadow Demon",
+                        "Nyx Assassin"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Shadow Demon",
+                        "Timbersaw",
+                        "Earth Spirit",
+                        "Terrorblade",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Sand King",
+                        "Lina",
+                        "Dragon Knight",
+                        "Chen",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Dragon Knight",
+                        "Ancient Apparition",
+                        "Mars",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Morphling",
+                        "Tiny",
+                        "Shadow Demon",
+                        "Centaur Warrunner",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Tiny",
+                        "Pugna",
+                        "Templar Assassin",
+                        "Dark Willow",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Morphling",
+                        "Shadow Fiend",
+                        "Sand King",
+                        "Shadow Demon",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Enchantress",
+                        "Shadow Demon",
+                        "Magnus",
+                        "Monkey King"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Morphling",
+                        "Sand King",
+                        "Pugna",
+                        "Earth Spirit",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Sand King",
+                        "Storm Spirit",
+                        "Weaver",
+                        "Tusk",
+                        "Oracle"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Razor",
+                        "Pugna",
+                        "Batrider",
+                        "Bristleback",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Dragon Knight",
+                        "Enchantress",
+                        "Pangolier",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Morphling",
+                        "Razor",
+                        "Sand King",
+                        "Tusk",
+                        "Phoenix"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Juggernaut",
+                        "Lich",
+                        "Queen of Pain",
+                        "Earth Spirit",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Dragon Knight",
+                        "Broodmother",
+                        "Chen",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Beastmaster",
+                        "Enchantress",
+                        "Meepo",
+                        "Earth Spirit",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Dragon Knight",
+                        "Shadow Demon",
+                        "Tusk",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Tiny",
+                        "Ogre Magi",
+                        "Monkey King",
+                        "Hoodwink",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Morphling",
+                        "Puck",
+                        "Pugna",
+                        "Clockwerk",
+                        "Centaur Warrunner"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Death Prophet",
+                        "Luna",
+                        "Clockwerk",
+                        "Rubick",
+                        "Bristleback"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Pugna",
+                        "Nature's Prophet",
+                        "Underlord",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Pugna",
+                        "Doom",
+                        "Gyrocopter",
+                        "Timbersaw",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Enigma",
+                        "Dragon Knight",
+                        "Tusk",
+                        "Earth Spirit",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Sand King",
+                        "Storm Spirit",
+                        "Enchantress",
+                        "Ursa",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Nyx Assassin",
+                        "Bristleback",
+                        "Ember Spirit",
+                        "Phoenix"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Sand King",
+                        "Tiny",
+                        "Ogre Magi",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Storm Spirit",
+                        "Clockwerk",
+                        "Timbersaw",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Pugna",
+                        "Luna",
+                        "Bristleback",
+                        "Earth Spirit",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Templar Assassin",
+                        "Invoker",
+                        "Tusk",
+                        "Primal Beast",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Necrophos",
+                        "Dragon Knight",
+                        "Chen",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Clockwerk",
+                        "Jakiro",
+                        "Timbersaw",
+                        "Bristleback",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Morphling",
+                        "Storm Spirit",
+                        "Lion",
+                        "Enchantress",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Tidehunter",
+                        "Pugna",
+                        "Batrider",
+                        "Earth Spirit",
+                        "Monkey King"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Sniper",
+                        "Nature's Prophet",
+                        "Tusk",
+                        "Hoodwink",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Clockwerk",
+                        "Visage",
+                        "Ember Spirit",
+                        "Phoenix"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Luna",
+                        "Clockwerk",
+                        "Shadow Demon",
+                        "Timbersaw"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Chen",
+                        "Doom",
+                        "Tusk",
+                        "Ember Spirit"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Puck",
+                        "Pugna",
+                        "Doom",
+                        "Alchemist",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Lion",
+                        "Luna",
+                        "Enchantress",
+                        "Terrorblade",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Earthshaker",
+                        "Shadow Fiend",
+                        "Ogre Magi",
+                        "Primal Beast",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Lion",
+                        "Pugna",
+                        "Dragon Knight",
+                        "Broodmother",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Bloodseeker",
+                        "Storm Spirit",
+                        "Shadow Demon",
+                        "Bristleback",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Morphling",
+                        "Invoker",
+                        "Ogre Magi",
+                        "Pangolier",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Sand King",
+                        "Bristleback",
+                        "Elder Titan",
+                        "Monkey King",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Storm Spirit",
+                        "Beastmaster",
+                        "Shadow Demon",
+                        "Naga Siren"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Sand King",
+                        "Pugna",
+                        "Alchemist",
+                        "Earth Spirit",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Gyrocopter",
+                        "Shadow Demon",
+                        "Naga Siren",
+                        "Magnus",
+                        "Timbersaw"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Lion",
+                        "Dragon Knight",
+                        "Enchantress",
+                        "Huskar",
+                        "Bristleback"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Shadow Fiend",
+                        "Earth Spirit",
+                        "Dawnbreaker",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Morphling",
+                        "Lich",
+                        "Nyx Assassin",
+                        "Monkey King",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Tiny",
+                        "Batrider",
+                        "Alchemist",
+                        "Bristleback",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Enchantress",
+                        "Alchemist",
+                        "Earth Spirit",
+                        "Pangolier",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Morphling",
+                        "Tiny",
+                        "Bristleback",
+                        "Tusk",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Morphling",
+                        "Enchantress",
+                        "Ember Spirit",
+                        "Marci",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Chen",
+                        "Earth Spirit",
+                        "Dark Willow",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Razor",
+                        "Alchemist",
+                        "Nyx Assassin",
+                        "Earth Spirit"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Sand King",
+                        "Dragon Knight",
+                        "Shadow Demon",
+                        "Timbersaw",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Tiny",
+                        "Pugna",
+                        "Templar Assassin",
+                        "Bounty Hunter",
+                        "Visage"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Dazzle",
+                        "Enchantress",
+                        "Alchemist",
+                        "Nyx Assassin",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Razor",
+                        "Pugna",
+                        "Bristleback",
+                        "Pangolier",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Morphling",
+                        "Warlock",
+                        "Dragon Knight",
+                        "Doom",
+                        "Medusa"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Lion",
+                        "Pugna",
+                        "Broodmother",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Doom",
+                        "Bristleback",
+                        "Earth Spirit",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Doom",
+                        "Gyrocopter",
+                        "Earth Spirit",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Enchantress",
+                        "Broodmother",
+                        "Visage",
+                        "Tusk",
+                        "Ember Spirit"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Beastmaster",
+                        "Luna",
+                        "Monkey King",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Enigma",
+                        "Gyrocopter",
+                        "Tusk",
+                        "Hoodwink",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Puck",
+                        "Sand King",
+                        "Dragon Knight",
+                        "Phoenix",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Morphling",
+                        "Ogre Magi",
+                        "Timbersaw",
+                        "Dark Willow",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Sand King",
+                        "Queen of Pain",
+                        "Luna",
+                        "Phoenix",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Enchantress",
+                        "Ember Spirit",
+                        "Pangolier",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Sand King",
+                        "Storm Spirit",
+                        "Dragon Knight",
+                        "Enchantress",
+                        "Snapfire"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Razor",
+                        "Timbersaw",
+                        "Tusk",
+                        "Pangolier",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Huskar",
+                        "Invoker",
+                        "Centaur Warrunner",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Sand King",
+                        "Pugna",
+                        "Medusa",
+                        "Mars",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Sven",
+                        "Nyx Assassin",
+                        "Visage",
+                        "Phoenix"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Tiny",
+                        "Dragon Knight",
+                        "Tusk",
+                        "Primal Beast",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Puck",
+                        "Sand King",
+                        "Clockwerk",
+                        "Enchantress",
+                        "Gyrocopter"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Shadow Demon",
+                        "Dark Willow",
+                        "Pangolier",
+                        "Void Spirit"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Puck",
+                        "Luna",
+                        "Centaur Warrunner",
+                        "Tusk",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Chen",
+                        "Doom",
+                        "Alchemist",
+                        "Shadow Demon",
+                        "Monkey King"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Warlock",
+                        "Invoker",
+                        "Magnus",
+                        "Tusk",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Batrider",
+                        "Chen",
+                        "Alchemist",
+                        "Centaur Warrunner",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Sand King",
+                        "Storm Spirit",
+                        "Clockwerk",
+                        "Nature's Prophet",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Gyrocopter",
+                        "Invoker",
+                        "Tusk",
+                        "Hoodwink",
+                        "Mars"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Beastmaster",
+                        "Templar Assassin",
+                        "Enchantress",
+                        "Batrider",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Puck",
+                        "Doom",
+                        "Dark Willow",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Beastmaster",
+                        "Shadow Demon",
+                        "Ogre Magi",
+                        "Medusa",
+                        "Monkey King"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Anti-Mage",
+                        "Puck",
+                        "Gyrocopter",
+                        "Tusk",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Tusk",
+                        "Techies",
+                        "Earth Spirit",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Morphling",
+                        "Lion",
+                        "Invoker",
+                        "Elder Titan",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Lion",
+                        "Pugna",
+                        "Luna",
+                        "Pangolier",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Invoker",
+                        "Tusk",
+                        "Dawnbreaker",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Razor",
+                        "Sven",
+                        "Clockwerk",
+                        "Broodmother"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Morphling",
+                        "Enigma",
+                        "Chen",
+                        "Dark Willow",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Razor",
+                        "Storm Spirit",
+                        "Lich",
+                        "Enigma",
+                        "Nyx Assassin"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Sand King",
+                        "Sven",
+                        "Chen",
+                        "Hoodwink",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Luna",
+                        "Ogre Magi",
+                        "Bristleback",
+                        "Hoodwink",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Morphling",
+                        "Pugna",
+                        "Viper",
+                        "Pangolier",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Sand King",
+                        "Storm Spirit",
+                        "Lion",
+                        "Dragon Knight",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Gyrocopter",
+                        "Naga Siren",
+                        "Ember Spirit",
+                        "Hoodwink",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Enigma",
+                        "Enchantress",
+                        "Gyrocopter",
+                        "Pangolier",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Lich",
+                        "Pugna",
+                        "Bristleback",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Azure Ray",
+                    "heroes": [
+                        "Anti-Mage",
+                        "Timbersaw",
+                        "Dark Willow",
+                        "Primal Beast",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Morphling",
+                        "Pugna",
+                        "Medusa",
+                        "Bristleback",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Pudge",
+                        "Tiny",
+                        "Timbersaw",
+                        "Dawnbreaker",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Palianytsia",
+                    "heroes": [
+                        "Queen of Pain",
+                        "Nature's Prophet",
+                        "Bounty Hunter",
+                        "Rubick",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Venomancer",
+                        "Clockwerk",
+                        "Nature's Prophet",
+                        "Visage"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Faceless Void",
+                        "Magnus",
+                        "Earth Spirit",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Azure Ray",
+                    "heroes": [
+                        "Templar Assassin",
+                        "Clinkz",
+                        "Batrider",
+                        "Ursa",
+                        "Mars"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Puck",
+                        "Dragon Knight",
+                        "Enchantress",
+                        "Visage",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Palianytsia",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Beastmaster",
+                        "Batrider",
+                        "Pangolier",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Lion",
+                        "Clockwerk",
+                        "Visage",
+                        "Medusa",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "nouns",
+                    "heroes": [
+                        "Earthshaker",
+                        "Lion",
+                        "Beastmaster",
+                        "Luna",
+                        "Ogre Magi"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Nigma Galaxy",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Storm Spirit",
+                        "Keeper of the Light",
+                        "Magnus",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Tusk",
+                        "Earth Spirit",
+                        "Dark Willow",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Enchantress",
+                        "Visage",
+                        "Medusa",
+                        "Timbersaw",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Enchantress",
+                        "Timbersaw",
+                        "Earth Spirit",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "AVULUS",
+                    "heroes": [
+                        "Batrider",
+                        "Alchemist",
+                        "Phoenix",
+                        "Dawnbreaker",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Sand King",
+                        "Sniper",
+                        "Batrider",
+                        "Medusa",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Morphling",
+                        "Lion",
+                        "Beastmaster",
+                        "Pugna",
+                        "Monkey King"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Chen",
+                        "Bristleback",
+                        "Monkey King",
+                        "Pangolier",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Beastmaster",
+                        "Templar Assassin",
+                        "Clockwerk",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "AVULUS",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Lion",
+                        "Dragon Knight",
+                        "Phoenix",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Sand King",
+                        "Tusk",
+                        "Monkey King",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Nigma Galaxy",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Kunkka",
+                        "Dark Willow",
+                        "Pangolier",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "nouns",
+                    "heroes": [
+                        "Beastmaster",
+                        "Queen of Pain",
+                        "Luna",
+                        "Clockwerk",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Lion",
+                        "Omniknight",
+                        "Invoker",
+                        "Timbersaw",
+                        "Bristleback"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Sand King",
+                        "Riki",
+                        "Luna",
+                        "Tusk",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Azure Ray",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Lion",
+                        "Queen of Pain",
+                        "Clockwerk",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Razor",
+                        "Dragon Knight",
+                        "Enchantress",
+                        "Timbersaw",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Palianytsia",
+                    "heroes": [
+                        "Luna",
+                        "Leshrac",
+                        "Ogre Magi",
+                        "Centaur Warrunner",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Enigma",
+                        "Chen",
+                        "Alchemist",
+                        "Magnus"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Azure Ray",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Bristleback",
+                        "Phoenix",
+                        "Monkey King",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Razor",
+                        "Storm Spirit",
+                        "Enchantress",
+                        "Alchemist",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Centaur Warrunner",
+                        "Ember Spirit",
+                        "Dark Willow",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Lion",
+                        "Luna",
+                        "Clockwerk",
+                        "Timbersaw"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Sand King",
+                        "Alchemist",
+                        "Shadow Demon",
+                        "Pangolier",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Palianytsia",
+                    "heroes": [
+                        "Lion",
+                        "Queen of Pain",
+                        "Clockwerk",
+                        "Medusa",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Templar Assassin",
+                        "Invoker",
+                        "Ogre Magi",
+                        "Hoodwink",
+                        "Mars"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "nouns",
+                    "heroes": [
+                        "Sven",
+                        "Shadow Demon",
+                        "Visage",
+                        "Earth Spirit",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Morphling",
+                        "Sand King",
+                        "Ogre Magi",
+                        "Earth Spirit",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Clockwerk",
+                        "Phoenix",
+                        "Mars",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Mirana",
+                        "Shadow Fiend",
+                        "Sand King",
+                        "Tusk",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "AVULUS",
+                    "heroes": [
+                        "Puck",
+                        "Chen",
+                        "Bristleback",
+                        "Hoodwink",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Nigma Galaxy",
+                    "heroes": [
+                        "Templar Assassin",
+                        "Invoker",
+                        "Tusk",
+                        "Phoenix",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Morphling",
+                        "Enigma",
+                        "Enchantress",
+                        "Earth Spirit",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "AVULUS",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Beastmaster",
+                        "Broodmother",
+                        "Phoenix",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Huskar",
+                        "Doom",
+                        "Alchemist",
+                        "Shadow Demon",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Tiny",
+                        "Medusa",
+                        "Dark Willow",
+                        "Mars",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Puck",
+                        "Windranger",
+                        "Clockwerk",
+                        "Pangolier",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Puck",
+                        "Sand King",
+                        "Chen",
+                        "Alchemist",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Nigma Galaxy",
+                    "heroes": [
+                        "Luna",
+                        "Clockwerk",
+                        "Doom",
+                        "Shadow Demon",
+                        "Earth Spirit"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Clockwerk",
+                        "Nyx Assassin",
+                        "Magnus",
+                        "Monkey King",
+                        "Void Spirit"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Puck",
+                        "Templar Assassin",
+                        "Enchantress",
+                        "Doom",
+                        "Phoenix"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Enchantress",
+                        "Alchemist",
+                        "Bristleback",
+                        "Tusk",
+                        "Earth Spirit"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Palianytsia",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Nyx Assassin",
+                        "Pangolier",
+                        "Mars",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Azure Ray",
+                    "heroes": [
+                        "Beastmaster",
+                        "Queen of Pain",
+                        "Luna",
+                        "Rubick",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Storm Spirit",
+                        "Jakiro",
+                        "Centaur Warrunner",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Razor",
+                        "Pugna",
+                        "Dragon Knight",
+                        "Invoker",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Beastmaster",
+                        "Luna",
+                        "Clockwerk",
+                        "Broodmother",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Riki",
+                        "Tusk",
+                        "Dark Willow",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Azure Ray",
+                    "heroes": [
+                        "Lion",
+                        "Beastmaster",
+                        "Pugna",
+                        "Invoker",
+                        "Medusa"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Nature's Prophet",
+                        "Invoker",
+                        "Shadow Demon",
+                        "Bristleback",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "AVULUS",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Lion",
+                        "Dragon Knight",
+                        "Chen",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Beastmaster",
+                        "Viper",
+                        "Clockwerk",
+                        "Shadow Demon",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "nouns",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Tinker",
+                        "Bristleback",
+                        "Monkey King",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Nigma Galaxy",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Sand King",
+                        "Clockwerk",
+                        "Monkey King",
+                        "Snapfire"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Enigma",
+                        "Templar Assassin",
+                        "Enchantress",
+                        "Invoker",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Lion",
+                        "Clinkz",
+                        "Tusk",
+                        "Earth Spirit",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Razor",
+                        "Beastmaster",
+                        "Enchantress",
+                        "Pangolier",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Razor",
+                        "Sand King",
+                        "Dark Seer",
+                        "Enchantress",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Drow Ranger",
+                        "Clockwerk",
+                        "Batrider",
+                        "Earth Spirit",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "AVULUS",
+                    "heroes": [
+                        "Lion",
+                        "Enigma",
+                        "Bristleback",
+                        "Oracle",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Luna",
+                        "Enchantress",
+                        "Tusk",
+                        "Monkey King",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "nouns",
+                    "heroes": [
+                        "Phantom Assassin",
+                        "Chen",
+                        "Centaur Warrunner",
+                        "Earth Spirit",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Templar Assassin",
+                        "Huskar",
+                        "Doom",
+                        "Ogre Magi",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Beastmaster",
+                        "Gyrocopter",
+                        "Ogre Magi",
+                        "Ember Spirit",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Nigma Galaxy",
+                    "heroes": [
+                        "Tiny",
+                        "Keeper of the Light",
+                        "Medusa",
+                        "Hoodwink",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Azure Ray",
+                    "heroes": [
+                        "Lion",
+                        "Invoker",
+                        "Ogre Magi",
+                        "Medusa",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Palianytsia",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Clockwerk",
+                        "Dark Seer",
+                        "Dark Willow",
+                        "Void Spirit"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Sven",
+                        "Shadow Demon",
+                        "Visage",
+                        "Earth Spirit",
+                        "Dark Willow",
+                        "Shadow Fiend",
+                        "Vengeful Spirit",
+                        "Ember Spirit",
+                        "Pangolier",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Sand King",
+                        "Pugna",
+                        "Batrider",
+                        "Earth Spirit",
+                        "Monkey King"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Kunkka",
+                        "Clockwerk",
+                        "Batrider",
+                        "Visage"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Pugna",
+                        "Dragon Knight",
+                        "Doom",
+                        "Earth Spirit",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Azure Ray",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Invoker",
+                        "Ogre Magi",
+                        "Grimstroke",
+                        "Mars"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Palianytsia",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Clockwerk",
+                        "Dark Willow",
+                        "Void Spirit",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Sand King",
+                        "Lion",
+                        "Pugna",
+                        "Luna",
+                        "Bristleback"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Alchemist",
+                        "Timbersaw",
+                        "Phoenix",
+                        "Pangolier",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Lion",
+                        "Doom",
+                        "Ogre Magi",
+                        "Ember Spirit"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Sand King",
+                        "Tusk",
+                        "Terrorblade",
+                        "Hoodwink",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Earthshaker",
+                        "Morphling",
+                        "Tusk",
+                        "Dawnbreaker",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Puck",
+                        "Beastmaster",
+                        "Dragon Knight",
+                        "Naga Siren",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "AVULUS",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Enchantress",
+                        "Underlord",
+                        "Pangolier",
+                        "Snapfire"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Nigma Galaxy",
+                    "heroes": [
+                        "Sniper",
+                        "Bounty Hunter",
+                        "Medusa",
+                        "Dark Willow",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Gyrocopter",
+                        "Shadow Demon",
+                        "Ogre Magi",
+                        "Earth Spirit",
+                        "Mars"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "nouns",
+                    "heroes": [
+                        "Morphling",
+                        "Beastmaster",
+                        "Clockwerk",
+                        "Snapfire",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Mirana",
+                        "Puck",
+                        "Clockwerk",
+                        "Nyx Assassin",
+                        "Bristleback"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Viper",
+                        "Chen",
+                        "Alchemist",
+                        "Tusk",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Nigma Galaxy",
+                    "heroes": [
+                        "Beastmaster",
+                        "Luna",
+                        "Invoker",
+                        "Disruptor",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "AVULUS",
+                    "heroes": [
+                        "Batrider",
+                        "Alchemist",
+                        "Earth Spirit",
+                        "Oracle",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Lion",
+                        "Queen of Pain",
+                        "Clockwerk",
+                        "Centaur Warrunner"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Sand King",
+                        "Beastmaster",
+                        "Batrider",
+                        "Gyrocopter",
+                        "Elder Titan"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "nouns",
+                    "heroes": [
+                        "Razor",
+                        "Storm Spirit",
+                        "Broodmother",
+                        "Chen",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Pugna",
+                        "Clockwerk",
+                        "Gyrocopter",
+                        "Invoker",
+                        "Underlord"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Morphling",
+                        "Sand King",
+                        "Lich",
+                        "Dark Willow",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Lion",
+                        "Dragon Knight",
+                        "Visage",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Morphling",
+                        "Clockwerk",
+                        "Nyx Assassin",
+                        "Visage",
+                        "Ember Spirit"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Nature's Prophet",
+                        "Batrider",
+                        "Shadow Demon",
+                        "Elder Titan",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Lion",
+                        "Luna",
+                        "Omniknight",
+                        "Earth Spirit",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Earthshaker",
+                        "Dragon Knight",
+                        "Enchantress",
+                        "Slark",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Sand King",
+                        "Huskar",
+                        "Alchemist",
+                        "Phoenix",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Razor",
+                        "Shadow Demon",
+                        "Bristleback",
+                        "Tusk",
+                        "Ember Spirit"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Clockwerk",
+                        "Invoker",
+                        "Hoodwink",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Palianytsia",
+                    "heroes": [
+                        "Sand King",
+                        "Luna",
+                        "Doom",
+                        "Snapfire",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Luna",
+                        "Clockwerk",
+                        "Hoodwink",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Palianytsia",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Doom",
+                        "Pangolier",
+                        "Snapfire",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Chen",
+                        "Invoker",
+                        "Bristleback",
+                        "Primal Beast",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Enigma",
+                        "Clockwerk",
+                        "Gyrocopter",
+                        "Pangolier",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Beastmaster",
+                        "Luna",
+                        "Clockwerk",
+                        "Earth Spirit",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Alchemist",
+                        "Timbersaw",
+                        "Dawnbreaker",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "AVULUS",
+                    "heroes": [
+                        "Alchemist",
+                        "Nyx Assassin",
+                        "Earth Spirit",
+                        "Phoenix",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "nouns",
+                    "heroes": [
+                        "Enchantress",
+                        "Ursa",
+                        "Centaur Warrunner",
+                        "Ember Spirit",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Juggernaut",
+                        "Puck",
+                        "Clockwerk",
+                        "Enchantress",
+                        "Centaur Warrunner"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Nigma Galaxy",
+                    "heroes": [
+                        "Morphling",
+                        "Pugna",
+                        "Invoker",
+                        "Nyx Assassin",
+                        "Mars"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Shadow Demon",
+                        "Bristleback",
+                        "Earth Spirit",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Razor",
+                        "Sand King",
+                        "Broodmother",
+                        "Batrider",
+                        "Elder Titan"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Morphling",
+                        "Sand King",
+                        "Clockwerk",
+                        "Earth Spirit",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Broodmother",
+                        "Alchemist",
+                        "Invoker",
+                        "Shadow Demon",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Nigma Galaxy",
+                    "heroes": [
+                        "Sniper",
+                        "Luna",
+                        "Clockwerk",
+                        "Enchantress",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Lion",
+                        "Spectre",
+                        "Invoker",
+                        "Marci",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "nouns",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Alchemist",
+                        "Visage",
+                        "Tusk",
+                        "Ember Spirit"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "AVULUS",
+                    "heroes": [
+                        "Lion",
+                        "Beastmaster",
+                        "Luna",
+                        "Shadow Demon",
+                        "Earth Spirit"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Ursa",
+                        "Shadow Demon",
+                        "Nyx Assassin",
+                        "Timbersaw",
+                        "Bristleback"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Morphling",
+                        "Sand King",
+                        "Enchantress",
+                        "Pangolier",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Azure Ray",
+                    "heroes": [
+                        "Kunkka",
+                        "Luna",
+                        "Brewmaster",
+                        "Tusk",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Pugna",
+                        "Clockwerk",
+                        "Invoker",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Sven",
+                        "Pugna",
+                        "Broodmother",
+                        "Batrider",
+                        "Earth Spirit"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Morphling",
+                        "Kunkka",
+                        "Clockwerk",
+                        "Invoker",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Puck",
+                        "Lion",
+                        "Enchantress",
+                        "Night Stalker",
+                        "Gyrocopter"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Azure Ray",
+                    "heroes": [
+                        "Razor",
+                        "Doom",
+                        "Tusk",
+                        "Earth Spirit",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Lion",
+                        "Enchantress",
+                        "Alchemist",
+                        "Timbersaw",
+                        "Bristleback"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Sand King",
+                        "Storm Spirit",
+                        "Witch Doctor",
+                        "Gyrocopter",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Batrider",
+                        "Shadow Demon",
+                        "Ember Spirit",
+                        "Mars"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Sand King",
+                        "Pugna",
+                        "Dragon Knight",
+                        "Hoodwink",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Puck",
+                        "Beastmaster",
+                        "Ogre Magi",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "AVULUS",
+                    "heroes": [
+                        "Earthshaker",
+                        "Tidehunter",
+                        "Alchemist",
+                        "Shadow Demon",
+                        "Phoenix"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Nigma Galaxy",
+                    "heroes": [
+                        "Drow Ranger",
+                        "Sand King",
+                        "Tidehunter",
+                        "Bounty Hunter",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Morphling",
+                        "Dark Seer",
+                        "Enchantress",
+                        "Earth Spirit",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "nouns",
+                    "heroes": [
+                        "Puck",
+                        "Enchantress",
+                        "Doom",
+                        "Alchemist",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Batrider",
+                        "Medusa",
+                        "Monkey King",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Riki",
+                        "Ogre Magi",
+                        "Dark Willow",
+                        "Mars"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Puck",
+                        "Lion",
+                        "Luna",
+                        "Clockwerk",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "AVULUS",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Lion",
+                        "Broodmother",
+                        "Chen",
+                        "Underlord"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Pugna",
+                        "Luna",
+                        "Doom",
+                        "Shadow Demon",
+                        "Earth Spirit"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Sand King",
+                        "Queen of Pain",
+                        "Clockwerk",
+                        "Medusa",
+                        "Grimstroke"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Beastmaster",
+                        "Luna",
+                        "Naga Siren",
+                        "Dark Willow",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "nouns",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Pugna",
+                        "Doom",
+                        "Tusk",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Enchantress",
+                        "Broodmother",
+                        "Batrider",
+                        "Earth Spirit",
+                        "Monkey King"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Luna",
+                        "Clockwerk",
+                        "Doom",
+                        "Earth Spirit",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Nigma Galaxy",
+                    "heroes": [
+                        "Morphling",
+                        "Puck",
+                        "Tusk",
+                        "Pangolier",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Morphling",
+                        "Windranger",
+                        "Bounty Hunter",
+                        "Visage",
+                        "Elder Titan"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Tidehunter",
+                        "Chen",
+                        "Alchemist",
+                        "Monkey King",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Palianytsia",
+                    "heroes": [
+                        "Lion",
+                        "Death Prophet",
+                        "Gyrocopter",
+                        "Tusk",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Dragon Knight",
+                        "Enchantress",
+                        "Bristleback",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Lion",
+                        "Beastmaster",
+                        "Omniknight",
+                        "Alchemist",
+                        "Earth Spirit"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Azure Ray",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Luna",
+                        "Elder Titan",
+                        "Underlord",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Lion",
+                        "Invoker",
+                        "Bristleback",
+                        "Phoenix",
+                        "Monkey King"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Palianytsia",
+                    "heroes": [
+                        "Sand King",
+                        "Luna",
+                        "Alchemist",
+                        "Dark Willow",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Storm Spirit",
+                        "Pugna",
+                        "Doom",
+                        "Alchemist",
+                        "Nyx Assassin"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Batrider",
+                        "Ogre Magi",
+                        "Medusa",
+                        "Bristleback",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Puck",
+                        "Tusk",
+                        "Dark Willow",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "nouns",
+                    "heroes": [
+                        "Beastmaster",
+                        "Clockwerk",
+                        "Gyrocopter",
+                        "Monkey King",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Nigma Galaxy",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Sand King",
+                        "Nyx Assassin",
+                        "Tusk",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Beastmaster",
+                        "Templar Assassin",
+                        "Enchantress",
+                        "Earth Spirit",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "nouns",
+                    "heroes": [
+                        "Morphling",
+                        "Doom",
+                        "Ember Spirit",
+                        "Phoenix",
+                        "Dark Willow"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Xtreme Gaming",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Sand King",
+                        "Storm Spirit",
+                        "Luna",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Pugna",
+                        "Dark Seer",
+                        "Bristleback",
+                        "Earth Spirit",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "AVULUS",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Lion",
+                        "Beastmaster",
+                        "Invoker",
+                        "Elder Titan"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Shadow Fiend",
+                        "Queen of Pain",
+                        "Ogre Magi",
+                        "Nyx Assassin",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Bloodseeker",
+                        "Lion",
+                        "Enchantress",
+                        "Alchemist",
+                        "Monkey King"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Templar Assassin",
+                        "Clockwerk",
+                        "Doom",
+                        "Timbersaw",
+                        "Snapfire"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Nigma Galaxy",
+                    "heroes": [
+                        "Luna",
+                        "Earth Spirit",
+                        "Phoenix",
+                        "Pangolier",
+                        "Hoodwink"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "AVULUS",
+                    "heroes": [
+                        "Invoker",
+                        "Medusa",
+                        "Tusk",
+                        "Phoenix",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Enigma",
+                        "Luna",
+                        "Disruptor",
+                        "Pangolier",
+                        "Marci"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Gaimin Gladiators",
+                    "heroes": [
+                        "Crystal Maiden",
+                        "Storm Spirit",
+                        "Luna",
+                        "Centaur Warrunner",
+                        "Muerta"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Pugna",
+                        "Medusa",
+                        "Tusk",
+                        "Earth Spirit",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
     }
 ]

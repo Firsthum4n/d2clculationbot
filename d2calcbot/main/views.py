@@ -22,7 +22,6 @@ from torch.utils.data import Dataset, DataLoader
 
 
 
-
 filepath = 'main/calc_bot/data.json'
 data = []
 
@@ -36,17 +35,17 @@ y_data = torch.tensor(y_data, dtype=torch.float32)
 
 
 
-cnt = 66
+cnt = 250
 x_valid_data = []
 y_valid_data = []
-for i in range(22):
+for i in range(35):
     x_valid_data.append(x_data[cnt])
     y_valid_data.append(y_data[cnt])
     cnt+=1
 
 
-x_data = x_data
-y_data = y_data
+x_data = x_data[:250]
+y_data = y_data[:250]
 
 
 radiant_team_data = DotaDataset(x_data, 'radiant', 0)
@@ -70,11 +69,12 @@ def custom_collate_fn(batch):
     radiant_d, dire_d = zip(*batch)
 
     return list(radiant_d), list(dire_d)
+#
+# criterion = nn.BCELoss()
+criterion = nn.BCEWithLogitsLoss()
+optimizer = torch.optim.AdamW(model.parameters(), lr=0.000006, weight_decay=0.001)
 
-criterion = nn.BCELoss()
-optimizer = torch.optim.AdamW(model.parameters(), lr=0.000002, weight_decay=1e-1)
-
-EPOCHS = 200
+EPOCHS = 150
 
 
 for j in range(len(x_data)):
@@ -117,6 +117,29 @@ for j in range(len(x_data)):
 print("Обучение завершено.")
 torch.save(model.state_dict(), 'main/calc_bot/dota_model.pth')
 
+model = MainNetwork()
+model.load_state_dict(torch.load('main/calc_bot/dota_model.pth'))
+for j in range(len(x_valid_data)):
+    r = r_valid[j]
+    d = d_valid[j]
+    winner = y_valid_data[j]
+    winner = winner.unsqueeze(0)
+    valid_dataloader = DataLoader(list(zip(r, d)), batch_size=batch_size, collate_fn=custom_collate_fn)
+
+    for epoch in range(EPOCHS):
+        model.eval()
+        val_loss = 0.0
+        with torch.no_grad():
+            for i, (radiant_batch, dire_batch) in enumerate(valid_dataloader):
+                output = model(radiant_batch, dire_batch)
+                output = output.squeeze(1)
+                loss = criterion(output,winner)
+                val_loss += loss.item()
+    if epoch + 1 == EPOCHS:
+        print(f'Epoch {epoch + 1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winner.item()}')
+
+print("Обучение завершено.")
+torch.save(model.state_dict(), 'main/calc_bot/dota_model.pth')
 
 
 class MainHomeView(LoginRequiredMixin,DataMixin, ListView):
