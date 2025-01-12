@@ -74,7 +74,7 @@ def custom_collate_fn(batch):
 criterion = nn.BCELoss()
 optimizer = torch.optim.AdamW(model.parameters(), lr=0.00001 , weight_decay=0.00001)
 
-EPOCHS = 500
+EPOCHS = 1000
 
 
 for j in range(len(x_data)):
@@ -126,17 +126,16 @@ for j in range(len(x_valid_data)):
     winner = winner.unsqueeze(0)
     valid_dataloader = DataLoader(list(zip(r, d)), batch_size=batch_size, collate_fn=custom_collate_fn)
 
-    for epoch in range(EPOCHS):
-        model.eval()
-        val_loss = 0.0
-        with torch.no_grad():
-            for i, (radiant_batch, dire_batch) in enumerate(valid_dataloader):
-                output = model(radiant_batch, dire_batch)
-                output = output.squeeze(1)
-                loss = criterion(output,winner)
-                val_loss += loss.item()
-    if epoch + 1 == EPOCHS:
-        print(f'Epoch {epoch + 1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winner.item()}')
+
+    model.eval()
+    val_loss = 0.0
+    with torch.no_grad():
+        for i, (radiant_batch, dire_batch) in enumerate(valid_dataloader):
+            output = model(radiant_batch, dire_batch)
+            output = output.squeeze(1)
+            loss = criterion(output,winner)
+            val_loss += loss.item()
+        print(f' Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winner.item()}')
 
 print("Обучение завершено.")
 torch.save(model.state_dict(), 'main/calc_bot/dota_model.pth')
