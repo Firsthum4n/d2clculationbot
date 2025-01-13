@@ -14,7 +14,6 @@
             </div>
         <div class="header-content">
 
-                <div class="team-selector">
                     <button id="team-select-button-1" class="team-button-1">RADIANT TEAM</button>
                     <ul id="team-select-menu-1" class="team-menu-1">
                         {% for team in teams %}
@@ -23,9 +22,7 @@
                             </li>
                         {% endfor %}
                     </ul>
-                </div>
 
-                <div class="team-selector">
                     <button id="team-select-button-2" class="team-button-2">DIRE TEAM</button>
                     <ul id="team-select-menu-2" class="team-menu-2">
                         {% for team in teams %}
@@ -34,7 +31,7 @@
                             </li>
                         {% endfor %}
                     </ul>
-                </div>
+
 
 
             {% for i in '02468'|make_list %}
