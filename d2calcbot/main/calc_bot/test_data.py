@@ -97,4 +97,4 @@ def matches_result():
         for i in range(len(result)):
             test_data_y.append(result[i]['game'][2]['winner'])
 
-    return test_data_x, test_data_y
+    return len(test_data_x), len(test_data_y)

@@ -10,13 +10,13 @@ import json
 
 # with open('main/calc_bot/leagues.json', 'r') as f:
 #     tst = json.load(f)
-# ESL = requests.get(f'https://api.opendota.com/api/leagues/{17272}/teams')
+# ESL = requests.get(f'https://api.opendota.com/api/leagues/{16935}/teams')
 # esl_req = ESL.json()
 #
 # with open('main/calc_bot/esl_2024.json', 'w+') as teams_file:
 #     json.dump(esl_req, teams_file, indent=4)
 
-league_ids = [17119, 17126, 17272, 17414, 17509]
+league_ids = [16632, 16846, 16935, 17119, 17126, 17272, 17414, 17509]
 all_matches = []
 all_teams = []
 
