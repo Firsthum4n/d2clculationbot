@@ -9,6 +9,7 @@
         margin: 18% auto 0 auto;
     }
 
+
     #send-heroes-button{
         margin-top: 50px;
     }
@@ -32,6 +33,17 @@
         z-index: 100;
 
     }
+    .team-menu-1.active ,
+    .team-menu-2.active {
+        margin: 15% auto;
+        top: 0;
+        width: 90%;
+        height: 60%;
+        overflow: auto;
+        z-index: 100;
+
+    }
+
 
     .modal-content {
         z-index: 10;
