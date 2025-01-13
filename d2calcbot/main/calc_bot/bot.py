@@ -331,7 +331,9 @@ class MainNetwork(nn.Module):
         out_players = self.branch_p(radiant_team_data, dire_team_data)
         out_heroes = self.branch_h(radiant_team_data, dire_team_data)
 
-        combined = torch.cat([out_team, out_players, out_heroes], dim=1)
+        combined = torch.cat([out_team.mean(dim=0, keepdim=True),
+                              out_players.mean(dim=0, keepdim=True),
+                              out_heroes.mean(dim=0, keepdim=True)], dim=1)
         output = self.relu(self.final_layer1(combined))
         output = self.final_layer2(output)
         output = self.sigmoid(output)
