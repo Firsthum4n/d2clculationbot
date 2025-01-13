@@ -1,3 +1,4 @@
+from django.db.models.expressions import result
 from sympy.codegen.ast import float32
 from main.db_update.heroes import create_or_update_heroes
 from main.db_update.teams import create_or_update_teams
@@ -25,9 +26,10 @@ def encryption(radiant, dire):
     with torch.no_grad():
         output = model(radiant_team_data,dire_team_data)
         if output.item() <= 0.5:
-            print(f'победа radiant {output.item()}')
+            win = f'победа radiant {output.item()}'
         elif output.item() > 0.5:
-            print(f'победа dire {output.item()}')
+            win = f'победа dire {output.item()}'
+    return win
 
 
 
@@ -338,5 +340,3 @@ class MainNetwork(nn.Module):
         output = self.final_layer2(output)
         output = self.sigmoid(output)
         return output
-
-

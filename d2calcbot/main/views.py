@@ -50,6 +50,7 @@ from torch.utils.data import Dataset, DataLoader
 #
 #
 #
+#
 # batch_size = 32
 #
 # num_teams = 6
@@ -66,9 +67,9 @@ from torch.utils.data import Dataset, DataLoader
 #
 #
 # criterion = nn.BCELoss()
-# optimizer = torch.optim.AdamW(model.parameters(), lr=0.0000001 , weight_decay=0.0000001)
+# optimizer = torch.optim.AdamW(model.parameters(), lr=0.00000023 , weight_decay=0.0000001)
 #
-# EPOCHS = 280
+# EPOCHS = 350
 #
 #
 # for j in range(len(x_data)):
@@ -109,10 +110,10 @@ from torch.utils.data import Dataset, DataLoader
 #         print(f'Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winner.item()}')
 #     print(f'данные номер: {j+1}')
 # print("Обучение завершено.")
-# torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver2.pth')
+# torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver5.pth')
 #
 # model = MainNetwork()
-# model.load_state_dict(torch.load('main/calc_bot/dota_model_ver2.pth'))
+# model.load_state_dict(torch.load('main/calc_bot/dota_model_ver5.pth'))
 # for j in range(len(x_valid_data)):
 #     r = r_valid[j]
 #     d = d_valid[j]
@@ -132,7 +133,7 @@ from torch.utils.data import Dataset, DataLoader
 #         print(f' Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winner.item()}')
 #
 # print("Обучение завершено.")
-# torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver2.pth')
+# torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver5.pth')
 
 
 class MainHomeView(LoginRequiredMixin,DataMixin, ListView):

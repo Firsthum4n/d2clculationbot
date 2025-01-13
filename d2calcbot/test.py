@@ -60,3 +60,12 @@ all_teams = []
 #
 # with open('hero_data_stats.json', 'w+') as hero_file:
 #     json.dump(hero_data, hero_file, indent=4)
+
+###############################################################################
+match_up = requests.get("https://api.opendota.com/api/heroes/{1}/matchups")
+match_up_req = match_up.json()
+
+
+with open('match_up.json', 'w+') as f:
+    json.dump(match_up_req , f, indent=4)
+

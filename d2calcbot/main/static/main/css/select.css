@@ -161,8 +161,10 @@ ul input {
 
 .team-menu-1.active,
 .team-menu-2.active{
-	width: 270px;
-	display: block;
+	width: 450px;
+	display: grid;
+    grid-template-columns: 100px 100px 100px 100px;
+    margin-left: 128px;
 	position: absolute;
     background-color: #121212;
     border-radius: 10px;
@@ -170,7 +172,6 @@ ul input {
     border: 1px solid grey;
     list-style: none;
     padding: 0;
-    margin: 0;
 	z-index: 200;
     text-transform: lowercase;
 }
