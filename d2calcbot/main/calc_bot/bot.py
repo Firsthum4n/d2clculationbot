@@ -255,14 +255,9 @@ class BranchTeam(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.leaky_relu2 = nn.LeakyReLU(0.2)
-
         self.fc1 = nn.Linear(35, 128)
         self.fc2 = nn.Linear(128, 64)
-        self.fc3 = nn.Linear(64, 32)
-        self.fc4 = nn.Linear(32, 1)
-        self.sigmoid = nn.Sigmoid()
-
+        self.fc3 = nn.Linear(64, 16)
 
     def forward(self, radiant_team_data, dire_team_data):
         r_team_block, r_player_block, r_hero_block = radiant_team_data
@@ -272,26 +267,19 @@ class BranchTeam(nn.Module):
         d_x = self.fc1(d_team_block)
 
         x = torch.cat([r_x, d_x], dim=0)
-        x = self.fc2(x)
-        x = self.fc3(x)
-        x = self.fc4(x)
-        x = self.sigmoid(x)
+        x = self.relu(self.fc2(x))
+        x = self.relu(self.fc3(x))
         return x
-
 
 
 class BranchPlayers(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.leaky_relu2 = nn.LeakyReLU(0.2)
-
         self.fc1 = nn.Linear(34, 256)
-        self.fc2 = nn.Linear(256,128)
-        self.fc3 = nn.Linear(128, 64)
-        self.fc4 = nn.Linear(64, 32)
-        self.fc5 = nn.Linear(32, 1)
-        self.sigmoid = nn.Sigmoid()
+        self.fc2 = nn.Linear(256, 128)
+        self.fc3 = nn.Linear(128, 16)
+
 
     def forward(self, radiant_team_data, dire_team_data):
         r_team_block, r_player_block, r_hero_block = radiant_team_data
@@ -299,30 +287,19 @@ class BranchPlayers(nn.Module):
 
         r_x = self.fc1(r_player_block)
         d_x = self.fc1(d_player_block)
-
-
         x = torch.cat([r_x, d_x], dim=0)
-        # x = torch.mean(x, dim=0, keepdim=True)
-        x = self.fc2(x)
-        x = self.fc3(x)
-        x = self.fc4(x)
-        x = self.fc5(x)
-        x = self.sigmoid(x)
+        x = self.relu(self.fc2(x))
+        x = self.relu(self.fc3(x))
         return x
+
 
 class BranchHeroes(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.leaky_relu2 = nn.LeakyReLU(0.2)
-
         self.fc1 = nn.Linear(34, 256)
         self.fc2 = nn.Linear(256, 128)
-        self.fc3 = nn.Linear(128, 64)
-        self.fc4 = nn.Linear(64,32)
-        self.fc5 = nn.Linear(32,1)
-
-        self.sigmoid = nn.Sigmoid()
+        self.fc3 = nn.Linear(128, 16)
 
     def forward(self, radiant_team_data, dire_team_data):
         r_team_block, r_player_block, r_hero_block = radiant_team_data
@@ -330,15 +307,9 @@ class BranchHeroes(nn.Module):
 
         r_x = self.fc1(r_hero_block)
         d_x = self.fc1(d_hero_block)
-
-
         x = torch.cat([r_x, d_x], dim=0)
-        # x = torch.mean(x, dim=0, keepdim=True)
-        x = self.fc2(x)
-        x = self.fc3(x)
-        x = self.fc4(x)
-        x = self.fc5(x)
-        x = self.sigmoid(x)
+        x = self.relu(self.fc2(x))
+        x = self.relu(self.fc3(x))
         return x
 
 
@@ -346,34 +317,24 @@ class BranchHeroes(nn.Module):
 class MainNetwork(nn.Module):
     def __init__(self):
         super().__init__()
-
         self.relu = nn.ReLU()
-
         self.branch_t = BranchTeam()
         self.branch_p = BranchPlayers()
         self.branch_h = BranchHeroes()
-
-        self.final_layer1 = nn.Linear(3, 32)
+        self.final_layer1 = nn.Linear(48, 32)
         self.final_layer2 = nn.Linear(32, 1)
-
-
-
         self.sigmoid = nn.Sigmoid()
 
-    def forward(self, radiant_team_data, dire_team_data):
 
+    def forward(self, radiant_team_data, dire_team_data):
         out_team = self.branch_t(radiant_team_data, dire_team_data)
         out_players = self.branch_p(radiant_team_data, dire_team_data)
         out_heroes = self.branch_h(radiant_team_data, dire_team_data)
 
-
-        combined = torch.cat([out_team.mean(dim=0, keepdim=True),
-                              out_players.mean(dim=0, keepdim=True),
-                              out_heroes.mean(dim=0, keepdim=True)], dim=1)
-
-
-
-        output = self.final_layer1(combined)
+        combined = torch.cat([out_team, out_players, out_heroes], dim=1)
+        output = self.relu(self.final_layer1(combined))
         output = self.final_layer2(output)
         output = self.sigmoid(output)
         return output
+
+
