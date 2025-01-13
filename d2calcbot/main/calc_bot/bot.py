@@ -20,7 +20,7 @@ def encryption(radiant, dire):
 
 
     model = MainNetwork()
-    model.load_state_dict(torch.load('main/calc_bot/dota_model.pth'))
+    model.load_state_dict(torch.load('main/calc_bot/dota_model_ver3.pth'))
 
     model.eval()
     with torch.no_grad():
