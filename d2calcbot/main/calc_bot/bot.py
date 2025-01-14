@@ -11,12 +11,12 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader, random_split
 import os
 import json
-
+import requests
 
 
 def encryption(radiant, dire):
-    radiant_team_data = dataset(radiant)
-    dire_team_data = dataset(dire)
+    radiant_team_data = dataset(radiant, dire)
+    dire_team_data = dataset(dire, radiant)
 
 
     model = MainNetwork()
@@ -34,7 +34,7 @@ def encryption(radiant, dire):
 
 
 """функция создающий словарь со всеми именами и статами команды, игроков и героев"""
-def encryption_level_1(team_pick):
+def encryption_level_1(team_pick, enemy_team_pick):
     team_all_pick = {
         'team': [
             {
@@ -80,7 +80,12 @@ def encryption_level_1(team_pick):
 
     all_heroes = Heroes.objects.all()
     all_teams = Teams.objects.all().prefetch_related('players')
-
+    enemy_ids = []
+    for i in all_heroes:
+        for j in enemy_team_pick['heroes']:
+            if j == i.name:
+                enemy_ids.append(i.id)
+    stats = {}
     for team in all_teams:
         if team_pick['team'] == team.name:
             team_players = team.get_players()
@@ -94,11 +99,17 @@ def encryption_level_1(team_pick):
     for h in team_pick['heroes']:
         for hero in all_heroes:
             if h == hero.name:
+                match_up = requests.get(f"https://api.opendota.com/api/heroes/{hero.hero_id}/matchups")
+                match_up = match_up.json()
+                stats[hero.name] = [m['wins'] for m in match_up if m['hero_id'] in enemy_ids]
                 team_all_pick['heroes'][count]['name'] = [hero.name]
                 team_all_pick['heroes'][count]['stats'] = [hero.pro_pick, hero.pro_win]
+                for i in stats[hero.name]:
+                    team_all_pick['heroes'][count]['stats'].append(i)
                 if count < 4:
                     count += 1
-
+    print(enemy_ids)
+    print(stats)
     return team_all_pick
 
 """функция создания словарей для embedding слоя"""
@@ -166,7 +177,7 @@ def transform_data(team_data, player_data, hero_data, team_pick):
     return team_index, player_indices, hero_indices, team_stats, player_stats, hero_stats
 
 
-def dataset(data):
+def dataset(data, enemy_data):
     num_teams = 6
     num_players = 10
     num_heroes = 10
@@ -176,7 +187,8 @@ def dataset(data):
     player_embedding = nn.Embedding(num_players, embedding_dim)
     hero_embedding = nn.Embedding(num_heroes, embedding_dim)
 
-    team_data = encryption_level_1(data)
+    team_data = encryption_level_1(data, enemy_data)
+    print(team_data)
     (team_index, player_indices, hero_indices,
     team_stats, player_stats, hero_stats) = transform_data(team_data['team'],
                                                             team_data['players'],
@@ -201,10 +213,12 @@ def dataset(data):
 
 
 class DotaDataset(Dataset):
-    def __init__(self, data, team, index):
+    def __init__(self, data, team, index, enemy_team, enemy_index):
         self.data = data
         self.team = team
         self.index = index
+        self.enemy_team = enemy_team
+        self.enemy_index = enemy_index
 
         num_teams = 6
         num_players = 10
@@ -220,9 +234,8 @@ class DotaDataset(Dataset):
 
     def __getitem__(self, idx):
         data_for_encryption = self.data[idx]['game'][self.index][self.team]
-        team_data = encryption_level_1(data_for_encryption)
-        # print(team_data)
-
+        enemy_data = self.data[idx]['game'][self.enemy_index][self.enemy_team]
+        team_data = encryption_level_1(data_for_encryption, enemy_data)
 
 
         (team_index, player_indices, hero_indices,
@@ -299,7 +312,7 @@ class BranchHeroes(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(34, 256)
+        self.fc1 = nn.Linear(39, 256)
         self.fc2 = nn.Linear(256, 128)
         self.fc3 = nn.Linear(128, 16)
 
