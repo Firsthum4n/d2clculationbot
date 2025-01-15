@@ -12,6 +12,7 @@ from torch.utils.data import Dataset, DataLoader, random_split
 import os
 import json
 import requests
+import time
 
 
 def encryption(radiant, dire):
@@ -84,7 +85,7 @@ def encryption_level_1(team_pick, enemy_team_pick):
     for i in all_heroes:
         for j in enemy_team_pick['heroes']:
             if j == i.name:
-                enemy_ids.append(i.id)
+                enemy_ids.append(i.hero_id)
     stats = {}
     for team in all_teams:
         if team_pick['team'] == team.name:
@@ -95,22 +96,29 @@ def encryption_level_1(team_pick, enemy_team_pick):
                 team_all_pick['players'][i]['name'] = [team_players[i].name if team_players else None]
                 team_all_pick['players'][i]['stats'] = [team_players[i].games_played, team_players[i].wins if team_players else None]
 
+
+
     count = 0
     for h in team_pick['heroes']:
         for hero in all_heroes:
             if h == hero.name:
                 match_up = requests.get(f"https://api.opendota.com/api/heroes/{hero.hero_id}/matchups")
-                match_up = match_up.json()
-                stats[hero.name] = [m['wins'] for m in match_up if m['hero_id'] in enemy_ids]
+                match_up_req = match_up.json()
+
+
+                with open('main/calc_bot/match_up.json', 'w+') as f:
+                    json.dump(match_up_req, f, indent=4)
+
+                stats[hero.name] = [m['wins'] for m in match_up_req if int(m['hero_id']) in enemy_ids]
                 team_all_pick['heroes'][count]['name'] = [hero.name]
                 team_all_pick['heroes'][count]['stats'] = [hero.pro_pick, hero.pro_win]
-                for i in stats[hero.name]:
-                    team_all_pick['heroes'][count]['stats'].append(i)
+
+                team_all_pick['heroes'][count]['stats'].extend(stats[hero.name])
                 if count < 4:
                     count += 1
-    print(enemy_ids)
-    print(stats)
     return team_all_pick
+
+
 
 """функция создания словарей для embedding слоя"""
 def ad_to_dict(team_pick):
@@ -188,7 +196,6 @@ def dataset(data, enemy_data):
     hero_embedding = nn.Embedding(num_heroes, embedding_dim)
 
     team_data = encryption_level_1(data, enemy_data)
-    print(team_data)
     (team_index, player_indices, hero_indices,
     team_stats, player_stats, hero_stats) = transform_data(team_data['team'],
                                                             team_data['players'],

@@ -16,6 +16,7 @@ from torch.utils.data import Dataset, DataLoader
 
 
 
+
 filepath = 'main/calc_bot/data.json'
 data = []
 
@@ -67,9 +68,9 @@ def custom_collate_fn(batch):
 
 
 criterion = nn.BCELoss()
-optimizer = torch.optim.AdamW(model.parameters(), lr=0.00000023 , weight_decay=0.0000001)
+optimizer = torch.optim.AdamW(model.parameters(), lr=0.0000001 , weight_decay=0.0000001)
 
-EPOCHS = 350
+EPOCHS = 3
 
 
 for j in range(len(x_data)):
