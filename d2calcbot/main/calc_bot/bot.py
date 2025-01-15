@@ -102,14 +102,9 @@ def encryption_level_1(team_pick, enemy_team_pick):
     for h in team_pick['heroes']:
         for hero in all_heroes:
             if h == hero.name:
-                match_up = requests.get(f"https://api.opendota.com/api/heroes/{hero.hero_id}/matchups")
-                match_up_req = match_up.json()
-
-
-                with open('main/calc_bot/match_up.json', 'w+') as f:
-                    json.dump(match_up_req, f, indent=4)
-
-                stats[hero.name] = [m['wins'] for m in match_up_req if int(m['hero_id']) in enemy_ids]
+                with open(f'main/calc_bot/matchupjson/{hero.hero_id}.json', 'r') as f:
+                    match_up  = json.load(f)
+                stats[hero.name] = [m['wins'] for m in match_up if m['hero_id'] in enemy_ids]
                 team_all_pick['heroes'][count]['name'] = [hero.name]
                 team_all_pick['heroes'][count]['stats'] = [hero.pro_pick, hero.pro_win]
 
