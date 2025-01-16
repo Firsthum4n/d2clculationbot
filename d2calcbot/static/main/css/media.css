@@ -7,7 +7,24 @@
 
     .header-content {
         margin: 18% auto 0 auto;
+        grid-template-columns: 80px 80px;
     }
+    #hero-pick-1,
+    #hero-pick-2,
+    #hero-pick-3,
+    #hero-pick-4,
+    #hero-pick-5,
+    #hero-pick-6,
+    #hero-pick-7,
+    #hero-pick-8,
+    #hero-pick-9,
+    #hero-pick-10 {
+        width: 80px;
+        height: 80px;
+
+
+}
+
 
     #send-heroes-button{
         margin-top: 50px;
@@ -32,6 +49,26 @@
         z-index: 100;
 
     }
+    .team-menu-1.active ,
+    .team-menu-2.active {
+        grid-template-columns: 42px 42px 42px 42px;
+        margin: 15% auto;
+        top: 0;
+        width: 90%;
+        height: 80%;
+        overflow: auto;
+        z-index: 100;
+        justify-content: space-around;
+        font-size: 12px;
+
+    }
+
+    .team-button-1 ,
+    .team-button-2{
+        width: 80px;
+        height: 50px;
+    }
+
 
     .modal-content {
         z-index: 10;

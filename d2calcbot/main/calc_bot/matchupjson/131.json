@@ -1,0 +1,27 @@
+[
+    {
+        "hero_id": 14,
+        "games_played": 1,
+        "wins": 0
+    },
+    {
+        "hero_id": 31,
+        "games_played": 1,
+        "wins": 0
+    },
+    {
+        "hero_id": 25,
+        "games_played": 1,
+        "wins": 0
+    },
+    {
+        "hero_id": 10,
+        "games_played": 1,
+        "wins": 0
+    },
+    {
+        "hero_id": 60,
+        "games_played": 1,
+        "wins": 0
+    }
+]

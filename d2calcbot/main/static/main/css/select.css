@@ -159,10 +159,16 @@ ul input {
     display: none;
 }
 
+
+
+
 .team-menu-1.active,
 .team-menu-2.active{
-	width: 270px;
-	display: block;
+    height: 90%;
+    width: 650px;
+	display: grid;
+    grid-template-columns: 120px 120px 120px 120px;
+    margin-left: 128px;
 	position: absolute;
     background-color: #121212;
     border-radius: 10px;
@@ -170,9 +176,10 @@ ul input {
     border: 1px solid grey;
     list-style: none;
     padding: 0;
-    margin: 0;
 	z-index: 200;
-    text-transform: lowercase;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
 }
 
 
@@ -185,6 +192,7 @@ ul input {
 .team-menu-1 li:hover,
 .team-menu-2 li:hover{
     background-color: #f0f0f0;
+    border-radius: 5px;
 }
 
 
