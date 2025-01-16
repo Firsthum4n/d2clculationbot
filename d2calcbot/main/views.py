@@ -14,17 +14,20 @@ from .calc_bot.bot import encryption
 
 
 from main.calc_bot.bot import encryption, DotaDataset, MainNetwork
-from main.calc_bot.test_data import matches_test
+from main.calc_bot.test_data import matches_result
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
+
+
+
 
 
 filepath = 'main/calc_bot/data.json'
 data = []
 
 # filepath_2 = 'main/calc_bot/data_winner.json'
-x_data, y_data = matches_test()
+x_data, y_data = matches_result()
 
 # with open(filepath_2, 'w') as f:
 #     json.dump(y_data, f, indent=4)
@@ -69,9 +72,9 @@ def custom_collate_fn(batch):
     return list(radiant_d), list(dire_d)
 
 criterion = nn.BCELoss()
-optimizer = torch.optim.AdamW(model.parameters(), lr=0.00006, weight_decay=1e-3)
+optimizer = torch.optim.AdamW(model.parameters(), lr=0.000002, weight_decay=1e-1)
 
-EPOCHS = 150
+EPOCHS = 200
 
 
 for j in range(len(x_data)):
@@ -99,7 +102,9 @@ for j in range(len(x_data)):
     if epoch + 1 == EPOCHS:
         data_item = {
             "number:": j + 1,
-            "loss": running_loss / len(x_data)
+            "loss": running_loss / len(x_data),
+            "out": output.item(),
+            "winner": winner.item()
 
         }
         data.append(data_item)
@@ -107,7 +112,7 @@ for j in range(len(x_data)):
     with open(filepath, 'w') as f:
         json.dump(data, f, indent=4)
 
-        print(f'Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}')
+        print(f'Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winner.item()}')
     print(f'данные номер: {j+1}')
 print("Обучение завершено.")
 torch.save(model.state_dict(), 'main/calc_bot/dota_model.pth')

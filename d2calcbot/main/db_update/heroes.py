@@ -1,3 +1,5 @@
+from ctypes.wintypes import HANDLE
+
 from main.models import *
 import json
 import requests
@@ -18,31 +20,31 @@ def create_or_update_heroes():
         for hr in range(len(hero_data)):
             try:
                 hero = Heroes.objects.get(name=hero_data[hr]['localized_name'], hero_id=hero_data[hr]['id'])
-                hero.pro_pick = hero_data[hr]['pro_pick']
-                hero.pro_win = hero_data[hr]['pro_win']
-                hero.pro_lose = hero_data[hr]['pro_pick'] - hero_data[hr]['pro_win']
-                hero.base_health = hero_data[hr]['base_health']
-                hero.base_health_regen = hero_data[hr]['base_health_regen']
-                hero.base_mana = hero_data[hr]['base_mana']
-                hero.base_mana_regen = hero_data[hr]['base_mana_regen']
-                hero.base_armor = hero_data[hr]['base_armor']
-                hero.base_mr = hero_data[hr]['base_mr']
-                hero.base_attack_min = hero_data[hr]['base_attack_min']
-                hero.base_attack_max = hero_data[hr]['base_attack_max']
-                hero.base_str = hero_data[hr]['base_str']
-                hero.base_agi = hero_data[hr]['base_agi']
-                hero.base_int = hero_data[hr]['base_int']
-                hero.str_gain = hero_data[hr]['str_gain']
-                hero.agi_gain = hero_data[hr]['agi_gain']
-                hero.int_gain = hero_data[hr]['int_gain']
-                hero.attack_range = hero_data[hr]['attack_range']
-                hero.projectile_speed = hero_data[hr]['projectile_speed']
-                hero.attack_rate = hero_data[hr]['attack_rate']
-                hero.base_attack_time = hero_data[hr]['base_attack_time']
-                hero.attack_point = hero_data[hr]['attack_point']
-                hero.move_speed = hero_data[hr]['move_speed']
-                hero.day_vision = hero_data[hr]['day_vision']
-                hero.night_vision = hero_data[hr]['night_vision']
+                hero.pro_pick = handle_none(hero_data[hr]['pro_pick'])
+                hero.pro_win = handle_none(hero_data[hr]['pro_win'])
+                hero.pro_lose = handle_none(hero_data[hr]['pro_pick'] - hero_data[hr]['pro_win'])
+                hero.base_health = handle_none(hero_data[hr]['base_health'])
+                hero.base_health_regen = handle_none(hero_data[hr]['base_health_regen'])
+                hero.base_mana = handle_none(hero_data[hr]['base_mana'])
+                hero.base_mana_regen = handle_none(hero_data[hr]['base_mana_regen'])
+                hero.base_armor = handle_none(hero_data[hr]['base_armor'])
+                hero.base_mr = handle_none(hero_data[hr]['base_mr'])
+                hero.base_attack_min = handle_none(hero_data[hr]['base_attack_min'])
+                hero.base_attack_max = handle_none(hero_data[hr]['base_attack_max'])
+                hero.base_str = handle_none(hero_data[hr]['base_str'])
+                hero.base_agi = handle_none(hero_data[hr]['base_agi'])
+                hero.base_int = handle_none(hero_data[hr]['base_int'])
+                hero.str_gain = handle_none(hero_data[hr]['str_gain'])
+                hero.agi_gain = handle_none(hero_data[hr]['agi_gain'])
+                hero.int_gain = handle_none(hero_data[hr]['int_gain'])
+                hero.attack_range = handle_none(hero_data[hr]['attack_range'])
+                hero.projectile_speed = handle_none(hero_data[hr]['projectile_speed'])
+                hero.attack_rate = handle_none(hero_data[hr]['attack_rate'])
+                hero.base_attack_time = handle_none(hero_data[hr]['base_attack_time'])
+                hero.attack_point = handle_none(hero_data[hr]['attack_point'])
+                hero.move_speed = handle_none(hero_data[hr]['move_speed'])
+                hero.day_vision = handle_none(hero_data[hr]['day_vision'])
+                hero.night_vision = handle_none(hero_data[hr]['night_vision'])
                 hero.save()
             except Heroes.DoesNotExist:
 
@@ -107,8 +109,9 @@ def create_or_update_heroes():
         return False
 
 
-
-
+"""если значение равно None меняется на 0"""
+def handle_none(value):
+    return value if value is not None else 0
 
 
 """функция удаления всех записей и обнуления id"""
