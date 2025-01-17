@@ -70,9 +70,9 @@ def custom_collate_fn(batch):
 
 
 criterion = nn.BCELoss()
-optimizer = torch.optim.AdamW(model.parameters(), lr=0.0000002 , weight_decay=0.0000001)
+optimizer = torch.optim.AdamW(model.parameters(), lr=0.00000021 , weight_decay=0.0000001)
 
-EPOCHS = 350
+EPOCHS = 325
 
 
 for j in range(len(x_data)):
@@ -113,10 +113,10 @@ for j in range(len(x_data)):
         print(f'Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winner.item()}')
     print(f'данные номер: {j+1}')
 print("Обучение завершено.")
-torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver1.pth')
+torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver4.pth')
 
 model = MainNetwork()
-model.load_state_dict(torch.load('main/calc_bot/dota_model_ver1.pth'))
+model.load_state_dict(torch.load('main/calc_bot/dota_model_ver4.pth'))
 for j in range(len(x_valid_data)):
     r = r_valid[j]
     d = d_valid[j]
@@ -136,7 +136,7 @@ for j in range(len(x_valid_data)):
         print(f' Loss: {running_loss / len(x_data):.4f}, out:{output.item()},result: {1 if output.item() >= 0.5 else 0} winner:{winner.item()}')
 
 print("Обучение завершено.")
-torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver1.pth')
+torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver4.pth')
 
 
 class MainHomeView(LoginRequiredMixin,DataMixin, ListView):
