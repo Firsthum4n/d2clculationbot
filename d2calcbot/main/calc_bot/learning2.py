@@ -1,5 +1,5 @@
 from main.calc_bot.bot import encryption, DotaDataset, MainNetwork
-from main.calc_bot.test_data import matches_test
+from main.calc_bot.test_data2 import matches_test_2, matches_result_2
 import json
 import torch
 import torch.nn as nn
@@ -10,12 +10,11 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 
-
-filepath = 'main/calc_bot/data.json'
+filepath = 'main/calc_bot/data2.json'
 data = []
 
 # filepath_2 = 'main/calc_bot/data_winner.json'
-x_data, y_data = matches_result()
+x_data, y_data = matches_result_2()
 
 # with open(filepath_2, 'w') as f:
 #     json.dump(y_data, f, indent=4)
@@ -24,17 +23,17 @@ y_data = torch.tensor(y_data, dtype=torch.float32)
 
 
 
-cnt = 690
+cnt = 40
 x_valid_data = []
 y_valid_data = []
-for i in range(37):
+for i in range(12):
     x_valid_data.append(x_data[cnt])
     y_valid_data.append(y_data[cnt])
     cnt+=1
 
 
-x_data = x_data[:690]
-y_data = y_data[:690]
+x_data = x_data[:40]
+y_data = y_data[:40]
 
 
 radiant_team_data = DotaDataset(x_data, 'radiant', 0, 'dire', 1)
@@ -51,6 +50,7 @@ num_heroes = 10
 embedding_dim = 32
 
 model = MainNetwork()
+model.load_state_dict(torch.load('main/calc_bot/dota_model_ver9.pth'))
 
 def custom_collate_fn(batch):
     radiant_d, dire_d = zip(*batch)
@@ -102,10 +102,10 @@ for j in range(len(x_data)):
         print(f'Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winner.item()}')
     print(f'данные номер: {j+1}')
 print("Обучение завершено.")
-torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver4.pth')
+torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver99.pth')
 
 model = MainNetwork()
-model.load_state_dict(torch.load('main/calc_bot/dota_model_ver4.pth'))
+model.load_state_dict(torch.load('main/calc_bot/dota_model_ver99.pth'))
 for j in range(len(x_valid_data)):
     r = r_valid[j]
     d = d_valid[j]
@@ -125,4 +125,4 @@ for j in range(len(x_valid_data)):
         print(f' Loss: {running_loss / len(x_data):.4f}, out:{output.item()},result: {1 if output.item() >= 0.5 else 0} winner:{winner.item()}')
 
 print("Обучение завершено.")
-torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver4.pth')
+torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver99.pth')

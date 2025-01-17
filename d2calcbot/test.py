@@ -70,7 +70,7 @@ all_teams = []
 #     json.dump(match_up_req , f, indent=4)
 #
 # print(len(match_up_req))
-
+#############################################################################################
 # with open('main/jsf/hero_data_stats.json', 'r') as f:
 #     hero = json.load(f)
 #
@@ -79,14 +79,32 @@ all_teams = []
 #     match_up_req = match_up.json()
 #     with open(f'main/calc_bot/matchupjson/{i["id"]}.json', 'w+') as f:
 #         json.dump(match_up_req , f, indent=4)
-
-
-
-ids = [109, 110, 111, 112, 113, 114, 119, 120, 121, 122, 123, 126, 128, 129]
-for i in ids:
-    match_up = requests.get(f"https://api.opendota.com/api/heroes/{i}/matchups")
-    match_up_req = match_up.json()
-    with open(f'main/calc_bot/matchupjson/{i}.json', 'w+') as f:
-        json.dump(match_up_req , f, indent=4)
-
-
+#############################################################################################
+# ids = [109, 110, 111, 112, 113, 114, 119, 120, 121, 122, 123, 126, 128, 129]
+# for i in ids:
+#     match_up = requests.get(f"https://api.opendota.com/api/heroes/{i}/matchups")
+#     match_up_req = match_up.json()
+#     with open(f'main/calc_bot/matchupjson/{i}.json', 'w+') as f:
+#         json.dump(match_up_req , f, indent=4)
+#####################################################
+############################################
+# league_id = [17628]
+#
+#
+# for league_id in league_id:
+#     esl_matches = requests.get(f'https://api.opendota.com/api/leagues/{league_id}/matches')
+#     if esl_matches.status_code == 200:
+#         esl_req_matches = esl_matches.json()
+#         all_matches.extend(esl_req_matches)
+#     else:
+#         print(f"Ошибка при запросе к лиге {league_id}: {esl_matches.status_code}")
+#
+# with open('main/calc_bot/matches2.json', 'w+') as esl_file:
+#     json.dump(all_matches, esl_file, indent=4)
+####################################################################
+#########################################################
+# teams_request = requests.get("https://api.opendota.com/api/teams")
+# teams_data = teams_request.json()
+#
+# with open('main/jsf/teams.json', 'w+') as teams_file:
+#     json.dump(teams_data, teams_file, indent=4)

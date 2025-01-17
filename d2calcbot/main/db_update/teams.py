@@ -14,6 +14,8 @@ TIER_1 = (
 
 TIER_1_2 = ("Xtreme Gaming", "Looking for org", "Azure Ray", "nouns")
 
+TIER_1_3 = ("Chimera", )
+
 def create_or_update_teams():
     """"добавление или обновление команд"""
     teams_request = requests.get("https://api.opendota.com/api/teams")
@@ -25,7 +27,7 @@ def create_or_update_teams():
     try:
         for tm in range(len(teams_data)):
             team_id = teams_data[tm]['team_id']
-            if teams_data[tm]['name'] in TIER_1_2:
+            if teams_data[tm]['name'] in TIER_1_3:
                 try:
                     team = Teams.objects.get(name=teams_data[tm]['name'])
                     team.rating = teams_data[tm]['rating']
