@@ -23,17 +23,17 @@ y_data = torch.tensor(y_data, dtype=torch.float32)
 
 
 
-cnt = 40
+cnt = 37
 x_valid_data = []
 y_valid_data = []
-for i in range(12):
+for i in range(15):
     x_valid_data.append(x_data[cnt])
     y_valid_data.append(y_data[cnt])
     cnt+=1
 
 
-x_data = x_data[:40]
-y_data = y_data[:40]
+x_data = x_data[:37]
+y_data = y_data[:37]
 
 
 radiant_team_data = DotaDataset(x_data, 'radiant', 0, 'dire', 1)
@@ -61,7 +61,7 @@ def custom_collate_fn(batch):
 criterion = nn.BCELoss()
 optimizer = torch.optim.AdamW(model.parameters(), lr=0.00000021 , weight_decay=0.0000001)
 
-EPOCHS = 325
+EPOCHS = 600
 
 
 for j in range(len(x_data)):
