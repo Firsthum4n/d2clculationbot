@@ -6,7 +6,7 @@ from .models import *
 import json
 from .utils import *
 from .db_update.heroes import create_or_update_heroes, del_all_heroes_and_ids
-from .db_update.teams import create_or_update_teams
+from .db_update.teams import create_or_update_teams, update_teams
 from .calc_bot.bot import encryption
 from main.calc_bot.bot import encryption, DotaDataset, MainNetwork
 from main.calc_bot.test_data import matches_result, matches_test
@@ -26,7 +26,6 @@ from main.calc_bot.test_data import matches_test
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-
 
 
 

@@ -86,7 +86,7 @@
     width: 650px;
     margin-left: 128px;
     position: absolute;
-    overflow: hidden;
+    overflow: auto;
     transition: line-height .5s, color .5s;
     display: grid;
     grid-template-columns: 81px 81px 81px 81px 81px 81px 81px;
@@ -110,7 +110,7 @@
     width: 650px;
     margin-left: 128px;
     position: absolute;
-    overflow: hidden;
+    overflow: auto;
     transition: line-height .5s, color .5s;
     display: grid;
     grid-template-columns: 81px 81px 81px 81px 81px 81px 81px;
@@ -180,6 +180,7 @@ ul input {
     justify-content: space-around;
     text-align: center;
     align-items: center;
+    overflow: auto;
 }
 
 
@@ -227,4 +228,24 @@ ul input {
     text-align: center;
     font-size: 14px;
     font-weight: bold;
+}
+
+
+/*полоса прокрутки меню*/
+::-webkit-scrollbar {
+    width: 5px; /* Ширина скроллбара */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Цвет фона дорожки скроллбара */
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; /* Цвет ползунка скроллбара */
+    border-radius: 15px; /* Радиус скругления ползунка */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Цвет ползунка при наведении */
 }

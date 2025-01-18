@@ -1,9 +1,7 @@
 import requests
 import json
 from main.models import *
-
-
-
+from test import all_teams
 
 TIER_1 = (
     "PARIVISION", "BetBoom Team", "Team Liquid", "Team Falcons", "Tundra Esports", "Cloud9",
@@ -89,6 +87,24 @@ def create_or_update_teams():
 
 
 
+
+def update_teams():
+    teams_request = requests.get("https://api.opendota.com/api/teams")
+    teams_data = teams_request.json()
+
+    with open('main/jsf/teams.json', 'w+') as teams_file:
+        json.dump(teams_data, teams_file, indent=4)
+
+    all_team = Teams.objects.all()
+    for tm in range(len(teams_data)):
+        for team in all_team:
+            team_id = teams_data[tm]['team_id']
+            if team_id == team.team_id:
+                team = Teams.objects.get(name=teams_data[tm]['name'])
+                team.rating = teams_data[tm]['rating']
+                team.wins = teams_data[tm]['wins']
+                team.losses = teams_data[tm]['losses']
+                team.save()
 
 
 

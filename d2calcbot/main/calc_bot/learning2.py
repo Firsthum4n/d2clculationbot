@@ -23,17 +23,17 @@ y_data = torch.tensor(y_data, dtype=torch.float32)
 
 
 
-cnt = 37
+cnt = 87
 x_valid_data = []
 y_valid_data = []
-for i in range(15):
+for i in range(20):
     x_valid_data.append(x_data[cnt])
     y_valid_data.append(y_data[cnt])
     cnt+=1
 
 
-x_data = x_data[:37]
-y_data = y_data[:37]
+x_data = x_data[:87]
+y_data = y_data[:87]
 
 
 radiant_team_data = DotaDataset(x_data, 'radiant', 0, 'dire', 1)
@@ -50,7 +50,7 @@ num_heroes = 10
 embedding_dim = 32
 
 model = MainNetwork()
-model.load_state_dict(torch.load('main/calc_bot/dota_model_ver9.pth'))
+model.load_state_dict(torch.load('main/calc_bot/dota_model_ver7777.pth'))
 
 def custom_collate_fn(batch):
     radiant_d, dire_d = zip(*batch)
@@ -61,7 +61,7 @@ def custom_collate_fn(batch):
 criterion = nn.BCELoss()
 optimizer = torch.optim.AdamW(model.parameters(), lr=0.00000021 , weight_decay=0.0000001)
 
-EPOCHS = 600
+EPOCHS = 17
 
 
 for j in range(len(x_data)):
@@ -102,10 +102,10 @@ for j in range(len(x_data)):
         print(f'Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winner.item()}')
     print(f'данные номер: {j+1}')
 print("Обучение завершено.")
-torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver99.pth')
+torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver0001.pth')
 
 model = MainNetwork()
-model.load_state_dict(torch.load('main/calc_bot/dota_model_ver99.pth'))
+model.load_state_dict(torch.load('main/calc_bot/dota_model_ver0001.pth'))
 for j in range(len(x_valid_data)):
     r = r_valid[j]
     d = d_valid[j]
@@ -125,4 +125,4 @@ for j in range(len(x_valid_data)):
         print(f' Loss: {running_loss / len(x_data):.4f}, out:{output.item()},result: {1 if output.item() >= 0.5 else 0} winner:{winner.item()}')
 
 print("Обучение завершено.")
-torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver99.pth')
+torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver0001.pth')
