@@ -71,10 +71,10 @@
     },
     {
         "team_id": 8597976,
-        "rating": 1472.61,
-        "wins": 394,
+        "rating": 1476.53,
+        "wins": 395,
         "losses": 265,
-        "last_match_time": 1737119910,
+        "last_match_time": 1737187209,
         "name": "Talon",
         "tag": "TALON",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2028347991408203552/8DC9872DA88071D728A914CE17279959423FA340/"
@@ -280,6 +280,16 @@
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/1845922937363804366/B718AFD0F76379ACDDE28F7512FC91B76C478985/"
     },
     {
+        "team_id": 8261500,
+        "rating": 1344.45,
+        "wins": 370,
+        "losses": 321,
+        "last_match_time": 1737187211,
+        "name": "Xtreme Gaming",
+        "tag": "XG",
+        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2402194226059610590/E3CF4B6C4B2CFB974A9B415141E4A37317AD4D80/"
+    },
+    {
         "team_id": 6953913,
         "rating": 1342.56,
         "wins": 176,
@@ -298,16 +308,6 @@
         "name": "Team SMG",
         "tag": "SMG",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/1856049226625971775/C8540DF2478E5EE8890CD4128DE07176F9FE5FA2/"
-    },
-    {
-        "team_id": 8261500,
-        "rating": 1339.76,
-        "wins": 369,
-        "losses": 321,
-        "last_match_time": 1736590960,
-        "name": "Xtreme Gaming",
-        "tag": "XG",
-        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2402194226059610590/E3CF4B6C4B2CFB974A9B415141E4A37317AD4D80/"
     },
     {
         "team_id": 8597391,
@@ -2490,6 +2490,16 @@
         "logo_url": null
     },
     {
+        "team_id": 8629318,
+        "rating": 1161.2,
+        "wins": 1380,
+        "losses": 1428,
+        "last_match_time": 1737188622,
+        "name": "Mad Monkeys",
+        "tag": "Mm",
+        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2508018112053409972/A10316EBD20ECE720470ED4A5D07B3C6DDDC693A/"
+    },
+    {
         "team_id": 2783913,
         "rating": 1160.23,
         "wins": 83,
@@ -2928,16 +2938,6 @@
         "name": "Business Club",
         "tag": "BC",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2031737253375716324/F2394A2E273AFE7FF7A0CCA0E8151D693EA2558C/"
-    },
-    {
-        "team_id": 8629318,
-        "rating": 1151.48,
-        "wins": 1379,
-        "losses": 1428,
-        "last_match_time": 1737123574,
-        "name": "Mad Monkeys",
-        "tag": "Mm",
-        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2508018112053409972/A10316EBD20ECE720470ED4A5D07B3C6DDDC693A/"
     },
     {
         "team_id": 67,
@@ -3970,16 +3970,6 @@
         "logo_url": null
     },
     {
-        "team_id": 9546437,
-        "rating": 1130.15,
-        "wins": 8,
-        "losses": 5,
-        "last_match_time": 1737180486,
-        "name": "KUKUYS 2.0",
-        "tag": "KK2.0",
-        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2453988791679025351/801DDD227A2677A72F286FCE8D249B818C76D43B/"
-    },
-    {
         "team_id": 6926667,
         "rating": 1129.64,
         "wins": 11,
@@ -4208,6 +4198,16 @@
         "name": "Motivate. Viper Gaming",
         "tag": "MVG",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/1697276876114058177/C93540F44666B466DD577679B40A6C689BE874F8/"
+    },
+    {
+        "team_id": 9546437,
+        "rating": 1126.24,
+        "wins": 8,
+        "losses": 6,
+        "last_match_time": 1737187209,
+        "name": "KUKUYS 2.0",
+        "tag": "KK2.0",
+        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2453988791679025351/801DDD227A2677A72F286FCE8D249B818C76D43B/"
     },
     {
         "team_id": 9079901,
