@@ -1,7 +1,7 @@
 from django.db.models.expressions import result
 from sympy.codegen.ast import float32
 from main.db_update.heroes import create_or_update_heroes
-from main.db_update.teams import create_or_update_teams
+from main.db_update.teams import create_or_update_teams, update_teams
 from .test_data import matches_result
 from main.models import *
 import torch
@@ -16,6 +16,9 @@ import time
 
 
 def encryption(radiant, dire):
+    update_teams()
+    create_or_update_heroes()
+
     radiant_team_data = dataset(radiant, dire)
     dire_team_data = dataset(dire, radiant)
 
