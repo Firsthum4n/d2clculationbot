@@ -190,6 +190,16 @@
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2471984170520125054/B066431AF4D322D300DD5180CEC8F6BA0E85A7F5/"
     },
     {
+        "team_id": 8261500,
+        "rating": 1392.33,
+        "wins": 377,
+        "losses": 322,
+        "last_match_time": 1737367745,
+        "name": "Xtreme Gaming",
+        "tag": "XG",
+        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2402194226059610590/E3CF4B6C4B2CFB974A9B415141E4A37317AD4D80/"
+    },
+    {
         "team_id": 8599101,
         "rating": 1391.01,
         "wins": 450,
@@ -208,16 +218,6 @@
         "name": "(monkey) Business",
         "tag": "(monkey)",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/383162071968605685/B670804CDB13F184D122ACBB8F75E2DB2C959CAF/"
-    },
-    {
-        "team_id": 8261500,
-        "rating": 1388.4,
-        "wins": 375,
-        "losses": 321,
-        "last_match_time": 1737291072,
-        "name": "Xtreme Gaming",
-        "tag": "XG",
-        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2402194226059610590/E3CF4B6C4B2CFB974A9B415141E4A37317AD4D80/"
     },
     {
         "team_id": 7819701,
@@ -278,6 +278,16 @@
         "name": "BigGooooood",
         "tag": "BG",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/53249782181410639/A754634D7F2CA2B33322789ED2EBB953DADEEDA5/"
+    },
+    {
+        "team_id": 39,
+        "rating": 1351.67,
+        "wins": 1515,
+        "losses": 956,
+        "last_match_time": 1737338715,
+        "name": "Shopify Rebellion",
+        "tag": "SR",
+        "logo_url": "https://steamcdn-a.akamaihd.net/apps/dota2/images/team_logos/39.png"
     },
     {
         "team_id": 8721219,
@@ -348,16 +358,6 @@
         "name": "Azure Ray",
         "tag": "AR",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2298587339939886506/26FF6DD1070476EAF1C69DD30B259FBB197F0256/"
-    },
-    {
-        "team_id": 39,
-        "rating": 1333.88,
-        "wins": 1513,
-        "losses": 956,
-        "last_match_time": 1737250831,
-        "name": "Shopify Rebellion",
-        "tag": "SR",
-        "logo_url": "https://steamcdn-a.akamaihd.net/apps/dota2/images/team_logos/39.png"
     },
     {
         "team_id": 9017006,
@@ -500,6 +500,26 @@
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/170412655661567888/FEF408443C2CA8AB1953CFA3E530AB9D5EE7ADB7/"
     },
     {
+        "team_id": 9640842,
+        "rating": 1297.06,
+        "wins": 21,
+        "losses": 8,
+        "last_match_time": 1737367745,
+        "name": "Team Tidebound",
+        "tag": "",
+        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/11919673139914606/4B5AF4AF0B8136B73E597B844B98239EDD28EE98/"
+    },
+    {
+        "team_id": 7554697,
+        "rating": 1296.85,
+        "wins": 437,
+        "losses": 394,
+        "last_match_time": 1737366905,
+        "name": "Nigma Galaxy",
+        "tag": "NGX",
+        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/1827894588975105240/421C0D8318D71D5DD31FD08A7933AB622AE26590/"
+    },
+    {
         "team_id": 8204512,
         "rating": 1296.55,
         "wins": 216,
@@ -610,16 +630,6 @@
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2376297984889887726/F2376446D05157B080B5D506473EE2F1D43097BF/"
     },
     {
-        "team_id": 7554697,
-        "rating": 1280.21,
-        "wins": 435,
-        "losses": 394,
-        "last_match_time": 1737314001,
-        "name": "Nigma Galaxy",
-        "tag": "NGX",
-        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/1827894588975105240/421C0D8318D71D5DD31FD08A7933AB622AE26590/"
-    },
-    {
         "team_id": 8168562,
         "rating": 1280.05,
         "wins": 29,
@@ -648,16 +658,6 @@
         "name": "Ooredoo Thunders",
         "tag": "OT",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/1883094124816874766/6F395B569068034041A162578E78E83902E46E83/"
-    },
-    {
-        "team_id": 9640842,
-        "rating": 1274.36,
-        "wins": 18,
-        "losses": 6,
-        "last_match_time": 1737291072,
-        "name": "Team Tidebound",
-        "tag": "",
-        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/11919673139914606/4B5AF4AF0B8136B73E597B844B98239EDD28EE98/"
     },
     {
         "team_id": 2526472,
@@ -1120,16 +1120,6 @@
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2240039780382774383/E60E1732900AE3CE26C1BEA0BBE7B85CCB872B8E/"
     },
     {
-        "team_id": 9351740,
-        "rating": 1229.3,
-        "wins": 70,
-        "losses": 73,
-        "last_match_time": 1737295577,
-        "name": "Yakult Brothers",
-        "tag": "YB",
-        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/55829769476672190/66A70A578F13168E5D4A021F327B3256C7C7C44E/"
-    },
-    {
         "team_id": 9238717,
         "rating": 1229.06,
         "wins": 20,
@@ -1508,6 +1498,16 @@
         "name": "SG e-sports",
         "tag": "SG",
         "logo_url": "https://steamcdn-a.akamaihd.net/apps/dota2/images/team_logos/3580606.png"
+    },
+    {
+        "team_id": 9351740,
+        "rating": 1202.67,
+        "wins": 70,
+        "losses": 75,
+        "last_match_time": 1737349139,
+        "name": "Yakult Brothers",
+        "tag": "YB",
+        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/55829769476672190/66A70A578F13168E5D4A021F327B3256C7C7C44E/"
     },
     {
         "team_id": 3326680,
@@ -1930,16 +1930,6 @@
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/942812211562949712/1A92BF358F2687A4D74D79C4F9C02A4FAE9738EF/"
     },
     {
-        "team_id": 8629318,
-        "rating": 1184.57,
-        "wins": 1383,
-        "losses": 1428,
-        "last_match_time": 1737276651,
-        "name": "Mad Monkeys",
-        "tag": "Mm",
-        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2508018112053409972/A10316EBD20ECE720470ED4A5D07B3C6DDDC693A/"
-    },
-    {
         "team_id": 8951348,
         "rating": 1184.55,
         "wins": 40,
@@ -2088,16 +2078,6 @@
         "name": "B)ears",
         "tag": "B)",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/101728066962847284/B07F6E7D1D4ECCDA3AEB4985A222F839C42E1CBE/"
-    },
-    {
-        "team_id": 9651185,
-        "rating": 1177.19,
-        "wins": 16,
-        "losses": 6,
-        "last_match_time": 1737250918,
-        "name": "Wildcard",
-        "tag": "WC",
-        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/14173210407158797/EAFCC9BE14FBFC9DC1EA3D03D62772D38F7DF15F/"
     },
     {
         "team_id": 8112124,
@@ -2568,6 +2548,16 @@
         "name": "Athletico",
         "tag": "/A/",
         "logo_url": null
+    },
+    {
+        "team_id": 9651185,
+        "rating": 1159.4,
+        "wins": 16,
+        "losses": 8,
+        "last_match_time": 1737338715,
+        "name": "Wildcard",
+        "tag": "WC",
+        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/14173210407158797/EAFCC9BE14FBFC9DC1EA3D03D62772D38F7DF15F/"
     },
     {
         "team_id": 2552670,
@@ -3450,6 +3440,16 @@
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/357274177493063612/C6646260536702EC11BE924D3CB2D8C696280BC4/"
     },
     {
+        "team_id": 8629318,
+        "rating": 1141,
+        "wins": 1384,
+        "losses": 1430,
+        "last_match_time": 1737368433,
+        "name": "Mad Monkeys",
+        "tag": "Mm",
+        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2508018112053409972/A10316EBD20ECE720470ED4A5D07B3C6DDDC693A/"
+    },
+    {
         "team_id": 55,
         "rating": 1140.79,
         "wins": 443,
@@ -3498,6 +3498,16 @@
         "name": "NoMuerta",
         "tag": "NM",
         "logo_url": null
+    },
+    {
+        "team_id": 9646485,
+        "rating": 1139.93,
+        "wins": 14,
+        "losses": 11,
+        "last_match_time": 1737367904,
+        "name": "Jigglin",
+        "tag": "Jigglin",
+        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/10795057523687683/EE9A7F08EEEDE9615FB062476EF11BA3F1ECAFDD/"
     },
     {
         "team_id": 8062738,
@@ -3890,16 +3900,6 @@
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/710779919460996890/3B9ECD7E13630C51701750EC47D1495542E76BD0/"
     },
     {
-        "team_id": 9646485,
-        "rating": 1131.84,
-        "wins": 13,
-        "losses": 11,
-        "last_match_time": 1737209430,
-        "name": "Jigglin",
-        "tag": "Jigglin",
-        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/10795057523687683/EE9A7F08EEEDE9615FB062476EF11BA3F1ECAFDD/"
-    },
-    {
         "team_id": 42,
         "rating": 1131.78,
         "wins": 19,
@@ -4051,10 +4051,10 @@
     },
     {
         "team_id": 8893837,
-        "rating": 1128.52,
-        "wins": 868,
-        "losses": 604,
-        "last_match_time": 1737023537,
+        "rating": 1128.62,
+        "wins": 869,
+        "losses": 605,
+        "last_match_time": 1737369916,
         "name": "Parallel eSports",
         "tag": "PeS",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/1999066441861408614/71D1E68ECD1B5567B1E56F93F8511DB66D829C93/"
@@ -4288,16 +4288,6 @@
         "name": "Black Knight",
         "tag": "",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/770604271209269505/E2BE9219BD93B22A9A29ECDBC4C68251E1616920/"
-    },
-    {
-        "team_id": 9600141,
-        "rating": 1124.34,
-        "wins": 53,
-        "losses": 48,
-        "last_match_time": 1737318708,
-        "name": "Zero Tenacity",
-        "tag": "Z10",
-        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/23174701605135839/B5A052B86AE5F123031508603154EAD51013C412/"
     },
     {
         "team_id": 9216658,
@@ -5011,10 +5001,10 @@
     },
     {
         "team_id": 8893840,
-        "rating": 1112.88,
-        "wins": 796,
-        "losses": 658,
-        "last_match_time": 1736920564,
+        "rating": 1112.78,
+        "wins": 797,
+        "losses": 659,
+        "last_match_time": 1737369916,
         "name": "Big Bang Gaming",
         "tag": "BB",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2019352804996053730/B2F33387BA6420EF613A6A80085DA457BF81CA75/"
@@ -5360,6 +5350,16 @@
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/1999073232332155630/8C14E890B5CFD5537EF6E865A5C9820E25B19E26/"
     },
     {
+        "team_id": 8893825,
+        "rating": 1108.14,
+        "wins": 734,
+        "losses": 663,
+        "last_match_time": 1737352203,
+        "name": "Lucky Bulldogs",
+        "tag": "LB",
+        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2001335808621483127/5A5F024213E96EFED441218F3DBE395B9C10308C/"
+    },
+    {
         "team_id": 5992206,
         "rating": 1107.85,
         "wins": 15,
@@ -5428,16 +5428,6 @@
         "name": "Immunity Dota",
         "tag": "iM",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/792939615868175248/DD42FEEEA718DAE1C52868EA6D1E6C588578E7AB/"
-    },
-    {
-        "team_id": 8494848,
-        "rating": 1106.94,
-        "wins": 134,
-        "losses": 135,
-        "last_match_time": 1737309300,
-        "name": "Winter Bear",
-        "tag": "WB",
-        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2513641291257532360/DD2BF4B10E9D41131B18885208138CA7DB7BFB29/"
     },
     {
         "team_id": 8118197,
@@ -5878,6 +5868,16 @@
         "name": "team brasil",
         "tag": "BR",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/1812129453481426376/3CBA9BB97DD18A50764F8ADE495575050D5D30BA/"
+    },
+    {
+        "team_id": 9600141,
+        "rating": 1102.26,
+        "wins": 53,
+        "losses": 49,
+        "last_match_time": 1737322760,
+        "name": "Zero Tenacity",
+        "tag": "Z10",
+        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/23174701605135839/B5A052B86AE5F123031508603154EAD51013C412/"
     },
     {
         "team_id": 7408845,
@@ -6620,16 +6620,6 @@
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/1771575870872092279/B2D3795A0767B9F5EA3B7506193D1C5C1AA22D9B/"
     },
     {
-        "team_id": 8718594,
-        "rating": 1095.11,
-        "wins": 17,
-        "losses": 11,
-        "last_match_time": 1737180826,
-        "name": "Young Blood",
-        "tag": "YB",
-        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/37817742580312641/0F86FB73A751BB01038F2702B38A7927DDA1FD54/"
-    },
-    {
         "team_id": 8300691,
         "rating": 1095.05,
         "wins": 41,
@@ -7340,6 +7330,16 @@
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/541820196262480004/7F6601255B21C09D1C24108460E15C1B5FACD596/"
     },
     {
+        "team_id": 8494848,
+        "rating": 1090.3,
+        "wins": 134,
+        "losses": 137,
+        "last_match_time": 1737366905,
+        "name": "Winter Bear",
+        "tag": "WB",
+        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2513641291257532360/DD2BF4B10E9D41131B18885208138CA7DB7BFB29/"
+    },
+    {
         "team_id": 8687717,
         "rating": 1090.21,
         "wins": 213,
@@ -7588,16 +7588,6 @@
         "name": "KZ TEAM",
         "tag": "KZ",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2050878574197691966/63BD4F33584531DD81146CD1BBFF4F7C4BAB6312/"
-    },
-    {
-        "team_id": 9444453,
-        "rating": 1088.25,
-        "wins": 40,
-        "losses": 32,
-        "last_match_time": 1737289140,
-        "name": "Elite Eclipse",
-        "tag": "EE",
-        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2431468257629769817/8DE99E9FEB3212DA4970EACF23AD9BFBE939BD45/"
     },
     {
         "team_id": 1775760,
@@ -9000,6 +8990,16 @@
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/1480909476280410091/B071ECFDBB267E44B45F6F6D3AA6B70050ECB1E0/"
     },
     {
+        "team_id": 8718594,
+        "rating": 1079.14,
+        "wins": 19,
+        "losses": 13,
+        "last_match_time": 1737369517,
+        "name": "Young Blood",
+        "tag": "YB",
+        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/37817742580312641/0F86FB73A751BB01038F2702B38A7927DDA1FD54/"
+    },
+    {
         "team_id": 2447863,
         "rating": 1079.14,
         "wins": 6,
@@ -9038,6 +9038,16 @@
         "name": "arteezy rusky",
         "tag": "Rtz",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/772867190388406570/714BC02ACBB0AA5261A4E743C14BEB785A253E84/"
+    },
+    {
+        "team_id": 9025669,
+        "rating": 1078.96,
+        "wins": 308,
+        "losses": 365,
+        "last_match_time": 1737333692,
+        "name": "CrimsonSky",
+        "tag": "CS",
+        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2075635690086590897/AE8997D69BAE95D9DEE56EAF662269E793887E3F/"
     },
     {
         "team_id": 8690641,
@@ -9188,16 +9198,6 @@
         "name": "Philippines",
         "tag": "PHI",
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2000210408380262130/1B790CC51686AEAC70D3E41DFBB6B462E2279CE9/"
-    },
-    {
-        "team_id": 8893825,
-        "rating": 1077.91,
-        "wins": 732,
-        "losses": 663,
-        "last_match_time": 1736925991,
-        "name": "Lucky Bulldogs",
-        "tag": "LB",
-        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2001335808621483127/5A5F024213E96EFED441218F3DBE395B9C10308C/"
     },
     {
         "team_id": 9080367,
@@ -9650,16 +9650,6 @@
         "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/943970293951172741/6BD51FAFA15998A1DB58E6421C2F78AD59739B8D/"
     },
     {
-        "team_id": 9332046,
-        "rating": 1074.54,
-        "wins": 224,
-        "losses": 157,
-        "last_match_time": 1737030387,
-        "name": "Dominatrix",
-        "tag": "DMX",
-        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2443836672845546041/27EA9658B4E3579D43DBA49A38530A3D26F2AB84/"
-    },
-    {
         "team_id": 2785646,
         "rating": 1074.41,
         "wins": 7,
@@ -9998,5 +9988,15 @@
         "name": "Legacy\u9057",
         "tag": "Legacy\u9057",
         "logo_url": null
+    },
+    {
+        "team_id": 9593405,
+        "rating": 1072.65,
+        "wins": 6,
+        "losses": 1,
+        "last_match_time": 1731769872,
+        "name": "SVINUSHKI",
+        "tag": "SV1|N",
+        "logo_url": "https://steamusercontent-a.akamaihd.net/ugc/2448362707414393564/829ACAEA982B37509A19E516B18123CA9743052E/"
     }
 ]

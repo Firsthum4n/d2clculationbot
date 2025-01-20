@@ -1,34 +1,10 @@
 import requests
 import json
-
 from main.models import *
 
-# test = requests.get('https://api.opendota.com/api/leagues')
-# tst = test.json()
-#
-# with open('main/calc_bot/leagues.json', 'w+') as teams_file:
-#     json.dump(tst, teams_file, indent=4)
 
 with open('main/calc_bot/leagues.json', 'r') as f:
     tst = json.load(f)
-
-# ESL = requests.get(f'https://api.opendota.com/api/leagues/{17414}/teams')
-# esl_req = ESL.json()
-#
-# with open('main/calc_bot/esl_2024.json', 'w+') as teams_file:
-#     json.dump(esl_req, teams_file, indent=4)
-
-
-
-# with open('main/calc_bot/esl_2024.json', 'r') as f:
-#     esl_req = json.load(f)
-
-
-# esl_matches = requests.get(f'https://api.opendota.com/api/leagues/{17414}/matches')
-# esl_req_matches = esl_matches.json()
-#
-# with open('main/calc_bot/esl_matches.json', 'w+') as esl_file:
-#     json.dump(esl_req_matches, esl_file, indent=4)
 
 with open('main/calc_bot/matches2.json', 'r') as f:
     req_matches = json.load(f)

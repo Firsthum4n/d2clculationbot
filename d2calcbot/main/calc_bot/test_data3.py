@@ -1,19 +1,14 @@
 import requests
 import json
-
 from main.models import *
+import time
 
 
-with open('main/calc_bot/leagues.json', 'r') as f:
-    tst = json.load(f)
-
-
-with open('main/calc_bot/matches.json', 'r') as f:
+with open('main/calc_bot/matches3.json', 'r') as f:
     req_matches = json.load(f)
 
 
-
-def matches_test():
+def matches_test_3():
     test_data_x = []
     test_data_y = []
     all_teams = Teams.objects.all().prefetch_related('players')
@@ -58,18 +53,19 @@ def matches_test():
 
         except (KeyError, requests.exceptions.RequestException, IndexError) as e:
             print(f"Error processing match {match_id}: {e}")
+            time.sleep(60)
             continue
 
-    with open('main/calc_bot/test_data.json', 'w+') as f:
+    with open('main/calc_bot/test_data_3.json', 'w+') as f:
         json.dump(test_data_x, f, indent=4)
 
-    print("Test data saved to test_data.json")
+    print("Test data saved to test_data_3.json")
     return test_data_x, test_data_y
 
-def matches_result():
+def matches_result_3():
     test_data_x = []
     test_data_y = []
-    with open('main/calc_bot/test_data.json', 'r') as f:
+    with open('main/calc_bot/test_data_3.json', 'r') as f:
         result = json.load(f)
         for i in result:
             test_data_x.append(i)
