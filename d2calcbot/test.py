@@ -191,3 +191,10 @@ all_teams = []
 #
 # with open('main/calc_bot/leagues.json', 'w+') as teams_file:
 #     json.dump(tst, teams_file, indent=4)
+
+
+# test = requests.get(f'https://api.opendota.com/api/teams/{3922738}/heroes')
+# tst = test.json()
+#
+# with open('main/calc_bot/teams_heroes.json', 'w+') as teams_file:
+#     json.dump(tst, teams_file, indent=4)

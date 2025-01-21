@@ -110,7 +110,6 @@ def encryption_level_1(team_pick, enemy_team_pick):
                 stats[hero.name] = [m['wins'] for m in match_up if m['hero_id'] in enemy_ids]
                 team_all_pick['heroes'][count]['name'] = [hero.name]
                 team_all_pick['heroes'][count]['stats'] = [hero.pro_pick, hero.pro_win]
-
                 team_all_pick['heroes'][count]['stats'].extend(stats[hero.name])
                 if count < 4:
                     count += 1
