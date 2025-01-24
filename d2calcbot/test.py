@@ -71,6 +71,11 @@ all_teams = []
 #
 # print(len(match_up_req))
 #############################################################################################
+
+
+
+
+
 # with open('main/jsf/hero_data_stats.json', 'r') as f:
 #     hero = json.load(f)
 #
@@ -79,7 +84,43 @@ all_teams = []
 #     match_up_req = match_up.json()
 #     with open(f'main/calc_bot/matchupjson/{i["id"]}.json', 'w+') as f:
 #         json.dump(match_up_req , f, indent=4)
+#
+#
+#
+
+
 #############################################################################################
+
+
+
+
+
+# with open('main/jsf/hero_data_stats.json', 'r') as f:
+#     hero = json.load(f)
+#
+# for i in hero:
+#     match_up = requests.get(f"https://api.opendota.com/api/heroes/{i["id"]}/matchups")
+#     match_up_req = match_up.json()
+#     with open(f'main/calc_bot/matchupjson/{i["id"]}.json', 'w+') as f:
+#         json.dump(match_up_req , f, indent=4)
+#
+# teams_up = requests.get(f"https://api.opendota.com/api/teams/{17414}/heroes")
+
+
+####################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ids = [109, 110, 111, 112, 113, 114, 119, 120, 121, 122, 123, 126, 128, 129]
 # for i in ids:
 #     match_up = requests.get(f"https://api.opendota.com/api/heroes/{i}/matchups")

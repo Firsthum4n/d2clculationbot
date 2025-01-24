@@ -1,0 +1,200 @@
+[
+    {
+        "hero_id": 74,
+        "localized_name": "Invoker",
+        "games_played": 4,
+        "wins": 3
+    },
+    {
+        "hero_id": 87,
+        "localized_name": "Disruptor",
+        "games_played": 3,
+        "wins": 3
+    },
+    {
+        "hero_id": 138,
+        "localized_name": "Muerta",
+        "games_played": 3,
+        "wins": 3
+    },
+    {
+        "hero_id": 69,
+        "localized_name": "Doom",
+        "games_played": 3,
+        "wins": 3
+    },
+    {
+        "hero_id": 63,
+        "localized_name": "Weaver",
+        "games_played": 3,
+        "wins": 1
+    },
+    {
+        "hero_id": 41,
+        "localized_name": "Faceless Void",
+        "games_played": 2,
+        "wins": 2
+    },
+    {
+        "hero_id": 73,
+        "localized_name": "Alchemist",
+        "games_played": 2,
+        "wins": 0
+    },
+    {
+        "hero_id": 135,
+        "localized_name": "Dawnbreaker",
+        "games_played": 2,
+        "wins": 1
+    },
+    {
+        "hero_id": 106,
+        "localized_name": "Ember Spirit",
+        "games_played": 2,
+        "wins": 2
+    },
+    {
+        "hero_id": 39,
+        "localized_name": "Queen of Pain",
+        "games_played": 2,
+        "wins": 1
+    },
+    {
+        "hero_id": 85,
+        "localized_name": "Undying",
+        "games_played": 2,
+        "wins": 2
+    },
+    {
+        "hero_id": 36,
+        "localized_name": "Necrophos",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 65,
+        "localized_name": "Batrider",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 97,
+        "localized_name": "Magnus",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 42,
+        "localized_name": "Wraith King",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 114,
+        "localized_name": "Monkey King",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 60,
+        "localized_name": "Night Stalker",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 66,
+        "localized_name": "Chen",
+        "games_played": 1,
+        "wins": 0
+    },
+    {
+        "hero_id": 29,
+        "localized_name": "Tidehunter",
+        "games_played": 1,
+        "wins": 0
+    },
+    {
+        "hero_id": 121,
+        "localized_name": "Grimstroke",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 83,
+        "localized_name": "Treant Protector",
+        "games_played": 1,
+        "wins": 0
+    },
+    {
+        "hero_id": 98,
+        "localized_name": "Timbersaw",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 89,
+        "localized_name": "Naga Siren",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 81,
+        "localized_name": "Chaos Knight",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 49,
+        "localized_name": "Dragon Knight",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 96,
+        "localized_name": "Centaur Warrunner",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 67,
+        "localized_name": "Spectre",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 137,
+        "localized_name": "Primal Beast",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 31,
+        "localized_name": "Lich",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 100,
+        "localized_name": "Tusk",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 75,
+        "localized_name": "Silencer",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 128,
+        "localized_name": "Snapfire",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 4,
+        "localized_name": "Bloodseeker",
+        "games_played": 1,
+        "wins": 1
+    }
+]
