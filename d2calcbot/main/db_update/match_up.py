@@ -13,7 +13,7 @@ def hero_matchup():
 
     for i in hero:
         if request_count >= 30 and time.time() - start_time < 60:
-            sleep_time = 35
+            sleep_time = 15
             print(f"Слишком много запросов. Ожидание {sleep_time:.2f} секунд...")
             time.sleep(sleep_time)
             request_count = 0

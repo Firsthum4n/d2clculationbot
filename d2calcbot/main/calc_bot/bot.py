@@ -21,7 +21,7 @@ def encryption(radiant, dire):
 
 
     model = MainNetwork()
-    model.load_state_dict(torch.load('main/calc_bot/dota_model_ver3.pth'))
+    model.load_state_dict(torch.load('main/calc_bot/dota_model_ver01.pth'))
 
     model.eval()
     with torch.no_grad():
@@ -79,6 +79,7 @@ def encryption_level_1(team_pick, enemy_team_pick):
         ]
     }
 
+
     all_heroes = Heroes.objects.all()
     all_teams = Teams.objects.all().prefetch_related('players')
     enemy_ids = []
@@ -106,7 +107,8 @@ def encryption_level_1(team_pick, enemy_team_pick):
                                           if hh in th["localized_name"]]
 
             if len(team_heroes[team.name]) < 5:
-                team_heroes[team.name].append((0, 0) * (5 - len(team_heroes[team.name])))
+                for i in range(5 - len(team_heroes[team.name])):
+                    team_heroes[team.name].append((0, 0))
             team_all_pick['team'][0]['stats'].extend(team_heroes[team.name])
 
             for i in range(min(len(team_players), 5)):
@@ -310,7 +312,6 @@ class DotaDataset(Dataset):
 
         hero_emb_repeated = hero_emb.unsqueeze(1).repeat(1, 6, 1)
         hero_block = torch.cat((hero_emb_repeated, hero_stats), dim=2)
-
 
 
         return team_block, player_block, hero_block
