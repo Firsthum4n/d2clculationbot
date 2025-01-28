@@ -94,7 +94,7 @@ def encryption_level_1(team_pick, enemy_team_pick):
         if team_pick['team'] == team.name:
             team_players = team.get_players()
             team_all_pick['team'][0]['name'] = team.name
-            team_all_pick['team'][0]['stats'] = [(team.rating, 3000), (team.wins, team.losses)]
+            team_all_pick['team'][0]['stats'] = [(team.rating, 3000), (team.wins, team.wins + team.losses)]
 
             with open(f'main/calc_bot/matchupjsonteams/{team.team_id}.json', 'r') as f:
                 teams_up = json.load(f)
@@ -111,9 +111,26 @@ def encryption_level_1(team_pick, enemy_team_pick):
                     team_heroes[team.name].append((0, 0))
             team_all_pick['team'][0]['stats'].extend(team_heroes[team.name])
 
+
+
+
             for i in range(min(len(team_players), 5)):
+
+                team_total_games = team.wins + team.losses
+                player_winrate = (team_players[i].wins / team_players[i].games_played) * 100 if team_players[i].games_played > 0 else 0
+                player_loserate = ((team_players[i].games_played - team_players[i].wins) / team_players[i].games_played) * 100 if team_players[i].games_played > 0 else 0
+                team_winrate = (team.wins /team_total_games) * 100 if team_total_games > 0 else 0
+
                 team_all_pick['players'][i]['name'] = [team_players[i].name if team_players else None]
-                team_all_pick['players'][i]['stats'] = [(team_players[i].games_played, team_players[i].wins) if team_players else None]
+                team_all_pick['players'][i]['stats'] = [(team_players[i].games_played, team_players[i].wins),
+                                                        (team_players[i].games_played, team_players[i].games_played - team_players[i].wins),
+                                                        (player_winrate, 100),
+                                                        (player_loserate, 100),
+                                                        (team.rating / 5, 3000),
+                                                        ((player_winrate - team_winrate) / team_winrate, 100),
+                                                        ((team_players[i].wins / team.wins) * 100, 100)
+                                                        if team_players else None]
+
 
 
 
@@ -125,12 +142,14 @@ def encryption_level_1(team_pick, enemy_team_pick):
                     match_up  = json.load(f)
                 stats[hero.name] = [(m['wins'], m["games_played"]) for m in match_up if m['hero_id'] in enemy_ids]
                 team_all_pick['heroes'][count]['name'] = [hero.name]
-                team_all_pick['heroes'][count]['stats'] = [(hero.pro_pick, hero.pro_win)]
+                team_all_pick['heroes'][count]['stats'] = [(hero.pro_pick, hero.pro_win), (hero.pro_pick, hero.pro_lose)]
                 team_all_pick['heroes'][count]['stats'].extend(stats[hero.name])
                 if count < 4:
                     count += 1
 
+
     return team_all_pick
+
 
 
 
@@ -161,7 +180,7 @@ def ad_to_dict(team_pick):
 def embedding_create(team_pick):
     team_names, player_names, hero_names = ad_to_dict(team_pick)
 
-    embedding_dim = 32
+    embedding_dim = 8
     team_embedding = nn.Embedding(len(team_names), embedding_dim)
     player_embedding = nn.Embedding(len(player_names), embedding_dim)
     hero_embedding = nn.Embedding(len(hero_names), embedding_dim)
@@ -198,8 +217,6 @@ def transform_data(team_data, player_data, hero_data, team_pick):
             team_stats_list.append([stat])
 
     team_stats = torch.tensor(team_stats_list, dtype=torch.float32)
-
-
     player_stats = torch.tensor([player['stats'] for player in player_data], dtype=torch.float32)
 
     all_stats = []
@@ -220,10 +237,10 @@ def transform_data(team_data, player_data, hero_data, team_pick):
 
 
 def dataset(data, enemy_data):
-    num_teams = 6
-    num_players = 10
-    num_heroes = 10
-    embedding_dim = 32
+    num_teams = 1
+    num_players = 5
+    num_heroes = 5
+    embedding_dim = 8
 
     team_embedding = nn.Embedding(num_teams, embedding_dim)
     player_embedding = nn.Embedding(num_players, embedding_dim)
@@ -249,13 +266,16 @@ def dataset(data, enemy_data):
     team_emb_repeated = team_emb.unsqueeze(1).repeat(1, 7, 1)
     team_block = torch.cat((team_emb_repeated, team_stats), dim=2)
 
-    player_emb_repeated = player_emb.unsqueeze(1).repeat(1, 1, 1)
+
+    player_emb_repeated = player_emb.unsqueeze(1).repeat(1, 7, 1)
     player_block = torch.cat((player_emb_repeated, player_stats), dim=2)
 
-    hero_emb_repeated = hero_emb.unsqueeze(1).repeat(1, 6, 1)
+
+    hero_emb_repeated = hero_emb.unsqueeze(1).repeat(1, 7, 1)
     hero_block = torch.cat((hero_emb_repeated, hero_stats), dim=2)
 
     return team_block, player_block, hero_block
+
 
 
 class DotaDataset(Dataset):
@@ -266,10 +286,11 @@ class DotaDataset(Dataset):
         self.enemy_team = enemy_team
         self.enemy_index = enemy_index
 
-        num_teams = 6
-        num_players = 10
-        num_heroes = 10
-        embedding_dim = 32
+        num_teams = 1
+        num_players = 5
+        num_heroes = 5
+        embedding_dim = 8
+
 
 
         self.team_embedding = nn.Embedding(num_teams, embedding_dim)
@@ -303,16 +324,26 @@ class DotaDataset(Dataset):
         hero_emb = self.hero_embedding(hero_indices)
 
 
-
+        # print(team_emb.shape)
+        # print(team_stats.shape)
         team_emb_repeated = team_emb.unsqueeze(1).repeat(1, 7, 1)
         team_block = torch.cat((team_emb_repeated, team_stats), dim=2)
-
-        player_emb_repeated = player_emb.unsqueeze(1).repeat(1, 1, 1)
+        # print(team_emb_repeated.shape)
+        # print(team_block.shape)
+        #
+        # print(player_emb.shape)
+        # print(player_stats.shape)
+        player_emb_repeated = player_emb.unsqueeze(1).repeat(1, 7, 1)
         player_block = torch.cat((player_emb_repeated, player_stats), dim=2)
-
-        hero_emb_repeated = hero_emb.unsqueeze(1).repeat(1, 6, 1)
+        # print(player_emb_repeated.shape)
+        # print(player_block.shape)
+        #
+        # print(hero_emb.shape)
+        # print(hero_stats.shape)
+        hero_emb_repeated = hero_emb.unsqueeze(1).repeat(1, 7, 1)
         hero_block = torch.cat((hero_emb_repeated, hero_stats), dim=2)
-
+        # print(hero_emb_repeated.shape)
+        # print(hero_block.shape)
 
         return team_block, player_block, hero_block
 
@@ -324,8 +355,13 @@ class BranchTeam(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(34, 64)
-        self.fc2 = nn.Linear(64, 16)
+        self.fc1 = nn.Linear(10, 30)
+        self.fc2 = nn.Linear(30, 20)
+        self.fc3 = nn.Linear(20, 10)
+        self.fc4 = nn.Linear(10, 10)
+
+
+
 
     def forward(self, radiant_team_data, dire_team_data):
         r_team_block, r_player_block, r_hero_block = radiant_team_data
@@ -335,7 +371,10 @@ class BranchTeam(nn.Module):
         d_x = self.fc1(d_team_block)
 
         x = torch.cat([r_x, d_x], dim=0)
-        x = self.relu(self.fc2(x))
+        x = self.fc2(x)
+        x = self.fc3(x)
+        x = self.relu(self.fc4(x))
+
         return x
 
 
@@ -343,9 +382,10 @@ class BranchPlayers(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(34, 128)
-        self.fc2 = nn.Linear(128, 16)
-
+        self.fc1 = nn.Linear(10, 30)
+        self.fc2 = nn.Linear(30, 20)
+        self.fc3 = nn.Linear(20, 10)
+        self.fc4 = nn.Linear(10, 10)
 
     def forward(self, radiant_team_data, dire_team_data):
         r_team_block, r_player_block, r_hero_block = radiant_team_data
@@ -354,7 +394,9 @@ class BranchPlayers(nn.Module):
         r_x = self.fc1(r_player_block)
         d_x = self.fc1(d_player_block)
         x = torch.cat([r_x, d_x], dim=0)
-        x = self.relu(self.fc2(x))
+        x = self.fc2(x)
+        x = self.fc3(x)
+        x = self.relu(self.fc4(x))
 
         return x
 
@@ -363,8 +405,14 @@ class BranchHeroes(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(34, 128)
-        self.fc2= nn.Linear(128, 16)
+        self.fc1 = nn.Linear(10, 30)
+        self.fc2 = nn.Linear(30, 20)
+        self.fc3 = nn.Linear(20, 10)
+        self.fc4 = nn.Linear(10, 10)
+
+
+
+
 
     def forward(self, radiant_team_data, dire_team_data):
         r_team_block, r_player_block, r_hero_block = radiant_team_data
@@ -373,24 +421,31 @@ class BranchHeroes(nn.Module):
         r_x = self.fc1(r_hero_block)
         d_x = self.fc1(d_hero_block)
         x = torch.cat([r_x, d_x], dim=0)
-        x = self.relu(self.fc2(x))
+        x = self.fc2(x)
+        x = self.fc3(x)
+        x = self.relu(self.fc4(x))
+
 
         return x
 
 
 
 class MainNetwork(nn.Module):
-    def __init__(self):
+    def __init__(self): # Corrected from 'init' to '__init__'
         super().__init__()
         self.relu = nn.ReLU()
         self.flatten = nn.Flatten()
         self.branch_t = BranchTeam()
         self.branch_p = BranchPlayers()
         self.branch_h = BranchHeroes()
-        self.final_layer1 = nn.Linear(48, 32)
-        self.final_layer2 = nn.Linear(32, 1)
-        self.sigmoid = nn.Sigmoid()
 
+
+        self.final_layer1 = nn.Linear(70, 70)
+        self.final_layer2 = nn.Linear(70, 45)
+        self.final_layer3 = nn.Linear(45, 25)
+        self.final_layer4 = nn.Linear(25, 10)
+        self.final_layer5 = nn.Linear(10, 1)
+        self.sigmoid = nn.Sigmoid()
 
     def forward(self, radiant_team_data, dire_team_data):
         out_team = self.branch_t(radiant_team_data, dire_team_data)
@@ -399,17 +454,17 @@ class MainNetwork(nn.Module):
 
 
 
-        out_team_mean = out_team.mean(dim=(0, 1), keepdim=True)
-        out_players_mean = out_players.mean(dim=(0, 1), keepdim=True)
-        out_heroes_mean = out_heroes.mean(dim=(0, 1), keepdim=True)
+        combined = torch.cat([out_team, out_players, out_heroes], dim=0)
 
 
+        combined_flattened = self.flatten(combined)
+        combined_aggregated = torch.sum(combined_flattened, dim=0, keepdim=False) # Sum along dim 0, size [70]
 
-        combined = torch.cat([out_team_mean, out_players_mean, out_heroes_mean], dim=2)
-
-
-        combined = self.flatten(combined)
-        output = self.relu(self.final_layer1(combined))
+        output = self.relu(self.final_layer1(combined_aggregated))
         output = self.final_layer2(output)
+        output = self.final_layer3(output)
+        output = self.final_layer4(output)
+        output = self.final_layer5(output)
         output = self.sigmoid(output)
+        output = output.unsqueeze(0)
         return output
