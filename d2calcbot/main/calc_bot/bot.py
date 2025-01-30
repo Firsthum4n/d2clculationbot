@@ -94,7 +94,7 @@ def encryption_level_1(team_pick, enemy_team_pick):
         if team_pick['team'] == team.name:
             team_players = team.get_players()
             team_all_pick['team'][0]['name'] = team.name
-            team_all_pick['team'][0]['stats'] = [(team.rating, 3000), (team.wins, team.wins + team.losses)]
+            team_all_pick['team'][0]['stats'] = [((team.wins / (team.wins + team.losses)) * 100, 100), (team.wins, team.wins + team.losses), (team.rating, 3000)]
 
             with open(f'main/calc_bot/matchupjsonteams/{team.team_id}.json', 'r') as f:
                 teams_up = json.load(f)
@@ -118,17 +118,18 @@ def encryption_level_1(team_pick, enemy_team_pick):
 
                 team_total_games = team.wins + team.losses
                 player_winrate = (team_players[i].wins / team_players[i].games_played) * 100 if team_players[i].games_played > 0 else 0
-                player_loserate = ((team_players[i].games_played - team_players[i].wins) / team_players[i].games_played) * 100 if team_players[i].games_played > 0 else 0
-                team_winrate = (team.wins /team_total_games) * 100 if team_total_games > 0 else 0
+                player_rating = player_winrate * 0.7 + (team.rating / 5) * 0.3
+                team_winrate = (team.wins / team_total_games) * 100 if team_total_games > 0 else 0
 
                 team_all_pick['players'][i]['name'] = [team_players[i].name if team_players else None]
-                team_all_pick['players'][i]['stats'] = [(team_players[i].games_played, team_players[i].wins),
-                                                        (team_players[i].games_played, team_players[i].games_played - team_players[i].wins),
+                team_all_pick['players'][i]['stats'] = [(team_players[i].wins, team_players[i].games_played),
                                                         (player_winrate, 100),
-                                                        (player_loserate, 100),
-                                                        (team.rating / 5, 3000),
+                                                        ((team_players[i].wins / team.wins) * 100, 100),
                                                         ((player_winrate - team_winrate) / team_winrate, 100),
-                                                        ((team_players[i].wins / team.wins) * 100, 100)
+                                                        ((team_players[i].wins / team.wins) * 100, 100),
+                                                        (team.rating / 5, 3000),
+                                                        (player_winrate / team_winrate, 100) if team_winrate > 0 else 0,
+                                                        (player_rating, 150)
                                                         if team_players else None]
 
 
@@ -140,13 +141,17 @@ def encryption_level_1(team_pick, enemy_team_pick):
             if h == hero.name:
                 with open(f'main/calc_bot/matchupjson/{hero.hero_id}.json', 'r') as f:
                     match_up  = json.load(f)
-                stats[hero.name] = [(m['wins'], m["games_played"]) for m in match_up if m['hero_id'] in enemy_ids]
+                stats[hero.name] = [((m['wins'] / m["games_played"]) * 100, 100) for m in match_up if m['hero_id'] in enemy_ids]
+                total_hero_winrate = 0
+                for i in stats[hero.name]:
+                    total_hero_winrate += i[0]
+
                 team_all_pick['heroes'][count]['name'] = [hero.name]
-                team_all_pick['heroes'][count]['stats'] = [(hero.pro_pick, hero.pro_win), (hero.pro_pick, hero.pro_lose)]
+                team_all_pick['heroes'][count]['stats'] = [(hero.pro_win, hero.pro_pick), ((hero.pro_win / hero.pro_pick) * 100, 100)]
                 team_all_pick['heroes'][count]['stats'].extend(stats[hero.name])
+                team_all_pick['heroes'][count]['stats'].append((total_hero_winrate / 5, 100))
                 if count < 4:
                     count += 1
-
 
     return team_all_pick
 
@@ -263,15 +268,15 @@ def dataset(data, enemy_data):
     hero_indices = torch.tensor(hero_indices)
     hero_emb = hero_embedding(hero_indices)
 
-    team_emb_repeated = team_emb.unsqueeze(1).repeat(1, 7, 1)
+    team_emb_repeated = team_emb.unsqueeze(1).repeat(1, 8, 1)
     team_block = torch.cat((team_emb_repeated, team_stats), dim=2)
 
 
-    player_emb_repeated = player_emb.unsqueeze(1).repeat(1, 7, 1)
+    player_emb_repeated = player_emb.unsqueeze(1).repeat(1, 8, 1)
     player_block = torch.cat((player_emb_repeated, player_stats), dim=2)
 
 
-    hero_emb_repeated = hero_emb.unsqueeze(1).repeat(1, 7, 1)
+    hero_emb_repeated = hero_emb.unsqueeze(1).repeat(1, 8, 1)
     hero_block = torch.cat((hero_emb_repeated, hero_stats), dim=2)
 
     return team_block, player_block, hero_block
@@ -326,21 +331,21 @@ class DotaDataset(Dataset):
 
         # print(team_emb.shape)
         # print(team_stats.shape)
-        team_emb_repeated = team_emb.unsqueeze(1).repeat(1, 7, 1)
+        team_emb_repeated = team_emb.unsqueeze(1).repeat(1, 8, 1)
         team_block = torch.cat((team_emb_repeated, team_stats), dim=2)
         # print(team_emb_repeated.shape)
         # print(team_block.shape)
         #
         # print(player_emb.shape)
         # print(player_stats.shape)
-        player_emb_repeated = player_emb.unsqueeze(1).repeat(1, 7, 1)
+        player_emb_repeated = player_emb.unsqueeze(1).repeat(1, 8, 1)
         player_block = torch.cat((player_emb_repeated, player_stats), dim=2)
         # print(player_emb_repeated.shape)
         # print(player_block.shape)
         #
         # print(hero_emb.shape)
         # print(hero_stats.shape)
-        hero_emb_repeated = hero_emb.unsqueeze(1).repeat(1, 7, 1)
+        hero_emb_repeated = hero_emb.unsqueeze(1).repeat(1, 8, 1)
         hero_block = torch.cat((hero_emb_repeated, hero_stats), dim=2)
         # print(hero_emb_repeated.shape)
         # print(hero_block.shape)
@@ -440,7 +445,7 @@ class MainNetwork(nn.Module):
         self.branch_h = BranchHeroes()
 
 
-        self.final_layer1 = nn.Linear(70, 70)
+        self.final_layer1 = nn.Linear(80, 70)
         self.final_layer2 = nn.Linear(70, 45)
         self.final_layer3 = nn.Linear(45, 25)
         self.final_layer4 = nn.Linear(25, 10)

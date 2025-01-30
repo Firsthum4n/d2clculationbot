@@ -16,130 +16,142 @@ import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 
 
-#
-# filepath = 'main/calc_bot/data.json'
-# data = []
-#
-# # filepath_2 = 'main/calc_bot/data_winner.json'
-# x_data, y_data = matches_result_3()
-#
-# # with open(filepath_2, 'w') as f:
-# #     json.dump(y_data, f, indent=4)
-#
-# y_data = torch.tensor(y_data, dtype=torch.float32)
-#
-#
-#
-# cnt = 179
-# x_valid_data = []
-# y_valid_data = []
-# for i in range(26):
-#     x_valid_data.append(x_data[cnt])
-#     y_valid_data.append(y_data[cnt])
-#     cnt+=1
-#
-#
-# x_data = x_data[:179]
-# y_data = y_data[:179]
-#
-#
-#
-#
-# radiant_team_data = DotaDataset(x_data, 'radiant', 0, 'dire', 1)
-# dire_team_data = DotaDataset(x_data, 'dire', 1, 'radiant', 0)
-# r_valid = DotaDataset(x_valid_data, 'radiant', 0, 'dire', 1)
-# d_valid = DotaDataset(x_valid_data, 'dire', 1, 'radiant', 0)
-#
-#
-#
-#
-#
-# batch_size = 10
-#
-# num_teams = 6
-# num_players = 10
-# num_heroes = 10
-# embedding_dim = 32
-#
-# model = MainNetwork()
-# # model.load_state_dict(torch.load('main/calc_bot/dota_model_ver00.pth'))
-#
-#
-# def custom_collate_fn(batch):
-#     radiant_d, dire_d = zip(*batch)
-#
-#     return list(radiant_d), list(dire_d)
-#
-#
-# criterion = nn.BCELoss()
-# # optimizer = torch.optim.Adam(model.parameters(), lr=0.001, weight_decay=0.0001)
-# optimizer = torch.optim.AdamW(model.parameters(), lr=1e-7, weight_decay=1e-8)
-# # optimizer = torch.optim.RMSprop(model.parameters(), lr=1e-7 , weight_decay=1e-10)
-#
-# EPOCHS = 50
-#
-# for j in range(len(x_data)):
-#     r = radiant_team_data[j]
-#     d = dire_team_data[j]
-#     winner = y_data[j]
-#     winner = winner.unsqueeze(0)
-#
-#     dataloader = DataLoader(list(zip(r, d)), batch_size=batch_size, collate_fn=custom_collate_fn)
-#
-#     for epoch in range(EPOCHS):
-#         model.train()
-#         running_loss = 0.0
-#
-#
-#         for i, (radiant_batch, dire_batch) in enumerate(dataloader):
-#             optimizer.zero_grad()
-#             output = model(radiant_batch, dire_batch)
-#             output = output.squeeze(1)
-#             loss = criterion(output, winner)
-#             loss.backward(retain_graph=True)
-#             optimizer.step()
-#             running_loss += loss.item()
-#
-#     if epoch + 1 == EPOCHS:
-#         data_item = {
-#             "number:": j + 1,
-#             "loss": running_loss / len(x_data),
-#             "out": output.item(),
-#             "winner": winner.item()
-#
-#         }
-#         data.append(data_item)
-#
-#     with open(filepath, 'w') as f:
-#         json.dump(data, f, indent=4)
-#
-#         print(f'данные номер: {j+1}\n'
-#             f'Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winner.item()}')
-# print("Обучение завершено.")
-# torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver03.pth')
-#
-# model = MainNetwork()
-# model.load_state_dict(torch.load('main/calc_bot/dota_model_ver03.pth'))
-# for j in range(len(x_valid_data)):
-#     r = r_valid[j]
-#     d = d_valid[j]
-#     winner = y_valid_data[j]
-#     winner = winner.unsqueeze(0)
-#     valid_dataloader = DataLoader(list(zip(r, d)), batch_size=batch_size, collate_fn=custom_collate_fn)
-#
-#
-#     model.eval()
-#     val_loss = 0.0
-#     with torch.no_grad():
-#         for i, (radiant_batch, dire_batch) in enumerate(valid_dataloader):
-#             output = model(radiant_batch, dire_batch)
-#             output = output.squeeze(1)
-#             loss = criterion(output,winner)
-#             val_loss += loss.item()
-#         print(f' Loss: {running_loss / len(x_data):.4f}, out:{output.item()},result: {1 if output.item() >= 0.5 else 0} winner:{winner.item()}')
-#
-# print("Обучение завершено.")
-# torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver03.pth')
+
+
+
+filepath = 'main/calc_bot/data.json'
+data = []
+
+# filepath_2 = 'main/calc_bot/data_winner.json'
+x_data, y_data = matches_result_3()
+
+# with open(filepath_2, 'w') as f:
+#     json.dump(y_data, f, indent=4)
+
+y_data = torch.tensor(y_data, dtype=torch.float32)
+
+
+
+cnt = 248
+x_valid_data = []
+y_valid_data = []
+for i in range(30):
+    x_valid_data.append(x_data[cnt])
+    y_valid_data.append(y_data[cnt])
+    cnt+=1
+
+
+x_data = x_data[:248]
+y_data = y_data[:248]
+
+
+
+
+radiant_team_data = DotaDataset(x_data, 'radiant', 0, 'dire', 1)
+dire_team_data = DotaDataset(x_data, 'dire', 1, 'radiant', 0)
+r_valid = DotaDataset(x_valid_data, 'radiant', 0, 'dire', 1)
+d_valid = DotaDataset(x_valid_data, 'dire', 1, 'radiant', 0)
+
+
+
+
+
+batch_size = 3
+
+
+
+model = MainNetwork()
+# model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver03.pth'))
+
+
+def custom_collate_fn(batch):
+    radiant_d, dire_d = zip(*batch)
+
+    return list(radiant_d), list(dire_d)
+
+
+criterion = nn.BCELoss()
+
+optimizer = torch.optim.AdamW(model.parameters(), lr=1e-7, weight_decay=1e-9)
+
+
+EPOCHS = 102
+
+for j in range(len(x_data)):
+    r = radiant_team_data[j]
+    d = dire_team_data[j]
+    winner = y_data[j]
+    winner = winner.unsqueeze(0)
+
+    dataloader = DataLoader(list(zip(r, d)), batch_size=batch_size, collate_fn=custom_collate_fn)
+
+    for epoch in range(EPOCHS):
+        model.train()
+        running_loss = 0.0
+
+
+        for i, (radiant_batch, dire_batch) in enumerate(dataloader):
+            optimizer.zero_grad()
+            output = model(radiant_batch, dire_batch)
+            output = output.squeeze(1)
+            loss = criterion(output, winner)
+            loss.backward(retain_graph=True)
+            optimizer.step()
+            running_loss += loss.item()
+
+    if epoch + 1 == EPOCHS:
+        data_item = {
+            "number:": j + 1,
+            "loss": running_loss / len(x_data),
+            "out": output.item(),
+            "winner": winner.item()
+
+        }
+        data.append(data_item)
+
+    with open(filepath, 'w') as f:
+        json.dump(data, f, indent=4)
+
+        print(f'данные номер: {j+1}\n'
+            f'Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winner.item()}')
+print("Обучение завершено.")
+torch.save(model.state_dict(), 'main/calc_bot/actual_models/dota_model_ver04.pth')
+
+model = MainNetwork()
+model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver04.pth'))
+radiant_0 = 0
+dire_1 = 0
+right = 0
+for j in range(len(x_valid_data)):
+    r = r_valid[j]
+    d = d_valid[j]
+    winner = y_valid_data[j]
+    winner = winner.unsqueeze(0)
+    valid_dataloader = DataLoader(list(zip(r, d)), batch_size=batch_size, collate_fn=custom_collate_fn)
+
+
+
+
+    model.eval()
+    val_loss = 0.0
+    with torch.no_grad():
+        for i, (radiant_batch, dire_batch) in enumerate(valid_dataloader):
+            output = model(radiant_batch, dire_batch)
+            output = output.squeeze(1)
+            loss = criterion(output,winner)
+            val_loss += loss.item()
+
+        print(f' Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, result: {1 if output.item() >= 0.5 else 0}, winner:{winner.item()}')
+        if output.item() >= 0.5:
+            dire_1 += 1
+        if output.item() < 0.5:
+            radiant_0 += 1
+        if round(output.item()) == winner.item():
+            right += 1
+print(f"Обучение завершено.\n"
+      f"radiant: {radiant_0}\n"
+      f"dire: {dire_1}\n"
+      f"right: {right}")
 
 
 
