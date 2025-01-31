@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, View, TemplateView
 from django.http import JsonResponse
+
 from .models import *
 import json
 from .utils import *
@@ -72,10 +73,13 @@ def custom_collate_fn(batch):
 
 criterion = nn.BCELoss()
 
-optimizer = torch.optim.AdamW(model.parameters(), lr=1e-7, weight_decay=1e-9)
+optimizer = torch.optim.AdamW(model.parameters(), lr=1e-6, weight_decay=1e-7)
+# optimizer = torch.optim.Adam(model.parameters(), lr=1e-6)
+# optimizer = torch.optim.SGD(model.parameters(), lr=1e-7, weight_decay=1e-9)
+# optimizer = torch.optim.RMSprop(model.parameters(), lr=1e-7, weight_decay=1e-9)
 
 
-EPOCHS = 102
+EPOCHS = 30
 
 for j in range(len(x_data)):
     r = radiant_team_data[j]

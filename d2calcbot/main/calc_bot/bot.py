@@ -363,7 +363,6 @@ class BranchTeam(nn.Module):
         self.fc1 = nn.Linear(10, 30)
         self.fc2 = nn.Linear(30, 20)
         self.fc3 = nn.Linear(20, 10)
-        self.fc4 = nn.Linear(10, 10)
 
 
 
@@ -377,8 +376,7 @@ class BranchTeam(nn.Module):
 
         x = torch.cat([r_x, d_x], dim=0)
         x = self.fc2(x)
-        x = self.fc3(x)
-        x = self.relu(self.fc4(x))
+        x = self.relu(self.fc3(x))
 
         return x
 
@@ -390,7 +388,6 @@ class BranchPlayers(nn.Module):
         self.fc1 = nn.Linear(10, 30)
         self.fc2 = nn.Linear(30, 20)
         self.fc3 = nn.Linear(20, 10)
-        self.fc4 = nn.Linear(10, 10)
 
     def forward(self, radiant_team_data, dire_team_data):
         r_team_block, r_player_block, r_hero_block = radiant_team_data
@@ -400,8 +397,9 @@ class BranchPlayers(nn.Module):
         d_x = self.fc1(d_player_block)
         x = torch.cat([r_x, d_x], dim=0)
         x = self.fc2(x)
-        x = self.fc3(x)
-        x = self.relu(self.fc4(x))
+        x = self.relu(self.fc3(x))
+
+
 
         return x
 
@@ -413,8 +411,6 @@ class BranchHeroes(nn.Module):
         self.fc1 = nn.Linear(10, 30)
         self.fc2 = nn.Linear(30, 20)
         self.fc3 = nn.Linear(20, 10)
-        self.fc4 = nn.Linear(10, 10)
-
 
 
 
@@ -427,8 +423,8 @@ class BranchHeroes(nn.Module):
         d_x = self.fc1(d_hero_block)
         x = torch.cat([r_x, d_x], dim=0)
         x = self.fc2(x)
-        x = self.fc3(x)
-        x = self.relu(self.fc4(x))
+        x = self.relu(self.fc3(x))
+
 
 
         return x
@@ -445,11 +441,12 @@ class MainNetwork(nn.Module):
         self.branch_h = BranchHeroes()
 
 
-        self.final_layer1 = nn.Linear(80, 70)
-        self.final_layer2 = nn.Linear(70, 45)
-        self.final_layer3 = nn.Linear(45, 25)
-        self.final_layer4 = nn.Linear(25, 10)
-        self.final_layer5 = nn.Linear(10, 1)
+        self.final_layer1 = nn.Linear(80, 65)
+        self.final_layer2 = nn.Linear(65, 50)
+        self.final_layer3 = nn.Linear(50, 45)
+        self.final_layer4 = nn.Linear(45, 30)
+        self.final_layer5 = nn.Linear(30, 15)
+        self.final_layer6 = nn.Linear(15, 1)
         self.sigmoid = nn.Sigmoid()
 
     def forward(self, radiant_team_data, dire_team_data):
@@ -470,6 +467,7 @@ class MainNetwork(nn.Module):
         output = self.final_layer3(output)
         output = self.final_layer4(output)
         output = self.final_layer5(output)
+        output = self.final_layer6(output)
         output = self.sigmoid(output)
         output = output.unsqueeze(0)
         return output
