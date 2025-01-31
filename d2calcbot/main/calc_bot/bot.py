@@ -284,8 +284,10 @@ def dataset(data, enemy_data):
 
 
 class DotaDataset(Dataset):
-    def __init__(self, data, team, index, enemy_team, enemy_index):
-        self.data = data
+    def __init__(self, x_data, y_data, team, index, enemy_team, enemy_index):
+        self.x_data = x_data
+        self.y_data = y_data
+
         self.team = team
         self.index = index
         self.enemy_team = enemy_team
@@ -303,11 +305,11 @@ class DotaDataset(Dataset):
         self.hero_embedding = nn.Embedding(num_heroes, embedding_dim)
 
     def __len__(self):
-        return len(self.data)
+        return len(self.x_data)
 
     def __getitem__(self, idx):
-        data_for_encryption = self.data[idx]['game'][self.index][self.team]
-        enemy_data = self.data[idx]['game'][self.enemy_index][self.enemy_team]
+        data_for_encryption = self.x_data[idx]['game'][self.index][self.team]
+        enemy_data = self.x_data[idx]['game'][self.enemy_index][self.enemy_team]
         team_data = encryption_level_1(data_for_encryption, enemy_data)
 
 
@@ -368,6 +370,8 @@ class BranchTeam(nn.Module):
 
 
     def forward(self, radiant_team_data, dire_team_data):
+        # print(radiant_team_data)
+
         r_team_block, r_player_block, r_hero_block = radiant_team_data
         d_team_block, d_player_block, d_hero_block = dire_team_data
 
@@ -441,12 +445,11 @@ class MainNetwork(nn.Module):
         self.branch_h = BranchHeroes()
 
 
-        self.final_layer1 = nn.Linear(80, 65)
-        self.final_layer2 = nn.Linear(65, 50)
-        self.final_layer3 = nn.Linear(50, 45)
-        self.final_layer4 = nn.Linear(45, 30)
-        self.final_layer5 = nn.Linear(30, 15)
-        self.final_layer6 = nn.Linear(15, 1)
+        self.final_layer1 = nn.Linear(80, 60)
+        self.final_layer2 = nn.Linear(60, 40)
+        self.final_layer3 = nn.Linear(40, 20)
+        self.final_layer4 = nn.Linear(20, 10)
+        self.final_layer5 = nn.Linear(10, 1)
         self.sigmoid = nn.Sigmoid()
 
     def forward(self, radiant_team_data, dire_team_data):
@@ -467,7 +470,6 @@ class MainNetwork(nn.Module):
         output = self.final_layer3(output)
         output = self.final_layer4(output)
         output = self.final_layer5(output)
-        output = self.final_layer6(output)
         output = self.sigmoid(output)
         output = output.unsqueeze(0)
         return output
