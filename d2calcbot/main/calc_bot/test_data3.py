@@ -10,7 +10,6 @@ with open('main/calc_bot/matches3.json', 'r') as f:
 
 def matches_test_3():
     test_data_x = []
-    test_data_y = []
     all_teams = Teams.objects.all().prefetch_related('players')
     all_heroes = Heroes.objects.all()
 
@@ -49,7 +48,7 @@ def matches_test_3():
                 test_data_x.append(
                     {'game': [{'radiant': radiant_pick}, {'dire': dire_pick}, {'winner': winner}]}
                 )
-                test_data_y.append(winner)
+
 
         except (KeyError, requests.exceptions.RequestException, IndexError) as e:
             print(f"Error processing match {match_id}: {e}")
@@ -60,16 +59,14 @@ def matches_test_3():
         json.dump(test_data_x, f, indent=4)
 
     print("Test data saved to test_data_3.json")
-    return test_data_x, test_data_y
+    return test_data_x
 
 def matches_result_3():
     test_data_x = []
-    test_data_y = []
     with open('main/calc_bot/test_data_3.json', 'r') as f:
         result = json.load(f)
         for i in result:
             test_data_x.append(i)
-        for i in range(len(result)):
-            test_data_y.append(result[i]['game'][2]['winner'])
 
-    return test_data_x, test_data_y
+
+    return test_data_x

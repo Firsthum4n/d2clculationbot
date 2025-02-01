@@ -21,7 +21,7 @@ from torch.utils.data import Dataset, DataLoader
 
 
 
-x_data, y_data = matches_result_3()
+x_data = matches_result_3()
 
 
 cnt = 248
