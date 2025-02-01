@@ -17,10 +17,6 @@ import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 
 
-
-
-
-
 x_data = matches_result_3()
 
 
@@ -32,6 +28,7 @@ for i in range(30):
 x_data = x_data[:248]
 
 data = DotaDataset(x_data)
+valid_data = DotaDataset(x_valid_data)
 
 batch_size = 1
 model = MainNetwork()
@@ -40,30 +37,30 @@ optimizer = torch.optim.AdamW(model.parameters(), lr=1e-5, weight_decay=1e-6)
 EPOCHS = 5
 
 dataloader = DataLoader(data, batch_size=batch_size)
-valid_dataloader = DataLoader(data, batch_size=batch_size)
+valid_dataloader = DataLoader(valid_data, batch_size=batch_size)
 
-for epoch in range(EPOCHS):
-    model.train()
-    running_loss = 0.0
-    for i, (batch_data , winners) in enumerate(dataloader):
-        optimizer.zero_grad()
-        output = model(batch_data)
-        output = output.squeeze(1)
-        loss = criterion(output, winners)
-        loss.backward(retain_graph=True)
-        optimizer.step()
-        running_loss += loss.item()
-        print(f'Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winners.item()}')
-print("Обучение завершено.")
-torch.save(model.state_dict(), 'main/calc_bot/actual_models/dota_model_ver00.pth')
-
+# for epoch in range(EPOCHS):
+#     model.train()
+#     running_loss = 0.0
+#     for i, (batch_data , winners) in enumerate(dataloader):
+#         optimizer.zero_grad()
+#         output = model(batch_data)
+#         output = output.squeeze(1)
+#         loss = criterion(output, winners)
+#         loss.backward(retain_graph=True)
+#         optimizer.step()
+#         running_loss += loss.item()
+#         print(f'Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winners.item()}')
+# print("Обучение завершено.")
+# torch.save(model.state_dict(), 'main/calc_bot/actual_models/dota_model_ver00.pth')
+#
+#
 
 model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver00.pth'))
 
 radiant_0 = 0
 dire_1 = 0
 right = 0
-
 
 model.eval()
 val_loss = 0.0
@@ -74,13 +71,14 @@ with torch.no_grad():
         loss = criterion(output, winners)
         val_loss += loss.item()
 
-    print(f' Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, result: {1 if output.item() >= 0.5 else 0}, winner:{winner.item()}')
-    if output.item() >= 0.5:
-        dire_1 += 1
-    if output.item() < 0.5:
-        radiant_0 += 1
-    if round(output.item()) == winners.item():
-        right += 1
+        print(f' Loss: {val_loss / len(x_data):.4f}, out:{output.item()}, result: {1 if output.item() >= 0.5 else 0}, winner:{winners.item()}')
+
+        if output.item() >= 0.5:
+            dire_1 += 1
+        if output.item() < 0.5:
+            radiant_0 += 1
+        if round(output.item()) == winners.item():
+            right += 1
 print(f"Обучение завершено.\n"
       f"radiant: {radiant_0}\n"
       f"dire: {dire_1}\n"
