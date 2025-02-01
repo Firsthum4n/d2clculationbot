@@ -16,23 +16,25 @@ import time
 
 
 
+def encryption(r_d):
+    data_no_grad = DotaDataset_no_grad(r_d)
+    batch_size = 1
 
-def encryption(radiant, dire):
-    radiant_team_data = dataset(radiant, dire)
-    dire_team_data = dataset(dire, radiant)
-
+    dataloader = DataLoader(data_no_grad, batch_size=batch_size)
 
     model = MainNetwork()
-    model.load_state_dict(torch.load('main/calc_bot/dota_model_ver01.pth'))
-
+    model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver00.pth'))
     model.eval()
     with torch.no_grad():
-        output = model(radiant_team_data,dire_team_data)
-        if output.item() <= 0.5:
-            win = f'победа radiant {output.item()}'
-        elif output.item() > 0.5:
-            win = f'победа dire {output.item()}'
-    return win
+        for i, (batch_data) in enumerate(dataloader):
+            output = model(batch_data)
+            output = output.squeeze(1)
+            if output.item() <= 0.5:
+                win = f'победа radiant {output.item()}'
+            elif output.item() > 0.5:
+                win = f'победа dire {output.item()}'
+        return win
+
 
 
 
@@ -286,6 +288,133 @@ def dataset(data, enemy_data):
 
 
 
+
+
+
+def data_for_dataset_no_grad(x_data):
+    radiant_data_for_encryption = []
+    dire_data_for_encryption = []
+    for i in range(len(x_data)):
+        radiant_data_for_encryption.append(x_data[i]['game'][0]['radiant'])
+        dire_data_for_encryption.append(x_data[i]['game'][1]['dire'])
+
+
+    radiant_encryption_list = []
+    dire_decryption_list = []
+
+    for i in range(len(radiant_data_for_encryption)):
+        radiant_encryption_list.append(encryption_level_1(radiant_data_for_encryption[i], dire_data_for_encryption[i]))
+        dire_decryption_list.append(encryption_level_1(dire_data_for_encryption[i], radiant_data_for_encryption[i]))
+
+    radiant_tensor_list = []
+    dire_tensor_list = []
+
+    for i in range(len(radiant_encryption_list)):
+        (r_team_index, r_player_indices, r_hero_indices,
+         r_team_stats, r_player_stats, r_hero_stats) = transform_data(radiant_encryption_list[i]['team'],
+                                                                    radiant_encryption_list[i]['players'],
+                                                                    radiant_encryption_list[i]['heroes'],
+                                                                    radiant_encryption_list[i])
+
+        radiant_tensor_list.append((r_team_index, r_player_indices, r_hero_indices,
+         r_team_stats, r_player_stats, r_hero_stats))
+
+
+    for i in range(len(dire_decryption_list)):
+        (d_team_index, d_player_indices, d_hero_indices,
+         d_team_stats, d_player_stats, d_hero_stats) = transform_data(dire_decryption_list[i]['team'],
+                                                                    dire_decryption_list[i]['players'],
+                                                                    dire_decryption_list[i]['heroes'],
+                                                                    dire_decryption_list[i])
+
+        dire_tensor_list.append((d_team_index, d_player_indices, d_hero_indices,
+         d_team_stats, d_player_stats, d_hero_stats))
+
+
+
+    return radiant_tensor_list, dire_tensor_list
+
+class DotaDataset_no_grad(Dataset):
+    def __init__(self, x_data):
+        self.x_data = x_data
+
+        num_teams = 1
+        num_players = 5
+        num_heroes = 5
+        embedding_dim = 8
+
+        self.team_embedding = nn.Embedding(num_teams, embedding_dim)
+        self.player_embedding = nn.Embedding(num_players, embedding_dim)
+        self.hero_embedding = nn.Embedding(num_heroes, embedding_dim)
+
+    def __len__(self):
+        return len(self.x_data)
+
+    def __getitem__(self, idx):
+        self.radiant_tensor_list, self.dire_tensor_list = data_for_dataset_no_grad(self.x_data)
+
+        r_team_index = self.radiant_tensor_list[idx][0]
+        r_player_indices = self.radiant_tensor_list[idx][1]
+        r_hero_indices = self.radiant_tensor_list[idx][2]
+        r_team_stats = self.radiant_tensor_list[idx][3]
+        r_player_stats = self.radiant_tensor_list[idx][4]
+        r_hero_stats = self.radiant_tensor_list[idx][5]
+
+
+        r_team_index = torch.tensor([r_team_index])
+
+        r_team_emb = self.team_embedding(r_team_index)
+        r_team_stats = r_team_stats.unsqueeze(0)
+
+        r_player_indices = torch.tensor(r_player_indices)
+        r_player_emb = self.player_embedding(r_player_indices)
+
+        r_hero_indices = torch.tensor(r_hero_indices)
+        r_hero_emb = self.hero_embedding(r_hero_indices)
+
+
+        r_team_emb_repeated = r_team_emb.unsqueeze(1).repeat(1, 8, 1)
+        r_team_block = torch.cat((r_team_emb_repeated, r_team_stats), dim=2)
+
+        r_player_emb_repeated = r_player_emb.unsqueeze(1).repeat(1, 8, 1)
+        r_player_block = torch.cat((r_player_emb_repeated, r_player_stats), dim=2)
+
+        r_hero_emb_repeated = r_hero_emb.unsqueeze(1).repeat(1, 8, 1)
+        r_hero_block = torch.cat((r_hero_emb_repeated, r_hero_stats), dim=2)
+
+        d_team_index = self.dire_tensor_list[idx][0]
+        d_player_indices = self.dire_tensor_list[idx][1]
+        d_hero_indices = self.dire_tensor_list[idx][2]
+        d_team_stats = self.dire_tensor_list[idx][3]
+        d_player_stats = self.dire_tensor_list[idx][4]
+        d_hero_stats = self.dire_tensor_list[idx][5]
+
+        d_team_index = torch.tensor([d_team_index])
+
+        d_team_emb = self.team_embedding(d_team_index)
+        d_team_stats = d_team_stats.unsqueeze(0)
+
+        d_player_indices = torch.tensor(d_player_indices)
+        d_player_emb = self.player_embedding(d_player_indices)
+
+        d_hero_indices = torch.tensor(d_hero_indices)
+        d_hero_emb = self.hero_embedding(d_hero_indices)
+
+        d_team_emb_repeated = d_team_emb.unsqueeze(1).repeat(1, 8, 1)
+        d_team_block = torch.cat((d_team_emb_repeated, d_team_stats), dim=2)
+
+        d_player_emb_repeated = d_player_emb.unsqueeze(1).repeat(1, 8, 1)
+        d_player_block = torch.cat((d_player_emb_repeated, d_player_stats), dim=2)
+
+        d_hero_emb_repeated = d_hero_emb.unsqueeze(1).repeat(1, 8, 1)
+        d_hero_block = torch.cat((d_hero_emb_repeated, d_hero_stats), dim=2)
+
+
+
+        return r_team_block, r_player_block, r_hero_block, d_team_block, d_player_block, d_hero_block
+
+
+
 def data_for_dataset(x_data):
     radiant_data_for_encryption = []
     dire_data_for_encryption = []
@@ -343,9 +472,6 @@ class DotaDataset(Dataset):
         num_players = 5
         num_heroes = 5
         embedding_dim = 8
-
-
-
 
         self.team_embedding = nn.Embedding(num_teams, embedding_dim)
         self.player_embedding = nn.Embedding(num_players, embedding_dim)
@@ -434,7 +560,6 @@ class BranchTeam(nn.Module):
 
 
     def forward(self, data):
-
         r_team_block, r_player_block, r_hero_block, d_team_block, d_player_block, d_hero_block = data
 
         r_x = self.fc1(r_team_block)

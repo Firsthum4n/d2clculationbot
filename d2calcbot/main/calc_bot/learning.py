@@ -11,6 +11,7 @@ import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 
 
+
 filepath = 'main/calc_bot/data.json'
 data = []
 

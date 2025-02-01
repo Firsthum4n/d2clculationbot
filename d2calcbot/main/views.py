@@ -56,33 +56,33 @@ valid_dataloader = DataLoader(valid_data, batch_size=batch_size)
 #
 #
 
-model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver00.pth'))
-
-radiant_0 = 0
-dire_1 = 0
-right = 0
-
-model.eval()
-val_loss = 0.0
-with torch.no_grad():
-    for i, (batch_data , winners) in enumerate(valid_dataloader):
-        output = model(batch_data)
-        output = output.squeeze(1)
-        loss = criterion(output, winners)
-        val_loss += loss.item()
-
-        print(f' Loss: {val_loss / len(x_data):.4f}, out:{output.item()}, result: {1 if output.item() >= 0.5 else 0}, winner:{winners.item()}')
-
-        if output.item() >= 0.5:
-            dire_1 += 1
-        if output.item() < 0.5:
-            radiant_0 += 1
-        if round(output.item()) == winners.item():
-            right += 1
-print(f"Обучение завершено.\n"
-      f"radiant: {radiant_0}\n"
-      f"dire: {dire_1}\n"
-      f"right: {right}")
+# model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver00.pth'))
+#
+# radiant_0 = 0
+# dire_1 = 0
+# right = 0
+#
+# model.eval()
+# val_loss = 0.0
+# with torch.no_grad():
+#     for i, (batch_data , winners) in enumerate(valid_dataloader):
+#         output = model(batch_data)
+#         output = output.squeeze(1)
+#         loss = criterion(output, winners)
+#         val_loss += loss.item()
+#
+#         print(f' Loss: {val_loss / len(x_data):.4f}, out:{output.item()}, result: {1 if output.item() >= 0.5 else 0}, winner:{winners.item()}')
+#
+#         if output.item() >= 0.5:
+#             dire_1 += 1
+#         if output.item() < 0.5:
+#             radiant_0 += 1
+#         if round(output.item()) == winners.item():
+#             right += 1
+# print(f"Обучение завершено.\n"
+#       f"radiant: {radiant_0}\n"
+#       f"dire: {dire_1}\n"
+#       f"right: {right}")
 
 
 
@@ -119,7 +119,35 @@ class All_pick(View):
         request.session['direPick'] = dire_pick
         print(dire_pick)
 
-        result = encryption(radiant_pick, dire_pick)
+        all_pick = [
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": '',
+                    "heroes": []
+                }
+            },
+            {
+                "dire": {
+                    "team": '',
+                    "heroes": [
+
+                    ]
+                }
+            }
+
+        ]
+    }]
+
+        all_pick[0]['game'][0]['radiant']['team'] = radiant_pick['team']
+        all_pick[0]['game'][0]['radiant']['heroes'].extend(radiant_pick['heroes'])
+        all_pick[0]['game'][1]['dire']['team'] = dire_pick['team']
+        all_pick[0]['game'][1]['dire']['heroes'].extend(dire_pick['heroes'])
+
+        print(all_pick)
+
+        result = encryption(all_pick)
 
 
         return JsonResponse(
