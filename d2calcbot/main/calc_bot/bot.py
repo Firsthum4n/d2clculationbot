@@ -15,6 +15,8 @@ import requests
 import time
 
 
+
+
 def encryption(radiant, dire):
     radiant_team_data = dataset(radiant, dire)
     dire_team_data = dataset(dire, radiant)
@@ -283,20 +285,65 @@ def dataset(data, enemy_data):
 
 
 
-class DotaDataset(Dataset):
-    def __init__(self, x_data, y_data, team, index, enemy_team, enemy_index):
-        self.x_data = x_data
-        self.y_data = y_data
 
-        self.team = team
-        self.index = index
-        self.enemy_team = enemy_team
-        self.enemy_index = enemy_index
+def data_for_dataset(x_data):
+    radiant_data_for_encryption = []
+    dire_data_for_encryption = []
+    winner = []
+    for i in range(len(x_data)):
+        radiant_data_for_encryption.append(x_data[i]['game'][0]['radiant'])
+        dire_data_for_encryption.append(x_data[i]['game'][1]['dire'])
+        winner.append(x_data[i]['game'][2]['winner'])
+
+    radiant_encryption_list = []
+    dire_decryption_list = []
+
+    for i in range(len(radiant_data_for_encryption)):
+        radiant_encryption_list.append(encryption_level_1(radiant_data_for_encryption[i], dire_data_for_encryption[i]))
+        dire_decryption_list.append(encryption_level_1(dire_data_for_encryption[i], radiant_data_for_encryption[i]))
+
+    radiant_tensor_list = []
+    dire_tensor_list = []
+
+    for i in range(len(radiant_encryption_list)):
+        (r_team_index, r_player_indices, r_hero_indices,
+         r_team_stats, r_player_stats, r_hero_stats) = transform_data(radiant_encryption_list[i]['team'],
+                                                                    radiant_encryption_list[i]['players'],
+                                                                    radiant_encryption_list[i]['heroes'],
+                                                                    radiant_encryption_list[i])
+
+        radiant_tensor_list.append((r_team_index, r_player_indices, r_hero_indices,
+         r_team_stats, r_player_stats, r_hero_stats))
+
+
+    for i in range(len(dire_decryption_list)):
+        (d_team_index, d_player_indices, d_hero_indices,
+         d_team_stats, d_player_stats, d_hero_stats) = transform_data(dire_decryption_list[i]['team'],
+                                                                    dire_decryption_list[i]['players'],
+                                                                    dire_decryption_list[i]['heroes'],
+                                                                    dire_decryption_list[i])
+
+        dire_tensor_list.append((d_team_index, d_player_indices, d_hero_indices,
+         d_team_stats, d_player_stats, d_hero_stats))
+
+
+    winner_tensor_list = torch.tensor(winner, dtype=torch.float32)
+
+
+
+    return radiant_tensor_list, dire_tensor_list, winner_tensor_list
+
+
+class DotaDataset(Dataset):
+    def __init__(self, x_data):
+        self.x_data = x_data
+
 
         num_teams = 1
         num_players = 5
         num_heroes = 5
         embedding_dim = 8
+
 
 
 
@@ -308,51 +355,69 @@ class DotaDataset(Dataset):
         return len(self.x_data)
 
     def __getitem__(self, idx):
-        data_for_encryption = self.x_data[idx]['game'][self.index][self.team]
-        enemy_data = self.x_data[idx]['game'][self.enemy_index][self.enemy_team]
-        team_data = encryption_level_1(data_for_encryption, enemy_data)
+
+        self.radiant_tensor_list, self.dire_tensor_list, self.winner_tensor_list = data_for_dataset(self.x_data)
+
+        r_team_index = self.radiant_tensor_list[idx][0]
+        r_player_indices = self.radiant_tensor_list[idx][1]
+        r_hero_indices = self.radiant_tensor_list[idx][2]
+        r_team_stats = self.radiant_tensor_list[idx][3]
+        r_player_stats = self.radiant_tensor_list[idx][4]
+        r_hero_stats = self.radiant_tensor_list[idx][5]
 
 
-        (team_index, player_indices, hero_indices,
-        team_stats, player_stats, hero_stats) = transform_data(team_data['team'],
-                                                                team_data['players'],
-                                                                team_data['heroes'],
-                                                                team_data)
+        r_team_index = torch.tensor([r_team_index])
+
+        r_team_emb = self.team_embedding(r_team_index)
+        r_team_stats = r_team_stats.unsqueeze(0)
+
+        r_player_indices = torch.tensor(r_player_indices)
+        r_player_emb = self.player_embedding(r_player_indices)
+
+        r_hero_indices = torch.tensor(r_hero_indices)
+        r_hero_emb = self.hero_embedding(r_hero_indices)
 
 
-        team_index = torch.tensor([team_index])
-        team_emb = self.team_embedding(team_index)
-        team_stats = team_stats.unsqueeze(0)
+        r_team_emb_repeated = r_team_emb.unsqueeze(1).repeat(1, 8, 1)
+        r_team_block = torch.cat((r_team_emb_repeated, r_team_stats), dim=2)
 
-        player_indices = torch.tensor(player_indices)
-        player_emb = self.player_embedding(player_indices)
+        r_player_emb_repeated = r_player_emb.unsqueeze(1).repeat(1, 8, 1)
+        r_player_block = torch.cat((r_player_emb_repeated, r_player_stats), dim=2)
 
-        hero_indices = torch.tensor(hero_indices)
-        hero_emb = self.hero_embedding(hero_indices)
+        r_hero_emb_repeated = r_hero_emb.unsqueeze(1).repeat(1, 8, 1)
+        r_hero_block = torch.cat((r_hero_emb_repeated, r_hero_stats), dim=2)
+
+        d_team_index = self.dire_tensor_list[idx][0]
+        d_player_indices = self.dire_tensor_list[idx][1]
+        d_hero_indices = self.dire_tensor_list[idx][2]
+        d_team_stats = self.dire_tensor_list[idx][3]
+        d_player_stats = self.dire_tensor_list[idx][4]
+        d_hero_stats = self.dire_tensor_list[idx][5]
+
+        d_team_index = torch.tensor([d_team_index])
+
+        d_team_emb = self.team_embedding(d_team_index)
+        d_team_stats = d_team_stats.unsqueeze(0)
+
+        d_player_indices = torch.tensor(d_player_indices)
+        d_player_emb = self.player_embedding(d_player_indices)
+
+        d_hero_indices = torch.tensor(d_hero_indices)
+        d_hero_emb = self.hero_embedding(d_hero_indices)
+
+        d_team_emb_repeated = d_team_emb.unsqueeze(1).repeat(1, 8, 1)
+        d_team_block = torch.cat((d_team_emb_repeated, d_team_stats), dim=2)
+
+        d_player_emb_repeated = d_player_emb.unsqueeze(1).repeat(1, 8, 1)
+        d_player_block = torch.cat((d_player_emb_repeated, d_player_stats), dim=2)
+
+        d_hero_emb_repeated = d_hero_emb.unsqueeze(1).repeat(1, 8, 1)
+        d_hero_block = torch.cat((d_hero_emb_repeated, d_hero_stats), dim=2)
 
 
-        # print(team_emb.shape)
-        # print(team_stats.shape)
-        team_emb_repeated = team_emb.unsqueeze(1).repeat(1, 8, 1)
-        team_block = torch.cat((team_emb_repeated, team_stats), dim=2)
-        # print(team_emb_repeated.shape)
-        # print(team_block.shape)
-        #
-        # print(player_emb.shape)
-        # print(player_stats.shape)
-        player_emb_repeated = player_emb.unsqueeze(1).repeat(1, 8, 1)
-        player_block = torch.cat((player_emb_repeated, player_stats), dim=2)
-        # print(player_emb_repeated.shape)
-        # print(player_block.shape)
-        #
-        # print(hero_emb.shape)
-        # print(hero_stats.shape)
-        hero_emb_repeated = hero_emb.unsqueeze(1).repeat(1, 8, 1)
-        hero_block = torch.cat((hero_emb_repeated, hero_stats), dim=2)
-        # print(hero_emb_repeated.shape)
-        # print(hero_block.shape)
 
-        return team_block, player_block, hero_block
+        return (r_team_block, r_player_block, r_hero_block, d_team_block, d_player_block, d_hero_block), self.winner_tensor_list[idx]
+
 
 
 
@@ -368,12 +433,9 @@ class BranchTeam(nn.Module):
 
 
 
+    def forward(self, data):
 
-    def forward(self, radiant_team_data, dire_team_data):
-        # print(radiant_team_data)
-
-        r_team_block, r_player_block, r_hero_block = radiant_team_data
-        d_team_block, d_player_block, d_hero_block = dire_team_data
+        r_team_block, r_player_block, r_hero_block, d_team_block, d_player_block, d_hero_block = data
 
         r_x = self.fc1(r_team_block)
         d_x = self.fc1(d_team_block)
@@ -393,16 +455,14 @@ class BranchPlayers(nn.Module):
         self.fc2 = nn.Linear(30, 20)
         self.fc3 = nn.Linear(20, 10)
 
-    def forward(self, radiant_team_data, dire_team_data):
-        r_team_block, r_player_block, r_hero_block = radiant_team_data
-        d_team_block, d_player_block, d_hero_block = dire_team_data
+    def forward(self, data):
+        (r_team_block, r_player_block, r_hero_block, d_team_block, d_player_block, d_hero_block) = data
 
         r_x = self.fc1(r_player_block)
         d_x = self.fc1(d_player_block)
         x = torch.cat([r_x, d_x], dim=0)
         x = self.fc2(x)
         x = self.relu(self.fc3(x))
-
 
 
         return x
@@ -419,9 +479,8 @@ class BranchHeroes(nn.Module):
 
 
 
-    def forward(self, radiant_team_data, dire_team_data):
-        r_team_block, r_player_block, r_hero_block = radiant_team_data
-        d_team_block, d_player_block, d_hero_block = dire_team_data
+    def forward(self, data):
+        (r_team_block, r_player_block, r_hero_block, d_team_block, d_player_block, d_hero_block) = data
 
         r_x = self.fc1(r_hero_block)
         d_x = self.fc1(d_hero_block)
@@ -436,7 +495,7 @@ class BranchHeroes(nn.Module):
 
 
 class MainNetwork(nn.Module):
-    def __init__(self): # Corrected from 'init' to '__init__'
+    def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
         self.flatten = nn.Flatten()
@@ -445,26 +504,22 @@ class MainNetwork(nn.Module):
         self.branch_h = BranchHeroes()
 
 
-        self.final_layer1 = nn.Linear(80, 60)
+        self.final_layer1 = nn.Linear(880, 60)
         self.final_layer2 = nn.Linear(60, 40)
         self.final_layer3 = nn.Linear(40, 20)
         self.final_layer4 = nn.Linear(20, 10)
         self.final_layer5 = nn.Linear(10, 1)
         self.sigmoid = nn.Sigmoid()
 
-    def forward(self, radiant_team_data, dire_team_data):
-        out_team = self.branch_t(radiant_team_data, dire_team_data)
-        out_players = self.branch_p(radiant_team_data, dire_team_data)
-        out_heroes = self.branch_h(radiant_team_data, dire_team_data)
+    def forward(self, data):
+        out_team = self.branch_t(data)
+        out_players = self.branch_p(data)
+        out_heroes = self.branch_h(data)
 
 
-
-        combined = torch.cat([out_team, out_players, out_heroes], dim=0)
-
-
+        combined = torch.cat([out_team, out_players, out_heroes], dim=1)
         combined_flattened = self.flatten(combined)
-        combined_aggregated = torch.sum(combined_flattened, dim=0, keepdim=False) # Sum along dim 0, size [70]
-
+        combined_aggregated = torch.sum(combined_flattened, dim=0, keepdim=False)
         output = self.relu(self.final_layer1(combined_aggregated))
         output = self.final_layer2(output)
         output = self.final_layer3(output)
@@ -472,4 +527,5 @@ class MainNetwork(nn.Module):
         output = self.final_layer5(output)
         output = self.sigmoid(output)
         output = output.unsqueeze(0)
+
         return output
