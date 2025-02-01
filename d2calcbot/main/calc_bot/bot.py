@@ -554,9 +554,9 @@ class BranchTeam(nn.Module):
         super().__init__()
         self.relu = nn.ReLU()
         self.fc1 = nn.Linear(10, 30)
-        self.fc3 = nn.Linear(30, 25)
-        self.fc2 = nn.Linear(25, 20)
-        self.fc3 = nn.Linear(20, 10)
+        self.fc2 = nn.Linear(30, 25)
+        self.fc3 = nn.Linear(25, 20)
+        self.fc4 = nn.Linear(20, 10)
 
 
 
@@ -579,9 +579,9 @@ class BranchPlayers(nn.Module):
         super().__init__()
         self.relu = nn.ReLU()
         self.fc1 = nn.Linear(10, 30)
-        self.fc3 = nn.Linear(30, 25)
-        self.fc2 = nn.Linear(25, 20)
-        self.fc3 = nn.Linear(20, 10)
+        self.fc2 = nn.Linear(30, 25)
+        self.fc3 = nn.Linear(25, 20)
+        self.fc4 = nn.Linear(20, 10)
 
     def forward(self, data):
         (r_team_block, r_player_block, r_hero_block, d_team_block, d_player_block, d_hero_block) = data
@@ -602,10 +602,9 @@ class BranchHeroes(nn.Module):
         super().__init__()
         self.relu = nn.ReLU()
         self.fc1 = nn.Linear(10, 30)
-        self.fc3 = nn.Linear(30, 25)
-        self.fc2 = nn.Linear(25, 20)
-        self.fc3 = nn.Linear(20, 10)
-
+        self.fc2 = nn.Linear(30, 25)
+        self.fc3 = nn.Linear(25, 20)
+        self.fc4 = nn.Linear(20, 10)
 
 
 
