@@ -15,28 +15,34 @@ from main.calc_bot.test_data3 import matches_result_3, matches_test_3
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
+import random
+
 
 
 x_data = matches_result_3()
-
+# random.shuffle(x_data)
 
 cnt = 248
-x_valid_data = []
-for i in range(30):
-    x_valid_data.append(x_data[cnt])
-    cnt+=1
-x_data = x_data[:248]
 
-data = DotaDataset(x_data)
-valid_data = DotaDataset(x_valid_data)
+t_data = x_data[:248]
+v_data = x_data[248:278]
+
+train_data = DotaDataset(t_data)
+valid_data = DotaDataset(v_data)
 
 batch_size = 1
-model = MainNetwork()
-criterion = nn.BCELoss()
-optimizer = torch.optim.AdamW(model.parameters(), lr=1e-5, weight_decay=1e-6)
-EPOCHS = 10
+model = MainNetwork(10, 32, 2)
+model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver02.pth'))
 
-dataloader = DataLoader(data, batch_size=batch_size)
+
+criterion = nn.BCELoss()
+optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4, weight_decay=1e-5)
+scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=6, gamma=0.1)
+
+EPOCHS = 20
+
+
+dataloader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
 valid_dataloader = DataLoader(valid_data, batch_size=batch_size)
 
 for epoch in range(EPOCHS):
@@ -45,18 +51,19 @@ for epoch in range(EPOCHS):
     for i, (batch_data , winners) in enumerate(dataloader):
         optimizer.zero_grad()
         output = model(batch_data)
-        output = output.squeeze(1)
         loss = criterion(output, winners)
-        loss.backward(retain_graph=True)
+        loss.backward()
         optimizer.step()
         running_loss += loss.item()
-        print(f'Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winners.item()}')
+        print(f'{i+1}---Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winners.item()}')
+
+    scheduler.step()
 print("Обучение завершено.")
-torch.save(model.state_dict(), 'main/calc_bot/actual_models/dota_model_ver01.pth')
+torch.save(model.state_dict(), 'main/calc_bot/actual_models/dota_model_ver03.pth')
 
 
 
-model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver01.pth'))
+model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver03.pth'))
 
 radiant_0 = 0
 dire_1 = 0
@@ -67,7 +74,6 @@ val_loss = 0.0
 with torch.no_grad():
     for i, (batch_data , winners) in enumerate(valid_dataloader):
         output = model(batch_data)
-        output = output.squeeze(1)
         loss = criterion(output, winners)
         val_loss += loss.item()
 

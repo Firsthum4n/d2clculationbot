@@ -842,11 +842,11 @@
                 "radiant": {
                     "team": "HEROIC",
                     "heroes": [
-                        "Alchemist",
+                        "Morphling",
                         "Muerta",
-                        "Phoenix",
-                        "Bristleback",
-                        "Tiny"
+                        "Timbersaw",
+                        "Chen",
+                        "Earthshaker"
                     ]
                 }
             },
@@ -854,11 +854,11 @@
                 "dire": {
                     "team": "Fusion Esports",
                     "heroes": [
-                        "Beastmaster",
-                        "Ogre Magi",
-                        "Batrider",
-                        "Gyrocopter",
-                        "Timbersaw"
+                        "Phoenix",
+                        "Dragon Knight",
+                        "Tusk",
+                        "Lina",
+                        "Primal Beast"
                     ]
                 }
             },
@@ -1553,6 +1553,37 @@
         "game": [
             {
                 "radiant": {
+                    "team": "L1GA TEAM",
+                    "heroes": [
+                        "Nyx Assassin",
+                        "Lich",
+                        "Terrorblade",
+                        "Storm Spirit",
+                        "Lifestealer"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Natus Vincere",
+                    "heroes": [
+                        "Phoenix",
+                        "Shadow Demon",
+                        "Doom",
+                        "Ember Spirit",
+                        "Tiny"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
                     "team": "Virtus.pro",
                     "heroes": [
                         "Morphling",
@@ -1572,37 +1603,6 @@
                         "Ogre Magi",
                         "Puck",
                         "Medusa"
-                    ]
-                }
-            },
-            {
-                "winner": 1
-            }
-        ]
-    },
-    {
-        "game": [
-            {
-                "radiant": {
-                    "team": "Natus Vincere",
-                    "heroes": [
-                        "Phoenix",
-                        "Lion",
-                        "Dawnbreaker",
-                        "Wraith King",
-                        "Tiny"
-                    ]
-                }
-            },
-            {
-                "dire": {
-                    "team": "L1GA TEAM",
-                    "heroes": [
-                        "Chen",
-                        "Beastmaster",
-                        "Muerta",
-                        "Morphling",
-                        "Puck"
                     ]
                 }
             },
@@ -2979,6 +2979,37 @@
         "game": [
             {
                 "radiant": {
+                    "team": "One Move",
+                    "heroes": [
+                        "Bristleback",
+                        "Enchantress",
+                        "Tiny",
+                        "Shadow Demon",
+                        "Morphling"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Natus Vincere",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Pugna",
+                        "Shadow Shaman",
+                        "Ember Spirit",
+                        "Brewmaster"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
                     "team": "Natus Vincere",
                     "heroes": [
                         "Lion",
@@ -4312,6 +4343,37 @@
         "game": [
             {
                 "radiant": {
+                    "team": "Nigma Galaxy",
+                    "heroes": [
+                        "Magnus",
+                        "Nyx Assassin",
+                        "Io",
+                        "Ember Spirit",
+                        "Bloodseeker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Chimera Esports",
+                    "heroes": [
+                        "Lycan",
+                        "Phoenix",
+                        "Templar Assassin",
+                        "Lion",
+                        "Earthshaker"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
                     "team": "NAVI Junior",
                     "heroes": [
                         "Invoker",
@@ -5111,6 +5173,37 @@
             },
             {
                 "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "M80",
+                    "heroes": [
+                        "Phantom Assassin",
+                        "Phoenix",
+                        "Lion",
+                        "Mars",
+                        "Tidehunter"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Bristleback",
+                        "Muerta",
+                        "Lich",
+                        "Earth Spirit",
+                        "Meepo"
+                    ]
+                }
+            },
+            {
+                "winner": 0
             }
         ]
     },
@@ -6110,37 +6203,6 @@
         "game": [
             {
                 "radiant": {
-                    "team": "L1GA TEAM",
-                    "heroes": [
-                        "Dragon Knight",
-                        "Enchantress",
-                        "Muerta",
-                        "Invoker",
-                        "Beastmaster"
-                    ]
-                }
-            },
-            {
-                "dire": {
-                    "team": "BanyaPivoSamogon",
-                    "heroes": [
-                        "Phoenix",
-                        "Lion",
-                        "Timbersaw",
-                        "Phantom Assassin",
-                        "Ember Spirit"
-                    ]
-                }
-            },
-            {
-                "winner": 0
-            }
-        ]
-    },
-    {
-        "game": [
-            {
-                "radiant": {
                     "team": "Natus Vincere",
                     "heroes": [
                         "Templar Assassin",
@@ -6730,6 +6792,37 @@
         "game": [
             {
                 "radiant": {
+                    "team": "L1GA TEAM",
+                    "heroes": [
+                        "Magnus",
+                        "Clockwerk",
+                        "Muerta",
+                        "Razor",
+                        "Broodmother"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "1w Team",
+                    "heroes": [
+                        "Doom",
+                        "Gyrocopter",
+                        "Disruptor",
+                        "Monkey King",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
                     "team": "BanyaPivoSamogon",
                     "heroes": [
                         "Lion",
@@ -6811,37 +6904,6 @@
                         "Muerta",
                         "Crystal Maiden",
                         "Puck"
-                    ]
-                }
-            },
-            {
-                "winner": 0
-            }
-        ]
-    },
-    {
-        "game": [
-            {
-                "radiant": {
-                    "team": "Night Pulse",
-                    "heroes": [
-                        "Bristleback",
-                        "Lich",
-                        "Invoker",
-                        "Phantom Assassin",
-                        "Nyx Assassin"
-                    ]
-                }
-            },
-            {
-                "dire": {
-                    "team": "MOUZ",
-                    "heroes": [
-                        "Gyrocopter",
-                        "Phoenix",
-                        "Mars",
-                        "Ember Spirit",
-                        "Bloodseeker"
                     ]
                 }
             },
@@ -6971,6 +7033,626 @@
             },
             {
                 "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Magnus",
+                        "Pugna",
+                        "Primal Beast",
+                        "Shadow Shaman",
+                        "Storm Spirit"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Batrider",
+                        "Phantom Assassin",
+                        "Warlock",
+                        "Enigma",
+                        "Earth Spirit"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Doom",
+                        "Clockwerk",
+                        "Phantom Assassin",
+                        "Warlock",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Dragon Knight",
+                        "Phoenix",
+                        "Hoodwink",
+                        "Pangolier",
+                        "Bristleback"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Phoenix",
+                        "Monkey King",
+                        "Lifestealer",
+                        "Shadow Shaman",
+                        "Legion Commander"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Doom",
+                        "Nyx Assassin",
+                        "Muerta",
+                        "Lina",
+                        "Terrorblade"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Batrider",
+                        "Phoenix",
+                        "Dragon Knight",
+                        "Pangolier",
+                        "Centaur Warrunner"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Clockwerk",
+                        "Lycan",
+                        "Sniper",
+                        "Pugna",
+                        "Abaddon"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Monkey King",
+                        "Lina",
+                        "Lich",
+                        "Lycan",
+                        "Dragon Knight"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Queen of Pain",
+                        "Doom",
+                        "Tusk",
+                        "Pugna",
+                        "Ursa"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Bristleback",
+                        "Lich",
+                        "Sniper",
+                        "Clockwerk",
+                        "Morphling"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Batrider",
+                        "Monkey King",
+                        "Crystal Maiden",
+                        "Invoker",
+                        "Dawnbreaker"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Muerta",
+                        "Templar Assassin",
+                        "Abaddon",
+                        "Mars",
+                        "Invoker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Phoenix",
+                        "Monkey King",
+                        "Marci",
+                        "Naga Siren",
+                        "Disruptor"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Batrider",
+                        "Phoenix",
+                        "Mars",
+                        "Ursa",
+                        "Invoker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Bounty Hunter",
+                        "Monkey King",
+                        "Pugna",
+                        "Lycan",
+                        "Lifestealer"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Terrorblade",
+                        "Bounty Hunter",
+                        "Batrider",
+                        "Alchemist",
+                        "Earthshaker"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Phoenix",
+                        "Pangolier",
+                        "Nature's Prophet",
+                        "Muerta",
+                        "Invoker"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Alchemist",
+                        "Terrorblade",
+                        "Pugna",
+                        "Lina",
+                        "Tusk"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Tiny",
+                        "Clockwerk",
+                        "Primal Beast",
+                        "Morphling",
+                        "Bounty Hunter"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Tiny",
+                        "Gyrocopter",
+                        "Beastmaster",
+                        "Dark Willow",
+                        "Huskar"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Chen",
+                        "Batrider",
+                        "Dragon Knight",
+                        "Tidehunter",
+                        "Phantom Assassin"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "PARIVISION",
+                    "heroes": [
+                        "Morphling",
+                        "Enigma",
+                        "Clockwerk",
+                        "Templar Assassin",
+                        "Queen of Pain"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "HEROIC",
+                    "heroes": [
+                        "Phoenix",
+                        "Lion",
+                        "Monkey King",
+                        "Gyrocopter",
+                        "Mars"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Lich",
+                        "Tiny",
+                        "Grimstroke",
+                        "Centaur Warrunner",
+                        "Phantom Assassin"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Dawnbreaker",
+                        "Phoenix",
+                        "Batrider",
+                        "Lifestealer",
+                        "Pangolier"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Magnus",
+                        "Bounty Hunter",
+                        "Enchantress",
+                        "Lycan",
+                        "Mars"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Invoker",
+                        "Lich",
+                        "Doom",
+                        "Zeus",
+                        "Morphling"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Bristleback",
+                        "Clockwerk",
+                        "Phoenix",
+                        "Lina",
+                        "Dragon Knight"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Doom",
+                        "Shadow Demon",
+                        "Alchemist",
+                        "Muerta",
+                        "Earthshaker"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Tundra Esports",
+                    "heroes": [
+                        "Doom",
+                        "Nyx Assassin",
+                        "Invoker",
+                        "Phoenix",
+                        "Dragon Knight"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Spirit",
+                    "heroes": [
+                        "Bristleback",
+                        "Clockwerk",
+                        "Chen",
+                        "Puck",
+                        "Broodmother"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Pangolier",
+                        "Bounty Hunter",
+                        "Huskar",
+                        "Enchantress",
+                        "Lifestealer"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Tiny",
+                        "Clockwerk",
+                        "Muerta",
+                        "Sniper",
+                        "Primal Beast"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Tiny",
+                        "Lich",
+                        "Slark",
+                        "Phantom Assassin",
+                        "Mars"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Pangolier",
+                        "Batrider",
+                        "Enchantress",
+                        "Bristleback",
+                        "Naga Siren"
+                    ]
+                }
+            },
+            {
+                "winner": 0
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Talon",
+                    "heroes": [
+                        "Monkey King",
+                        "Batrider",
+                        "Dawnbreaker",
+                        "Phoenix",
+                        "Viper"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "BetBoom Team",
+                    "heroes": [
+                        "Templar Assassin",
+                        "Muerta",
+                        "Ogre Magi",
+                        "Queen of Pain",
+                        "Mars"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Pangolier",
+                        "Batrider",
+                        "Enchantress",
+                        "Dawnbreaker",
+                        "Huskar"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Liquid",
+                    "heroes": [
+                        "Tiny",
+                        "Lich",
+                        "Lion",
+                        "Primal Beast",
+                        "Puck"
+                    ]
+                }
+            },
+            {
+                "winner": 0
             }
         ]
     },
@@ -8218,6 +8900,37 @@
         "game": [
             {
                 "radiant": {
+                    "team": "AVULUS",
+                    "heroes": [
+                        "Batrider",
+                        "Pugna",
+                        "Earth Spirit",
+                        "Dawnbreaker",
+                        "Wraith King"
+                    ]
+                }
+            },
+            {
+                "dire": {
+                    "team": "Team Falcons",
+                    "heroes": [
+                        "Pangolier",
+                        "Crystal Maiden",
+                        "Doom",
+                        "Shadow Shaman",
+                        "Phantom Assassin"
+                    ]
+                }
+            },
+            {
+                "winner": 1
+            }
+        ]
+    },
+    {
+        "game": [
+            {
+                "radiant": {
                     "team": "Yakult Brothers",
                     "heroes": [
                         "Tidehunter",
@@ -8330,37 +9043,6 @@
                         "Doom",
                         "Naga Siren",
                         "Earth Spirit"
-                    ]
-                }
-            },
-            {
-                "winner": 0
-            }
-        ]
-    },
-    {
-        "game": [
-            {
-                "radiant": {
-                    "team": "Team Liquid",
-                    "heroes": [
-                        "Tiny",
-                        "Lich",
-                        "Magnus",
-                        "Lycan",
-                        "Techies"
-                    ]
-                }
-            },
-            {
-                "dire": {
-                    "team": "Talon",
-                    "heroes": [
-                        "Sniper",
-                        "Dawnbreaker",
-                        "Ogre Magi",
-                        "Muerta",
-                        "Naga Siren"
                     ]
                 }
             },
