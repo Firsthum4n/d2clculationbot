@@ -409,6 +409,21 @@ class DotaDataset_no_grad(Dataset):
         d_hero_emb_repeated = d_hero_emb.unsqueeze(1).repeat(1, 8, 1)
         d_hero_block = torch.cat((d_hero_emb_repeated, d_hero_stats), dim=2)
 
+        r_flag = torch.zeros((r_team_block.shape[0], 8, 1), device=r_team_block.device).expand(-1, -1, 5)
+        d_flag = torch.ones((d_team_block.shape[0], 8, 1), device=d_team_block.device).expand(-1, -1, 5)
+
+        r_team_block = torch.cat((r_team_block, r_flag), dim=-1)
+        d_team_block = torch.cat((d_team_block, d_flag), dim=-1)
+
+        r_flag = torch.zeros((r_player_block.shape[0], 8, 1), device=r_player_block.device)
+        d_flag = torch.ones((d_player_block.shape[0], 8, 1), device=d_player_block.device)
+
+
+        r_player_block = torch.cat((r_player_block, r_flag), dim=-1)
+        d_player_block = torch.cat((d_player_block,  d_flag), dim=-1)
+
+        r_hero_block = torch.cat((r_hero_block,  r_flag), dim=-1)
+        d_hero_block = torch.cat((d_hero_block,  d_flag), dim=-1)
 
 
         return r_team_block, r_player_block, r_hero_block, d_team_block, d_player_block, d_hero_block
@@ -492,6 +507,9 @@ class DotaDataset(Dataset):
         r_hero_stats = self.radiant_tensor_list[idx][5]
 
 
+
+
+
         r_team_index = torch.tensor([r_team_index])
 
         r_team_emb = self.team_embedding(r_team_index)
@@ -541,6 +559,24 @@ class DotaDataset(Dataset):
         d_hero_block = torch.cat((d_hero_emb_repeated, d_hero_stats), dim=2)
 
 
+
+        r_flag = torch.zeros((r_team_block.shape[0], 8, 1), device=r_team_block.device).expand(-1, -1, 5)
+        d_flag = torch.ones((d_team_block.shape[0], 8, 1), device=d_team_block.device).expand(-1, -1, 5)
+
+        r_team_block = torch.cat((r_team_block, r_flag), dim=-1)
+        d_team_block = torch.cat((d_team_block, d_flag), dim=-1)
+
+        r_flag = torch.zeros((r_player_block.shape[0], 8, 1), device=r_player_block.device)
+        d_flag = torch.ones((d_player_block.shape[0], 8, 1), device=d_player_block.device)
+
+
+        r_player_block = torch.cat((r_player_block, r_flag), dim=-1)
+        d_player_block = torch.cat((d_player_block,  d_flag), dim=-1)
+
+        r_hero_block = torch.cat((r_hero_block,  r_flag), dim=-1)
+        d_hero_block = torch.cat((d_hero_block,  d_flag), dim=-1)
+
+
         return (r_team_block, r_player_block, r_hero_block, d_team_block, d_player_block, d_hero_block), self.winner_tensor_list[idx]
 
 
@@ -551,7 +587,7 @@ class BranchTeam(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(10, 20)
+        self.fc1 = nn.Linear(15, 20)
         self.fc2 = nn.Linear(20, 10)
 
 
@@ -561,7 +597,6 @@ class BranchTeam(nn.Module):
 
         r_x = self.fc1(r_team_block)
         d_x = self.fc1(d_team_block)
-
         x = torch.cat([r_x, d_x], dim=0)
         x = self.relu(self.fc2(x))
 
@@ -572,7 +607,7 @@ class BranchPlayers(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(10, 20)
+        self.fc1 = nn.Linear(11, 20)
         self.fc2 = nn.Linear(20, 10)
 
     def forward(self, data):
@@ -591,7 +626,7 @@ class BranchHeroes(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(10, 20)
+        self.fc1 = nn.Linear(11, 20)
         self.fc2 = nn.Linear(20, 10)
 
 
