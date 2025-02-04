@@ -245,52 +245,9 @@ def transform_data(team_data, player_data, hero_data, team_pick):
     return team_index, player_indices, hero_indices, team_stats, player_stats, hero_stats
 
 
-def dataset(data, enemy_data):
-    num_teams = 1
-    num_players = 5
-    num_heroes = 5
-    embedding_dim = 8
-
-    team_embedding = nn.Embedding(num_teams, embedding_dim)
-    player_embedding = nn.Embedding(num_players, embedding_dim)
-    hero_embedding = nn.Embedding(num_heroes, embedding_dim)
-
-    team_data = encryption_level_1(data, enemy_data)
-    (team_index, player_indices, hero_indices,
-    team_stats, player_stats, hero_stats) = transform_data(team_data['team'],
-                                                            team_data['players'],
-                                                            team_data['heroes'],
-                                                            team_data)
-
-    team_index = torch.tensor([team_index])
-    team_emb = team_embedding(team_index)
-    team_stats = team_stats.unsqueeze(0)
-
-    player_indices = torch.tensor(player_indices)
-    player_emb = player_embedding(player_indices)
-
-    hero_indices = torch.tensor(hero_indices)
-    hero_emb = hero_embedding(hero_indices)
-
-    team_emb_repeated = team_emb.unsqueeze(1).repeat(1, 8, 1)
-    team_block = torch.cat((team_emb_repeated, team_stats), dim=2)
 
 
-    player_emb_repeated = player_emb.unsqueeze(1).repeat(1, 8, 1)
-    player_block = torch.cat((player_emb_repeated, player_stats), dim=2)
-
-
-    hero_emb_repeated = hero_emb.unsqueeze(1).repeat(1, 8, 1)
-    hero_block = torch.cat((hero_emb_repeated, hero_stats), dim=2)
-
-    return team_block, player_block, hero_block
-
-
-
-
-
-
-
+"""Подготовка данных для dataset рабочей модели"""
 def data_for_dataset_no_grad(x_data):
     radiant_data_for_encryption = []
     dire_data_for_encryption = []
@@ -334,6 +291,8 @@ def data_for_dataset_no_grad(x_data):
 
     return radiant_tensor_list, dire_tensor_list
 
+
+"""Класс датасет для рабочей модели"""
 class DotaDataset_no_grad(Dataset):
     def __init__(self, x_data):
         self.x_data = x_data
@@ -429,7 +388,7 @@ class DotaDataset_no_grad(Dataset):
         return r_team_block, r_player_block, r_hero_block, d_team_block, d_player_block, d_hero_block
 
 
-
+"""Подготовка данных для dataset тестовой модели"""
 def data_for_dataset(x_data):
     radiant_data_for_encryption = []
     dire_data_for_encryption = []
@@ -477,7 +436,7 @@ def data_for_dataset(x_data):
 
     return radiant_tensor_list, dire_tensor_list, winner_tensor_list
 
-
+"""Класс датасет для Тестовой модели"""
 class DotaDataset(Dataset):
     def __init__(self, x_data):
         self.x_data = x_data
@@ -560,8 +519,8 @@ class DotaDataset(Dataset):
 
 
 
-        r_flag = torch.zeros((r_team_block.shape[0], 8, 1), device=r_team_block.device).expand(-1, -1, 5)
-        d_flag = torch.ones((d_team_block.shape[0], 8, 1), device=d_team_block.device).expand(-1, -1, 5)
+        r_flag = torch.zeros((r_team_block.shape[0], 8, 1), device=r_team_block.device)
+        d_flag = torch.ones((d_team_block.shape[0], 8, 1), device=d_team_block.device)
 
         r_team_block = torch.cat((r_team_block, r_flag), dim=-1)
         d_team_block = torch.cat((d_team_block, d_flag), dim=-1)
@@ -587,7 +546,7 @@ class BranchTeam(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(15, 20)
+        self.fc1 = nn.Linear(11, 20)
         self.fc2 = nn.Linear(20, 10)
 
 
