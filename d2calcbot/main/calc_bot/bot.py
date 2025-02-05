@@ -13,6 +13,7 @@ import os
 import json
 import requests
 import time
+import uuid
 
 
 
@@ -331,14 +332,13 @@ class DotaDataset_no_grad(Dataset):
         r_hero_indices = torch.tensor(r_hero_indices)
         r_hero_emb = self.hero_embedding(r_hero_indices)
 
-
-        r_team_emb_repeated = r_team_emb.unsqueeze(1).repeat(1, 8, 1)
+        r_team_emb_repeated = r_team_emb.unsqueeze(2)
         r_team_block = torch.cat((r_team_emb_repeated, r_team_stats), dim=2)
 
-        r_player_emb_repeated = r_player_emb.unsqueeze(1).repeat(1, 8, 1)
+        r_player_emb_repeated = r_player_emb.unsqueeze(2)
         r_player_block = torch.cat((r_player_emb_repeated, r_player_stats), dim=2)
 
-        r_hero_emb_repeated = r_hero_emb.unsqueeze(1).repeat(1, 8, 1)
+        r_hero_emb_repeated = r_hero_emb.unsqueeze(2)
         r_hero_block = torch.cat((r_hero_emb_repeated, r_hero_stats), dim=2)
 
         d_team_index = self.dire_tensor_list[idx][0]
@@ -359,13 +359,13 @@ class DotaDataset_no_grad(Dataset):
         d_hero_indices = torch.tensor(d_hero_indices)
         d_hero_emb = self.hero_embedding(d_hero_indices)
 
-        d_team_emb_repeated = d_team_emb.unsqueeze(1).repeat(1, 8, 1)
+        d_team_emb_repeated = d_team_emb.unsqueeze(2)
         d_team_block = torch.cat((d_team_emb_repeated, d_team_stats), dim=2)
 
-        d_player_emb_repeated = d_player_emb.unsqueeze(1).repeat(1, 8, 1)
+        d_player_emb_repeated = d_player_emb.unsqueeze(2)
         d_player_block = torch.cat((d_player_emb_repeated, d_player_stats), dim=2)
 
-        d_hero_emb_repeated = d_hero_emb.unsqueeze(1).repeat(1, 8, 1)
+        d_hero_emb_repeated = d_hero_emb.unsqueeze(2)
         d_hero_block = torch.cat((d_hero_emb_repeated, d_hero_stats), dim=2)
 
         r_flag = torch.zeros((r_team_block.shape[0], 8, 1), device=r_team_block.device).expand(-1, -1, 5)
@@ -467,8 +467,6 @@ class DotaDataset(Dataset):
 
 
 
-
-
         r_team_index = torch.tensor([r_team_index])
 
         r_team_emb = self.team_embedding(r_team_index)
@@ -480,14 +478,13 @@ class DotaDataset(Dataset):
         r_hero_indices = torch.tensor(r_hero_indices)
         r_hero_emb = self.hero_embedding(r_hero_indices)
 
-
-        r_team_emb_repeated = r_team_emb.unsqueeze(1).repeat(1, 8, 1)
+        r_team_emb_repeated = r_team_emb.unsqueeze(2)
         r_team_block = torch.cat((r_team_emb_repeated, r_team_stats), dim=2)
 
-        r_player_emb_repeated = r_player_emb.unsqueeze(1).repeat(1, 8, 1)
+        r_player_emb_repeated = r_player_emb.unsqueeze(2)
         r_player_block = torch.cat((r_player_emb_repeated, r_player_stats), dim=2)
 
-        r_hero_emb_repeated = r_hero_emb.unsqueeze(1).repeat(1, 8, 1)
+        r_hero_emb_repeated = r_hero_emb.unsqueeze(2)
         r_hero_block = torch.cat((r_hero_emb_repeated, r_hero_stats), dim=2)
 
         d_team_index = self.dire_tensor_list[idx][0]
@@ -508,32 +505,38 @@ class DotaDataset(Dataset):
         d_hero_indices = torch.tensor(d_hero_indices)
         d_hero_emb = self.hero_embedding(d_hero_indices)
 
-        d_team_emb_repeated = d_team_emb.unsqueeze(1).repeat(1, 8, 1)
+
+        d_team_emb_repeated = d_team_emb.unsqueeze(2)
         d_team_block = torch.cat((d_team_emb_repeated, d_team_stats), dim=2)
 
-        d_player_emb_repeated = d_player_emb.unsqueeze(1).repeat(1, 8, 1)
+        d_player_emb_repeated = d_player_emb.unsqueeze(2)
         d_player_block = torch.cat((d_player_emb_repeated, d_player_stats), dim=2)
 
-        d_hero_emb_repeated = d_hero_emb.unsqueeze(1).repeat(1, 8, 1)
+        d_hero_emb_repeated = d_hero_emb.unsqueeze(2)
         d_hero_block = torch.cat((d_hero_emb_repeated, d_hero_stats), dim=2)
 
 
-
-        r_flag = torch.zeros((r_team_block.shape[0], 8, 1), device=r_team_block.device)
-        d_flag = torch.ones((d_team_block.shape[0], 8, 1), device=d_team_block.device)
+        # Для команды
+        r_flag = torch.zeros_like(r_team_block[:, :, :1])  # 0 для Radiant
+        d_flag = torch.ones_like(d_team_block[:, :, :1])
 
         r_team_block = torch.cat((r_team_block, r_flag), dim=-1)
         d_team_block = torch.cat((d_team_block, d_flag), dim=-1)
 
-        r_flag = torch.zeros((r_player_block.shape[0], 8, 1), device=r_player_block.device)
-        d_flag = torch.ones((d_player_block.shape[0], 8, 1), device=d_player_block.device)
 
+        # Для игроков
+        r_flag = torch.zeros_like(r_player_block[:, :, :1])
+        d_flag = torch.ones_like(d_player_block[:, :, :1])
 
         r_player_block = torch.cat((r_player_block, r_flag), dim=-1)
-        d_player_block = torch.cat((d_player_block,  d_flag), dim=-1)
+        d_player_block = torch.cat((d_player_block, d_flag), dim=-1)
 
-        r_hero_block = torch.cat((r_hero_block,  r_flag), dim=-1)
-        d_hero_block = torch.cat((d_hero_block,  d_flag), dim=-1)
+        # Для героев
+        r_flag = torch.zeros_like(r_hero_block[:, :, :1])  # 0 для Radiant
+        d_flag = torch.ones_like(d_hero_block[:, :, :1])
+
+        r_hero_block = torch.cat((r_hero_block, r_flag), dim=-1)
+        d_hero_block = torch.cat((d_hero_block, d_flag), dim=-1)
 
 
         return (r_team_block, r_player_block, r_hero_block, d_team_block, d_player_block, d_hero_block), self.winner_tensor_list[idx]
@@ -546,8 +549,7 @@ class BranchTeam(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(11, 20)
-        self.fc2 = nn.Linear(20, 10)
+        self.fc1 = nn.Linear(4, 4)
 
 
 
@@ -556,8 +558,8 @@ class BranchTeam(nn.Module):
 
         r_x = self.fc1(r_team_block)
         d_x = self.fc1(d_team_block)
-        x = torch.cat([r_x, d_x], dim=0)
-        x = self.relu(self.fc2(x))
+        x = torch.cat([r_x, d_x], dim=1)
+        x = self.relu(x)
 
         return x
 
@@ -566,17 +568,16 @@ class BranchPlayers(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(11, 20)
-        self.fc2 = nn.Linear(20, 10)
+        self.fc1 = nn.Linear(4, 4)
+
 
     def forward(self, data):
         (r_team_block, r_player_block, r_hero_block, d_team_block, d_player_block, d_hero_block) = data
 
         r_x = self.fc1(r_player_block)
         d_x = self.fc1(d_player_block)
-        x = torch.cat([r_x, d_x], dim=0)
-        x = self.relu(self.fc2(x))
-
+        x = torch.cat([r_x, d_x], dim=1)
+        x = self.relu(x)
 
         return x
 
@@ -585,10 +586,7 @@ class BranchHeroes(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(11, 20)
-        self.fc2 = nn.Linear(20, 10)
-
-
+        self.fc1 = nn.Linear(4, 4)
 
 
     def forward(self, data):
@@ -596,10 +594,8 @@ class BranchHeroes(nn.Module):
 
         r_x = self.fc1(r_hero_block)
         d_x = self.fc1(d_hero_block)
-        x = torch.cat([r_x, d_x], dim=0)
-        x = self.relu(self.fc2(x))
-
-
+        x = torch.cat([r_x, d_x], dim=1)
+        x = self.relu(x)
 
         return x
 
@@ -607,7 +603,7 @@ class BranchHeroes(nn.Module):
 
 # --- Модуль Self-Attention для тензоров ---
 class TensorSelfAttention(nn.Module):
-    def __init__(self, feature_dim, attention_heads=1):
+    def __init__(self, feature_dim, attention_heads=8):
         super(TensorSelfAttention, self).__init__()
         self.attention_heads = attention_heads
         self.feature_dim_head = feature_dim // attention_heads
@@ -617,7 +613,6 @@ class TensorSelfAttention(nn.Module):
         self.output_projection = nn.Linear(attention_heads * self.feature_dim_head, feature_dim)
 
     def forward(self, input_tensor):
-
         batch_size, num_objects, feature_dim = input_tensor.size()
         H = self.attention_heads
         D_head = self.feature_dim_head
@@ -625,6 +620,7 @@ class TensorSelfAttention(nn.Module):
         Q = self.query_projection(input_tensor).view(batch_size, num_objects, H, D_head).transpose(1, 2)
         K = self.key_projection(input_tensor).view(batch_size, num_objects, H, D_head).transpose(1, 2)
         V = self.value_projection(input_tensor).view(batch_size, num_objects, H, D_head).transpose(1, 2)
+
 
         attention_scores = torch.matmul(Q, K.transpose(-2, -1)) / (D_head ** 0.5)
         attention_weights = torch.softmax(attention_scores, dim=-1)
@@ -636,7 +632,7 @@ class TensorSelfAttention(nn.Module):
 
 # --- Модуль Cross-Attention для тензоров ---
 class TensorCrossAttention(nn.Module):
-    def __init__(self, query_feature_dim, key_value_feature_dim, attention_heads=1):
+    def __init__(self, query_feature_dim, key_value_feature_dim, attention_heads=8):
         super(TensorCrossAttention, self).__init__()
         self.attention_heads = attention_heads
         self.feature_dim_head = query_feature_dim // attention_heads
@@ -665,7 +661,7 @@ class TensorCrossAttention(nn.Module):
 
 # --- Гибридная модель с вниманием ---
 class MainNetwork(nn.Module):
-    def __init__(self, feature_dim, hidden_dim, output_dim, num_players=5, num_heroes=5, attention_heads=2):
+    def __init__(self, feature_dim, hidden_dim, output_dim, num_players=5, num_heroes=5, attention_heads=8):
         super(MainNetwork, self).__init__()
         self.num_players = num_players
         self.num_heroes = num_heroes
@@ -686,38 +682,31 @@ class MainNetwork(nn.Module):
         self.cross_attention_player_hero = TensorCrossAttention(feature_dim, feature_dim, attention_heads=attention_heads)
 
         # Финальный полносвязный слой для классификации (пример)
-        self.fc = nn.Linear(feature_dim * (1 + 2 * num_players), 1) # Учитываем team и обработанные players и heroes
+        self.fc = nn.Linear(192, 1) # Учитываем team и обработанные players и heroes
 
     def forward(self, batch_data):
+        batch_size = batch_data[0].size(0)
+
         out_team = self.branch_t(batch_data)
-        out_players = self.branch_p(batch_data).view(-1, self.num_players, self.feature_dim)
-        out_heroes = self.branch_h(batch_data).view(-1, self.num_heroes, self.feature_dim)
+        out_players = self.branch_p(batch_data).view(batch_size, self.num_players, -1)
+        out_heroes = self.branch_h(batch_data).view(batch_size, self.num_heroes, -1)
 
 
+        attended_players = self.self_attention_players(out_players).mean(dim=1, keepdim=True)
+        attended_heroes = self.self_attention_heroes(out_heroes).mean(dim=1, keepdim=True)
 
-        # Self-Attention
-        attended_players = self.self_attention_players(out_players)
-        attended_heroes = self.self_attention_heroes(out_heroes)
+        out_team_replicated = out_team.view(batch_size, 1, -1)
 
-        out_team_replicated = out_team.view(attended_players.size(0), 1, -1)
-
-        # Cross-Attention (players смотрят на heroes, обновляем представления игроков)
         attended_players_with_heroes = self.cross_attention_player_hero(attended_players, attended_heroes)
 
-
-
-        # Объединение веток (пример - конкатенация)
-        # Конкатенируем out_team и обработанные attended_players_with_heroes и attended_heroes
         combined_features_list = [out_team_replicated, attended_players_with_heroes, attended_heroes]
         combined_features = torch.cat(combined_features_list, dim=1)
-        combined_features_flattened = combined_features.view(-1, self.feature_dim * (1 + 2 * self.num_players))
 
-        # Финальный полносвязный слой
+        combined_features_flattened = combined_features.view(batch_size, -1)
         output = self.fc(combined_features_flattened)
-
-        output = output.mean()
-        output = output.unsqueeze(0)
-
         output = self.sigmoid(output)
+
+        output = output.squeeze(0)
+
 
         return output
