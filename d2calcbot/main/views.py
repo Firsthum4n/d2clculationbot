@@ -33,7 +33,7 @@ def train_model(request):
     valid_data = DotaDataset(v_data)
 
     batch_size = 1
-    model = MainNetwork(64, 32, 1)
+    model = MainNetwork(18, 9, 1)
     # model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver0_2.pth'))
 
 
@@ -56,7 +56,8 @@ def train_model(request):
             loss.backward()
             optimizer.step()
             running_loss += loss.item()
-            print(f'{i+1}---Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winners.item()}')
+            print(f'{i+1}---Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.tolist()}, winner:{winners.tolist()}')
+
         scheduler.step()
     print("Обучение завершено.")
     torch.save(model.state_dict(), 'main/calc_bot/actual_models/dota_model_ver0_1.pth')
@@ -89,7 +90,7 @@ def train_model(request):
         "radiant_0": radiant_0,
         "dire_1": dire_1,
         "right": right,
-        "val_loss": val_loss / len(x_data),  # Вычисляем средний loss на валидации
+        "val_loss": val_loss / len(x_data),
     }
 
     return JsonResponse(response_data)

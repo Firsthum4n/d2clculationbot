@@ -478,6 +478,9 @@ class DotaDataset(Dataset):
         r_hero_indices = torch.tensor(r_hero_indices)
         r_hero_emb = self.hero_embedding(r_hero_indices)
 
+
+
+
         r_team_emb_repeated = r_team_emb.unsqueeze(2)
         r_team_block = torch.cat((r_team_emb_repeated, r_team_stats), dim=2)
 
@@ -486,6 +489,11 @@ class DotaDataset(Dataset):
 
         r_hero_emb_repeated = r_hero_emb.unsqueeze(2)
         r_hero_block = torch.cat((r_hero_emb_repeated, r_hero_stats), dim=2)
+
+
+        r_team_block = r_team_block.mean(dim=2)
+        r_player_block = r_player_block.mean(dim=2)
+        r_hero_block = r_hero_block.mean(dim=2)
 
         d_team_index = self.dire_tensor_list[idx][0]
         d_player_indices = self.dire_tensor_list[idx][1]
@@ -515,25 +523,29 @@ class DotaDataset(Dataset):
         d_hero_emb_repeated = d_hero_emb.unsqueeze(2)
         d_hero_block = torch.cat((d_hero_emb_repeated, d_hero_stats), dim=2)
 
+        d_team_block = d_team_block.mean(dim=2)
+        d_player_block = d_player_block.mean(dim=2)
+        d_hero_block = d_hero_block.mean(dim=2)
+
 
         # Для команды
-        r_flag = torch.zeros_like(r_team_block[:, :, :1])  # 0 для Radiant
-        d_flag = torch.ones_like(d_team_block[:, :, :1])
+        r_flag = torch.zeros_like(r_team_block[:, :1])  # 0 для Radiant
+        d_flag = torch.ones_like(d_team_block[:, :1])
 
         r_team_block = torch.cat((r_team_block, r_flag), dim=-1)
         d_team_block = torch.cat((d_team_block, d_flag), dim=-1)
 
 
         # Для игроков
-        r_flag = torch.zeros_like(r_player_block[:, :, :1])
-        d_flag = torch.ones_like(d_player_block[:, :, :1])
+        r_flag = torch.zeros_like(r_player_block[:, :1])
+        d_flag = torch.ones_like(d_player_block[:, :1])
 
         r_player_block = torch.cat((r_player_block, r_flag), dim=-1)
         d_player_block = torch.cat((d_player_block, d_flag), dim=-1)
 
         # Для героев
-        r_flag = torch.zeros_like(r_hero_block[:, :, :1])  # 0 для Radiant
-        d_flag = torch.ones_like(d_hero_block[:, :, :1])
+        r_flag = torch.zeros_like(r_hero_block[:, :1])
+        d_flag = torch.ones_like(d_hero_block[:, :1])
 
         r_hero_block = torch.cat((r_hero_block, r_flag), dim=-1)
         d_hero_block = torch.cat((d_hero_block, d_flag), dim=-1)
@@ -542,14 +554,11 @@ class DotaDataset(Dataset):
         return (r_team_block, r_player_block, r_hero_block, d_team_block, d_player_block, d_hero_block), self.winner_tensor_list[idx]
 
 
-
-
-
 class BranchTeam(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(4, 4)
+        self.fc1 = nn.Linear(9, 9)
 
 
 
@@ -559,7 +568,6 @@ class BranchTeam(nn.Module):
         r_x = self.fc1(r_team_block)
         d_x = self.fc1(d_team_block)
         x = torch.cat([r_x, d_x], dim=1)
-        x = self.relu(x)
 
         return x
 
@@ -568,7 +576,7 @@ class BranchPlayers(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(4, 4)
+        self.fc1 = nn.Linear(9, 9)
 
 
     def forward(self, data):
@@ -577,7 +585,7 @@ class BranchPlayers(nn.Module):
         r_x = self.fc1(r_player_block)
         d_x = self.fc1(d_player_block)
         x = torch.cat([r_x, d_x], dim=1)
-        x = self.relu(x)
+
 
         return x
 
@@ -586,7 +594,7 @@ class BranchHeroes(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(4, 4)
+        self.fc1 = nn.Linear(9, 9)
 
 
     def forward(self, data):
@@ -595,7 +603,7 @@ class BranchHeroes(nn.Module):
         r_x = self.fc1(r_hero_block)
         d_x = self.fc1(d_hero_block)
         x = torch.cat([r_x, d_x], dim=1)
-        x = self.relu(x)
+
 
         return x
 
@@ -669,7 +677,6 @@ class MainNetwork(nn.Module):
 
         self.sigmoid = nn.Sigmoid()
 
-        # Ветки для обработки team, players и heroes (пример - простые линейные слои)
         self.branch_t = BranchTeam()
         self.branch_p = BranchPlayers()
         self.branch_h = BranchHeroes()
@@ -682,7 +689,7 @@ class MainNetwork(nn.Module):
         self.cross_attention_player_hero = TensorCrossAttention(feature_dim, feature_dim, attention_heads=attention_heads)
 
         # Финальный полносвязный слой для классификации (пример)
-        self.fc = nn.Linear(192, 1) # Учитываем team и обработанные players и heroes
+        self.fc = nn.Linear(54, 1) # Учитываем team и обработанные players и heroes
 
     def forward(self, batch_data):
         batch_size = batch_data[0].size(0)
