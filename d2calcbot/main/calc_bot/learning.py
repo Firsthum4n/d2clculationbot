@@ -1,128 +1,93 @@
+from django.http import HttpRequest
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, View, TemplateView
+from django.http import JsonResponse
+
+from .models import *
+import json
+from main.utils import *
+from main.db_update.heroes import create_or_update_heroes, del_all_heroes_and_ids
+from main.db_update.teams import create_or_update_teams, update_teams
+from main.db_update.match_up import teams_hero_matchup, hero_matchup
 from main.calc_bot.bot import encryption, DotaDataset, MainNetwork
 from main.calc_bot.test_data import matches_result, matches_test
+from main.calc_bot.test_data2 import matches_result_2, matches_test_2
+from main.calc_bot.test_data3 import matches_result_3, matches_test_3
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-import json
+import random
+import requests
 
 
 
-
-filepath = 'main/calc_bot/data.json'
-data = []
-
-# filepath_2 = 'main/calc_bot/data_winner.json'
-x_data, y_data = matches_result()
-
-# with open(filepath_2, 'w') as f:
-#     json.dump(y_data, f, indent=4)
-
-y_data = torch.tensor(y_data, dtype=torch.float32)
+x_data = matches_result_3()
+# print(len(x_data))
+# random.shuffle(x_data)
 
 
+t_data = x_data[:270]
+v_data = x_data[270:300]
 
-cnt = 690
-x_valid_data = []
-y_valid_data = []
-for i in range(37):
-    x_valid_data.append(x_data[cnt])
-    y_valid_data.append(y_data[cnt])
-    cnt+=1
+train_data = DotaDataset(t_data)
+valid_data = DotaDataset(v_data)
 
-
-x_data = x_data[:690]
-y_data = y_data[:690]
-
-
-radiant_team_data = DotaDataset(x_data, 'radiant', 0, 'dire', 1)
-dire_team_data = DotaDataset(x_data, 'dire', 1, 'radiant', 0)
-r_valid = DotaDataset(x_valid_data, 'radiant', 0, 'dire', 1)
-d_valid = DotaDataset(x_valid_data, 'dire', 1, 'radiant', 0)
-
-
-
-
-
-batch_size = 24
-
-num_teams = 6
-num_players = 10
-num_heroes = 10
-embedding_dim = 32
-
-model = MainNetwork()
-
-def custom_collate_fn(batch):
-    radiant_d, dire_d = zip(*batch)
-
-    return list(radiant_d), list(dire_d)
+batch_size = 1
+model = MainNetwork(11, 32, 2)
+# model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver0_2.pth'))
 
 
 criterion = nn.BCELoss()
-optimizer = torch.optim.AdamW(model.parameters(), lr=0.0000002 , weight_decay=0.0000001)
+optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3, weight_decay=1e-4)
+scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=6, gamma=0.1)
 
-EPOCHS = 560
+EPOCHS = 1
 
+dataloader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
+valid_dataloader = DataLoader(valid_data, batch_size=batch_size)
 
-for j in range(len(x_data)):
-    r = radiant_team_data[j]
-    d = dire_team_data[j]
-    winner = y_data[j]
-    winner = winner.unsqueeze(0)
+for epoch in range(EPOCHS):
+    model.train()
+    running_loss = 0.0
+    for i, (batch_data , winners) in enumerate(dataloader):
+        print(f"ITER {i}: batch_data shape {batch_data[0].shape}")
+        optimizer.zero_grad()
+        output = model(batch_data)
+        loss = criterion(output, winners)
+        loss.backward()
+        optimizer.step()
+        running_loss += loss.item()
+        print(f'{i+1}---Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winners.item()}')
 
-    dataloader = DataLoader(list(zip(r, d)), batch_size=batch_size, collate_fn=custom_collate_fn)
-
-    for epoch in range(EPOCHS):
-        model.train()
-        running_loss = 0.0
-
-
-        for i, (radiant_batch, dire_batch) in enumerate(dataloader):
-            optimizer.zero_grad()
-            output = model(radiant_batch, dire_batch)
-            output = output.squeeze(1)
-            loss = criterion(output, winner)
-            loss.backward(retain_graph=True)
-            optimizer.step()
-            running_loss += loss.item()
-
-    if epoch + 1 == EPOCHS:
-        data_item = {
-            "number:": j + 1,
-            "loss": running_loss / len(x_data),
-            "out": output.item(),
-            "winner": winner.item()
-
-        }
-        data.append(data_item)
-
-    with open(filepath, 'w') as f:
-        json.dump(data, f, indent=4)
-
-        print(f'Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.item()}, winner:{winner.item()}')
-    print(f'данные номер: {j+1}')
+    scheduler.step()
 print("Обучение завершено.")
-torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver1.pth')
-
-model = MainNetwork()
-model.load_state_dict(torch.load('main/calc_bot/dota_model_ver1.pth'))
-for j in range(len(x_valid_data)):
-    r = r_valid[j]
-    d = d_valid[j]
-    winner = y_valid_data[j]
-    winner = winner.unsqueeze(0)
-    valid_dataloader = DataLoader(list(zip(r, d)), batch_size=batch_size, collate_fn=custom_collate_fn)
+torch.save(model.state_dict(), 'main/calc_bot/actual_models/dota_model_ver0_1.pth')
 
 
-    model.eval()
-    val_loss = 0.0
-    with torch.no_grad():
-        for i, (radiant_batch, dire_batch) in enumerate(valid_dataloader):
-            output = model(radiant_batch, dire_batch)
-            output = output.squeeze(1)
-            loss = criterion(output,winner)
-            val_loss += loss.item()
-        print(f' Loss: {running_loss / len(x_data):.4f}, out:{output.item()},result: {1 if output.item() >= 0.5 else 0} winner:{winner.item()}')
 
-print("Обучение завершено.")
-torch.save(model.state_dict(), 'main/calc_bot/dota_model_ver1.pth')
+model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver0_1.pth'))
+
+radiant_0 = 0
+dire_1 = 0
+right = 0
+
+model.eval()
+val_loss = 0.0
+with torch.no_grad():
+    for i, (batch_data , winners) in enumerate(valid_dataloader):
+        output = model(batch_data)
+        loss = criterion(output, winners)
+        val_loss += loss.item()
+
+        print(f' Loss: {val_loss / len(x_data):.4f}, out:{output.item()}, result: {1 if output.item() >= 0.5 else 0}, winner:{winners.item()}')
+
+        if output.item() >= 0.5:
+            dire_1 += 1
+        if output.item() < 0.5:
+            radiant_0 += 1
+        if round(output.item()) == winners.item():
+            right += 1
+print(f"Обучение завершено.\n"
+      f"radiant: {radiant_0}\n"
+      f"dire: {dire_1}\n"
+      f"right: {right}")
