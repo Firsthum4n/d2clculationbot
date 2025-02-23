@@ -20,25 +20,26 @@ import random
 import requests
 
 
+
 def train_model(request):
     x_data = matches_result_3()
     # print(len(x_data))
     # random.shuffle(x_data)
 
 
-    t_data = x_data[:270]
-    v_data = x_data[270:300]
+    t_data = x_data[:430]
+    v_data = x_data[430:480]
 
     train_data = DotaDataset(t_data)
     valid_data = DotaDataset(v_data)
 
     batch_size = 1
-    model = MainNetwork(18, 9, 1)
+    model = MainNetwork(10)
     # model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver0_2.pth'))
 
 
     criterion = nn.BCELoss()
-    optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3, weight_decay=1e-4)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=1e-5, weight_decay=1e-6)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=6, gamma=0.1)
 
     EPOCHS = 1
@@ -155,7 +156,8 @@ class All_pick(View):
         all_pick[0]['game'][1]['dire']['heroes'].extend(dire_pick['heroes'])
 
         print(all_pick)
-
+        # update_teams()
+        # create_or_update_heroes()
         result = encryption(all_pick)
 
 

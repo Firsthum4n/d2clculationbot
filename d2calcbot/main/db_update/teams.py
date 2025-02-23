@@ -97,14 +97,18 @@ def update_teams():
 
     all_team = Teams.objects.all()
     for tm in range(len(teams_data)):
-        for team in all_team:
-            team_id = teams_data[tm]['team_id']
-            if team_id == team.team_id:
-                team = Teams.objects.get(name=teams_data[tm]['name'])
-                team.rating = teams_data[tm]['rating']
-                team.wins = teams_data[tm]['wins']
-                team.losses = teams_data[tm]['losses']
-                team.save()
+        try:
+            for teams in all_team:
+                team_id = teams_data[tm]['team_id']
+                if team_id == teams.team_id:
+                    team = Teams.objects.get(name=teams_data[tm]['name'])
+                    team.rating = teams_data[tm]['rating']
+                    team.wins = teams_data[tm]['wins']
+                    team.losses = teams_data[tm]['losses']
+                    team.save()
+
+        except Exception as e:
+            print(e, team)
 
 
 
