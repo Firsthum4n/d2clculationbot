@@ -35,12 +35,11 @@ def train_model(request):
 
     batch_size = 1
     model = MainNetwork(10)
-    model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver0_3.pth'))
+    model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver0_4.pth'))
 
     criterion = nn.BCELoss()
-    optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4, weight_decay=1e-7)
-    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=4, gamma=0.1)
-
+    optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4, weight_decay=1e-8)
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1)
 
     EPOCHS = 10
 
@@ -61,10 +60,10 @@ def train_model(request):
 
         scheduler.step()
     print("Обучение завершено.")
-    torch.save(model.state_dict(), 'main/calc_bot/actual_models/dota_model_ver0_4.pth')
+    torch.save(model.state_dict(), 'main/calc_bot/actual_models/dota_model_ver0_5.pth')
 
 
-    model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver0_4.pth'))
+    model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver0_5.pth'))
 
     radiant_0 = 0
     dire_1 = 0
