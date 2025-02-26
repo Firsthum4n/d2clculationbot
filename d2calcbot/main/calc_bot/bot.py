@@ -680,7 +680,7 @@ class MainNetwork(nn.Module):
 
 
 
-        # Финальный полносвязный слой для классификации (пример)
+        # Финальный полносвязный слой для классификации
         self.fc = nn.Linear(70, 1)
 
     def forward(self, batch_data):

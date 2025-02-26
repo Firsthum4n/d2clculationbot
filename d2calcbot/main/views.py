@@ -20,28 +20,27 @@ import random
 import requests
 
 
-
 def train_model(request):
     x_data = matches_result_3()
     # print(len(x_data))
     # random.shuffle(x_data)
 
 
-    t_data = x_data[:430]
-    v_data = x_data[430:480]
+    t_data = x_data[:456]
+    v_data = x_data[456:506]
 
     train_data = DotaDataset(t_data)
     valid_data = DotaDataset(v_data)
 
     batch_size = 1
     model = MainNetwork(10)
-    model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver0_6.pth'))
+    model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver0_7.pth'))
 
     criterion = nn.BCELoss()
     optimizer = torch.optim.AdamW(model.parameters(), lr=1e-5, weight_decay=1e-10)
-    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=2, gamma=0.1)
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
 
-    EPOCHS = 4
+    EPOCHS = 15
 
     dataloader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
     valid_dataloader = DataLoader(valid_data, batch_size=batch_size)
@@ -60,10 +59,10 @@ def train_model(request):
 
         scheduler.step()
     print("Обучение завершено.")
-    torch.save(model.state_dict(), 'main/calc_bot/actual_models/dota_model_ver0_7.pth')
+    torch.save(model.state_dict(), 'main/calc_bot/actual_models/dota_model_ver0_8.pth')
 
 
-    model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver0_7.pth'))
+    model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver0_8.pth'))
 
     radiant_0 = 0
     dire_1 = 0

@@ -2,14 +2,20 @@
     {
         "hero_id": 65,
         "localized_name": "Batrider",
-        "games_played": 28,
-        "wins": 22
+        "games_played": 30,
+        "wins": 23
     },
     {
         "hero_id": 120,
         "localized_name": "Pangolier",
+        "games_played": 25,
+        "wins": 19
+    },
+    {
+        "hero_id": 66,
+        "localized_name": "Chen",
         "games_played": 23,
-        "wins": 17
+        "wins": 19
     },
     {
         "hero_id": 33,
@@ -18,22 +24,16 @@
         "wins": 15
     },
     {
-        "hero_id": 66,
-        "localized_name": "Chen",
-        "games_played": 22,
-        "wins": 18
+        "hero_id": 99,
+        "localized_name": "Bristleback",
+        "games_played": 23,
+        "wins": 16
     },
     {
         "hero_id": 73,
         "localized_name": "Alchemist",
         "games_played": 22,
         "wins": 10
-    },
-    {
-        "hero_id": 99,
-        "localized_name": "Bristleback",
-        "games_played": 21,
-        "wins": 14
     },
     {
         "hero_id": 51,
@@ -54,16 +54,16 @@
         "wins": 13
     },
     {
+        "hero_id": 15,
+        "localized_name": "Razor",
+        "games_played": 19,
+        "wins": 14
+    },
+    {
         "hero_id": 45,
         "localized_name": "Pugna",
         "games_played": 18,
         "wins": 12
-    },
-    {
-        "hero_id": 15,
-        "localized_name": "Razor",
-        "games_played": 18,
-        "wins": 13
     },
     {
         "hero_id": 107,
@@ -90,10 +90,10 @@
         "wins": 13
     },
     {
-        "hero_id": 72,
-        "localized_name": "Gyrocopter",
-        "games_played": 16,
-        "wins": 10
+        "hero_id": 110,
+        "localized_name": "Phoenix",
+        "games_played": 17,
+        "wins": 9
     },
     {
         "hero_id": 119,
@@ -102,14 +102,26 @@
         "wins": 10
     },
     {
-        "hero_id": 110,
-        "localized_name": "Phoenix",
-        "games_played": 16,
-        "wins": 9
-    },
-    {
         "hero_id": 100,
         "localized_name": "Tusk",
+        "games_played": 16,
+        "wins": 10
+    },
+    {
+        "hero_id": 72,
+        "localized_name": "Gyrocopter",
+        "games_played": 16,
+        "wins": 10
+    },
+    {
+        "hero_id": 136,
+        "localized_name": "Marci",
+        "games_played": 14,
+        "wins": 8
+    },
+    {
+        "hero_id": 74,
+        "localized_name": "Invoker",
         "games_played": 14,
         "wins": 8
     },
@@ -120,40 +132,34 @@
         "wins": 9
     },
     {
-        "hero_id": 74,
-        "localized_name": "Invoker",
-        "games_played": 14,
-        "wins": 8
-    },
-    {
-        "hero_id": 136,
-        "localized_name": "Marci",
+        "hero_id": 109,
+        "localized_name": "Terrorblade",
         "games_played": 13,
-        "wins": 7
+        "wins": 11
     },
     {
         "hero_id": 35,
         "localized_name": "Sniper",
-        "games_played": 12,
-        "wins": 8
-    },
-    {
-        "hero_id": 109,
-        "localized_name": "Terrorblade",
-        "games_played": 12,
-        "wins": 10
-    },
-    {
-        "hero_id": 16,
-        "localized_name": "Sand King",
-        "games_played": 11,
-        "wins": 4
+        "games_played": 13,
+        "wins": 9
     },
     {
         "hero_id": 97,
         "localized_name": "Magnus",
         "games_played": 11,
         "wins": 7
+    },
+    {
+        "hero_id": 61,
+        "localized_name": "Broodmother",
+        "games_played": 11,
+        "wins": 9
+    },
+    {
+        "hero_id": 16,
+        "localized_name": "Sand King",
+        "games_played": 11,
+        "wins": 4
     },
     {
         "hero_id": 31,
@@ -168,22 +174,10 @@
         "wins": 7
     },
     {
-        "hero_id": 138,
-        "localized_name": "Muerta",
-        "games_played": 9,
-        "wins": 4
-    },
-    {
-        "hero_id": 61,
-        "localized_name": "Broodmother",
-        "games_played": 9,
-        "wins": 7
-    },
-    {
-        "hero_id": 96,
-        "localized_name": "Centaur Warrunner",
-        "games_played": 9,
-        "wins": 6
+        "hero_id": 44,
+        "localized_name": "Phantom Assassin",
+        "games_played": 10,
+        "wins": 9
     },
     {
         "hero_id": 103,
@@ -192,28 +186,46 @@
         "wins": 4
     },
     {
-        "hero_id": 44,
-        "localized_name": "Phantom Assassin",
-        "games_played": 9,
-        "wins": 8
-    },
-    {
         "hero_id": 13,
         "localized_name": "Puck",
+        "games_played": 9,
+        "wins": 6
+    },
+    {
+        "hero_id": 19,
+        "localized_name": "Tiny",
+        "games_played": 9,
+        "wins": 6
+    },
+    {
+        "hero_id": 138,
+        "localized_name": "Muerta",
+        "games_played": 9,
+        "wins": 4
+    },
+    {
+        "hero_id": 96,
+        "localized_name": "Centaur Warrunner",
+        "games_played": 9,
+        "wins": 6
+    },
+    {
+        "hero_id": 55,
+        "localized_name": "Dark Seer",
         "games_played": 8,
         "wins": 5
+    },
+    {
+        "hero_id": 39,
+        "localized_name": "Queen of Pain",
+        "games_played": 8,
+        "wins": 3
     },
     {
         "hero_id": 84,
         "localized_name": "Ogre Magi",
         "games_played": 8,
         "wins": 4
-    },
-    {
-        "hero_id": 19,
-        "localized_name": "Tiny",
-        "games_played": 8,
-        "wins": 5
     },
     {
         "hero_id": 46,
@@ -228,14 +240,32 @@
         "wins": 4
     },
     {
-        "hero_id": 39,
-        "localized_name": "Queen of Pain",
+        "hero_id": 87,
+        "localized_name": "Disruptor",
         "games_played": 7,
-        "wins": 3
+        "wins": 6
+    },
+    {
+        "hero_id": 64,
+        "localized_name": "Jakiro",
+        "games_played": 7,
+        "wins": 6
+    },
+    {
+        "hero_id": 89,
+        "localized_name": "Naga Siren",
+        "games_played": 7,
+        "wins": 5
     },
     {
         "hero_id": 29,
         "localized_name": "Tidehunter",
+        "games_played": 6,
+        "wins": 4
+    },
+    {
+        "hero_id": 50,
+        "localized_name": "Dazzle",
         "games_played": 6,
         "wins": 4
     },
@@ -246,50 +276,14 @@
         "wins": 3
     },
     {
-        "hero_id": 87,
-        "localized_name": "Disruptor",
-        "games_played": 6,
-        "wins": 5
-    },
-    {
         "hero_id": 105,
         "localized_name": "Techies",
         "games_played": 6,
         "wins": 4
     },
     {
-        "hero_id": 62,
-        "localized_name": "Bounty Hunter",
-        "games_played": 5,
-        "wins": 1
-    },
-    {
-        "hero_id": 93,
-        "localized_name": "Slark",
-        "games_played": 5,
-        "wins": 4
-    },
-    {
-        "hero_id": 94,
-        "localized_name": "Medusa",
-        "games_played": 5,
-        "wins": 3
-    },
-    {
-        "hero_id": 55,
-        "localized_name": "Dark Seer",
-        "games_played": 5,
-        "wins": 2
-    },
-    {
-        "hero_id": 71,
-        "localized_name": "Spirit Breaker",
-        "games_played": 5,
-        "wins": 3
-    },
-    {
-        "hero_id": 50,
-        "localized_name": "Dazzle",
+        "hero_id": 37,
+        "localized_name": "Warlock",
         "games_played": 5,
         "wins": 3
     },
@@ -300,27 +294,33 @@
         "wins": 3
     },
     {
+        "hero_id": 94,
+        "localized_name": "Medusa",
+        "games_played": 5,
+        "wins": 3
+    },
+    {
         "hero_id": 5,
         "localized_name": "Crystal Maiden",
         "games_played": 5,
         "wins": 4
     },
     {
-        "hero_id": 37,
-        "localized_name": "Warlock",
-        "games_played": 4,
-        "wins": 2
+        "hero_id": 62,
+        "localized_name": "Bounty Hunter",
+        "games_played": 5,
+        "wins": 1
     },
     {
-        "hero_id": 89,
-        "localized_name": "Naga Siren",
-        "games_played": 4,
+        "hero_id": 71,
+        "localized_name": "Spirit Breaker",
+        "games_played": 5,
         "wins": 3
     },
     {
-        "hero_id": 64,
-        "localized_name": "Jakiro",
-        "games_played": 4,
+        "hero_id": 93,
+        "localized_name": "Slark",
+        "games_played": 5,
         "wins": 4
     },
     {
@@ -328,18 +328,6 @@
         "localized_name": "Shadow Demon",
         "games_played": 4,
         "wins": 2
-    },
-    {
-        "hero_id": 11,
-        "localized_name": "Shadow Fiend",
-        "games_played": 3,
-        "wins": 1
-    },
-    {
-        "hero_id": 106,
-        "localized_name": "Ember Spirit",
-        "games_played": 3,
-        "wins": 0
     },
     {
         "hero_id": 32,
@@ -354,6 +342,42 @@
         "wins": 1
     },
     {
+        "hero_id": 52,
+        "localized_name": "Leshrac",
+        "games_played": 3,
+        "wins": 2
+    },
+    {
+        "hero_id": 106,
+        "localized_name": "Ember Spirit",
+        "games_played": 3,
+        "wins": 0
+    },
+    {
+        "hero_id": 11,
+        "localized_name": "Shadow Fiend",
+        "games_played": 3,
+        "wins": 1
+    },
+    {
+        "hero_id": 135,
+        "localized_name": "Dawnbreaker",
+        "games_played": 2,
+        "wins": 1
+    },
+    {
+        "hero_id": 102,
+        "localized_name": "Abaddon",
+        "games_played": 2,
+        "wins": 2
+    },
+    {
+        "hero_id": 9,
+        "localized_name": "Mirana",
+        "games_played": 2,
+        "wins": 2
+    },
+    {
         "hero_id": 85,
         "localized_name": "Undying",
         "games_played": 2,
@@ -366,68 +390,26 @@
         "wins": 1
     },
     {
-        "hero_id": 102,
-        "localized_name": "Abaddon",
-        "games_played": 2,
-        "wins": 2
-    },
-    {
         "hero_id": 36,
         "localized_name": "Necrophos",
         "games_played": 2,
         "wins": 2
     },
     {
-        "hero_id": 135,
-        "localized_name": "Dawnbreaker",
-        "games_played": 2,
-        "wins": 1
-    },
-    {
-        "hero_id": 67,
-        "localized_name": "Spectre",
-        "games_played": 1,
-        "wins": 0
-    },
-    {
-        "hero_id": 69,
-        "localized_name": "Doom",
+        "hero_id": 4,
+        "localized_name": "Bloodseeker",
         "games_played": 1,
         "wins": 1
-    },
-    {
-        "hero_id": 9,
-        "localized_name": "Mirana",
-        "games_played": 1,
-        "wins": 1
-    },
-    {
-        "hero_id": 22,
-        "localized_name": "Zeus",
-        "games_played": 1,
-        "wins": 0
-    },
-    {
-        "hero_id": 92,
-        "localized_name": "Visage",
-        "games_played": 1,
-        "wins": 0
-    },
-    {
-        "hero_id": 98,
-        "localized_name": "Timbersaw",
-        "games_played": 1,
-        "wins": 0
-    },
-    {
-        "hero_id": 70,
-        "localized_name": "Ursa",
-        "games_played": 1,
-        "wins": 0
     },
     {
         "hero_id": 101,
         "localized_name": "Skywrath Mage",
+        "games_played": 1,
+        "wins": 0
+    },
+    {
+        "hero_id": 123,
+        "localized_name": "Hoodwink",
         "games_played": 1,
         "wins": 0
     },
@@ -444,14 +426,14 @@
         "wins": 1
     },
     {
-        "hero_id": 4,
-        "localized_name": "Bloodseeker",
+        "hero_id": 108,
+        "localized_name": "Underlord",
         "games_played": 1,
-        "wins": 1
+        "wins": 0
     },
     {
-        "hero_id": 52,
-        "localized_name": "Leshrac",
+        "hero_id": 98,
+        "localized_name": "Timbersaw",
         "games_played": 1,
         "wins": 0
     },
@@ -462,14 +444,32 @@
         "wins": 1
     },
     {
-        "hero_id": 123,
-        "localized_name": "Hoodwink",
+        "hero_id": 70,
+        "localized_name": "Ursa",
         "games_played": 1,
         "wins": 0
     },
     {
-        "hero_id": 108,
-        "localized_name": "Underlord",
+        "hero_id": 92,
+        "localized_name": "Visage",
+        "games_played": 1,
+        "wins": 0
+    },
+    {
+        "hero_id": 67,
+        "localized_name": "Spectre",
+        "games_played": 1,
+        "wins": 0
+    },
+    {
+        "hero_id": 69,
+        "localized_name": "Doom",
+        "games_played": 1,
+        "wins": 1
+    },
+    {
+        "hero_id": 22,
+        "localized_name": "Zeus",
         "games_played": 1,
         "wins": 0
     }
