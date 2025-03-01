@@ -578,8 +578,9 @@ class DotaDataset(Dataset):
 class BranchTeam(nn.Module):
     def __init__(self):
         super().__init__()
-        self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(9, 5)
+        self.relu = nn.LeakyReLU(0.01)
+        self.fc1 = nn.Linear(9, 9)
+        self.fc2 = nn.Linear(9, 9)
 
 
 
@@ -588,6 +589,9 @@ class BranchTeam(nn.Module):
 
         r_x = self.fc1(r_team_block)
         d_x = self.fc1(d_team_block)
+        r_x = self.fc2(r_x)
+        d_x = self.fc2(d_x)
+
         x = torch.cat([r_x, d_x], dim=1)
 
         return self.relu(x)
@@ -596,8 +600,9 @@ class BranchTeam(nn.Module):
 class BranchPlayers(nn.Module):
     def __init__(self):
         super().__init__()
-        self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(9, 5)
+        self.relu = nn.LeakyReLU(0.01)
+        self.fc1 = nn.Linear(9, 9)
+        self.fc2 = nn.Linear(9, 9)
 
 
     def forward(self, data):
@@ -605,6 +610,8 @@ class BranchPlayers(nn.Module):
 
         r_x = self.fc1(r_player_block)
         d_x = self.fc1(d_player_block)
+        r_x = self.fc2(r_x)
+        d_x = self.fc2(d_x)
         x = torch.cat([r_x, d_x], dim=1)
 
         return self.relu(x)
@@ -613,8 +620,9 @@ class BranchPlayers(nn.Module):
 class BranchHeroes(nn.Module):
     def __init__(self):
         super().__init__()
-        self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(9, 5)
+        self.relu = nn.LeakyReLU(0.01)
+        self.fc1 = nn.Linear(9, 9)
+        self.fc2 = nn.Linear(9, 9)
 
 
     def forward(self, data):
@@ -622,7 +630,10 @@ class BranchHeroes(nn.Module):
 
         r_x = self.fc1(r_hero_block)
         d_x = self.fc1(d_hero_block)
+        r_x = self.fc2(r_x)
+        d_x = self.fc2(d_x)
         x = torch.cat([r_x, d_x], dim=1)
+
 
         return self.relu(x)
 
@@ -663,7 +674,7 @@ class TensorSelfAttention(nn.Module):
 
 # --- Гибридная модель с вниманием ---
 class MainNetwork(nn.Module):
-    def __init__(self, feature_dim, num_players=5, num_heroes=5, attention_heads=2):
+    def __init__(self, feature_dim, num_players=5, num_heroes=5):
         super(MainNetwork, self).__init__()
         self.num_players = num_players
         self.num_heroes = num_heroes
@@ -676,12 +687,13 @@ class MainNetwork(nn.Module):
         self.branch_h = BranchHeroes()
 
         # Self-Attention для players и heroes
-        self.self_attention_players = TensorSelfAttention(feature_dim, attention_heads=attention_heads)
+        self.self_attention_players = TensorSelfAttention(feature_dim)
 
 
 
         # Финальный полносвязный слой для классификации
-        self.fc = nn.Linear(70, 1)
+        self.fc = nn.Linear(126, 63)
+        self.fc2 = nn.Linear(63, 1)
 
     def forward(self, batch_data):
         batch_size = batch_data[0].size(0)
@@ -702,7 +714,9 @@ class MainNetwork(nn.Module):
 
         combined_features_flattened = combined_features.view(batch_size, -1)
         output = self.fc(combined_features_flattened)
+        output = self.fc2(output)
         output = self.sigmoid(output)
+
 
         output = output.squeeze(0)
 
