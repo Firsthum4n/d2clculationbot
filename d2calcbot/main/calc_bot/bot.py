@@ -579,8 +579,9 @@ class BranchTeam(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.LeakyReLU(0.01)
-        self.fc1 = nn.Linear(9, 18)
-        self.fc2 = nn.Linear(18, 9)
+        self.fc1 = nn.Linear(9, 16)
+        self.fc2 = nn.Linear(16, 9)
+
 
 
     def forward(self, data):
@@ -590,7 +591,6 @@ class BranchTeam(nn.Module):
         d_x = self.fc1(d_team_block)
         r_x = self.fc2(r_x)
         d_x = self.fc2(d_x)
-
         x = torch.cat([r_x, d_x], dim=1)
 
         return self.relu(x)
@@ -600,8 +600,9 @@ class BranchPlayers(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.LeakyReLU(0.01)
-        self.fc1 = nn.Linear(9, 14)
-        self.fc2 = nn.Linear(14, 9)
+        self.fc1 = nn.Linear(9, 16)
+        self.fc2 = nn.Linear(16, 9)
+
 
 
     def forward(self, data):
@@ -620,8 +621,10 @@ class BranchHeroes(nn.Module):
     def __init__(self):
         super().__init__()
         self.relu = nn.LeakyReLU(0.01)
-        self.fc1 = nn.Linear(9, 14)
-        self.fc2 = nn.Linear(14, 9)
+        self.fc1 = nn.Linear(9, 16)
+        self.fc2 = nn.Linear(16, 9)
+        self.fc3 = nn.Linear(9, 9)
+
 
 
     def forward(self, data):
@@ -631,6 +634,8 @@ class BranchHeroes(nn.Module):
         d_x = self.fc1(d_hero_block)
         r_x = self.fc2(r_x)
         d_x = self.fc2(d_x)
+        r_x = self.fc3(r_x)
+        d_x = self.fc3(d_x)
         x = torch.cat([r_x, d_x], dim=1)
 
 
@@ -680,6 +685,7 @@ class MainNetwork(nn.Module):
         self.feature_dim = feature_dim
 
         self.sigmoid = nn.Sigmoid()
+        # self.activation = nn.Tanh()
 
         self.branch_t = BranchTeam()
         self.branch_p = BranchPlayers()
@@ -692,7 +698,8 @@ class MainNetwork(nn.Module):
 
         # Финальный полносвязный слой для классификации
         self.fc = nn.Linear(126, 63)
-        self.fc2 = nn.Linear(63, 1)
+        self.fc2 = nn.Linear(63, 42)
+        self.fc3 = nn.Linear(42, 1)
 
 
 
@@ -701,23 +708,21 @@ class MainNetwork(nn.Module):
         batch_size = batch_data[0].size(0)
 
         out_team = self.branch_t(batch_data)
-
         out_players = self.branch_p(batch_data).view(batch_size, self.num_players, -1)
         out_heroes = self.branch_h(batch_data).view(batch_size, self.num_heroes, -1)
-
 
         attended_players = self.self_attention_players(out_players).mean(dim=1, keepdim=True)
 
         out_team_replicated = out_team.view(batch_size, 1, -1)
-
-
         combined_features_list = [out_team_replicated, attended_players, out_heroes]
         combined_features = torch.cat(combined_features_list, dim=1)
 
         combined_features_flattened = combined_features.view(batch_size, -1)
         output = self.fc(combined_features_flattened)
         output = self.fc2(output)
+        output = self.fc3(output)
         output = self.sigmoid(output)
+
 
 
         output = output.squeeze(0)

@@ -35,14 +35,14 @@ def train_model(request):
     batch_size = 1
     model = MainNetwork(18)
 
-    model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver2_2.pth'))
+    # model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver3_1.pth'))
 
 
-    criterion = nn.BCELoss()
-    optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4, weight_decay=1e-8)
+    criterion = nn.BCEWithLogitsLoss()
+    optimizer = torch.optim.AdamW(model.parameters(), lr=1e-5, weight_decay=1e-10)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
 
-    EPOCHS = 10
+    EPOCHS = 5
 
     dataloader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
     valid_dataloader = DataLoader(valid_data, batch_size=batch_size)
@@ -57,14 +57,14 @@ def train_model(request):
             loss.backward()
             optimizer.step()
             running_loss += loss.item()
-            print(f'{i+1}---Epoch {epoch+1}, Loss: {running_loss / len(x_data):.4f}, out:{output.tolist()}, winner:{winners.tolist()}')
+            print(f'{i+1}---Epoch {epoch+1}, Loss: {running_loss:.4f}, Avg Loss: {running_loss / (i+1):.4f}, out:{output.tolist()}, winner:{winners.tolist()}')
 
         scheduler.step()
     print("Обучение завершено.")
-    torch.save(model.state_dict(), 'main/calc_bot/actual_models/dota_model_ver2_3.pth')
+    torch.save(model.state_dict(), 'main/calc_bot/actual_models/dota_model_ver2_1.pth')
 
 
-    model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver2_3.pth'))
+    model.load_state_dict(torch.load('main/calc_bot/actual_models/dota_model_ver2_1.pth'))
 
     radiant_0 = 0
     dire_1 = 0
